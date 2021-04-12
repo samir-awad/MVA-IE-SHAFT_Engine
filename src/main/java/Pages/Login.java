@@ -22,7 +22,6 @@ public class Login {
     private final By PermissionsContinue_button = new MobileBy.ByAccessibilityId("id_onboarding_permissions_continue_button");
     private final By GoToTheApp_button = new MobileBy.ByAccessibilityId("OBgetStartedButton");
     private final By GoToMyVodafone_button = new MobileBy.ByAccessibilityId("id_tutorials_dismiss_button");
-    private final By ContinueBtn= new By.ByXPath("//android.widget.Button[@content-desc=\"id_onboarding_permissions_continue_button\"]/android.widget.TextView");
 
     public Login(WebDriver driver) {
         this.driver = driver;
@@ -48,7 +47,7 @@ public class Login {
         //ElementActions.performTouchAction(driver).swipeElementIntoView(PersonalPreferencesContinue_button, TouchActions.SwipeDirection.UP);
         ElementActions.performTouchAction(driver).tap(PersonalPreferencesContinue_button);
         ElementActions.performTouchAction(driver).tap(OnboardingPersonalDetailsContinue_button);
-        ElementActions.performTouchAction(driver).swipeElementIntoView(ContinueBtn, TouchActions.SwipeDirection.UP);
+        // ElementActions.performTouchAction(driver).swipeElementIntoView(PermissionsContinue_button, TouchActions.SwipeDirection.UP);
         ElementActions.performTouchAction(driver).tap(PermissionsContinue_button);
         ElementActions.performTouchAction(driver).tap(GoToTheApp_button);
         ElementActions.performTouchAction(driver).tap(GoToMyVodafone_button);
