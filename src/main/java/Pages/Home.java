@@ -1,6 +1,7 @@
 package Pages;
 
 import com.shaft.gui.element.ElementActions;
+import com.shaft.gui.element.TouchActions;
 import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -31,7 +32,7 @@ public class Home {
     }
 
     public boolean checkEssentialsSection() {
-        //ScrollDown to element Action shall be here
+        ElementActions.performTouchAction(driver).swipeElementIntoView(BuyAndManageAddOns_button, TouchActions.SwipeDirection.UP);
         return ElementActions.isElementDisplayed(driver, Essentials_text);
     }
 
