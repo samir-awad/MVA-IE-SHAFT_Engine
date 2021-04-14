@@ -39,7 +39,7 @@ public class TC167_ValidateAddOnsOverlayPAYGUserWithoutMonthlyAddOns {
 
     @Test(dependsOnMethods = {"CheckEssentialsSection","ValidateAddOnsOverlay"})
     public void ValidateAddOnsOverlayCloseButton(){
-        AddOnsPage.closeAddOnsOverlayBtn();
+        AddOnsPage.closeAddOnsOverlay();
         Assertions.assertElementAttribute(driver,HomePage.getEssentials_text(),"text","Essentials");
     }
 }

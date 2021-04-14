@@ -32,13 +32,16 @@ public class TC057_ValidateAddOnsOverlayBillPayUserWithMonthlyAddOns {
     @Test(dependsOnMethods = {"CheckEssentialsSection"})
     public void ValidateAddOnsOverlayText() {
         HomePage.opedAddOnsOverlay();
-        Assertions.assertTrue(AddOnsPage.getExpiresText().contains("Expires"));
+        Assertions.assertElementAttribute(driver, AddOnsPage.getAddOnsExpiresOverlay_text(), "text",
+                "Expires", Assertions.AssertionComparisonType.CONTAINS,
+                Assertions.AssertionType.POSITIVE);
     }
 
     @Test(dependsOnMethods = {"CheckEssentialsSection","ValidateAddOnsOverlayText"})
-    public void ValidateAddOnsOverlayCloseButton(){
-        AddOnsPage.closeAddOnsOverlayBtn();
-        Assertions.assertElementAttribute(driver,HomePage.getEssentials_text(),"text","Essentials");
+    public void ValidateAddOnsOverlayCloseButton() {
+        AddOnsPage.closeAddOnsOverlay();
+        Assertions.assertElementAttribute(driver, HomePage.getEssentials_text(),
+                "text", "Essentials");
     }
 
 }
