@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC122_BillsPaymentsValidationBP {
+public class TC282_MakePaymentValidationsFixedUserSavedAndSelectedCreditCard {
 
     private WebDriver driver;
     private Login LoginPage;
@@ -29,14 +29,18 @@ public class TC122_BillsPaymentsValidationBP {
         //With different users credentials must be changed
     }
     @Test
-    public void Bills_PaymentsValidateBP(){
-
-        Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
-        Verifications.verifyTrue(HomePage.checkTrayMenuOptionsForBillPay());
+    public void MakePaymentValidationsFixedUserSavedAndSelectedCreditCard(){
         HomePage.pressBillsPaymentsTrayMenuOption();
         Verifications.verifyTrue(BillsPaymentsPage.checkBillsPaymentsHeader());
-        BillsPaymentsPage.pressCloseButtonInBillsPaymentsView();
-        HomePage.pressBillsPaymentsTrayMenuOption();
+        BillsPaymentsPage.pressMakeAPaymentButton();
+        BillsPaymentsPage.checkMakeAPaymentOverlayHeader();
+        BillsPaymentsPage.checkMakeAPaymentOverlayAmountField();
+
+        BillsPaymentsPage.checkMakeAPaymentOverlayPaymentMethod();
+        BillsPaymentsPage.pressMakePaymentButton();
+        Assertions.assertElementAttribute(driver,BillsPaymentsPage.getVestaField(),"text","Name on Card");
+
+
 
     }
 

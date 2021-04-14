@@ -6,6 +6,7 @@ import Pages.Login;
 import com.shaft.cli.FileActions;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Assertions;
+import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -30,7 +31,7 @@ public class TC123_DownloadBillBP {
     @Test
     public void DownloadABillFoBillPayUser(){
 
-        Assertions.assertTrue(HomePage.checkTheVodafoneLogo());
+        Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
         HomePage.pressBillsPaymentsTrayMenuOption();
         BillsPaymentsPage.pressDownloadBillButton();
 
