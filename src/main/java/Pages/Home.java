@@ -10,12 +10,13 @@ public class Home {
     private final WebDriver driver;
     private final By Discover_text = new MobileBy.ByAccessibilityId("id_dashboard_discover_title");
     private final By BuyAndManageAddOns_button = new MobileBy.ByAccessibilityId("id_dashboard_essentials_addons_clickable");
-    private final By GetMoreAddOns_button = new MobileBy.ByAccessibilityId("id_addons_get_addons_button");
     private final By VodafoneLogo = new MobileBy.ByAccessibilityId("id_header_vodafone_logo");
     private final By BillTile = new MobileBy.ByAccessibilityId("id_dashboard_next_bill_title");
     private final By ClickNextBillTitle = new MobileBy.ByAccessibilityId("id_dashboard_next_bill_title");
     private final By Essentials_text = new MobileBy.ByAccessibilityId("id_dashboard_essentials_title");
     private final By BillAndPayment = new MobileBy.ByAccessibilityId("id_tray_menu_item_Bills & Payments");
+    private final By ShowMore_button= new MobileBy.ByAccessibilityId("id_dashboard_essentials_see_more_less_label");
+    private final By OtherUsefulTools_text= new MobileBy.ByAccessibilityId("id_dashboard_tools_title");
     //private By PressBillsPaymentsTray = new MobileBy.ByAccessibilityId("id_tray_menu_item_Bills & Payments");
 
     public By getEssentials_text() {
@@ -31,12 +32,8 @@ public class Home {
     }
 
     public boolean checkEssentialsSection() {
-        ElementActions.performTouchAction(driver).swipeElementIntoView(BuyAndManageAddOns_button, TouchActions.SwipeDirection.UP);
+        ElementActions.performTouchAction(driver).swipeElementIntoView(OtherUsefulTools_text, TouchActions.SwipeDirection.DOWN, 1);
         return ElementActions.isElementDisplayed(driver, Essentials_text);
-    }
-
-    public void openAddOnsPage() {
-        ElementActions.performTouchAction(driver).tap(GetMoreAddOns_button);
     }
 
     public void opedAddOnsOverlay() {

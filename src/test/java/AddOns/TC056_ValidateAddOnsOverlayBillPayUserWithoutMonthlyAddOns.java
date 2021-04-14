@@ -7,7 +7,6 @@ import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -23,7 +22,7 @@ public class TC056_ValidateAddOnsOverlayBillPayUserWithoutMonthlyAddOns {
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         AddOnsPage=new AddOns(driver);
-        LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
+        LoginPage.acceptTermsAndConditions().login().acceptPermissions();
     }
 
     @Test
@@ -35,13 +34,16 @@ public class TC056_ValidateAddOnsOverlayBillPayUserWithoutMonthlyAddOns {
     public void ValidateAddOnsOverlayText() {
     HomePage.opedAddOnsOverlay();
         Verifications.verifyTrue(AddOnsPage.checkAddOnsOverlay());
-        Assertions.assertElementAttribute(driver,AddOnsPage.getNoActiveAddOnsOverlayTxt(),"text","No active Add Ons");
+        Assertions.assertElementAttribute(driver,AddOnsPage.getNoActiveAddOnsOverlayTxt(),
+                "text","You have no active add ons.",
+                Assertions.AssertionComparisonType.CONTAINS, Assertions.AssertionType.POSITIVE);
     }
 
-    @Test(dependsOnMethods = {"CheckEssentialsSection","ValidateAddOnsOverlay"})
+    @Test(dependsOnMethods = {"CheckEssentialsSection","ValidateAddOnsOverlayText"})
     public void ValidateAddOnsOverlayCloseButton(){
-        AddOnsPage.closeAddOnsOverlayBtn();
-        Assertions.assertElementAttribute(driver,HomePage.getEssentials_text(),"text","Essentials");
+        AddOnsPage.closeAddOnsOverlay();
+        Assertions.assertElementAttribute(driver,HomePage.getEssentials_text(),
+                "text","Essentials");
     }
 
 

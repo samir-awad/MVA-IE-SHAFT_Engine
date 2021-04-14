@@ -18,7 +18,7 @@ public class Login {
     private final By LetsGo_Button = By.xpath("//android.widget.TextView[@content-desc=\"OBstartButton\"]");
     private final By PrivacyContinue_button = new MobileBy.ByAccessibilityId("id_privacy_policy_continue_button");
     private final By PersonalPreferencesContinue_button = new MobileBy.ByAccessibilityId("id_onboarding_personal_preferences_continue_button");
-    private final By OnboardingPersonalDetailsContinue_button = new MobileBy.ByAccessibilityId("id_onboarding_personal_details_continue_button");
+    private final By OnboardingPersonalDetailsContinue_button = new MobileBy.ByAccessibilityId("id_onboarding_payment_method_continue_button");
     private final By PermissionsContinue_button = new MobileBy.ByAccessibilityId("id_onboarding_permissions_continue_button");
     private final By GoToTheApp_button = new MobileBy.ByAccessibilityId("OBgetStartedButton");
     private final By GoToMyVodafone_button = new MobileBy.ByAccessibilityId("id_tutorials_dismiss_button");
@@ -35,8 +35,8 @@ public class Login {
 
     public Login login() {
         ElementActions.performTouchAction(driver).tap(Reg_Login_Button);
-        ElementActions.type(driver, PhoneOrEmail_TxtField, "0873723907");
-        ElementActions.type(driver, Password_TxtField, "Mountainview01!");
+        ElementActions.type(driver, PhoneOrEmail_TxtField, "0877456657");
+        ElementActions.type(driver, Password_TxtField, "kamel@VF20");
         ElementActions.performTouchAction(driver).tap(Login_button);
         return this;
     }
