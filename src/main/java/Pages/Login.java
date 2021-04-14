@@ -67,25 +67,26 @@ public class Login {
             Registration_ResetYourPassword_RedirectText = new MobileBy.ByAccessibilityId("id_registration_textview_beside_redirect");
             Registration_ResetYourPassword_RedirectLink = new MobileBy.ByAccessibilityId("id_registration_textview_redirect");
             RestPassword_Title = new MobileBy.ByAccessibilityId("id_forgotpassword_title");
-            RestPassword_SendToken = new MobileBy.ByAccessibilityId("");
-            RestPassword_OurPrivacy = new MobileBy.ByAccessibilityId("");
-            RestPassword_RegisterHere_RedirectText = new MobileBy.ByAccessibilityId("");
-            RestPassword_RegisterHere_RedirectLink = new MobileBy.ByAccessibilityId("");
-            RestPassword_UserName = new MobileBy.ByAccessibilityId("");
+            //RestPassword_SendToken = new MobileBy.ByAccessibilityId("");
+          // RestPassword_OurPrivacy = new MobileBy.ByAccessibilityId("");
+          // RestPassword_RegisterHere_RedirectText = new MobileBy.ByAccessibilityId("");
+          // RestPassword_RegisterHere_RedirectLink = new MobileBy.ByAccessibilityId("");
+          // RestPassword_UserName = new MobileBy.ByAccessibilityId("");
             Back_Arrow = new MobileBy.ByAccessibilityId("id_header_back_arrow");
             PhoneOrEmail_TxtField = new MobileBy.ByAccessibilityId("id_login_edittext_username");
             Password_TxtField = new MobileBy.ByAccessibilityId("id_login_edittext_password");
-            KeepMe_Checkbox = new MobileBy.ByAccessibilityId("");
+           // KeepMe_Checkbox = new MobileBy.ByAccessibilityId("");
             Login_button = new MobileBy.ByAccessibilityId("id_login_button_login");
             LetsGo_Button = By.xpath("//android.widget.TextView[@content-desc=\"OBstartButton\"]");
             PrivacyContinue_button = new MobileBy.ByAccessibilityId("id_privacy_policy_continue_button");
             PersonalPreferencesContinue_button = new MobileBy.ByAccessibilityId("id_onboarding_personal_preferences_continue_button");
             Yes_Button = By.xpath("//android.widget.Button[@content-desc=\"Yes\"]/android.widget.TextView");
-            OnboardingPersonalDetailsContinue_button = new MobileBy.ByAccessibilityId("id_onboarding_personal_details_continue_button");
+            OnboardingPersonalDetailsContinue_button = new MobileBy.ByAccessibilityId("id_onboarding_payment_method_continue_button");
             PermissionsContinue_button = new MobileBy.ByAccessibilityId("id_onboarding_permissions_continue_button");
             GoToTheApp_button = new MobileBy.ByAccessibilityId("OBgetStartedButton");
             Tutorials_button = new MobileBy.ByAccessibilityId("id_tutorials_tour_button");
             GoToMyVodafone_button = new MobileBy.ByAccessibilityId("id_tutorials_dismiss_button");
+
 
         }else{
 
@@ -111,8 +112,8 @@ public class Login {
 
     public Login login() {
         ElementActions.performTouchAction(driver).tap(Reg_Login_Button);
-        ElementActions.type(driver, PhoneOrEmail_TxtField, "0876352242");
-        ElementActions.type(driver, Password_TxtField, "Mountainview01!");
+        ElementActions.type(driver, PhoneOrEmail_TxtField, "0877456657");
+        ElementActions.type(driver, Password_TxtField, "kamel@VF20");
         ElementActions.performTouchAction(driver).tap(Login_button);
         return this;
     }
@@ -135,7 +136,5 @@ public class Login {
     public By getContinue_button() {return Continue_button;}
     public By getTermsAndConditions_Header() { return termsAndConditions_Header;}
     public By getTermsAndConditions_Txt() { return termsAndConditions_Txt; }
-
-
 
 }

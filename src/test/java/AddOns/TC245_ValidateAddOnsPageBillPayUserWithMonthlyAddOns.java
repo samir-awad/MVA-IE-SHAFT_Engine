@@ -48,12 +48,12 @@ public class TC245_ValidateAddOnsPageBillPayUserWithMonthlyAddOns {
 
         Verifications.verifyTrue(AddOnsPage.checkAddOnsContinueBtn(),"Checking continue button");
 
-        Verifications.verifyTrue(AddOnsPage.checkManageAddOnsBtn(),"Checking Manage add ons button");
+        Assertions.assertTrue(AddOnsPage.checkManageAddOnsBtn(), "Checking Manage add ons button");
 
 
     }
 
-    @Test(dependsOnMethods = {"CheckEssentialsSection","ValidateAddOnsPageFirstTab"})
+    @Test(dependsOnMethods = "ValidateAddOnsPageFirstTab")
     public void ValidateAddOnsPageSecondTab() {
         AddOnsPage.openRecurringTab();
 
@@ -61,23 +61,52 @@ public class TC245_ValidateAddOnsPageBillPayUserWithMonthlyAddOns {
                 "text", "Recurring",
                 Verifications.VerificationComparisonType.CONTAINS, Verifications.VerificationType.POSITIVE);
 
-        Verifications.verifyTrue(AddOnsPage.checkRecurringListFirstItem(),"Checking first list item in recurring tab");
+        Verifications.verifyTrue(AddOnsPage.checkRecurringListFirstItem(), "Checking first list item in recurring tab");
 
-        Verifications.verifyTrue(AddOnsPage.checkAddOnsContinueBtn(),"Checking continue button");
+        Verifications.verifyTrue(AddOnsPage.checkAddOnsContinueBtn(), "Checking continue button");
 
-        Verifications.verifyTrue(AddOnsPage.checkManageAddOnsBtn(),"Checking manage add ons button");
+        Assertions.assertTrue(AddOnsPage.checkManageAddOnsBtn(), "Checking manage add ons button");
 
     }
 
-    @Test(dependsOnMethods = {"CheckEssentialsSection","ValidateAddOnsPageFirstTab", "ValidateAddOnsPageSecondTab"})
-    public void ValidateRecurringActions(){
+    @Test(dependsOnMethods = "ValidateAddOnsPageSecondTab")
+    public void ValidateSelectAndBuyAddOn() {
         AddOnsPage.clickSelectBtn();
-        Verifications.verifyElementAttribute(driver,AddOnsPage.getSelect_text(),
-                "text","Selected","Checking selected text");
-
+        Verifications.verifyElementAttribute(driver, AddOnsPage.getSelect_text(),
+                "text", "Selected", "Checking selected text");
+        Verifications.verifyElementAttribute(driver, AddOnsPage.getRecurringContinue_button(),
+                "enabled", "false", "Check if continue button is enabled");
     }
 
+    @Test(dependsOnMethods = "ValidateSelectAndBuyAddOn")
+    public void ValidateBuyAddOnsOverlay() {
+        AddOnsPage.clickRecurringContinueBtn();
+        Verifications.verifyElementAttribute(driver, AddOnsPage.getBuyAddOnsHeaderOverlay_text(),
+                "text", "Buy add ons", "check buy add ons header");
+    }
 
+    @Test(dependsOnMethods = "ValidateBuyAddOnsOverlay")
+    public void ValidateClosingBuyAddOnsOverlay() {
+        AddOnsPage.closeBuyAddOnsOverlay();
+        Verifications.verifyElementAttribute(driver, AddOnsPage.getRecurring_tab_text(),
+                "text", "Recurring",
+                Verifications.VerificationComparisonType.CONTAINS, Verifications.VerificationType.POSITIVE);
+    }
+
+    @Test(dependsOnMethods = "ValidateClosingBuyAddOnsOverlay")
+    public void ValidateCancelingBuyAddOnsOverlay() {
+        AddOnsPage.clickRecurringContinueBtn();
+        AddOnsPage.cancelBuyAddOnsOverlay();
+        Verifications.verifyElementAttribute(driver, AddOnsPage.getRecurring_tab_text(),
+                "text", "Recurring",
+                Verifications.VerificationComparisonType.CONTAINS, Verifications.VerificationType.POSITIVE);
+    }
+
+    @Test(dependsOnMethods = "ValidateCancelingBuyAddOnsOverlay")
+    public void ValidateClosingAddOnsPage() {
+        AddOnsPage.closeAddOnsPage();
+        Assertions.assertElementExists(driver,HomePage.getEssentials_text()); //change to buy and manage add ons
+    }
 
 
 }
