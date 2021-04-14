@@ -35,7 +35,7 @@ public class Login {
 
     public Login login() {
         ElementActions.performTouchAction(driver).tap(Reg_Login_Button);
-        ElementActions.type(driver, PhoneOrEmail_TxtField, "0873723907");
+        ElementActions.type(driver, PhoneOrEmail_TxtField, "0876352242");
         ElementActions.type(driver, Password_TxtField, "Mountainview01!");
         ElementActions.performTouchAction(driver).tap(Login_button);
         return this;

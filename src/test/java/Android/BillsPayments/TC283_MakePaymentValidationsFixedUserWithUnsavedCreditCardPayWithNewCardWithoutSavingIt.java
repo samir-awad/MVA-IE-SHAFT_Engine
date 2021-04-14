@@ -5,13 +5,12 @@ import Pages.Home;
 import Pages.Login;
 import com.shaft.cli.FileActions;
 import com.shaft.gui.browser.BrowserFactory;
-import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC122_BillsPaymentsValidationBP {
+public class TC283_MakePaymentValidationsFixedUserWithUnsavedCreditCardPayWithNewCardWithoutSavingIt {
 
     private WebDriver driver;
     private Login LoginPage;
@@ -29,14 +28,17 @@ public class TC122_BillsPaymentsValidationBP {
         //With different users credentials must be changed
     }
     @Test
-    public void Bills_PaymentsValidateBP(){
+    public void MakePaymentValidationsFixedUserWithUnsavedCreditCardPayWithNewCardWithoutSavingIt(){
+        HomePage.pressBillsPaymentsTrayMenuOption();
+        BillsPaymentsPage.pressMakeAPaymentButton();
+        Verifications.verifyTrue(BillsPaymentsPage.checkMakeAPaymentOverlayHeader());
+        Verifications.verifyTrue(BillsPaymentsPage.checkMakeAPaymentOverlayFirstBill());
+        Verifications.verifyTrue(BillsPaymentsPage.checkMakeAPaymentOverlayAmountField());
+        Verifications.verifyTrue(BillsPaymentsPage.checkMakeAPaymentOverlayPaymentMethod());
+        BillsPaymentsPage.pressPaymentMethodEditButton();
 
-        Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
-        Verifications.verifyTrue(HomePage.checkTrayMenuOptionsForBillPay());
-        HomePage.pressBillsPaymentsTrayMenuOption();
-        Verifications.verifyTrue(BillsPaymentsPage.checkBillsPaymentsHeader());
-        BillsPaymentsPage.pressCloseButtonInBillsPaymentsView();
-        HomePage.pressBillsPaymentsTrayMenuOption();
+        BillsPaymentsPage.pressPayWithNewCardWithoutSavingItButton();
+
 
     }
 

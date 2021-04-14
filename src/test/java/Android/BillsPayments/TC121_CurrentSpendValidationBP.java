@@ -7,6 +7,7 @@ import Pages.Login;
 import com.shaft.cli.FileActions;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Assertions;
+import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -17,9 +18,9 @@ public class TC121_CurrentSpendValidationBP {
     private Login LoginPage;
     private Home HomePage;
     private BillsPayments BillsPaymentsPage;
-    @BeforeClass
+  @BeforeClass
     public void beforeClass() {
-        System.setProperty("mobile_app", FileActions.getAbsolutePath(System.getProperty("testDataFolderPath") + "apk/", "DIG18180Fix.apk"));
+        //System.setProperty("mobile_app", FileActions.getAbsolutePath(System.getProperty("testDataFolderPath") + "apk/", "DIG18180Fix.apk"));
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
@@ -31,10 +32,10 @@ public class TC121_CurrentSpendValidationBP {
     @Test
     public void ValidateCurrentSpendBP(){
 
-        Assertions.assertTrue(HomePage.checkTheVodafoneLogo());
-        Assertions.assertTrue(HomePage.checkTheNextBillTile());
+        Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+        Verifications.verifyTrue(HomePage.checkTheNextBillTile());
         HomePage.pressNextBillTile();
-        Assertions.assertTrue(BillsPaymentsPage.checkCurrentSpendOverlay());
+        Verifications.verifyTrue(BillsPaymentsPage.checkCurrentSpendOverlay());
         BillsPaymentsPage.pressViewBillsAndPaymentsButton();
         Assertions.assertTrue(BillsPaymentsPage.checkBillsPaymentsHeader());
 
