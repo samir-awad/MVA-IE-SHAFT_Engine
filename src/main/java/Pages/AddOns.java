@@ -6,44 +6,46 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class AddOns {
-    private WebDriver driver;
+    //Element locators
+    private final WebDriver driver;
+    private final By AddOnsHeader_Text = new MobileBy.ByAccessibilityId("id_header_title_Buy_add_ons");
+    private final By OneOff_tab = new MobileBy.ByAccessibilityId("One off (Selected)");
+    private final By Recurring_tab = new MobileBy.ByAccessibilityId("Recurring ");
+    private final By NoActiveAddOnsOverlay_text = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.widget.TextView");
+    private final By AddOnsCloseOverlay_button = By.xpath("//android.view.ViewGroup[@content-desc=\"id_dashboard_manage_addons_sheet_close\"]");
+    private final By AddOnsExpiresOverlay_text= By.xpath("//hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.TextView[2]");
 
-    public By getAddOnsHeader_Text() {
-        return AddOnsHeader_Text;
+    //Getters of the elements
+    public By getNoActiveAddOnsOverlayTxt() {
+        return NoActiveAddOnsOverlay_text;
     }
-
-    private By AddOnsHeader_Text = new MobileBy.ByAccessibilityId("id_header_title_Buy_add_ons");
 
     public By getOneOff_tab() {
         return OneOff_tab;
     }
 
     public By getRecurringTab() {
-        return RecurringTab;
+        return Recurring_tab;
     }
 
-    private By OneOff_tab = new MobileBy.ByAccessibilityId("One off (Selected)");
-    private By RecurringTab = new MobileBy.ByAccessibilityId("Recurring ");
+    public final By getAddOnsHeader_Text() {
+        return AddOnsHeader_Text;
+    }
 
     public AddOns(WebDriver driver) {
         this.driver = driver;
     }
 
-    public String getAddOnsHeaderText() {
-        return ElementActions.getText(driver, AddOnsHeader_Text);
+    //Page methods
+    public Boolean checkAddOnsOverlay() {
+        return ElementActions.isElementDisplayed(driver, NoActiveAddOnsOverlay_text);
     }
 
-    //Is it the way to handle false assertions?
-    public boolean checkFirstTabNotExisted() {
-        if (ElementActions.isElementDisplayed(driver, OneOff_tab)) {
-            return false;
-        } else return true;
+    public void closeAddOnsOverlayBtn() {
+        ElementActions.click(driver, AddOnsCloseOverlay_button);
     }
 
-    public boolean checkSecondtTabNotExisted() {
-        if (ElementActions.isElementDisplayed(driver, RecurringTab)) {
-            return false;
-        } else return true;
+    public String getExpiresText(){
+        return ElementActions.getText(driver,AddOnsExpiresOverlay_text);
     }
-
 }
