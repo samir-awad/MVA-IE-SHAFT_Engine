@@ -6,43 +6,78 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class AddOns {
+    private final WebDriver driver;
+    private By AddOnsHeader_text ;
+    private By AddOnsHeaderOverlay_text ;
+    private By BuyAddOnsHeaderOverlay_text;
+    private By ManageAddOnsOverlayHeader_text ;
+    private By OneOff_tab ;
+    private By Recurring_tab;
+    private By Recurring_tab_text;
+    private By NoActiveAddOnsOverlay_text;
+    private By AddOnsCloseOverlay_button ;
+    private By GetMoreAddOns_button;
+    private By ManageAddOnsOverlay_button;
+    private By ManageAddOns_button;
+    private By SelectAddOnsToRemoveOverlayCancel_button;
+    private By AddOnsExpiresOverlay_text = By.xpath("//hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.TextView[2]");
+    private By OneOffListFirstItem_text;
+    private By AddOnsContinue_button;
+    private By RecurringListFirstItem_text;
+    private By Select_button;
+    private By RecurringContinue_button;
+    private By BuyAddOnsCloseOverlay_button;
+    private By BuyAddOnsCancelOverlay_button;
+    private By AddOneClosePage_button;
+
     public AddOns(WebDriver driver) {
         this.driver = driver;
+        if (System.getProperty("targetOperatingSystem").equals("Android")) {
+            AddOnsHeader_text = new MobileBy.ByAccessibilityId("id_header_title_Buy_add_ons");
+            AddOnsHeaderOverlay_text = new MobileBy.ByAccessibilityId("id_dashboard_manage_addons_sheet_title");
+            BuyAddOnsHeaderOverlay_text = new MobileBy.ByAccessibilityId("id_buy_add_ons_title");
+            ManageAddOnsOverlayHeader_text = new MobileBy.ByAccessibilityId("id_dashboard_manage_addons_sheet_title");
+            OneOff_tab = new MobileBy.ByAccessibilityId("One off (Selected)");
+            Recurring_tab = new MobileBy.ByAccessibilityId("Recurring ");
+            Recurring_tab_text = new MobileBy.ByAccessibilityId("Recurring (Selected)");
+            NoActiveAddOnsOverlay_text = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.widget.TextView");
+            AddOnsCloseOverlay_button = By.xpath("//android.view.ViewGroup[@content-desc=\"id_dashboard_manage_addons_sheet_close\"]");
+            GetMoreAddOns_button = new MobileBy.ByAccessibilityId("id_addons_get_addons_button");
+            ManageAddOnsOverlay_button = new MobileBy.ByAccessibilityId("id_addons_manage_addons_button");
+            ManageAddOns_button = By.xpath("//android.widget.Button[@content-desc=\"id_manage_add_ons_button\"]");
+            SelectAddOnsToRemoveOverlayCancel_button = new MobileBy.ByAccessibilityId("id_cancel_add_on_remove_button");
+            AddOnsExpiresOverlay_text = By.xpath("//hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.TextView[2]");
+            OneOffListFirstItem_text = By.xpath("//hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup");
+            AddOnsContinue_button = new MobileBy.ByAccessibilityId("id_continue_add_on_flow_button");
+            RecurringListFirstItem_text = By.xpath("//hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]");
+            Select_button = By.xpath("(//android.widget.Button[@content-desc=\"id_select_add_on_button\"])[1]");
+            Select_button = By.xpath("(//android.widget.Button[@content-desc=\"id_select_add_on_button\"])[1]/android.widget.TextView");
+            RecurringContinue_button = By.xpath("(//android.view.ViewGroup[@content-desc=\"Button\"])[3]");
+            BuyAddOnsCloseOverlay_button=By.xpath("//android.view.ViewGroup[@content-desc=\"id_buy_add_ons_close\"]");
+            BuyAddOnsCancelOverlay_button=new MobileBy.ByAccessibilityId("id_cancel_buy_add_on_button");
+            AddOneClosePage_button =new MobileBy.ByAccessibilityId("id_header_close_icon");
+        }
+        else {
+            //IOS locators
+        }
+
     }
 
-    private final WebDriver driver;
-
-    //Element locators
-    private final By AddOnsHeader_text = new MobileBy.ByAccessibilityId("id_header_title_Buy_add_ons");
-    private final By AddOnsHeaderOverlay_text = new MobileBy.ByAccessibilityId("id_dashboard_manage_addons_sheet_title");
-    private final By ManageAddOnsOverlayHeader_text = new MobileBy.ByAccessibilityId("id_dashboard_manage_addons_sheet_title");
-    private final By OneOff_tab = new MobileBy.ByAccessibilityId("One off (Selected)");
-    private final By Recurring_tab = new MobileBy.ByAccessibilityId("Recurring ");
-    private final By Recurring_tab_text= new MobileBy.ByAccessibilityId("Recurring (Selected)");
-    private final By NoActiveAddOnsOverlay_text = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.widget.TextView");
-    private final By AddOnsCloseOverlay_button = By.xpath("//android.view.ViewGroup[@content-desc=\"id_dashboard_manage_addons_sheet_close\"]");
-    private final By GetMoreAddOns_button = new MobileBy.ByAccessibilityId("id_addons_get_addons_button");
-    private final By ManageAddOnsOverlay_button = new MobileBy.ByAccessibilityId("id_addons_manage_addons_button");
-    private final By ManageAddOns_button = By.xpath("//android.widget.Button[@content-desc=\"id_manage_add_ons_button\"]");
-    private final By SelectAddOnsToRemoveOverlayCancel_button = new MobileBy.ByAccessibilityId("id_cancel_add_on_remove_button");
-    private final By AddOnsExpiresOverlay_text = By.xpath("//hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.TextView[2]");
-    private final By OneOffListFirstItem_text = By.xpath("//hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup");
-    private final By AddOnsContinue_button = new MobileBy.ByAccessibilityId("id_continue_add_on_flow_button");
-    private final By RecurringListFirstItem_text= By.xpath("//hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]");
-    private final By Select_button = By.xpath("//android.widget.Button[@content-desc=\"id_select_add_on_button\"])[1]");
-    private final By Select_text=By.xpath("//android.widget.Button[@content-desc=\"id_select_add_on_button\"])[1]/android.widget.TextView");
-
     //Getters of the elements
-    public By getNoActiveAddOnsOverlayTxt() {
+    public By getRecurringContinue_button() {
+        return RecurringContinue_button;
+    }
+
+    public By getBuyAddOnsHeaderOverlay_text() {
+        return BuyAddOnsHeaderOverlay_text;
+    }
+
+    public By getNoActiveAddOnsOverlay_text() {
         return NoActiveAddOnsOverlay_text;
     }
 
     public By getOneOff_tab() {
         return OneOff_tab;
-    }
-
-    public By getRecurringTab() {
-        return Recurring_tab;
     }
 
     public By getAddOnsHeader_text() {
@@ -62,7 +97,7 @@ public class AddOns {
     }
 
     public By getSelect_text() {
-        return Select_text;
+        return Select_button;
     }
 
     public By getRecurring_tab_text() {
@@ -83,16 +118,33 @@ public class AddOns {
     }
 
     public void closeAddOnsOverlay() {
-        ElementActions.click(driver, AddOnsCloseOverlay_button);
+        ElementActions.performTouchAction(driver).tap(AddOnsCloseOverlay_button);
     }
 
     public void closeSelectAddOnsToRemoveOverlay() {
-        ElementActions.click(driver, SelectAddOnsToRemoveOverlayCancel_button);
+        ElementActions.performTouchAction(driver).tap(SelectAddOnsToRemoveOverlayCancel_button);
     }
 
     public void clickSelectBtn() {
-        ElementActions.click(driver, Select_button);
+        ElementActions.performTouchAction(driver).tap(Select_button);
     }
+
+    public void clickRecurringContinueBtn() {
+        ElementActions.performTouchAction(driver).tap(RecurringContinue_button);
+    }
+
+    public void closeBuyAddOnsOverlay(){
+        ElementActions.performTouchAction(driver).tap(BuyAddOnsCloseOverlay_button);
+    }
+
+    public void cancelBuyAddOnsOverlay() {
+        ElementActions.performTouchAction(driver).tap(BuyAddOnsCancelOverlay_button);
+    }
+
+    public void closeAddOnsPage() {
+        ElementActions.performTouchAction(driver).tap(AddOneClosePage_button);
+    }
+
 
     //Check existence methods
     public boolean checkBuyAddOnsFirstTab() {
@@ -122,5 +174,6 @@ public class AddOns {
     public boolean checkManageAddOnsBtn() {
         return ElementActions.isElementDisplayed(driver, ManageAddOns_button);
     }
+
 
 }
