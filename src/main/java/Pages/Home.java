@@ -9,16 +9,18 @@ import org.openqa.selenium.WebDriver;
 public class Home {
     private  final WebDriver driver;
     private  By Discover_text;
-    private  By BuyAndManageAddOns_button;
-    private  By VodafoneLogo ;
-    private  By BillTile ;
-    private  By ClickNextBillTitle;
-    private  By Essentials_text;
-    private  By BillAndPayment;
-    private  By ShowMore_button;
-    private  By OtherUsefulTools_text;
-    private  By UnlockYourDevice_text;
-    private  By SeeAllOffers_button;
+    private By BuyAndManageAddOns_button;
+    private By VodafoneLogo;
+    private By BillTile;
+    private By ClickNextBillTitle;
+    private By Essentials_text;
+    private By BillAndPayment;
+    private By ShowMore_button;
+    private By OtherUsefulTools_text;
+    private By UnlockYourDevice_text;
+    private By SeeAllOffers_button;
+    private By OffersPageHeader_button; //The image above see all offers link
+    private By Support_button;
 
 
     public By getEssentials_text() {
@@ -46,8 +48,9 @@ public class Home {
           ShowMore_button= new MobileBy.ByAccessibilityId("id_dashboard_essentials_see_more_less_label");
           OtherUsefulTools_text= new MobileBy.ByAccessibilityId("id_dashboard_tools_title");
           UnlockYourDevice_text= new MobileBy.ByAccessibilityId("id_dashboard_tools_nac_label");
-          SeeAllOffers_button= new MobileBy.ByAccessibilityId("id_dashboard_discover_see_all_offers_label");
-
+          SeeAllOffers_button = new MobileBy.ByAccessibilityId("id_dashboard_discover_see_all_offers_label");
+          OffersPageHeader_button = new MobileBy.ByAccessibilityId("id_dashboard_discover_card_image");
+          Support_button=new MobileBy.ByAccessibilityId("id_dashboard_live_chat_tile_title");
         }
         else {
             //IOS Locators
@@ -63,6 +66,10 @@ public class Home {
     public boolean checkDiscoverySection() {
         ElementActions.performTouchAction(driver).swipeElementIntoView(Discover_text, TouchActions.SwipeDirection.DOWN, 1);
         return ElementActions.isElementDisplayed(driver, Discover_text);
+    }
+
+    public boolean checkSupportSection(){
+        return ElementActions.isElementDisplayed(driver,Support_button);
     }
 
     public boolean checkTheVodafoneLogo() {
@@ -85,13 +92,21 @@ public class Home {
     public void opedAddOnsOverlay() {
         ElementActions.performTouchAction(driver).tap(BuyAndManageAddOns_button);
     }
+
     public void pressNextBillTile() {
         ElementActions.performTouchAction(driver).tap(ClickNextBillTitle);
     }
 
-    public void pressSeeAllOffersLink(){
+    public void pressSeeAllOffersLink() {
         ElementActions.performTouchAction(driver).tap(SeeAllOffers_button);
     }
 
+    public void openOffersPageHeader() {
+        ElementActions.performTouchAction(driver).tap(OffersPageHeader_button);
+    }
+
+    public void pressSupportTrayMenu(){
+        ElementActions.performTouchAction(driver).tap(Support_button);
+    }
 
 }

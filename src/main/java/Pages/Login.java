@@ -109,11 +109,12 @@ public class Login {
         ElementActions.performTouchAction(driver).tap(Continue_button);
         return this;
     }
-
+    //Bill bay 0877456657,kamel@VF20
+    //PAYG 0873723907 ,Mountainview01!
     public Login login() {
         ElementActions.performTouchAction(driver).tap(Reg_Login_Button);
-        ElementActions.type(driver, PhoneOrEmail_TxtField, "0877456657");
-        ElementActions.type(driver, Password_TxtField, "kamel@VF20");
+        ElementActions.type(driver, PhoneOrEmail_TxtField, "0871700924");
+        ElementActions.type(driver, Password_TxtField, "Dublin123$");
         ElementActions.performTouchAction(driver).tap(Login_button);
         return this;
     }
