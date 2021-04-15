@@ -3,12 +3,11 @@ package Android.Home;
 import Pages.Home;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
-import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC031_VerifySkipTutorialButtonsBillPayCustomer {
+public class TC023_TutorialValidationsBillPayCustomer {
 
     private WebDriver driver;
     private Login LoginPage;
@@ -24,7 +23,7 @@ public class TC031_VerifySkipTutorialButtonsBillPayCustomer {
         //With different users credentials must be changed
     }
     @Test
-    public void VerifySkipTutorialButtonsBillPayCustomer(){
+    public void TutorialValidationsBillPayCustomer(){
 
 
     }

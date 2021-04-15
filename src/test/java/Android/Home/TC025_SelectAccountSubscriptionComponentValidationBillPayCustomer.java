@@ -27,13 +27,16 @@ public class TC025_SelectAccountSubscriptionComponentValidationBillPayCustomer {
     @Test
     public void SelectAccountSubscriptionComponentValidationBillPayCustomer(){
         Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
-        Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
-      /*  Verifications.verifyTrue(HomePage.checkNextBillTile());
-        Verifications.verifyTrue(HomePage.checkAmountDueTile());
-        Verifications.verifyTrue(HomePage.checkDirectDebitTile());
-        Verifications.verifyTrue(HomePage.checkDiscoverySection());
-        Verifications.verifyTrue(HomePage.checkEssentialsSection());
-        Verifications.verifyTrue(HomePage.checkOtherUsefulToolsSection());
-        Assertions.assertTrue(HomePage.checkTrayMenuOptionsForBillPay());*/
+        Verifications.verifyTrue(HomePage.checkSelectAccountAndSubscriptionComponent());
+        HomePage.pressSelectAccountAndSubscriptionComponent();
+        Verifications.verifyTrue(HomePage.checkSelectAccountAndSubscriptionComponentContent());
+        HomePage.changeTheSelectedSubscription();
+        HomePage.changeTheSelectedAccount();
+        Verifications.verifyTrue(HomePage.checkAccountSuccessfullySelected());
+        HomePage.pressSelectAccountAndSubscriptionCloseButton();
+        HomePage.pressSelectAccountAndSubscriptionComponent();
+        HomePage.changeTheSelectedSubscription();
+        HomePage.pressSelectAccountAndSubscriptionSelectButton();
+
     }
 }
