@@ -3,6 +3,7 @@ package Android.Home;
 import Pages.Home;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
@@ -26,6 +27,13 @@ public class TC120_ValidatePAYGCustomer_ActiveToUp {
     @Test
     public void ValidatePAYGCustomer_ActiveToUp(){
         Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+        Verifications.verifyTrue(HomePage.checkTopUpOfferTileActiveTopUp());
+        Verifications.verifyTrue(HomePage.checkBalanceTile());
+        Verifications.verifyTrue(HomePage.checkTopUpHistoryTile());
+        Verifications.verifyTrue(HomePage.checkDiscoverySection());
+        Verifications.verifyTrue(HomePage.checkEssentialsSection());
+        Verifications.verifyTrue(HomePage.checkOtherUsefulToolsSection());
+        Assertions.assertTrue(HomePage.checkTrayMenuOptionsForPayg());
 
     }
 }
