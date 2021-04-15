@@ -28,12 +28,12 @@ public class TC022_ValidateBillPayCustomer {
     @Test
     public void ValidateBillPayCustomer(){
         Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
-      /*  Verifications.verifyTrue(HomePage.checkNextBillTile());
+        Verifications.verifyTrue(HomePage.checkNextBillTile());
         Verifications.verifyTrue(HomePage.checkAmountDueTile());
         Verifications.verifyTrue(HomePage.checkDirectDebitTile());
         Verifications.verifyTrue(HomePage.checkDiscoverySection());
         Verifications.verifyTrue(HomePage.checkEssentialsSection());
         Verifications.verifyTrue(HomePage.checkOtherUsefulToolsSection());
-        Assertions.assertTrue(HomePage.checkTrayMenuOptionsForBillPay());*/
+        Assertions.assertTrue(HomePage.checkTrayMenuOptionsForBillPay());
     }
 }

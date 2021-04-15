@@ -33,7 +33,7 @@ public class TC121_CurrentSpendValidationBP {
     public void ValidateCurrentSpendBP(){
 
         Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
-        Verifications.verifyTrue(HomePage.checkTheNextBillTile());
+        Verifications.verifyTrue(HomePage.checkNextBillTile());
         HomePage.pressNextBillTile();
         Verifications.verifyTrue(BillsPaymentsPage.checkCurrentSpendOverlay());
         BillsPaymentsPage.pressViewBillsAndPaymentsButton();
