@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 public class Home {
     private  final WebDriver driver;
     private  By Discover_text;
+    private By OffersPageHeader_button; //The image above see all offers link
+    private By Support_button;
     private  By BuyAndManageAddOns_button;
     private  By VodafoneLogo ;
     private  By BillTile ;
@@ -38,22 +40,8 @@ public class Home {
     private By LastBileTile;
     private By TvAddOnsTile;
     private By EssentialsSectionFixed_WithTV;
-
-
-
-    public By getEssentials_text() {
-        return Essentials_text;
-    }
-
-    public By getDiscover_text() {
-        return Discover_text;
-    }
-
-    public By getSeeAllOffers_button() {
-        return SeeAllOffers_button;
-    }
-
-    public Home(WebDriver driver) {
+  
+   public Home(WebDriver driver) {
         this.driver = driver;
         if (System.getProperty("targetOperatingSystem").equals("Android")){
           Discover_text = new MobileBy.ByAccessibilityId("id_dashboard_discover_title");
@@ -66,6 +54,8 @@ public class Home {
           ShowMore_button= new MobileBy.ByAccessibilityId("id_dashboard_essentials_see_more_less_label");
           OtherUsefulTools_text= new MobileBy.ByAccessibilityId("id_dashboard_tools_title");
           UnlockYourDevice_text= new MobileBy.ByAccessibilityId("id_dashboard_tools_nac_label");
+          OffersPageHeader_button = new MobileBy.ByAccessibilityId("id_dashboard_discover_card_image");
+          Support_button=new MobileBy.ByAccessibilityId("id_dashboard_live_chat_tile_title");
           SeeAllOffers_button= new MobileBy.ByAccessibilityId("id_dashboard_discover_see_all_offers_label");
           ClickNextBillTitle = new MobileBy.ByAccessibilityId("id_dashboard_next_bill_title");
           AmountDueTile = new MobileBy.ByAccessibilityId("id_dashboard_amount_due_title");
@@ -94,6 +84,22 @@ public class Home {
         }
     }
 
+
+
+
+    public By getEssentials_text() {
+        return Essentials_text;
+    }
+
+    public By getDiscover_text() {
+        return Discover_text;
+    }
+
+    public By getSeeAllOffers_button() {
+        return SeeAllOffers_button;
+    }
+
+   
     //Check existence methods
     public boolean checkEssentialsSection() {
         ElementActions.performTouchAction(driver).swipeElementIntoView(BuyAndManageAddOns_button, TouchActions.SwipeDirection.DOWN, 1);
@@ -170,6 +176,10 @@ public class Home {
         return ElementActions.isElementDisplayed(driver, Discover_text);
     }
 
+    public boolean checkSupportSection(){
+        return ElementActions.isElementDisplayed(driver,Support_button);
+    }
+
     public boolean checkTheVodafoneLogo() {
         return ElementActions.isElementDisplayed(driver, VodafoneLogo);
     }
@@ -199,12 +209,20 @@ public class Home {
     public void opedAddOnsOverlay() {
         ElementActions.performTouchAction(driver).tap(BuyAndManageAddOns_button);
     }
+
     public void pressNextBillTile() {
         ElementActions.performTouchAction(driver).tap(ClickNextBillTitle);
     }
 
-    public void pressSeeAllOffersLink(){
+    public void pressSeeAllOffersLink() {
         ElementActions.performTouchAction(driver).tap(SeeAllOffers_button);
+    }
+    public void openOffersPageHeader() {
+        ElementActions.performTouchAction(driver).tap(OffersPageHeader_button);
+    }
+
+    public void pressSupportTrayMenu(){
+        ElementActions.performTouchAction(driver).tap(Support_button);
     }
 
 }
