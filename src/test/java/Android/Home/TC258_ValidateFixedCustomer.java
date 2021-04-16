@@ -2,6 +2,7 @@ package Android.Home;
 
 import Pages.Home;
 import Pages.Login;
+import com.shaft.cli.FileActions;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
@@ -26,6 +27,14 @@ public class TC258_ValidateFixedCustomer {
     @Test
     public void ValidateFixedCustomer(){
         Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
-
+        Verifications.verifyTrue(HomePage.checkLastBillTile());
+        Verifications.verifyTrue(HomePage.checkDiscoverySection());
+        Verifications.verifyTrue(HomePage.checkEssentialsSection());
+        HomePage.pressSelectAccountAndSubscriptionComponent();
+        HomePage.changeTheSelectedSubscription();
+        HomePage.pressSelectAccountAndSubscriptionSelectButton();
+        Verifications.verifyTrue(HomePage.checkTvAddOnsTile());
+        Verifications.verifyTrue(HomePage.checkEssentialsSectionFixedWithTv());
+        Verifications.verifyTrue(HomePage.checkTrayMenuOptionsForBillPay());
     }
 }

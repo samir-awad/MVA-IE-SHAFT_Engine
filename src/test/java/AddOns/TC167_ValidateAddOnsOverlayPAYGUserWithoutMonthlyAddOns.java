@@ -34,7 +34,7 @@ public class TC167_ValidateAddOnsOverlayPAYGUserWithoutMonthlyAddOns {
     public void ValidateAddOnsOverlayText() {
         HomePage.opedAddOnsOverlay();
         Verifications.verifyTrue(AddOnsPage.checkAddOnsOverlay());
-        Assertions.assertElementAttribute(driver,AddOnsPage.getNoActiveAddOnsOverlayTxt(),"text","No active Add Ons");
+        Assertions.assertElementAttribute(driver,AddOnsPage.getNoActiveAddOnsOverlay_text(),"text","No active Add Ons");
     }
 
     @Test(dependsOnMethods = {"CheckEssentialsSection","ValidateAddOnsOverlay"})

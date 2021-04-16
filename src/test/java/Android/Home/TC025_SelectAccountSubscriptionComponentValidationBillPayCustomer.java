@@ -3,6 +3,7 @@ package Android.Home;
 import Pages.Home;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
@@ -26,6 +27,16 @@ public class TC025_SelectAccountSubscriptionComponentValidationBillPayCustomer {
     @Test
     public void SelectAccountSubscriptionComponentValidationBillPayCustomer(){
         Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+        Verifications.verifyTrue(HomePage.checkSelectAccountAndSubscriptionComponent());
+        HomePage.pressSelectAccountAndSubscriptionComponent();
+        Verifications.verifyTrue(HomePage.checkSelectAccountAndSubscriptionComponentContent());
+        HomePage.changeTheSelectedSubscription();
+        HomePage.changeTheSelectedAccount();
+        Verifications.verifyTrue(HomePage.checkAccountSuccessfullySelected());
+        HomePage.pressSelectAccountAndSubscriptionCloseButton();
+        HomePage.pressSelectAccountAndSubscriptionComponent();
+        HomePage.changeTheSelectedSubscription();
+        HomePage.pressSelectAccountAndSubscriptionSelectButton();
 
     }
 }

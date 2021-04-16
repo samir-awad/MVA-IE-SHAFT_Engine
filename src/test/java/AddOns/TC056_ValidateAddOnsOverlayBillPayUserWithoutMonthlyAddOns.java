@@ -34,7 +34,7 @@ public class TC056_ValidateAddOnsOverlayBillPayUserWithoutMonthlyAddOns {
     public void ValidateAddOnsOverlayText() {
     HomePage.opedAddOnsOverlay();
         Verifications.verifyTrue(AddOnsPage.checkAddOnsOverlay());
-        Assertions.assertElementAttribute(driver,AddOnsPage.getNoActiveAddOnsOverlayTxt(),
+        Assertions.assertElementAttribute(driver,AddOnsPage.getNoActiveAddOnsOverlay_text(),
                 "text","You have no active add ons.",
                 Assertions.AssertionComparisonType.CONTAINS, Assertions.AssertionType.POSITIVE);
     }

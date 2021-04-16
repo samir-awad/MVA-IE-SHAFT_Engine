@@ -91,12 +91,14 @@ public class Login {
 //            RestPassword_RegisterHere_RedirectText = new MobileBy.ByAccessibilityId("");
 //            RestPassword_RegisterHere_RedirectLink = new MobileBy.ByAccessibilityId("");
 //            RestPassword_UserName = new MobileBy.ByAccessibilityId("");
+
             Back_Arrow = new MobileBy.ByAccessibilityId("id_header_back_arrow");
             LoginVf_Logo = new MobileBy.ByAccessibilityId("id_login_vf_logo");
             LoginVf_title = new MobileBy.ByAccessibilityId("id_login_title_text");
             PhoneOrEmail_TxtField = new MobileBy.ByAccessibilityId("id_login_edittext_username");
             Password_TxtField = new MobileBy.ByAccessibilityId("id_login_edittext_password");
 //            KeepMe_Checkbox = new MobileBy.ByAccessibilityId("");
+
             Login_button = new MobileBy.ByAccessibilityId("id_login_button_login");
             LegacyOverlay_title = new MobileBy.ByAccessibilityId("error_pop_up_title");
             LegacyOverlay_text = new MobileBy.ByAccessibilityId("id_error_pop_up_message");
@@ -111,11 +113,12 @@ public class Login {
             PersonalPreferencesContinue_button = new MobileBy.ByAccessibilityId("id_onboarding_personal_preferences_continue_button");
             PaymentMethod_Continue_button = new MobileBy.ByAccessibilityId("id_onboarding_payment_method_continue_button");
             Yes_Button = By.xpath("//android.widget.Button[@content-desc=\"Yes\"]/android.widget.TextView");
-            OnboardingPersonalDetailsContinue_button = new MobileBy.ByAccessibilityId("id_onboarding_personal_details_continue_button");
+            OnboardingPersonalDetailsContinue_button = new MobileBy.ByAccessibilityId("id_onboarding_payment_method_continue_button");
             PermissionsContinue_button = new MobileBy.ByAccessibilityId("id_onboarding_permissions_continue_button");
             GoToTheApp_button = new MobileBy.ByAccessibilityId("OBgetStartedButton");
             Tutorials_button = new MobileBy.ByAccessibilityId("id_tutorials_tour_button");
             GoToMyVodafone_button = new MobileBy.ByAccessibilityId("id_tutorials_dismiss_button");
+
 
         }else{
 
