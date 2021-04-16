@@ -22,7 +22,7 @@ public class TC248_ValidateAddOnsPagePAYGUserWithMonthlyAddOns {
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         AddOnsPage = new AddOns(driver);
-        LoginPage.acceptTermsAndConditions().login().acceptPermissions();
+       // LoginPage.acceptTermsAndConditions().login().acceptPermissions();
     }
 
     @Test

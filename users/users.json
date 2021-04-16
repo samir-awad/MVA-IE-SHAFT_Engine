@@ -1,0 +1,35 @@
+{
+	"IE": {
+		"username": "0876119395",
+		"password": "Mountainview01!"
+	},
+	"Invalid User": {
+		"username": "0976119395",
+		"password": "Mountainview01!"
+	},
+
+	"LegacyBillPay": {
+		"username": "",
+		"password": ""
+	},
+
+	"FixedUser": {
+		"username": "",
+		"password": ""
+	},
+
+	"LegacyPAYG": {
+		"username": "0879692425",
+		"password": "Mountainview01!"
+	},
+
+	"PAYGUser": {
+		"username": "",
+		"password": ""
+	},
+
+	"Wrong Password": {
+		"username": "0879512912",
+		"password": "Mountainview01"
+	}
+}

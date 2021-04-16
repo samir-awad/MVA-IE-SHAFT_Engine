@@ -1,10 +1,8 @@
 package Android.BillsPayments;
 
-import Pages.AddOns;
 import Pages.BillsPayments;
 import Pages.Home;
 import Pages.Login;
-import com.shaft.cli.FileActions;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
@@ -25,7 +23,7 @@ public class TC121_CurrentSpendValidationBP {
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         BillsPaymentsPage=new BillsPayments(driver);
-        LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
+        //LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
         //This method will be used to login before every test case to login with
         //With different users credentials must be changed
     }

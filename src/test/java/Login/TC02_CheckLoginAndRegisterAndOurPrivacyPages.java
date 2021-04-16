@@ -2,7 +2,10 @@ package Login;
 
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.gui.element.ElementActions;
 import com.shaft.validation.Assertions;
+import com.shaft.validation.Assertions.AssertionType;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -25,38 +28,39 @@ public class TC02_CheckLoginAndRegisterAndOurPrivacyPages{
 
 	@Test()
 	public void Check_And_Accept_And_Continue_In_Terms_And_Conditions() {
-        Assertions.assertElementExists(driver,LoginPage.getTermsAndConditions_Header());
+        Assertions.assertElementExists(driver,LoginPage.getTermsAndConditions_Header(),AssertionType.POSITIVE);
         LoginPage.acceptTermsAndConditions();
 	}
 
     @Test(dependsOnMethods = {"Check_And_Accept_And_Continue_In_Terms_And_Conditions"})
-	public void Check_Vodafone_Logo(){
-        Assertions.assertElementExists(driver,LoginPage.getVodafone_Logo());
+	public void Check_Vodafone_Logo_And_Login_Text_And_Button(){
+        Assertions.assertElementExists(driver,LoginPage.getVodafone_Logo(),AssertionType.POSITIVE);
+        Assertions.assertElementExists(driver, LoginPage.getReg_Login_Button(),AssertionType.POSITIVE);
+        Assertions.assertElementExists(driver, LoginPage.getReg_Login_Txt(),AssertionType.POSITIVE);
     }
 
     @Test()
-    public void Step3_check_Login_Text_And_Button(){
-	
+    public void check_Register_Text_And_Button(){
+        Assertions.assertElementExists(driver, LoginPage.getReg_Register_button(),AssertionType.POSITIVE);
+        Assertions.assertElementExists(driver, LoginPage.getReg_Register_Txt(),AssertionType.POSITIVE);
     }
 
     @Test()
-    public void Step4_check_Register_Text_And_Button(){
-	
+    public void check_Our_Privacy_Link(){
+        Assertions.assertElementExists(driver, LoginPage.getReg_OurPrivacy_Link(),AssertionType.POSITIVE);
+        ElementActions.performTouchAction(driver).tap(LoginPage.getReg_OurPrivacy_Link());
     }
 
     @Test()
-    public void Step5_check_Our_Privacy_Link(){
-	
+    public void check_Our_Privacy_WebView(){
+        Assertions.assertElementExists(driver, LoginPage.getReg_Register_button(),AssertionType.POSITIVE);
+        Assertions.assertElementExists(driver, LoginPage.getReg_Register_Txt(),AssertionType.POSITIVE);
     }
 
     @Test()
-    public void Step6_check_Our_Privacy_WebVie(){
-
-    }
-
-    @Test()
-    public void Step7_check_VodafoneLogo_Is_Displayed_And_Im_On_Login_And_Register_Page(){
-
+    public void Click_Back_And_check_VodafoneLogo_Is_Displayed_And_Im_On_Login_And_Register_Page(){
+        LoginPage.PressBack();
+        Assertions.assertElementExists(driver,LoginPage.getVodafone_Logo(),AssertionType.POSITIVE,"I'm On Register And Login Page");
     }
 
 }

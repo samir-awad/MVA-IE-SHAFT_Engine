@@ -21,7 +21,7 @@ public class TC168_ValidateAddOnsOverlayPAYGUserWithMonthlyAddOns {
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         AddOnsPage = new AddOns(driver);
-        LoginPage.acceptTermsAndConditions().login().acceptPermissions();
+        //LoginPage.acceptTermsAndConditions().login().acceptPermissions();
     }
 
     @Test
