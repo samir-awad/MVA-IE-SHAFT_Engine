@@ -22,7 +22,7 @@ public class TC167_ValidateAddOnsOverlayPAYGUserWithoutMonthlyAddOns {
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         AddOnsPage=new AddOns(driver);
-        LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
+       // LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
     }
 
     @Test

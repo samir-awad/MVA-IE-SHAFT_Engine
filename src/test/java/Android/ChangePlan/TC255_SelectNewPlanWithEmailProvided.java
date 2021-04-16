@@ -22,7 +22,7 @@ public class TC255_SelectNewPlanWithEmailProvided {
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         ChangePlanPage=new ChangePlan(driver);
-        LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
+       // LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
         //This method will be used to login before every test case to login with
         //With different users credentials must be changed
     }

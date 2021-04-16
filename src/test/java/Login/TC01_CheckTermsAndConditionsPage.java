@@ -23,8 +23,6 @@ public class TC01_CheckTermsAndConditionsPage{
         LoginPage = new Login(driver);
     }
 
-
-
     @Test()
     public void Check_Terms_And_Conditions_Header_Is_Displayed(){
         Assertions.assertElementExists(driver,LoginPage.getTermsAndConditions_Header());

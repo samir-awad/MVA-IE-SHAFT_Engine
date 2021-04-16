@@ -21,7 +21,7 @@ public class TC245_ValidateAddOnsPageBillPayUserWithMonthlyAddOns {
         Login loginPage = new Login(driver);
         HomePage = new Home(driver);
         AddOnsPage = new AddOns(driver);
-        loginPage.acceptTermsAndConditions().login().acceptPermissions();
+        //loginPage.acceptTermsAndConditions().login().acceptPermissions();
     }
 
     @Test

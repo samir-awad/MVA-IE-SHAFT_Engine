@@ -7,25 +7,25 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class Home {
-    private  final WebDriver driver;
-    private  By Discover_text;
+    private final WebDriver driver;
+    private By Discover_text;
     private By OffersPageHeader_button; //The image above see all offers link
     private By Support_button;
-    private  By BuyAndManageAddOns_button;
-    private  By VodafoneLogo ;
-    private  By BillTile ;
-    private  By ClickNextBillTitle;
-    private  By Essentials_text;
-    private  By BillAndPayment;
-    private  By ShowMore_button;
-    private  By OtherUsefulTools_text;
-    private  By UnlockYourDevice_text;
-    private  By SeeAllOffers_button;
-    private  By AmountDueTile;
-    private  By DirectDebitTile;
-    private  By OtherUsefulTools;
-    private  By ChangePlan_Button;
-    private  By InactiveToUp;
+    private By BuyAndManageAddOns_button;
+    private By VodafoneLogo ;
+    private By BillTile ;
+    private By ClickNextBillTitle;
+    private By Essentials_text;
+    private By BillAndPayment;
+    private By ShowMore_button;
+    private By OtherUsefulTools_text;
+    private By UnlockYourDevice_text;
+    private By SeeAllOffers_button;
+    private By AmountDueTile;
+    private By DirectDebitTile;
+    private By OtherUsefulTools;
+    private By ChangePlan_Button;
+    private By InactiveToUp;
     private By BalanceTile;
     private By TopUpHistoryTile;
     private By PAYG_Tray;
@@ -40,8 +40,9 @@ public class Home {
     private By LastBileTile;
     private By TvAddOnsTile;
     private By EssentialsSectionFixed_WithTV;
-  
-   public Home(WebDriver driver) {
+
+
+     public Home(WebDriver driver) {
         this.driver = driver;
         if (System.getProperty("targetOperatingSystem").equals("Android")){
           Discover_text = new MobileBy.ByAccessibilityId("id_dashboard_discover_title");
@@ -80,11 +81,20 @@ public class Home {
 
         }
         else {
-            //IOS Locators
+
+            Discover_text = new MobileBy.ByAccessibilityId("id_dashboard_discover_title");
+            BuyAndManageAddOns_button = new MobileBy.ByAccessibilityId("id_dashboard_essentials_addons_clickable");
+            VodafoneLogo = new MobileBy.ByAccessibilityId("id_header_vodafone_logo");
+            BillTile = new MobileBy.ByAccessibilityId("id_dashboard_next_bill_clickable");
+            NextBillTitle = new MobileBy.ByAccessibilityId("id_dashboard_next_bill_clickable");
+            Essentials_text = new MobileBy.ByAccessibilityId("id_dashboard_essentials_title");
+            BillAndPayment = new MobileBy.ByAccessibilityId("id_tray_menu_item_Bills & Payments");
+            ShowMore_button = new MobileBy.ByAccessibilityId("id_dashboard_essentials_see_more_less_label");
+            OtherUsefulTools_text = new MobileBy.ByAccessibilityId("id_dashboard_tools_title");
+            BillsPaymentsTray = new MobileBy.ByAccessibilityId("id_tray_menu_item_Bills & Payments");
+
         }
     }
-
-
 
 
     public By getEssentials_text() {
@@ -94,6 +104,7 @@ public class Home {
     public By getDiscover_text() {
         return Discover_text;
     }
+
 
     public By getSeeAllOffers_button() {
         return SeeAllOffers_button;
@@ -194,6 +205,10 @@ public class Home {
 
     public boolean checkNextBillTile() {
         return ElementActions.isElementDisplayed(driver, BillTile);
+    }
+
+    public void pressNextBillTile() {
+        ElementActions.performTouchAction(driver).tap(NextBillTitle);
     }
 
     public boolean checkTrayMenuOptionsForBillPay(){
