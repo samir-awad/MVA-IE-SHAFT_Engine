@@ -79,7 +79,7 @@ public class BillsPayments {
     }
 
 
-    }
+
     public Boolean checkCurrentSpendOverlay()
     {
         return ElementActions.isElementDisplayed(driver, CurrentSpendLastBillTitle);
@@ -147,9 +147,7 @@ public class BillsPayments {
         ElementActions.performTouchAction(driver).tap(UseSelectedCard_Button);
     }
 
-    public By getVestaField() {
-        return VestaFiled;
-    }
+    public By getVestaField() {return VestaField;}
 
     public void pressPayWithNewCardAndSaveItForLaterButton()
     {

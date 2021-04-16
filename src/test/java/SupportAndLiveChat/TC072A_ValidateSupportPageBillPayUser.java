@@ -23,7 +23,7 @@ public class TC072A_ValidateSupportPageBillPayUser {
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         SupportAndLiveChatPage=new SupportAndLiveChat(driver);
-        LoginPage.acceptTermsAndConditions().login().acceptPermissions();
+        //LoginPage.acceptTermsAndConditions().login().acceptPermissions();
     }
 
     @Test

@@ -24,7 +24,7 @@ public class TC066_ValidateOffersBillPayUser {
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         OffersPage=new Offers(driver);
-        LoginPage.acceptTermsAndConditions().login().acceptPermissions();
+        //LoginPage.acceptTermsAndConditions().login().acceptPermissions();
     }
 
     @Test
