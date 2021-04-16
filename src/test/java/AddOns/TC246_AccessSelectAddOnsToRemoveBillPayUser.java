@@ -20,7 +20,7 @@ public class TC246_AccessSelectAddOnsToRemoveBillPayUser {
         Login loginPage = new Login(driver);
         HomePage = new Home(driver);
         AddOnsPage = new AddOns(driver);
-        loginPage.acceptTermsAndConditions().login().acceptPermissions();
+        //loginPage.acceptTermsAndConditions().login().acceptPermissions();
     }
 
     @Test

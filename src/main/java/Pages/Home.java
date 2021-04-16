@@ -86,12 +86,12 @@ public class Home {
             BuyAndManageAddOns_button = new MobileBy.ByAccessibilityId("id_dashboard_essentials_addons_clickable");
             VodafoneLogo = new MobileBy.ByAccessibilityId("id_header_vodafone_logo");
             BillTile = new MobileBy.ByAccessibilityId("id_dashboard_next_bill_clickable");
-            NextBillTitle = new MobileBy.ByAccessibilityId("id_dashboard_next_bill_clickable");
+            ClickNextBillTitle = new MobileBy.ByAccessibilityId("id_dashboard_next_bill_clickable");
             Essentials_text = new MobileBy.ByAccessibilityId("id_dashboard_essentials_title");
             BillAndPayment = new MobileBy.ByAccessibilityId("id_tray_menu_item_Bills & Payments");
             ShowMore_button = new MobileBy.ByAccessibilityId("id_dashboard_essentials_see_more_less_label");
             OtherUsefulTools_text = new MobileBy.ByAccessibilityId("id_dashboard_tools_title");
-            BillsPaymentsTray = new MobileBy.ByAccessibilityId("id_tray_menu_item_Bills & Payments");
+            BillAndPayment = new MobileBy.ByAccessibilityId("id_tray_menu_item_Bills & Payments");
 
         }
     }
@@ -208,7 +208,7 @@ public class Home {
     }
 
     public void pressNextBillTile() {
-        ElementActions.performTouchAction(driver).tap(NextBillTitle);
+        ElementActions.performTouchAction(driver).tap(ClickNextBillTitle);
     }
 
     public boolean checkTrayMenuOptionsForBillPay(){
@@ -223,10 +223,6 @@ public class Home {
 
     public void opedAddOnsOverlay() {
         ElementActions.performTouchAction(driver).tap(BuyAndManageAddOns_button);
-    }
-
-    public void pressNextBillTile() {
-        ElementActions.performTouchAction(driver).tap(ClickNextBillTitle);
     }
 
     public void pressSeeAllOffersLink() {

@@ -18,7 +18,7 @@ public class TC024_CheckThatTheTutorialTileBecomesUnavailableAfter5loginWithBill
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
+        //LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
         //This method will be used to login before every test case to login with
         //With different users credentials must be changed
     }
