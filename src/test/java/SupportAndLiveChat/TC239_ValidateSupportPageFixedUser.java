@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class TC072A_ValidateSupportPageBillPayUser {
+public class TC239_ValidateSupportPageFixedUser {
     private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
@@ -26,37 +26,38 @@ public class TC072A_ValidateSupportPageBillPayUser {
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         SupportAndLiveChatPage=new SupportAndLiveChat(driver);
-        LoginPage.acceptTermsAndConditions().login(GetUserFromJson.getUsername("BillPayUser"), GetUserFromJson.getpassword("BillPayUser")).acceptPermissions();
+        LoginPage.acceptTermsAndConditions().login(GetUserFromJson.getUsername("FixedUser"), GetUserFromJson.getpassword("FixedUser")).acceptPermissions();
+        // LoginPage.acceptPermissions();
     }
 
     @Test
     public void CheckSupportSection(){
-        Assertions.assertTrue(HomePage.checkSupportSection());
+        Assertions.assertElementAttribute(driver,HomePage.getSupportTrayMenuPAYG(),
+                "text","Support");
     }
 
     @Test(dependsOnMethods = "CheckSupportSection")
     public void CheckSupportHeader(){
-    HomePage.pressSupportTitle();
-    Assertions.assertElementAttribute(driver,SupportAndLiveChatPage.getSupportHeader_text(),
-            "text","Support");
+        HomePage.pressSupportTrayView();
+        Assertions.assertElementAttribute(driver,SupportAndLiveChatPage.getSupportHeader_text(),
+                "text","Support");
     }
 
     @Test(dependsOnMethods = "CheckSupportHeader")
     public void CheckSupportCloseBtn(){
-    SupportAndLiveChatPage.pressSupportHeaderCloseButton();
-        Assertions.assertTrue(HomePage.checkSupportSection());
+        SupportAndLiveChatPage.pressSupportHeaderCloseButton();
+        Assertions.assertElementAttribute(driver,HomePage.getSupportTrayMenuPAYG(),
+                "text","Support");
     }
 
     @Test(dependsOnMethods = "CheckSupportCloseBtn")
     public void CheckSupportPageTitleAndSubTitle(){
-        HomePage.pressSupportTitle();
-        SupportAndLiveChatPage.minimizeLiveChat();
-        Verifications.verifyElementExists(driver,SupportAndLiveChatPage.getFirstSupportTitle_textBP(),
-                "Checking first support title");
-        Verifications.verifyElementExists(driver,SupportAndLiveChatPage.getSecondSupportTitle_textBP(),
-                "Checking second support title");
-        Assertions.assertElementExists(driver,SupportAndLiveChatPage.getSupportListFirstItem_textBP(),
-                "Checking first item in support topic list");
-    }
+        HomePage.pressSupportTrayView();
 
+        Verifications.verifyElementExists(driver,SupportAndLiveChatPage.getFirstSupportTitle_textFixed(),
+                "Checking first support title, click here ");
+
+        Assertions.assertElementExists(driver,SupportAndLiveChatPage.getSupportListFirstItem_textFixed(),
+                "Checking first item in support topic list, Account");
+    }
 }

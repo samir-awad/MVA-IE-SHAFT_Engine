@@ -40,9 +40,9 @@ public class Home {
     private By LastBileTile;
     private By TvAddOnsTile;
     private By EssentialsSectionFixed_WithTV;
+    private By SupportTrayMenuPAYG;
 
-
-     public Home(WebDriver driver) {
+    public Home(WebDriver driver) {
         this.driver = driver;
         if (System.getProperty("targetOperatingSystem").equals("Android")){
           Discover_text = new MobileBy.ByAccessibilityId("id_dashboard_discover_title");
@@ -78,7 +78,7 @@ public class Home {
           LastBileTile = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.widget.TextView[1]");
           TvAddOnsTile = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.ViewGroup/android.widget.TextView[1]");
           EssentialsSectionFixed_WithTV = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[6]/android.widget.TextView");
-
+          SupportTrayMenuPAYG=new MobileBy.ByAccessibilityId("id_tray_menu_item_label_Support");
         }
         else {
 
@@ -109,6 +109,7 @@ public class Home {
     public By getSeeAllOffers_button() {
         return SeeAllOffers_button;
     }
+    public By getSupportTrayMenuPAYG() { return SupportTrayMenuPAYG; }
 
    
     //Check existence methods
@@ -187,6 +188,7 @@ public class Home {
         return ElementActions.isElementDisplayed(driver, Discover_text);
     }
 
+    //for Bill Pay
     public boolean checkSupportSection(){
         return ElementActions.isElementDisplayed(driver,Support_button);
     }
@@ -232,8 +234,13 @@ public class Home {
         ElementActions.performTouchAction(driver).tap(OffersPageHeader_button);
     }
 
-    public void pressSupportTrayMenu(){
+    public void pressSupportTitle(){ //For Bill Pay user
         ElementActions.performTouchAction(driver).tap(Support_button);
     }
+
+    public void pressSupportTrayView(){
+         ElementActions.performTouchAction(driver).tap(SupportTrayMenuPAYG);
+    }
+
 
 }

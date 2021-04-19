@@ -20,7 +20,7 @@ public class AddOns {
     private By ManageAddOnsOverlay_button;
     private By ManageAddOns_button;
     private By SelectAddOnsToRemoveOverlayCancel_button;
-    private By AddOnsExpiresOverlay_text = By.xpath("//hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.TextView[2]");
+    private By AddOnsExpiresOverlay_text;
     private By OneOffListFirstItem_text;
     private By AddOnsContinue_button;
     private By RecurringListFirstItem_text;
@@ -102,6 +102,10 @@ public class AddOns {
 
     public By getRecurring_tab_text() {
         return Recurring_tab_text;
+    }
+
+    public By getManageAddOns_button() {
+        return ManageAddOns_button;
     }
 
     //Page methods
