@@ -1,14 +1,18 @@
 package Offers;
 
+import FileReaders.GetUserFromJson;
 import Pages.Home;
 import Pages.Login;
 import Pages.Offers;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 public class TC237_ValidateOffersPAYGUser {
     private WebDriver driver;
@@ -17,12 +21,12 @@ public class TC237_ValidateOffersPAYGUser {
     private Offers OffersPage;
 
     @BeforeClass
-    public void beforeClass() {
+    public void beforeClass() throws IOException, ParseException {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         OffersPage = new Offers(driver);
-        //LoginPage.acceptTermsAndConditions().login().acceptPermissions();
+        LoginPage.acceptTermsAndConditions().login(GetUserFromJson.getUsername("PAYGUser"), GetUserFromJson.getpassword("PAYGUser")).acceptPermissions();
     }
 
     @Test

@@ -14,8 +14,8 @@
 	},
 
 	"FixedUser": {
-		"username": "",
-		"password": ""
+		"username": "thomascosgrave@gmail.com",
+		"password": "Aa123456!"
 	},
 
 	"LegacyPAYG": {
@@ -24,12 +24,26 @@
 	},
 
 	"PAYGUser": {
-		"username": "",
-		"password": ""
+		"username": "0873723907",
+		"password": "Mountainview01!"
 	},
+	"PAYGUserWithoutAddOns": {
+		"username": "0873312554",
+		"password": "Mountainview01!"
+	}
+	,
 
 	"Wrong Password": {
 		"username": "0879512912",
 		"password": "Mountainview01"
+	},
+
+	"BillPayUser": {
+		"username": "0871700924",
+		"password": "Dublin123$"
+	},
+	"BillPayUserWithoutAddOns": {
+		"username": "0876119395",
+		"password": "Mountainview01!"
 	}
 }

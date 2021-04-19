@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class TC056_ValidateAddOnsOverlayBillPayUserWithoutMonthlyAddOns {
+public class TC247_ValidateAddOnsPageBillPayUserWithoutMonthlyAddOns {
     private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
@@ -25,30 +25,26 @@ public class TC056_ValidateAddOnsOverlayBillPayUserWithoutMonthlyAddOns {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        AddOnsPage=new AddOns(driver);
+        AddOnsPage = new AddOns(driver);
         LoginPage.acceptTermsAndConditions().login(GetUserFromJson.getUsername("BillPayUserWithoutAddOns"), GetUserFromJson.getpassword("BillPayUserWithoutAddOns")).acceptPermissions();
     }
 
     @Test
     public void CheckEssentialsSection() {
-        Assertions.assertTrue(HomePage.checkEssentialsSection());
+        Assertions.assertTrue(HomePage.checkEssentialsSection()); //Here scrolling is not working
+
     }
 
     @Test(dependsOnMethods = {"CheckEssentialsSection"})
-    public void ValidateAddOnsOverlayText() {
-    HomePage.opedAddOnsOverlay();
-        Verifications.verifyTrue(AddOnsPage.checkAddOnsOverlay());
-        Assertions.assertElementAttribute(driver,AddOnsPage.getNoActiveAddOnsOverlay_text(),
-                "text","You have no active add ons.",
-                Assertions.AssertionComparisonType.CONTAINS, Assertions.AssertionType.POSITIVE);
-    }
+    public void ValidateAddOnsPage() {
+        HomePage.opedAddOnsOverlay();
+        AddOnsPage.openAddOnsPage();
+        Verifications.verifyElementAttribute(driver, AddOnsPage.getAddOnsHeader_text(),
+                "text", "Buy add ons");
 
-    @Test(dependsOnMethods = "ValidateAddOnsOverlayText")
-    public void ValidateAddOnsOverlayCloseButton(){
-        AddOnsPage.closeAddOnsOverlay();
-        Assertions.assertElementAttribute(driver,HomePage.getEssentials_text(),
-                "text","Essentials");
+        //Why the following assertion throw exception at the beginning then it pass?
+        Assertions.assertElementExists(driver,AddOnsPage.getManageAddOns_button(),
+                Assertions.AssertionType.NEGATIVE,"Check That Manage AddOns Button Is Not Displayed");
     }
-
 
 }

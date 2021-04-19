@@ -1,7 +1,6 @@
 package Offers;
 
 import FileReaders.GetUserFromJson;
-import Pages.AddOns;
 import Pages.Home;
 import Pages.Login;
 import Pages.Offers;
@@ -15,7 +14,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class TC066_ValidateOffersBillPayUser {
+public class TC287_ValidateOffersFixedUser {
     private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
@@ -28,7 +27,7 @@ public class TC066_ValidateOffersBillPayUser {
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         OffersPage=new Offers(driver);
-        LoginPage.acceptTermsAndConditions().login(GetUserFromJson.getUsername("BillPayUserWithoutAddOns"), GetUserFromJson.getpassword("BillPayUserWithoutAddOns")).acceptPermissions();
+        LoginPage.acceptTermsAndConditions().login(GetUserFromJson.getUsername("FixedUser"), GetUserFromJson.getpassword("FixedUser")).acceptPermissions();
     }
 
     @Test
