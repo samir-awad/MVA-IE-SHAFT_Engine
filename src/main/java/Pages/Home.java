@@ -26,7 +26,7 @@ public class Home {
     private By OtherUsefulTools;
     private By ChangePlan_Button;
     private By InactiveToUp;
-    private By BalanceTile;
+    private By BalanceTitle;
     private By TopUpHistoryTile;
     private By PAYG_Tray;
     private By ActiveToUp;
@@ -43,7 +43,8 @@ public class Home {
     private By SupportTrayMenuPAYG;
     private By AccountOverlaySetting_text;
     private By Account;
-
+    private By TopUpOverlayTitle_text;
+    private By TopUp_button;
 
     public Home(WebDriver driver) {
         this.driver = driver;
@@ -68,7 +69,7 @@ public class Home {
           OtherUsefulTools = new MobileBy.ByAccessibilityId("id_dashboard_tools_title");
           ChangePlan_Button = new MobileBy.ByAccessibilityId("d_dashboard_essentials_change_plan_clickable");
           InactiveToUp = new MobileBy.ByAccessibilityId("id_dashboard_my_usage_exception_noActiveTopUpOffer_text");
-          BalanceTile = new MobileBy.ByAccessibilityId("id_dashboard_balance_title");
+          BalanceTitle = new MobileBy.ByAccessibilityId("id_dashboard_balance_title");
           TopUpHistoryTile =new MobileBy.ByAccessibilityId("id_dashboard_topup_history_title");
           PAYG_Tray = new MobileBy.ByAccessibilityId("id_tray_menu_item_Top Up");
           ActiveToUp = new MobileBy.ByAccessibilityId("id_dashboard_my_usage_plan_name");
@@ -85,7 +86,8 @@ public class Home {
           SupportTrayMenuPAYG=new MobileBy.ByAccessibilityId("id_tray_menu_item_label_Support");
           AccountOverlaySetting_text = new MobileBy.ByAccessibilityId("id_account_overlay_Settings_title");
           Account = new MobileBy.ByAccessibilityId("id_tray_menu_item_Account");
-
+          TopUpOverlayTitle_text =new MobileBy.ByAccessibilityId("STundefinedMainTitle");
+          TopUp_button= new MobileBy.ByAccessibilityId("id_dashboard_balance_button");
         }
         else {
 
@@ -108,16 +110,13 @@ public class Home {
         return Essentials_text;
     }
 
-    public By getDiscover_text() {
-        return Discover_text;
-    }
-
-
     public By getSeeAllOffers_button() {
         return SeeAllOffers_button;
     }
     public By getSupportTrayMenuPAYG() { return SupportTrayMenuPAYG; }
-
+    public By getTopUpOverlayTitle_text() {
+        return TopUpOverlayTitle_text;
+    }
    
     //Check existence methods
     public boolean checkEssentialsSection() {
@@ -173,7 +172,7 @@ public class Home {
 
     }
     public boolean checkBalanceTile(){
-        return ElementActions.isElementDisplayed(driver, BalanceTile);
+        return ElementActions.isElementDisplayed(driver, BalanceTitle);
     }
     public boolean checkSelectAccountAndSubscriptionComponentContent(){
         return ElementActions.isElementDisplayed(driver, SelectAccountAndSubscriptionTitle);
@@ -226,9 +225,18 @@ public class Home {
 
     //Actions methods
     public void pressBillsPaymentsTrayMenuOption(){
-
         ElementActions.performTouchAction(driver).tap(BillAndPayment);
     }
+    public void pressBalanceTitle(){
+        ElementActions.performTouchAction(driver).tap(BalanceTitle);
+    }
+
+
+    public void pressTopUpTrayMenu(){
+        ElementActions.performTouchAction(driver).tap(TopUp_button);
+    }
+
+
     //DirectDebits
     public By getDirectDebit_Tab()
     {

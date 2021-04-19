@@ -45,5 +45,10 @@
 	"BillPayUserWithoutAddOns": {
 		"username": "0876119395",
 		"password": "Mountainview01!"
+	},
+
+	"PAYGUserWithTopUp": {
+		"username": "0873711899",
+		"password": "Mountainview01!"
 	}
 }
