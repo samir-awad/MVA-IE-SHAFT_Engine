@@ -222,6 +222,33 @@ public class Home {
 
         ElementActions.performTouchAction(driver).tap(BillAndPayment);
     }
+    //DirectDebits
+    public By getDirectDebit_Tab()
+    {
+        return DirectDebit_Tile;
+    }
+    public void pressAccountTrayMenuOption(){
+        ElementActions.performTouchAction(driver).tap(Account);
+    }
+    public Boolean CheckAccountOverlaySettingText()
+    {
+        return ElementActions.isElementDisplayed(driver,AccountOverlaySetting_text);
+    }
+    public void pressAccountSettingOption() {
+        ElementActions.performTouchAction(driver).tap(AccountOverlaySetting_text);
+    }
+
+    public Boolean checkDirectDebitTile()
+    {
+        return ElementActions.isElementDisplayed(driver,DirectDebit_Tile);
+    }
+
+    public void pressDirectDebitTile()
+    {
+        ElementActions.performTouchAction(driver).tap(DirectDebit_Tile);
+    }
+
+
 
     public void opedAddOnsOverlay() {
         ElementActions.performTouchAction(driver).tap(BuyAndManageAddOns_button);

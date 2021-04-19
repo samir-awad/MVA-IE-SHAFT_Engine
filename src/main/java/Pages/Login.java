@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 
 public class Login {
     private final WebDriver driver;
+
     private By termsAndConditions_Header;
     private By termsAndConditions_Txt;
     private By AcceptTerms_button;
@@ -178,6 +179,7 @@ public class Login {
 
     public Login login(String username,String password) {
         ElementActions.performTouchAction(driver).tap(Reg_Login_Button);
+
         ElementActions.type(driver, PhoneOrEmail_TxtField, username);
         ElementActions.type(driver, Password_TxtField, password);
         ElementActions.performTouchAction(driver).tap(Login_button);
@@ -225,5 +227,8 @@ public class Login {
     public By getOurPrivacy_title() {return OurPrivacy_title;}
     public By getOurPrivacy_text() {return OurPrivacy_text;}
 
+    public By getVodafone_Logo() {
+        return Vodafone_Logo;
+    }
 
 }
