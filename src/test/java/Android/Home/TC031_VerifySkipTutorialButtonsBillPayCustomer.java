@@ -19,13 +19,13 @@ public class TC031_VerifySkipTutorialButtonsBillPayCustomer {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
+        //LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
         //This method will be used to login before every test case to login with
         //With different users credentials must be changed
     }
     @Test
     public void VerifySkipTutorialButtonsBillPayCustomer(){
-        Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+
 
     }
 }

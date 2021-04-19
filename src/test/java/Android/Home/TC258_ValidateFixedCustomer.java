@@ -2,6 +2,7 @@ package Android.Home;
 
 import Pages.Home;
 import Pages.Login;
+import com.shaft.cli.FileActions;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
@@ -19,13 +20,21 @@ public class TC258_ValidateFixedCustomer {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
+        //LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
         //This method will be used to login before every test case to login with
         //With different users credentials must be changed
     }
     @Test
     public void ValidateFixedCustomer(){
         Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
-
+        Verifications.verifyTrue(HomePage.checkLastBillTile());
+        Verifications.verifyTrue(HomePage.checkDiscoverySection());
+        Verifications.verifyTrue(HomePage.checkEssentialsSection());
+        HomePage.pressSelectAccountAndSubscriptionComponent();
+        HomePage.changeTheSelectedSubscription();
+        HomePage.pressSelectAccountAndSubscriptionSelectButton();
+        Verifications.verifyTrue(HomePage.checkTvAddOnsTile());
+        Verifications.verifyTrue(HomePage.checkEssentialsSectionFixedWithTv());
+        Verifications.verifyTrue(HomePage.checkTrayMenuOptionsForBillPay());
     }
 }

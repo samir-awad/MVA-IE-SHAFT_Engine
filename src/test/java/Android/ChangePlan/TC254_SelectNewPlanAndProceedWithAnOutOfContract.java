@@ -22,13 +22,23 @@ public class TC254_SelectNewPlanAndProceedWithAnOutOfContract {
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         ChangePlanPage=new ChangePlan(driver);
-        LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
+       // LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
         //This method will be used to login before every test case to login with
         //With different users credentials must be changed
     }
     @Test
     public void SelectNewPlanAndProceedWithAnOutOfContract(){
         Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+        Verifications.verifyTrue(HomePage.checkEssentialsSection());
+        HomePage.pressViewOrChangePlan();
+        ChangePlanPage.pressYourPlanOverlayCloseButton();
+        HomePage.pressViewOrChangePlan();
+        ChangePlanPage.pressYourPlanOverlayChangePlanButton();
+        Verifications.verifyTrue(ChangePlanPage.checkChangePlanPageHeader());
+        ChangePlanPage.pressSelectPlanButton();
+        ChangePlanPage.pressViewSelectedPlansDetails();
+        ChangePlanPage.pressPlanDetailsOverlayCloseButton_2();
+
 
     }
 }

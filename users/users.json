@@ -1,0 +1,49 @@
+{
+	"IE": {
+		"username": "0876119395",
+		"password": "Mountainview01!"
+	},
+	"Invalid User": {
+		"username": "0976119395",
+		"password": "Mountainview01!"
+	},
+
+	"LegacyBillPay": {
+		"username": "",
+		"password": ""
+	},
+
+	"FixedUser": {
+		"username": "thomascosgrave@gmail.com",
+		"password": "Aa123456!"
+	},
+
+	"LegacyPAYG": {
+		"username": "0879692425",
+		"password": "Mountainview01!"
+	},
+
+	"PAYGUser": {
+		"username": "0873723907",
+		"password": "Mountainview01!"
+	},
+	"PAYGUserWithoutAddOns": {
+		"username": "0873312554",
+		"password": "Mountainview01!"
+	}
+	,
+
+	"Wrong Password": {
+		"username": "0879512912",
+		"password": "Mountainview01"
+	},
+
+	"BillPayUser": {
+		"username": "0871700924",
+		"password": "Dublin123$"
+	},
+	"BillPayUserWithoutAddOns": {
+		"username": "0876119395",
+		"password": "Mountainview01!"
+	}
+}
