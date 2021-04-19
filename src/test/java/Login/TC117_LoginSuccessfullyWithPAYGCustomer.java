@@ -37,7 +37,7 @@ public class TC117_LoginSuccessfullyWithPAYGCustomer {
 
     @Test(dependsOnMethods = {"Check_That_Im_On_Registration_And_Login_Page"})
     public void Step2() throws IOException, ParseException {
-        LoginPage.login(GetUserFromJson.getUsername("PAYG"), GetUserFromJson.getpassword("PAYG"));
+        LoginPage.login(GetUserFromJson.getUsername("PAYGUser"), GetUserFromJson.getpassword("PAYGUser"));
         Assertions.assertElementExists(driver, LoginPage.getLetsGo_Button());
     }
 }
