@@ -41,10 +41,14 @@ public class Home {
     private By TvAddOnsTile;
     private By EssentialsSectionFixed_WithTV;
     private By SupportTrayMenuPAYG;
+    private By AccountOverlaySetting_text;
+    private By Account;
+
 
     public Home(WebDriver driver) {
         this.driver = driver;
         if (System.getProperty("targetOperatingSystem").equals("Android")){
+        	
           Discover_text = new MobileBy.ByAccessibilityId("id_dashboard_discover_title");
           BuyAndManageAddOns_button = new MobileBy.ByAccessibilityId("id_dashboard_essentials_addons_clickable");
           VodafoneLogo = new MobileBy.ByAccessibilityId("id_header_vodafone_logo");
@@ -79,6 +83,9 @@ public class Home {
           TvAddOnsTile = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.ViewGroup/android.widget.TextView[1]");
           EssentialsSectionFixed_WithTV = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[6]/android.widget.TextView");
           SupportTrayMenuPAYG=new MobileBy.ByAccessibilityId("id_tray_menu_item_label_Support");
+          AccountOverlaySetting_text = new MobileBy.ByAccessibilityId("id_account_overlay_Settings_title");
+          Account = new MobileBy.ByAccessibilityId("id_tray_menu_item_Account");
+
         }
         else {
 
@@ -225,7 +232,7 @@ public class Home {
     //DirectDebits
     public By getDirectDebit_Tab()
     {
-        return DirectDebit_Tile;
+        return DirectDebitTile;
     }
     public void pressAccountTrayMenuOption(){
         ElementActions.performTouchAction(driver).tap(Account);
@@ -238,14 +245,10 @@ public class Home {
         ElementActions.performTouchAction(driver).tap(AccountOverlaySetting_text);
     }
 
-    public Boolean checkDirectDebitTile()
-    {
-        return ElementActions.isElementDisplayed(driver,DirectDebit_Tile);
-    }
-
+ 
     public void pressDirectDebitTile()
     {
-        ElementActions.performTouchAction(driver).tap(DirectDebit_Tile);
+        ElementActions.performTouchAction(driver).tap(DirectDebitTile);
     }
 
 

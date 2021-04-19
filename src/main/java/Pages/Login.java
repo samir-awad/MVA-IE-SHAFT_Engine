@@ -227,8 +227,4 @@ public class Login {
     public By getOurPrivacy_title() {return OurPrivacy_title;}
     public By getOurPrivacy_text() {return OurPrivacy_text;}
 
-    public By getVodafone_Logo() {
-        return Vodafone_Logo;
-    }
-
 }
