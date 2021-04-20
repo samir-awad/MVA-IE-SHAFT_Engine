@@ -5,6 +5,7 @@ import Pages.Home;
 import Pages.Login;
 import Pages.TopUp;
 import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
@@ -15,17 +16,22 @@ import java.io.IOException;
 
 public class TC158_ValidateMoreOptionsOverlayPAYGUser {
     private WebDriver driver;
+    private JSONFileManager users;
     private Login LoginPage;
     private Home HomePage;
     private TopUp TopUpPage;
 
+
     @BeforeClass
-    public void beforeClass() throws IOException, ParseException {
+    public void beforeClass(){
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         TopUpPage= new TopUp(driver);
-        LoginPage.acceptTermsAndConditions().login(GetUserFromJson.getUsername("PAYGUserWithTopUp"), GetUserFromJson.getpassword("PAYGUserWithTopUp"));
+        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        String username = users.getTestData("PAYGUserWithTopUp.username");
+        String password = users.getTestData("PAYGUserWithTopUp.password");
+        LoginPage.acceptTermsAndConditions().login(username, password);
         // LoginPage.acceptPermissions();
     }
 
@@ -44,7 +50,15 @@ public class TC158_ValidateMoreOptionsOverlayPAYGUser {
 
     @Test(dependsOnMethods = "CheckMoreOptionsOverlay")
     public void ValidateMoreOptionsOverlayBackBtn(){
+        TopUpPage.pressMoreOptionsOverlayBackButton();
+        Assertions.assertElementExists(driver,HomePage.getTopUpOverlayTitle_text(),
+                "text","Top Up","checkTopUpOverlay");
+    }
 
+    @Test(dependsOnMethods = "ValidateMoreOptionsOverlayBackBtn")
+    public void ValidateMoreOptionsOverlayCloseBtn(){
+        TopUpPage.pressTopUpOverlayCloseButton();
+        Assertions.assertTrue(HomePage.checkTheVodafoneLogo(),"checking vodafone logo And Welcome Gesture");
     }
 
 

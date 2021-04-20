@@ -5,6 +5,7 @@ import Pages.AddOns;
 import Pages.Home;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
 import org.json.simple.parser.ParseException;
@@ -19,15 +20,19 @@ public class TC167_ValidateAddOnsOverlayPAYGUserWithoutMonthlyAddOns {
     private Login LoginPage;
     private Home HomePage;
     private AddOns AddOnsPage;
+    private JSONFileManager users;
 
     @BeforeClass
-    public void beforeClass() throws IOException, ParseException {
+    public void beforeClass(){
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         AddOnsPage=new AddOns(driver);
-        LoginPage.acceptTermsAndConditions().login(GetUserFromJson.getUsername("PAYGUserWithoutAddOns"), GetUserFromJson.getpassword("PAYGUserWithoutAddOns"));
-        //.acceptPermissions();
+        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        String username = users.getTestData("PAYGUserWithoutAddOns.username");
+        String password = users.getTestData("PAYGUserWithoutAddOns.password");
+        LoginPage.acceptTermsAndConditions().login(username, password);
+                //.acceptPermissions();
     }
 
     @Test

@@ -5,6 +5,7 @@ import Pages.Home;
 import Pages.Login;
 import Pages.SupportAndLiveChat;
 import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
 import org.json.simple.parser.ParseException;
@@ -16,17 +17,22 @@ import java.io.IOException;
 
 public class TC073A_ValidateLiveChatBillPayUser {
     private WebDriver driver;
+    private JSONFileManager users;
     private Login LoginPage;
     private Home HomePage;
     private SupportAndLiveChat SupportAndLiveChatPage;
 
     @BeforeClass
-    public void beforeClass() throws IOException, ParseException {
+    public void beforeClass(){
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         SupportAndLiveChatPage=new SupportAndLiveChat(driver);
-        LoginPage.acceptTermsAndConditions().login(GetUserFromJson.getUsername("BillPayUser"), GetUserFromJson.getpassword("BillPayUser")).acceptPermissions();
+        SupportAndLiveChatPage=new SupportAndLiveChat(driver);
+        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        String username = users.getTestData("BillPayUser.username");
+        String password = users.getTestData("BillPayUser.password");
+        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
     }
 
     @Test
