@@ -1,5 +1,6 @@
 package SupportAndLiveChat;
 
+import FileReaders.GetUserFromJson;
 import Pages.Home;
 import Pages.Login;
 import Pages.Offers;
@@ -7,9 +8,12 @@ import Pages.SupportAndLiveChat;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 public class TC072A_ValidateSupportPageBillPayUser {
     private WebDriver driver;
@@ -18,11 +22,12 @@ public class TC072A_ValidateSupportPageBillPayUser {
     private SupportAndLiveChat SupportAndLiveChatPage;
 
     @BeforeClass
-    public void beforeClass() {
+    public void beforeClass() throws IOException, ParseException {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         SupportAndLiveChatPage=new SupportAndLiveChat(driver);
+        LoginPage.acceptTermsAndConditions().login(GetUserFromJson.getUsername("PAYG"), GetUserFromJson.getpassword("PAYG")).acceptPermissions();
         //LoginPage.acceptTermsAndConditions().login().acceptPermissions();
     }
 
