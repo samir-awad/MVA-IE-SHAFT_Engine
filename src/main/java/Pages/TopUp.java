@@ -16,12 +16,12 @@ public class TopUp {
     private By ChooseATopUpAmount_text;
     private By ChooseAPaymentMethod_text;
     private By ChangePaymentMethod_button;
-    private By Cancel_button;
+    private By Cancel_button; //general locator in Top up page
     private By PaymentCard_text;
     private By AddPaymentCard_button;
     private By Chrome_driver;
     private By CardType_text;
-    private By Next_button;
+    private By Next_button; //general locator in Top up page
     private By ConfirmYourTopUpDetails;
     private By MoreOptionsOverlay_button;
     private By MoreOptionsOverlayHeader_text;
@@ -126,7 +126,7 @@ public class TopUp {
     }
 
     public void pressMoreOptionsOverlayBackButton(){
-
+        ElementActions.performTouchAction(driver).tap(MoreOptionsOverlayBack_button);
     }
 
 

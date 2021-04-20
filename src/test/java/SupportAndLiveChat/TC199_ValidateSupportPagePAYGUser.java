@@ -5,6 +5,7 @@ import Pages.Home;
 import Pages.Login;
 import Pages.SupportAndLiveChat;
 import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
 import org.json.simple.parser.ParseException;
@@ -16,18 +17,22 @@ import java.io.IOException;
 
 public class TC199_ValidateSupportPagePAYGUser {
     private WebDriver driver;
+    private JSONFileManager users;
     private Login LoginPage;
     private Home HomePage;
     private SupportAndLiveChat SupportAndLiveChatPage;
 
     @BeforeClass
-    public void beforeClass() throws IOException, ParseException {
+    public void beforeClass(){
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         SupportAndLiveChatPage=new SupportAndLiveChat(driver);
-        LoginPage.acceptTermsAndConditions().login(GetUserFromJson.getUsername("PAYGUser"), GetUserFromJson.getpassword("PAYGUser"));
-               // LoginPage.acceptPermissions();
+        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        String username = users.getTestData("PAYGUser.username");
+        String password = users.getTestData("PAYGUser.password");
+        LoginPage.acceptTermsAndConditions().login(username, password);
+        //.acceptPermissions();
     }
 
     @Test

@@ -5,6 +5,7 @@ import Pages.Home;
 import Pages.Login;
 import Pages.TopUp;
 import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
 import org.json.simple.parser.ParseException;
@@ -19,6 +20,7 @@ public class TC156_ValidateTopUpPageAndAccessVestaPAYGUser {
     private Login LoginPage;
     private Home HomePage;
     private TopUp TopUpPage;
+    private JSONFileManager users;
 
     @BeforeClass
     public void beforeClass() throws IOException, ParseException {
@@ -26,7 +28,10 @@ public class TC156_ValidateTopUpPageAndAccessVestaPAYGUser {
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         TopUpPage= new TopUp(driver);
-        LoginPage.acceptTermsAndConditions().login(GetUserFromJson.getUsername("PAYGUserWithTopUp"), GetUserFromJson.getpassword("PAYGUserWithTopUp"));
+        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        String username = users.getTestData("PAYGUserWithTopUp.username");
+        String password = users.getTestData("PAYGUserWithTopUp.password");
+        LoginPage.acceptTermsAndConditions().login(username, password);
         // LoginPage.acceptPermissions();
     }
 

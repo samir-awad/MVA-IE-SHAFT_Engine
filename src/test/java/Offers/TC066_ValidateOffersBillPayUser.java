@@ -25,7 +25,7 @@ public class TC066_ValidateOffersBillPayUser {
 
 
     @BeforeClass
-    public void beforeClass() throws IOException, ParseException {
+    public void beforeClass(){
         driver = BrowserFactory.getBrowser();
         users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
         LoginPage = new Login(driver);
