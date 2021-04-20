@@ -1,27 +1,32 @@
 package AddOns;
 
+import FileReaders.GetUserFromJson;
 import Pages.AddOns;
 import Pages.Home;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 public class TC245_ValidateAddOnsPageBillPayUserWithMonthlyAddOns {
     private WebDriver driver;
     private Home HomePage;
     private AddOns AddOnsPage;
+    private  Login LoginPage;
 
     @BeforeClass
-    public void beforeClass() {
+    public void beforeClass() throws IOException, ParseException {
         driver = BrowserFactory.getBrowser();
-        Login loginPage = new Login(driver);
+        LoginPage = new Login(driver);
         HomePage = new Home(driver);
         AddOnsPage = new AddOns(driver);
-        //loginPage.acceptTermsAndConditions().login().acceptPermissions();
+        LoginPage.acceptTermsAndConditions().login(GetUserFromJson.getUsername("BillPayUser"), GetUserFromJson.getpassword("BillPayUser")).acceptPermissions();
     }
 
     @Test

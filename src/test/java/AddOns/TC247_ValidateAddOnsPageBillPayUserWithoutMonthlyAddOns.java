@@ -6,6 +6,7 @@ import Pages.Home;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Assertions;
+import com.shaft.validation.Verifications;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
@@ -13,7 +14,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class TC168_ValidateAddOnsOverlayPAYGUserWithMonthlyAddOns {
+public class TC247_ValidateAddOnsPageBillPayUserWithoutMonthlyAddOns {
     private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
@@ -25,25 +26,25 @@ public class TC168_ValidateAddOnsOverlayPAYGUserWithMonthlyAddOns {
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         AddOnsPage = new AddOns(driver);
-        LoginPage.acceptTermsAndConditions().login(GetUserFromJson.getUsername("PAYGUser"), GetUserFromJson.getpassword("PAYGUser")).acceptPermissions();
-
+        LoginPage.acceptTermsAndConditions().login(GetUserFromJson.getUsername("BillPayUserWithoutAddOns"), GetUserFromJson.getpassword("BillPayUserWithoutAddOns")).acceptPermissions();
     }
 
     @Test
     public void CheckEssentialsSection() {
-        Assertions.assertTrue(HomePage.checkEssentialsSection());
+        Assertions.assertTrue(HomePage.checkEssentialsSection()); //Here scrolling is not working
+
     }
 
     @Test(dependsOnMethods = {"CheckEssentialsSection"})
-    public void ValidateAddOnsOverlayText() {
+    public void ValidateAddOnsPage() {
         HomePage.opedAddOnsOverlay();
-        Assertions.assertElementAttribute(driver,AddOnsPage.getAddOnsExpiresOverlay_text(),"text","Expires", Assertions.AssertionComparisonType.CONTAINS, Assertions.AssertionType.POSITIVE);
-    }
+        AddOnsPage.openAddOnsPage();
+        Verifications.verifyElementAttribute(driver, AddOnsPage.getAddOnsHeader_text(),
+                "text", "Buy add ons");
 
-    @Test(dependsOnMethods = {"ValidateAddOnsOverlayText"})
-    public void ValidateAddOnsOverlayCloseButton(){
-        AddOnsPage.closeAddOnsOverlay();
-        Assertions.assertElementAttribute(driver,HomePage.getEssentials_text(),"text","Essentials");
+        //Why the following assertion throw exception at the beginning then it pass?
+        Assertions.assertElementExists(driver,AddOnsPage.getManageAddOns_button(),
+                Assertions.AssertionType.NEGATIVE,"Check That Manage AddOns Button Is Not Displayed");
     }
 
 }

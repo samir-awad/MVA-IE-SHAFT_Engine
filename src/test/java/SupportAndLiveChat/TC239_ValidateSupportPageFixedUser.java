@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class TC073A_ValidateLiveChatBillPayUser {
+public class TC239_ValidateSupportPageFixedUser {
     private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
@@ -26,43 +26,38 @@ public class TC073A_ValidateLiveChatBillPayUser {
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         SupportAndLiveChatPage=new SupportAndLiveChat(driver);
-        LoginPage.acceptTermsAndConditions().login(GetUserFromJson.getUsername("BillPayUser"), GetUserFromJson.getpassword("BillPayUser")).acceptPermissions();
+        LoginPage.acceptTermsAndConditions().login(GetUserFromJson.getUsername("FixedUser"), GetUserFromJson.getpassword("FixedUser")).acceptPermissions();
+        // LoginPage.acceptPermissions();
     }
 
     @Test
     public void CheckSupportSection(){
-        Assertions.assertTrue(HomePage.checkSupportSection());
+        Assertions.assertElementAttribute(driver,HomePage.getSupportTrayMenuPAYG(),
+                "text","Support");
     }
 
     @Test(dependsOnMethods = "CheckSupportSection")
     public void CheckSupportHeader(){
-        HomePage.pressSupportTitle();
+        HomePage.pressSupportTrayView();
         Assertions.assertElementAttribute(driver,SupportAndLiveChatPage.getSupportHeader_text(),
                 "text","Support");
     }
 
     @Test(dependsOnMethods = "CheckSupportHeader")
-    public void CheckLiveChatComponent(){
-        SupportAndLiveChatPage.minimizeLiveChat();
-        Assertions.assertElementExists(driver,SupportAndLiveChatPage.getChatNow_button()); //ChatNow button can't be located
-    }
-
-    @Test(dependsOnMethods = "CheckLiveChatComponent")
-    public void ValidateLiveChatComponent(){
-    SupportAndLiveChatPage.pressChatNowButton();
-        Verifications.verifyElementAttribute(driver,SupportAndLiveChatPage.getSupportHeader_text(),
+    public void CheckSupportCloseBtn(){
+        SupportAndLiveChatPage.pressSupportHeaderCloseButton();
+        Assertions.assertElementAttribute(driver,HomePage.getSupportTrayMenuPAYG(),
                 "text","Support");
-        Assertions.assertElementExists(driver,SupportAndLiveChatPage.getChatNow_button(),//ChatNow button can't be located
-                Assertions.AssertionType.NEGATIVE,"check Live Chat Component Is No Longer Displayed");
     }
 
-    @Test(dependsOnMethods = "ValidateLiveChatComponent")
-    public void checkAndFillLiveChatForm(){
-    SupportAndLiveChatPage.fillLiveChatFormAndPressStartChat();
+    @Test(dependsOnMethods = "CheckSupportCloseBtn")
+    public void CheckSupportPageTitleAndSubTitle(){
+        HomePage.pressSupportTrayView();
+
+        Verifications.verifyElementExists(driver,SupportAndLiveChatPage.getFirstSupportTitle_textFixed(),
+                "Checking first support title, click here ");
+
+        Assertions.assertElementExists(driver,SupportAndLiveChatPage.getSupportListFirstItem_textFixed(),
+                "Checking first item in support topic list, Account");
     }
-
-    //Next steps needs SIT3 environment
-
-
-
 }
