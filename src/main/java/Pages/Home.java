@@ -113,17 +113,27 @@ public class Home {
     public By getSeeAllOffers_button() {
         return SeeAllOffers_button;
     }
-    public By getSupportTrayMenuPAYG() { return SupportTrayMenuPAYG; }
+
+    public By getSupportTrayMenuPAYG() {
+        return SupportTrayMenuPAYG;
+    }
+
     public By getTopUpOverlayTitle_text() {
         return TopUpOverlayTitle_text;
     }
-   
+
+    public By getBalanceTitle() {
+        return BalanceTitle;
+    }
+
+
     //Check existence methods
     public boolean checkEssentialsSection() {
         ElementActions.performTouchAction(driver).swipeElementIntoView(BuyAndManageAddOns_button, TouchActions.SwipeDirection.DOWN, 1);
         return ElementActions.isElementDisplayed(driver, Essentials_text);
     }
-    public boolean checkEssentialsSectionFixedWithTv(){
+
+    public boolean checkEssentialsSectionFixedWithTv() {
         ElementActions.performTouchAction(driver).swipeElementIntoView(EssentialsSectionFixed_WithTV, TouchActions.SwipeDirection.DOWN, 1);
         return ElementActions.isElementDisplayed(driver, EssentialsSectionFixed_WithTV);
     }
