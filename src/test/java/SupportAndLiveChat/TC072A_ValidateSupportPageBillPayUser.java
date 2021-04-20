@@ -26,7 +26,10 @@ public class TC072A_ValidateSupportPageBillPayUser {
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         SupportAndLiveChatPage=new SupportAndLiveChat(driver);
-        LoginPage.acceptTermsAndConditions().login(GetUserFromJson.getUsername("BillPayUser"), GetUserFromJson.getpassword("BillPayUser")).acceptPermissions();
+
+        LoginPage.acceptTermsAndConditions().login(GetUserFromJson.getUsername("PAYG"), GetUserFromJson.getpassword("PAYG")).acceptPermissions();
+        //LoginPage.acceptTermsAndConditions().login().acceptPermissions();
+        LoginPage.acceptTermsAndConditions().login(GetUserFromJson.getUsername("BillPayUser"), GetUserFromJson.getpassword("BillPayUser")).acceptPermissions(
     }
 
     @Test
