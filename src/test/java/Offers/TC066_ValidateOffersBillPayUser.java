@@ -6,6 +6,7 @@ import Pages.Home;
 import Pages.Login;
 import Pages.Offers;
 import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
 import org.json.simple.parser.ParseException;
@@ -20,15 +21,19 @@ public class TC066_ValidateOffersBillPayUser {
     private Login LoginPage;
     private Home HomePage;
     private Offers OffersPage;
+    private JSONFileManager users;
 
 
     @BeforeClass
     public void beforeClass() throws IOException, ParseException {
         driver = BrowserFactory.getBrowser();
+        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         OffersPage=new Offers(driver);
-        LoginPage.acceptTermsAndConditions().login(GetUserFromJson.getUsername("BillPayUserWithoutAddOns"), GetUserFromJson.getpassword("BillPayUserWithoutAddOns")).acceptPermissions();
+        String username = users.getTestData("BillPayUserWithoutAddOns.username");
+        String password = users.getTestData("BillPayUserWithoutAddOns.password");
+        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
     }
 
     @Test

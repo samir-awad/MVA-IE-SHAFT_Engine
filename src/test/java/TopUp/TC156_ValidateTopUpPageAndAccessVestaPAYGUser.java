@@ -67,28 +67,28 @@ public class TC156_ValidateTopUpPageAndAccessVestaPAYGUser {
         TopUpPage.pressChangePaymentMethodButton();
         Verifications.verifyElementAttribute(driver,TopUpPage.getPaymentCard_text(),
                 "text","Payment Card","checking payment card ");
-        Assertions.assertElementExists(driver,TopUpPage.getChangePaymentMethodCancel_button(),"checking cancel button");
+        Assertions.assertElementExists(driver,TopUpPage.getCancel_button(),"checking cancel button");
     }
 
     @Test(dependsOnMethods = "CheckChangePaymentMethodPage")
     public void CheckingVestaPaymentExternalPage(){
         TopUpPage.pressAddPaymentCardButton();
         Verifications.verifyTrue(TopUpPage.isVestaWebpageOpened());
-        
+
         //This assertion is not working as expected
-        Assertions.assertElementAttribute(driver,TopUpPage.getAddEditCard(),
-                "text","Add/Edit card", Assertions.AssertionComparisonType.CONTAINS, Assertions.AssertionType.POSITIVE);
+        Assertions.assertElementAttribute(driver,TopUpPage.getCardType_text(),
+                "text","Card Type", Assertions.AssertionComparisonType.CONTAINS, Assertions.AssertionType.POSITIVE);
     }
 
     @Test(dependsOnMethods = "CheckingVestaPaymentExternalPage")
     public void CheckingVestaPageCancelButton(){
         TopUpPage.scrollDownToCancelBtn();
-        TopUpPage.pressVestaCancelBtn();
+        TopUpPage.pressCancelBtn();
         Verifications.verifyElementAttribute(driver,TopUpPage.getTopUpHeader_text(),
                 "text","Top up","checking top up header");
         Verifications.verifyElementAttribute(driver,TopUpPage.getPaymentCard_text(),
-                "text","Payment Card","checking payment card ");
-        Assertions.assertElementExists(driver,TopUpPage.getChangePaymentMethodCancel_button(),"checking cancel button");
+                "text","Payment Card","checking payment card");
+        Assertions.assertElementExists(driver,TopUpPage.getCancel_button(),"checking cancel button");
     }
 
 
