@@ -5,6 +5,7 @@ import Pages.ChangePlan;
 import Pages.Home;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
@@ -30,8 +31,15 @@ public class TC104_AccountSettingsPageValidationForBillPay {
     @Test
     public void AccountOverlayValidationForBillPay(){
         Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
-
-
+        AccountPage.pressAccountTrayMenuOption();
+        Verifications.verifyTrue(AccountPage.checkAccountOverlay());
+       /* AccountPage.pressAccountSettingOption();
+        Verifications.verifyTrue(AccountPage.checkAccountSettingsPageHeader());
+        Verifications.verifyTrue(AccountPage.checkAccountSettingsSection());
+        Verifications.verifyTrue(AccountPage.checkPersonalDetailsSection());
+        Verifications.verifyTrue(AccountPage.checkAppSettingsSection());
+        AccountPage.pressCloseButton(); */
+        Assertions.assertTrue(HomePage.checkTheVodafoneLogo());
 
     }
 }
