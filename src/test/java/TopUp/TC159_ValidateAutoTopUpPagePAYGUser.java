@@ -1,6 +1,5 @@
 package TopUp;
 
-import FileReaders.GetUserFromJson;
 import Pages.Home;
 import Pages.Login;
 import Pages.TopUp;
@@ -8,22 +7,20 @@ import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
-import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-
-public class TC157_ValidateTopUpConfirmationPagePAYGUser {
+public class TC159_ValidateAutoTopUpPagePAYGUser {
     private WebDriver driver;
     private JSONFileManager users;
     private Login LoginPage;
     private Home HomePage;
     private TopUp TopUpPage;
 
+
     @BeforeClass
-    public void beforeClass() throws IOException, ParseException {
+    public void beforeClass(){
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
@@ -40,31 +37,27 @@ public class TC157_ValidateTopUpConfirmationPagePAYGUser {
     }
 
     @Test(dependsOnMethods = "CheckVodafoneLogoAndWelcomeGesture")
-    public void CheckTopUpPage(){
+    public void CheckSetAutoTopUpOptionPage(){
         HomePage.pressBalanceTitle();
-        TopUpPage.pressTopUpOverlayTopUpButton();
-        Assertions.assertElementAttribute(driver,TopUpPage.getTopUpHeader_text(),
-                "text","Top up","checking top up header");
+        TopUpPage.pressTopUpOverlayMoreOptionsButton();
+        TopUpPage.pressMoreOptionsOverlaySetAutoTopUpOption();
+        Verifications.verifyElementAttribute(driver,TopUpPage.getAutoTopUpPageHeader_text(),
+                "text","Auto top up","checking Auto Top Up Page Header");
+        Assertions.assertElementAttribute(driver,TopUpPage.getAutoTopUpPageMyNumber_text(),
+                "text","My number","Checking Auto Top Up Page Content");
     }
 
-    @Test(dependsOnMethods = "CheckTopUpPage")
-    public void ValidateConfirmationPage(){
-        TopUpPage.pressNextBtn();
-        Verifications.verifyElementAttribute(driver,TopUpPage.getTopUpHeader_text(),
-                "text","Top up","checking top up header");
-        Verifications.verifyElementAttribute(driver,TopUpPage.getConfirmYourTopUpDetails(),
-                "text","Confirm your top up details",
-                Verifications.VerificationComparisonType.CONTAINS, Verifications.VerificationType.POSITIVE,
-                "checking content");
+    @Test(dependsOnMethods = "CheckSetAutoTopUpOptionPage")
+    public void ValidateSetAutoTopUpOptionPageBackBtn(){
+        TopUpPage.pressAutoTopUpBackButton();
+        Assertions.assertElementAttribute(driver,TopUpPage.getMoreOptionOverlayHeader_text(),
+                "text","More options","checking more options overlay header");
     }
 
-    @Test(dependsOnMethods = "ValidateConfirmationPage")
-    public void ValidateCloseButton(){
-        TopUpPage.pressCloseBtn();
-        Verifications.verifyElementAttribute(driver,HomePage.getBalanceTitle(),
-                "text","Balance","checking you are on home page");
+    @Test(dependsOnMethods = "ValidateSetAutoTopUpOptionPageBackBtn")
+    public void ValidateSetAutoTopUpOptionPageCancelBtn(){
+        TopUpPage.pressMoreOptionsOverlaySetAutoTopUpOption();
+        TopUpPage.pressCancelBtn();
         Assertions.assertTrue(HomePage.checkTheVodafoneLogo(),"checking vodafone logo And Welcome Gesture");
     }
-
-
 }

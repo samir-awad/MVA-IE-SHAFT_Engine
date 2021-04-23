@@ -1,6 +1,5 @@
 package TopUp;
 
-import FileReaders.GetUserFromJson;
 import Pages.Home;
 import Pages.Login;
 import Pages.TopUp;
@@ -11,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC158_ValidateMoreOptionsOverlayPAYGUser {
+public class TC161_ValidateTopUpWithVoucherPAYGUser {
     private WebDriver driver;
     private JSONFileManager users;
     private Login LoginPage;
@@ -29,7 +28,6 @@ public class TC158_ValidateMoreOptionsOverlayPAYGUser {
         String username = users.getTestData("PAYGUserWithTopUp.username");
         String password = users.getTestData("PAYGUserWithTopUp.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
-
     }
 
     @Test
@@ -41,23 +39,16 @@ public class TC158_ValidateMoreOptionsOverlayPAYGUser {
     public void CheckMoreOptionsOverlay(){
         HomePage.pressBalanceTitle();
         TopUpPage.pressTopUpOverlayMoreOptionsButton();
-        Assertions.assertElementAttribute(driver,TopUpPage.getMoreOptionOverlayHeader_text(),
-                "text","More options","checking more options overlay header");
+        TopUpPage.pressMoreOptionsOverlayTopUpWithVoucherOption();
+        Assertions.assertElementExists(driver,TopUpPage.getChooseTheNumber_text());
     }
 
     @Test(dependsOnMethods = "CheckMoreOptionsOverlay")
-    public void ValidateMoreOptionsOverlayBackBtn(){
-        TopUpPage.pressMoreOptionsOverlayBackButton();
-        Assertions.assertElementExists(driver,HomePage.getTopUpOverlayTitle_text(),
-                "text","Top Up","checkTopUpOverlay");
+    public void ValidateBackButton(){
+        TopUpPage.pressAutoTopUpBackButton();
+        TopUpPage.pressMoreOptionsOverlayTopUpWithVoucherOption();
+        //The following assertion sometimes fails
+        Assertions.assertElementAttribute(driver,TopUpPage.getMoreOptionOverlayHeader_text(),
+                "text","More options","checking more options overlay header");
     }
-
-    @Test(dependsOnMethods = "ValidateMoreOptionsOverlayBackBtn")
-    public void ValidateMoreOptionsOverlayCloseBtn(){
-        TopUpPage.pressTopUpOverlayCloseButton();
-        Assertions.assertTrue(HomePage.checkTheVodafoneLogo(),"checking vodafone logo And Welcome Gesture");
-    }
-
-
-
 }

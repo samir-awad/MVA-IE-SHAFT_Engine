@@ -1,6 +1,5 @@
 package TopUp;
 
-import FileReaders.GetUserFromJson;
 import Pages.Home;
 import Pages.Login;
 import Pages.TopUp;
@@ -8,27 +7,26 @@ import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
-import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-
-public class TC157_ValidateTopUpConfirmationPagePAYGUser {
+public class TC162_SubmitInvalidVoucherNumberPAYGUser {
     private WebDriver driver;
     private JSONFileManager users;
+    private JSONFileManager vouchers;
     private Login LoginPage;
     private Home HomePage;
     private TopUp TopUpPage;
 
     @BeforeClass
-    public void beforeClass() throws IOException, ParseException {
+    public void beforeClass(){
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         TopUpPage= new TopUp(driver);
         users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        vouchers = new JSONFileManager(System.getProperty("testDataFolderPath")+"vouchers.json");
         String username = users.getTestData("PAYGUserWithTopUp.username");
         String password = users.getTestData("PAYGUserWithTopUp.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
@@ -40,31 +38,28 @@ public class TC157_ValidateTopUpConfirmationPagePAYGUser {
     }
 
     @Test(dependsOnMethods = "CheckVodafoneLogoAndWelcomeGesture")
-    public void CheckTopUpPage(){
+    public void CheckMoreOptionsOverlay(){
         HomePage.pressBalanceTitle();
-        TopUpPage.pressTopUpOverlayTopUpButton();
-        Assertions.assertElementAttribute(driver,TopUpPage.getTopUpHeader_text(),
-                "text","Top up","checking top up header");
+        TopUpPage.pressTopUpOverlayMoreOptionsButton();
+        TopUpPage.pressMoreOptionsOverlayTopUpWithVoucherOption();
+        Assertions.assertElementExists(driver,TopUpPage.getChooseTheNumber_text());
     }
 
-    @Test(dependsOnMethods = "CheckTopUpPage")
-    public void ValidateConfirmationPage(){
-        TopUpPage.pressNextBtn();
-        Verifications.verifyElementAttribute(driver,TopUpPage.getTopUpHeader_text(),
-                "text","Top up","checking top up header");
-        Verifications.verifyElementAttribute(driver,TopUpPage.getConfirmYourTopUpDetails(),
-                "text","Confirm your top up details",
-                Verifications.VerificationComparisonType.CONTAINS, Verifications.VerificationType.POSITIVE,
-                "checking content");
+    @Test(dependsOnMethods = "CheckMoreOptionsOverlay")
+    public void CheckInsertingInvalidVoucherCode(){
+        //Can't be implemented until have PAYG user with subscription and the following code is not working as expected
+        String phoneNumber = users.getTestData("PAYGUserWithoutAddOns.username");
+        String invalidVoucher= vouchers.getTestData("InvalidVoucherPAYGUser.voucher");
+        TopUpPage.submitInvalidVoucher(phoneNumber,invalidVoucher);
+
     }
 
-    @Test(dependsOnMethods = "ValidateConfirmationPage")
+    @Test(dependsOnMethods = "CheckInsertingInvalidVoucherCode")
     public void ValidateCloseButton(){
         TopUpPage.pressCloseBtn();
         Verifications.verifyElementAttribute(driver,HomePage.getBalanceTitle(),
                 "text","Balance","checking you are on home page");
         Assertions.assertTrue(HomePage.checkTheVodafoneLogo(),"checking vodafone logo And Welcome Gesture");
     }
-
 
 }
