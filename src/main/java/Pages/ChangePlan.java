@@ -25,7 +25,8 @@ public class ChangePlan {
 
     public ChangePlan(WebDriver driver) {
         this.driver = driver;
-        if (System.getProperty("targetOperatingSystem").equals("Android")){
+        if (System.getProperty("targetOperatingSystem").equals("Android"))
+        {
          PlanTitle = By.xpath("//android.widget.TextView[@content-desc=\"id_dashboard_your_plan_details_title\"]");
          ChangePlan_Button = By.xpath("//android.widget.Button[@content-desc=\"id_dashboard_your_plan_details_button\"]/android.widget.TextView");
          YourPlanClose_Button = By.xpath("//android.widget.ImageView[@content-desc=\"id_dashboard_your_plan_details_close\"]");
@@ -44,7 +45,7 @@ public class ChangePlan {
         }
     }
 
-    public Boolean checkYourPlanOverlay() {
+    public boolean checkYourPlanOverlay() {
         return ElementActions.isElementDisplayed(driver, PlanTitle);
     }
 
@@ -56,7 +57,7 @@ public class ChangePlan {
         ElementActions.performTouchAction(driver).tap(ChangePlan_Button);
     }
 
-    public Boolean checkChangePlanPageHeader() {
+    public boolean checkChangePlanPageHeader() {
         return ElementActions.isElementDisplayed(driver, ChangePlanTitle);
     }
 
@@ -89,7 +90,7 @@ public class ChangePlan {
     public void pressViewSelectedPlansDetails(){
         ElementActions.performTouchAction(driver).tap(ViewDetails_Button);
     }
-    public Boolean planDetailsTitle(){
+    public boolean planDetailsTitle(){
         return ElementActions.isElementDisplayed(driver, PlanDetailsTitle);
     }
 }
