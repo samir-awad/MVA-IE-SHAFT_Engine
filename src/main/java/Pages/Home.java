@@ -45,6 +45,7 @@ public class Home {
     private By Account;
     private By TopUpOverlayTitle_text;
     private By TopUp_button;
+    private By TopUpHistory_button;
 
     public Home(WebDriver driver) {
         this.driver = driver;
@@ -77,17 +78,18 @@ public class Home {
           SelectAccountAndSubscriptionTitle = new MobileBy.ByAccessibilityId("id_dashboard_change_subscription_title");
           NewSubscription = By.xpath( "(//android.view.ViewGroup[@content-desc=\"id_dashboard_change_subscription_subscriptions_item\"])[2]");
           ChangeAccount = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.widget.Spinner");
-          AccountChanged = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.ListView/android.widget.CheckedTextView[1]");
-          Close_Button = By.xpath( "//android.widget.ImageView[@content-desc=\"id_dashboard_change_subscription_close\"]");
-          Select_Button = new MobileBy.ByAccessibilityId("id_dashboard_change_subscription_select_button");
-          LastBileTile = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.widget.TextView[1]");
-          TvAddOnsTile = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.ViewGroup/android.widget.TextView[1]");
-          EssentialsSectionFixed_WithTV = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[6]/android.widget.TextView");
-          SupportTrayMenuPAYG=new MobileBy.ByAccessibilityId("id_tray_menu_item_label_Support");
-          AccountOverlaySetting_text = new MobileBy.ByAccessibilityId("id_account_overlay_Settings_title");
-          Account = new MobileBy.ByAccessibilityId("id_tray_menu_item_Account");
-          TopUpOverlayTitle_text =new MobileBy.ByAccessibilityId("STundefinedMainTitle");
-          TopUp_button= new MobileBy.ByAccessibilityId("id_dashboard_balance_button");
+            AccountChanged = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.ListView/android.widget.CheckedTextView[1]");
+            Close_Button = By.xpath("//android.widget.ImageView[@content-desc=\"id_dashboard_change_subscription_close\"]");
+            Select_Button = new MobileBy.ByAccessibilityId("id_dashboard_change_subscription_select_button");
+            LastBileTile = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.widget.TextView[1]");
+            TvAddOnsTile = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.ViewGroup/android.widget.TextView[1]");
+            EssentialsSectionFixed_WithTV = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[6]/android.widget.TextView");
+            SupportTrayMenuPAYG = new MobileBy.ByAccessibilityId("id_tray_menu_item_label_Support");
+            AccountOverlaySetting_text = new MobileBy.ByAccessibilityId("id_account_overlay_Settings_title");
+            Account = new MobileBy.ByAccessibilityId("id_tray_menu_item_Account");
+            TopUpOverlayTitle_text = new MobileBy.ByAccessibilityId("STundefinedMainTitle");
+            TopUp_button = new MobileBy.ByAccessibilityId("id_tray_menu_item_Top Up");
+            TopUpHistory_button = new MobileBy.ByAccessibilityId("id_dashboard_topup_history_title");
         }
         else {
 
@@ -240,12 +242,10 @@ public class Home {
     public void pressBalanceTitle(){
         ElementActions.performTouchAction(driver).tap(BalanceTitle);
     }
-
-
     public void pressTopUpTrayMenu(){
         ElementActions.performTouchAction(driver).tap(TopUp_button);
     }
-
+    public void pressTopUpHistoryTitle(){ElementActions.performTouchAction(driver).tap(TopUpHistory_button);}
 
     //DirectDebits
     public By getDirectDebit_Tab()

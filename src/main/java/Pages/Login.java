@@ -63,6 +63,7 @@ public class Login {
     private By GoToTheApp_button;
     private By Tutorials_button;
     private By GoToMyVodafone_button;
+    private By OnboardingPersonalDetailsContinuePAYG_button;
 
     public Login(WebDriver driver) {
         this.driver = driver;
@@ -115,6 +116,7 @@ public class Login {
             PaymentMethod_Continue_button = new MobileBy.ByAccessibilityId("id_onboarding_payment_method_continue_button");
             Yes_Button = By.xpath("//android.widget.Button[@content-desc=\"Yes\"]/android.widget.TextView");
             OnboardingPersonalDetailsContinue_button = new MobileBy.ByAccessibilityId("id_onboarding_payment_method_continue_button");
+            OnboardingPersonalDetailsContinuePAYG_button=new MobileBy.ByAccessibilityId("id_onboarding_personal_details_continue_button");
             PermissionsContinue_button = new MobileBy.ByAccessibilityId("id_onboarding_permissions_continue_button");
             GoToTheApp_button = new MobileBy.ByAccessibilityId("OBgetStartedButton");
             Tutorials_button = new MobileBy.ByAccessibilityId("id_tutorials_tour_button");
@@ -198,6 +200,19 @@ public class Login {
         ElementActions.performTouchAction(driver).tap(GoToTheApp_button);
         ElementActions.performTouchAction(driver).tap(GoToMyVodafone_button);
     }
+    public void acceptPermissionsPAYGUser() {
+        ElementActions.performTouchAction(driver).tap(LetsGo_Button);
+        ElementActions.performTouchAction(driver).tap(PrivacyContinue_button);
+        ElementActions.performTouchAction(driver).swipeElementIntoView(PersonalPreferencesContinue_button, TouchActions.SwipeDirection.UP);
+        ElementActions.performTouchAction(driver).tap(PersonalPreferencesContinue_button);
+        //ElementActions.performTouchAction(driver).tap(PaymentMethod_Continue_button);
+        ElementActions.performTouchAction(driver).tap(OnboardingPersonalDetailsContinuePAYG_button);
+        ElementActions.performTouchAction(driver).swipeElementIntoView(PermissionsContinue_button, TouchActions.SwipeDirection.UP);
+        ElementActions.performTouchAction(driver).tap(PermissionsContinue_button);
+        ElementActions.performTouchAction(driver).tap(GoToTheApp_button);
+        ElementActions.performTouchAction(driver).tap(GoToMyVodafone_button);
+    }
+
 
     public void PressBack(){
         ElementActions.performTouchAction(driver).tap(Back_Arrow);

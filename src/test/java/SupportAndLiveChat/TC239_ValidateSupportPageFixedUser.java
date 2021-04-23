@@ -52,7 +52,7 @@ public class TC239_ValidateSupportPageFixedUser {
         SupportAndLiveChatPage.pressSupportHeaderCloseButton();
         Assertions.assertElementAttribute(driver,HomePage.getSupportTrayMenuPAYG(),
                 "text","Support");
-    }
+        }
 
     @Test(dependsOnMethods = "CheckSupportCloseBtn")
     public void CheckSupportPageTitleAndSubTitle(){

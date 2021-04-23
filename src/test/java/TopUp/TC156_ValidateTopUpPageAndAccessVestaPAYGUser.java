@@ -31,8 +31,7 @@ public class TC156_ValidateTopUpPageAndAccessVestaPAYGUser {
         users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
         String username = users.getTestData("PAYGUserWithTopUp.username");
         String password = users.getTestData("PAYGUserWithTopUp.password");
-        LoginPage.acceptTermsAndConditions().login(username, password);
-        // LoginPage.acceptPermissions();
+        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
     }
 
     @Test
