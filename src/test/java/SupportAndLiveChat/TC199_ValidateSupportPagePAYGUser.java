@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class TC072A_ValidateSupportPageBillPayUser {
+public class TC199_ValidateSupportPagePAYGUser {
     private WebDriver driver;
     private JSONFileManager users;
     private Login LoginPage;
@@ -29,39 +29,40 @@ public class TC072A_ValidateSupportPageBillPayUser {
         HomePage = new Home(driver);
         SupportAndLiveChatPage=new SupportAndLiveChat(driver);
         users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
-        String username = users.getTestData("BillPayUser.username");
-        String password = users.getTestData("BillPayUser.password");
-        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
+        String username = users.getTestData("PAYGUser.username");
+        String password = users.getTestData("PAYGUser.password");
+        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
     }
 
     @Test
     public void CheckSupportSection(){
-        Assertions.assertTrue(HomePage.checkSupportSection());
+    Assertions.assertElementAttribute(driver,HomePage.getSupportTrayMenuPAYG(),
+            "text","Support");
     }
 
     @Test(dependsOnMethods = "CheckSupportSection")
     public void CheckSupportHeader(){
-    HomePage.pressSupportTitle();
-    Assertions.assertElementAttribute(driver,SupportAndLiveChatPage.getSupportHeader_text(),
-            "text","Support");
+        HomePage.pressSupportTrayView();
+        Assertions.assertElementAttribute(driver,SupportAndLiveChatPage.getSupportHeader_text(),
+                "text","Support");
     }
 
     @Test(dependsOnMethods = "CheckSupportHeader")
     public void CheckSupportCloseBtn(){
-    SupportAndLiveChatPage.pressSupportHeaderCloseButton();
-        Assertions.assertTrue(HomePage.checkSupportSection());
+        SupportAndLiveChatPage.pressSupportHeaderCloseButton();
+        Assertions.assertElementAttribute(driver,HomePage.getSupportTrayMenuPAYG(),
+                "text","Support");
     }
 
     @Test(dependsOnMethods = "CheckSupportCloseBtn")
     public void CheckSupportPageTitleAndSubTitle(){
-        HomePage.pressSupportTitle();
-        SupportAndLiveChatPage.minimizeLiveChat();
-        Verifications.verifyElementExists(driver,SupportAndLiveChatPage.getFirstSupportTitle_textBP(),
+        HomePage.pressSupportTrayView();
+
+        Verifications.verifyElementExists(driver,SupportAndLiveChatPage.getFirstSupportTitle_textPAYG(),
                 "Checking first support title");
-        Verifications.verifyElementExists(driver,SupportAndLiveChatPage.getSecondSupportTitle_textBP(),
+        Verifications.verifyElementExists(driver,SupportAndLiveChatPage.getSecondSupportTitle_textPAYG(),
                 "Checking second support title");
-        Assertions.assertElementExists(driver,SupportAndLiveChatPage.getSupportListFirstItem_textBP(),
+        Assertions.assertElementExists(driver,SupportAndLiveChatPage.getSupportListFirstItem_textPAYG(),
                 "Checking first item in support topic list");
     }
-
 }

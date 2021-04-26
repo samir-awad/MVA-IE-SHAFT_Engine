@@ -1,28 +1,38 @@
 package AddOns;
 
+import FileReaders.GetUserFromJson;
 import Pages.AddOns;
 import Pages.Home;
 import Pages.Login;
+import Pages.SupportAndLiveChat;
 import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 public class TC056_ValidateAddOnsOverlayBillPayUserWithoutMonthlyAddOns {
     private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
     private AddOns AddOnsPage;
+    private JSONFileManager users;
 
     @BeforeClass
-    public void beforeClass() {
+    public void beforeClass(){
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         AddOnsPage=new AddOns(driver);
-       // LoginPage.acceptTermsAndConditions().login().acceptPermissions();
+        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        String username = users.getTestData("BillPayUserWithoutAddOns.username");
+        String password = users.getTestData("BillPayUserWithoutAddOns.password");
+        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
     }
 
     @Test
@@ -39,7 +49,7 @@ public class TC056_ValidateAddOnsOverlayBillPayUserWithoutMonthlyAddOns {
                 Assertions.AssertionComparisonType.CONTAINS, Assertions.AssertionType.POSITIVE);
     }
 
-    @Test(dependsOnMethods = {"CheckEssentialsSection","ValidateAddOnsOverlayText"})
+    @Test(dependsOnMethods = "ValidateAddOnsOverlayText")
     public void ValidateAddOnsOverlayCloseButton(){
         AddOnsPage.closeAddOnsOverlay();
         Assertions.assertElementAttribute(driver,HomePage.getEssentials_text(),

@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 
 public class Login {
     private final WebDriver driver;
+
     private By termsAndConditions_Header;
     private By termsAndConditions_Txt;
     private By AcceptTerms_button;
@@ -62,6 +63,7 @@ public class Login {
     private By GoToTheApp_button;
     private By Tutorials_button;
     private By GoToMyVodafone_button;
+    private By OnboardingPersonalDetailsContinuePAYG_button;
 
     public Login(WebDriver driver) {
         this.driver = driver;
@@ -112,6 +114,7 @@ public class Login {
             PaymentMethod_Continue_button = new MobileBy.ByAccessibilityId("id_onboarding_payment_method_continue_button");
             Yes_Button = By.xpath("//android.widget.Button[@content-desc=\"Yes\"]/android.widget.TextView");
             OnboardingPersonalDetailsContinue_button = new MobileBy.ByAccessibilityId("id_onboarding_payment_method_continue_button");
+            OnboardingPersonalDetailsContinuePAYG_button=new MobileBy.ByAccessibilityId("id_onboarding_personal_details_continue_button");
             PermissionsContinue_button = new MobileBy.ByAccessibilityId("id_onboarding_permissions_continue_button");
             GoToTheApp_button = new MobileBy.ByAccessibilityId("OBgetStartedButton");
             Tutorials_button = new MobileBy.ByAccessibilityId("id_tutorials_tour_button");
@@ -176,6 +179,7 @@ public class Login {
 
     public Login login(String username,String password) {
         ElementActions.performTouchAction(driver).tap(Reg_Login_Button);
+
         ElementActions.type(driver, PhoneOrEmail_TxtField, username);
         ElementActions.type(driver, Password_TxtField, password);
         ElementActions.performTouchAction(driver).tap(Login_button);
@@ -194,6 +198,19 @@ public class Login {
         ElementActions.performTouchAction(driver).tap(GoToTheApp_button);
         ElementActions.performTouchAction(driver).tap(GoToMyVodafone_button);
     }
+    public void acceptPermissionsPAYGUser() {
+        ElementActions.performTouchAction(driver).tap(LetsGo_Button);
+        ElementActions.performTouchAction(driver).tap(PrivacyContinue_button);
+        ElementActions.performTouchAction(driver).swipeElementIntoView(PersonalPreferencesContinue_button, TouchActions.SwipeDirection.UP);
+        ElementActions.performTouchAction(driver).tap(PersonalPreferencesContinue_button);
+        //ElementActions.performTouchAction(driver).tap(PaymentMethod_Continue_button);
+        ElementActions.performTouchAction(driver).tap(OnboardingPersonalDetailsContinuePAYG_button);
+        ElementActions.performTouchAction(driver).swipeElementIntoView(PermissionsContinue_button, TouchActions.SwipeDirection.UP);
+        ElementActions.performTouchAction(driver).tap(PermissionsContinue_button);
+        ElementActions.performTouchAction(driver).tap(GoToTheApp_button);
+        ElementActions.performTouchAction(driver).tap(GoToMyVodafone_button);
+    }
+
 
     public void PressReg_LoginButton(){
         ElementActions.performTouchAction(driver).tap(Reg_Login_Button);
@@ -235,7 +252,6 @@ public class Login {
     public By getNeedToRegister_link() {return NeedToRegister_link;}
     public By getForgotPWD_link() {return ForgotPWD_link;}
     public By getLoginOurPrivacy_link() {return LoginOurPrivacy_link;}
-
 
 
 }

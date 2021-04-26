@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class TC248_ValidateAddOnsPagePAYGUserWithMonthlyAddOns {
+public class TC247_ValidateAddOnsPageBillPayUserWithoutMonthlyAddOns {
     private WebDriver driver;
     private JSONFileManager users;
     private Login LoginPage;
@@ -29,14 +29,15 @@ public class TC248_ValidateAddOnsPagePAYGUserWithMonthlyAddOns {
         HomePage = new Home(driver);
         AddOnsPage = new AddOns(driver);
         users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
-        String username = users.getTestData("PAYGUser.username");
-        String password = users.getTestData("PAYGUser.password");
-        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
+        String username = users.getTestData("BillPayUserWithoutAddOns.username");
+        String password = users.getTestData("BillPayUserWithoutAddOns.password");
+        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
     }
 
     @Test
     public void CheckEssentialsSection() {
         Assertions.assertTrue(HomePage.checkEssentialsSection()); //Here scrolling is not working
+
     }
 
     @Test(dependsOnMethods = {"CheckEssentialsSection"})
@@ -45,10 +46,10 @@ public class TC248_ValidateAddOnsPagePAYGUserWithMonthlyAddOns {
         AddOnsPage.openAddOnsPage();
         Verifications.verifyElementAttribute(driver, AddOnsPage.getAddOnsHeader_text(),
                 "text", "Buy add ons");
-        Assertions.assertElementExists(driver,
-                AddOnsPage.getOneOff_tab(),
-                Assertions.AssertionType.NEGATIVE,
-                "Check Element Existence");
+
+        //Why the following assertion throw exception at the beginning then it pass?
+        Assertions.assertElementExists(driver,AddOnsPage.getManageAddOns_button(),
+                Assertions.AssertionType.NEGATIVE,"Check That Manage AddOns Button Is Not Displayed");
     }
 
 }

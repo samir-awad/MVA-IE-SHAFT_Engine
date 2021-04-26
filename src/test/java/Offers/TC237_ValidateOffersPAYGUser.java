@@ -1,17 +1,23 @@
 package Offers;
 
+import FileReaders.GetUserFromJson;
 import Pages.Home;
 import Pages.Login;
 import Pages.Offers;
 import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+
 public class TC237_ValidateOffersPAYGUser {
     private WebDriver driver;
+    private JSONFileManager users;
     private Login LoginPage;
     private Home HomePage;
     private Offers OffersPage;
@@ -22,7 +28,10 @@ public class TC237_ValidateOffersPAYGUser {
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         OffersPage = new Offers(driver);
-        //LoginPage.acceptTermsAndConditions().login().acceptPermissions();
+        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        String username = users.getTestData("PAYGUser.username");
+        String password = users.getTestData("PAYGUser.password");
+        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
     }
 
     @Test
