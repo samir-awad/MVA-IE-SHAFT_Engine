@@ -103,6 +103,38 @@ public class Home {
             ShowMore_button = new MobileBy.ByAccessibilityId("id_dashboard_essentials_see_more_less_label");
             OtherUsefulTools_text = new MobileBy.ByAccessibilityId("id_dashboard_tools_title");
             BillAndPayment = new MobileBy.ByAccessibilityId("id_tray_menu_item_Bills & Payments");
+            ShowMore_button= new MobileBy.ByAccessibilityId("id_dashboard_essentials_see_more_less_label");
+            OtherUsefulTools_text= new MobileBy.ByAccessibilityId("id_dashboard_tools_title");
+            UnlockYourDevice_text= new MobileBy.ByAccessibilityId("id_dashboard_tools_nac_label");
+            OffersPageHeader_button = new MobileBy.ByAccessibilityId("id_dashboard_discover_card_image");
+            Support_button=new MobileBy.ByAccessibilityId("id_dashboard_live_chat_tile_title");
+            SeeAllOffers_button= new MobileBy.ByAccessibilityId("id_dashboard_discover_see_all_offers_label");
+            ClickNextBillTitle = new MobileBy.ByAccessibilityId("id_dashboard_next_bill_title");
+            AmountDueTile = new MobileBy.ByAccessibilityId("id_dashboard_amount_due_title");
+            DirectDebitTile = new MobileBy.ByAccessibilityId("id_dashboard_direct_debit_title");
+            OtherUsefulTools = new MobileBy.ByAccessibilityId("id_dashboard_tools_title");
+            ChangePlan_Button = new MobileBy.ByAccessibilityId("d_dashboard_essentials_change_plan_clickable");
+            InactiveToUp = new MobileBy.ByAccessibilityId("id_dashboard_my_usage_exception_noActiveTopUpOffer_text");
+            BalanceTitle = new MobileBy.ByAccessibilityId("id_dashboard_balance_title");
+            TopUpHistoryTile =new MobileBy.ByAccessibilityId("id_dashboard_topup_history_title");
+            PAYG_Tray = new MobileBy.ByAccessibilityId("id_tray_menu_item_Top Up");
+            ActiveToUp = new MobileBy.ByAccessibilityId("id_dashboard_my_usage_plan_name");
+            Change_button = new MobileBy.ByAccessibilityId("id_dashboard_change_subscription");
+            SelectAccountAndSubscriptionTitle = new MobileBy.ByAccessibilityId("id_dashboard_change_subscription_title");
+            NewSubscription = By.xpath( "(//android.view.ViewGroup[@content-desc=\"id_dashboard_change_subscription_subscriptions_item\"])[2]");
+            ChangeAccount = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.widget.Spinner");
+            AccountChanged = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.ListView/android.widget.CheckedTextView[1]");
+            Close_Button = By.xpath("//android.widget.ImageView[@content-desc=\"id_dashboard_change_subscription_close\"]");
+            Select_Button = new MobileBy.ByAccessibilityId("id_dashboard_change_subscription_select_button");
+            LastBileTile = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.widget.TextView[1]");
+            TvAddOnsTile = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.ViewGroup/android.widget.TextView[1]");
+            EssentialsSectionFixed_WithTV = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[6]/android.widget.TextView");
+            SupportTrayMenuPAYG = new MobileBy.ByAccessibilityId("id_tray_menu_item_label_Support");
+            AccountOverlaySetting_text = new MobileBy.ByAccessibilityId("Settings Account, personal details & app settings");
+            Account = new MobileBy.ByAccessibilityId("id_tray_menu_item_Account");
+            TopUpOverlayTitle_text = new MobileBy.ByAccessibilityId("STundefinedMainTitle");
+            TopUp_button = new MobileBy.ByAccessibilityId("id_tray_menu_item_Top Up");
+            TopUpHistory_button = new MobileBy.ByAccessibilityId("id_dashboard_topup_history_title");
 
         }
     }
@@ -248,47 +280,28 @@ public class Home {
     public void pressTopUpHistoryTitle(){ElementActions.performTouchAction(driver).tap(TopUpHistory_button);}
 
     //DirectDebits
-    public By getDirectDebit_Tab()
-    {
-        return DirectDebitTile;
-    }
-    public void pressAccountTrayMenuOption(){
-        ElementActions.performTouchAction(driver).tap(Account);
-    }
-    public Boolean CheckAccountOverlaySettingText()
-    {
-        return ElementActions.isElementDisplayed(driver,AccountOverlaySetting_text);
-    }
-    public void pressAccountSettingOption() {
-        ElementActions.performTouchAction(driver).tap(AccountOverlaySetting_text);
-    }
-
- 
+    public By getDirectDebit_Tab() {return DirectDebitTile; }
+    public void pressAccountTrayMenuOption(){ElementActions.performTouchAction(driver).tap(Account); }
+    public Boolean CheckAccountOverlaySettingText() { return ElementActions.isElementDisplayed(driver,AccountOverlaySetting_text); }
+    public void pressAccountSettingOption() {ElementActions.performTouchAction(driver).tap(AccountOverlaySetting_text);}
     public void pressDirectDebitTile()
     {
         ElementActions.performTouchAction(driver).tap(DirectDebitTile);
     }
-
-
-
     public void opedAddOnsOverlay() {
         ElementActions.performTouchAction(driver).tap(BuyAndManageAddOns_button);
     }
-
     public void pressSeeAllOffersLink() {
         ElementActions.performTouchAction(driver).tap(SeeAllOffers_button);
     }
     public void openOffersPageHeader() {
         ElementActions.performTouchAction(driver).tap(OffersPageHeader_button);
     }
-
     public void pressSupportTitle(){ //For Bill Pay user
         ElementActions.performTouchAction(driver).tap(Support_button);
     }
-
     public void pressSupportTrayView(){
          ElementActions.performTouchAction(driver).tap(SupportTrayMenuPAYG);
     }
-
 
 }

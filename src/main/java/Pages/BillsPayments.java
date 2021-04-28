@@ -65,7 +65,7 @@ public class BillsPayments {
             CurrentSpendLastBillTitle = new MobileBy.ByAccessibilityId("id_dashboard_next_bill_details_title");
             Bills_Payments_Button = By.xpath("//android.view.ViewGroup[@content-desc=\"Button\"]");
             BillsPaymentTitle = new MobileBy.ByAccessibilityId("id_header_title_Bills_&_Payments");
-            CloseBTN = new MobileBy.ByAccessibilityId("id_header_close_icon");
+            CloseBTN = By.xpath("(//android.widget.ImageView[@content-desc=\"id_header_close_icon\"])[2]");
             Download_Button = new MobileBy.ByAccessibilityId("Download March 2021 bill");
             MakePayment_Button = By.xpath("(//android.view.ViewGroup[@content-desc=\"Button\"])[1]");
             MakeAdvancePayment_button = new MobileBy.ByAccessibilityId("Make advance payment");
@@ -126,6 +126,30 @@ public class BillsPayments {
             VestaField = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]/android.view.View");
             NewCardAndSaveItForLater_Button =new MobileBy.ByAccessibilityId("Button. Navigates to add card screen.");
             NewCardWithoutSaving_Button =new MobileBy.ByAccessibilityId("Button. Navigates to payment screen");
+            //DirectDebits
+            AccountSettings_Text = new MobileBy.ByAccessibilityId("id_header_title_Settings");
+            PaymentMethod_Text = new MobileBy.ByAccessibilityId("Payment method");
+            CreditCardAsRecurringPayment0_Title = new MobileBy.ByAccessibilityId("id_payment_method_header_title");
+            CreditCardAsRecurringPaymentSub_Title = new MobileBy.ByAccessibilityId("id_payment_method_header_sub_title1");
+            CreditCardAsRecurringPaymentSaved_Tab = By.xpath("(//XCUIElementTypeOther[@name=\"Saved Cards\"])[2]");
+            CreditCardAsRecurringPaymentDirectDebit_Tab = By.xpath("(//XCUIElementTypeOther[@name=\"Direct Debit\"])[2]");
+            AccountHolder_Text = By.xpath("(//XCUIElementTypeTextField[@name=\"id_account_and_email_name_input\"])[1]");
+            Iban_Text = By.xpath("(//XCUIElementTypeTextField[@name=\"id_account_and_email_name_input\"])[2]");
+            NoneSavedCards_Text = new MobileBy.ByAccessibilityId("id_payment_method_card_list_no_cards_info_text");
+            NoPaymentMethod_Text = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.TextView");
+            AddNewCard_Button = new MobileBy.ByAccessibilityId("id_add_new_card_button");
+            AddNewCard_Overlay = new MobileBy.ByAccessibilityId("id_payment_method_add_card_description_main_text");
+            AddNewCardOverlayClose_Button = By.xpath("//android.widget.ImageView[@content-desc=\"id_payment_method_add_card_overlay_close\"]");
+            AddNewCardOverlayNo_Button = new MobileBy.ByAccessibilityId("id_payment_method_add_card_close_button");
+            AddNewCardOverlayContinue_Button = new MobileBy.ByAccessibilityId("id_payment_method_add_card_continue_button");
+            UseThisCard_Button = By.xpath("(//android.widget.Button[@content-desc=\"id_use_this_card_button\"])[1]");
+            UseThisCardOverlay_Text = new MobileBy.ByAccessibilityId("id_payment_method_change_card_description_main_text");
+            ChangeYourCardOverlayClose_Button = By.xpath("//android.widget.ImageView[@content-desc=\"id_payment_method_change_card_overlay_close\"]");
+            ChangeYourCardOverlayNo_Button = new MobileBy.ByAccessibilityId("id_payment_method_change_card_close_button");
+            ChangeYourCardOverlayContinue_Button = new MobileBy.ByAccessibilityId("id_payment_method_change_card_continue_button");
+            CheckSavedCardContent0_Text = new MobileBy.ByAccessibilityId("id_payment_method_card_item_description_cards_0");
+            CheckSavedCardContent1_Text = new MobileBy.ByAccessibilityId("id_payment_method_card_description_cards_0");
+            InvalidIbanOverlay_Title = new MobileBy.ByAccessibilityId("id_payment_method_invalid_iban_overlay_title");
 
         }
     }
@@ -264,7 +288,6 @@ public class BillsPayments {
         else
             result = false;
         return result;
-
     }
 
     public Boolean checkThatAccountOlderAndIbanAreNotFilled()
