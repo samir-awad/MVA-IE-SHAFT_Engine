@@ -30,17 +30,41 @@ public class TC289_PagevalidationsForFixedUserWithCreditCardAsRecurringPayment {
 
     @Test
     public void CreditCardAsRecurringPayment() {
-        Verifications.verifyElementExists(driver,HomePage.getDirectDebit_Tab(),Verifications.VerificationType.NEGATIVE);
+        Verifications.verifyElementExists(driver, HomePage.getDirectDebit_Tab(), Verifications.VerificationType.NEGATIVE);
+    }
+
+    @Test
+    public void step2() {
         HomePage.pressAccountTrayMenuOption();
         Verifications.verifyTrue(HomePage.CheckAccountOverlaySettingText());
+    }
+
+    @Test
+    public void step3() {
         HomePage.pressAccountSettingOption();
         Verifications.verifyTrue(BillsPaymentsPage.checkAccountSettingsText());
+    }
+
+    @Test
+    public void step4() {
         SettingsPage.pressPaymentMethodOption();
         Verifications.verifyTrue(BillsPaymentsPage.checkPaymentMethodText());
+    }
+
+    @Test
+    public void step5() {
         BillsPaymentsPage.pressCloseButtonInBillsPaymentsView();
         Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+    }
+
+    @Test
+    public void step6() {
         HomePage.pressAccountTrayMenuOption();
         HomePage.pressAccountSettingOption();
+    }
+
+    @Test
+    public void step7() {
         SettingsPage.pressPaymentMethodOption();
         Verifications.verifyTrue(BillsPaymentsPage.checkCreditCardAsRecurringPaymentText());
         Verifications.verifyTrue(BillsPaymentsPage.checkTheTwoExistingTabs());
