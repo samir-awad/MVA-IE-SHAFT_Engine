@@ -32,7 +32,7 @@ public class TC181_ValidateBillPayUserWithCreditCardAsRecurringPayment {
         System.setProperty("mobile_automationName", "XCUITest");
         System.setProperty("mobile_udid", "00008030-001C4D5C1E33802E");
         System.setProperty("mobile_bundleId", "com.VodafoneIreland.MyVodafone");
-        System.setProperty("mobile_derivedDataPath","/Users/mva-ireland/Library/Developer/Xcode/DerivedData/WebDriverAgent-ciegwgvxzxdrqthilmrmczmqvrgu");
+        System.setProperty("mobile_derivedDataPath", "/Users/mva-ireland/Library/Developer/Xcode/DerivedData/WebDriverAgent-ciegwgvxzxdrqthilmrmczmqvrgu");
 
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
@@ -47,20 +47,21 @@ public class TC181_ValidateBillPayUserWithCreditCardAsRecurringPayment {
         HomePage.pressAccountTrayMenuOption();
         Verifications.verifyTrue(HomePage.CheckAccountOverlaySettingText());
     }
+
     @Test
-    public void step2(){
+    public void step2() {
         HomePage.pressAccountSettingOption();
         Verifications.verifyTrue(BillsPaymentsPage.checkAccountSettingsText());
     }
 
     @Test
-    public void step3(){
+    public void step3() {
         SettingsPage.pressPaymentMethodOption();
         Verifications.verifyTrue(BillsPaymentsPage.checkPaymentMethodText());
     }
 
     @Test
-    public void step4(){
+    public void step4() {
         BillsPaymentsPage.pressCloseButtonInBillsPaymentsView();
         Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
         HomePage.pressAccountTrayMenuOption();
@@ -68,7 +69,7 @@ public class TC181_ValidateBillPayUserWithCreditCardAsRecurringPayment {
     }
 
     @Test
-    public void step5(){
+    public void step5() {
         SettingsPage.pressPaymentMethodOption();
         BillsPaymentsPage.pressSavedCardsTab();
         Verifications.verifyTrue(BillsPaymentsPage.checkCreditCardAsRecurringPaymentText());
@@ -76,7 +77,7 @@ public class TC181_ValidateBillPayUserWithCreditCardAsRecurringPayment {
     }
 
     @Test
-    public void step6(){
+    public void step6() {
         BillsPaymentsPage.pressDirectDebitTab();
         BillsPaymentsPage.checkThatAccountOlderAndIbanAreNotFilled();
     }

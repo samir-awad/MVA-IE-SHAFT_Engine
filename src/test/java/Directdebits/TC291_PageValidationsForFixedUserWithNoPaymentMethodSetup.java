@@ -11,7 +11,7 @@ import Pages.Login;
 import Pages.Settings;
 
 public class TC291_PageValidationsForFixedUserWithNoPaymentMethodSetup {
-	private WebDriver driver;
+    private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
     private BillsPayments BillsPaymentsPage;
@@ -24,7 +24,7 @@ public class TC291_PageValidationsForFixedUserWithNoPaymentMethodSetup {
         HomePage = new Home(driver);
         BillsPaymentsPage = new BillsPayments(driver);
         SettingsPage = new Settings(driver);
-       // LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
+        // LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
     }
 
     @Test
@@ -36,6 +36,5 @@ public class TC291_PageValidationsForFixedUserWithNoPaymentMethodSetup {
         BillsPaymentsPage.checkThatAccountOlderAndIbanAreNotFilled();
         BillsPaymentsPage.pressSavedCardsTab();
         BillsPaymentsPage.checkThatNoneOfTheCardsAreSavedAsRecurringPayment();
-
     }
 }

@@ -25,7 +25,7 @@ public class TC183_ValidateBillPayUserWithNoPaymentMethodSetUp {
         HomePage = new Home(driver);
         BillsPaymentsPage = new BillsPayments(driver);
         SettingsPage = new Settings(driver);
-       // LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
+        // LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
     }
 
 
@@ -33,13 +33,20 @@ public class TC183_ValidateBillPayUserWithNoPaymentMethodSetUp {
     @Test
     public void DirectDebitWithNoPaymentMethodSetUp() {
         Verifications.verifyTrue(HomePage.checkDirectDebitTile());
+    }
+
+    @Test
+    public void step2() {
         HomePage.pressDirectDebitTile();
         Verifications.verifyTrue(BillsPaymentsPage.checkPaymentMethodText());
         BillsPaymentsPage.checkNoPaymentMethodText();
         BillsPaymentsPage.checkThatAccountOlderAndIbanAreNotFilled();
+    }
+
+    @Test
+    public void step3() {
         BillsPaymentsPage.pressSavedCardsTab();
         BillsPaymentsPage.checkThatNoneOfTheCardsAreSavedAsRecurringPayment();
-
     }
 }
 

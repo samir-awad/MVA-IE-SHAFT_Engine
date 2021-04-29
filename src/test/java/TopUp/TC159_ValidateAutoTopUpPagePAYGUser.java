@@ -20,44 +20,41 @@ public class TC159_ValidateAutoTopUpPagePAYGUser {
 
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        TopUpPage= new TopUp(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        TopUpPage = new TopUp(driver);
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("PAYGUserWithTopUp.username");
         String password = users.getTestData("PAYGUserWithTopUp.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
     }
 
     @Test
-    public void CheckVodafoneLogoAndWelcomeGesture(){
-        Assertions.assertTrue(HomePage.checkTheVodafoneLogo(),"checking vodafone logo And Welcome Gesture");
+    public void CheckVodafoneLogoAndWelcomeGesture() {
+        Assertions.assertElementExists(driver, HomePage.getVodafoneLogo());
     }
 
     @Test(dependsOnMethods = "CheckVodafoneLogoAndWelcomeGesture")
-    public void CheckSetAutoTopUpOptionPage(){
+    public void CheckSetAutoTopUpOptionPage() {
         HomePage.pressBalanceTitle();
         TopUpPage.pressTopUpOverlayMoreOptionsButton();
         TopUpPage.pressMoreOptionsOverlaySetAutoTopUpOption();
-        Verifications.verifyElementAttribute(driver,TopUpPage.getAutoTopUpPageHeader_text(),
-                "text","Auto top up","checking Auto Top Up Page Header");
-        Assertions.assertElementAttribute(driver,TopUpPage.getAutoTopUpPageMyNumber_text(),
-                "text","My number","Checking Auto Top Up Page Content");
+        Verifications.verifyElementExists(driver, TopUpPage.getAutoTopUpPageHeader_text());
+        Assertions.assertElementExists(driver, TopUpPage.getAutoTopUpPageMyNumber_text());
     }
 
     @Test(dependsOnMethods = "CheckSetAutoTopUpOptionPage")
-    public void ValidateSetAutoTopUpOptionPageBackBtn(){
+    public void ValidateSetAutoTopUpOptionPageBackBtn() {
         TopUpPage.pressAutoTopUpBackButton();
-        Assertions.assertElementAttribute(driver,TopUpPage.getMoreOptionOverlayHeader_text(),
-                "text","More options","checking more options overlay header");
+        Assertions.assertElementExists(driver, TopUpPage.getMoreOptionOverlayHeader_text());
     }
 
     @Test(dependsOnMethods = "ValidateSetAutoTopUpOptionPageBackBtn")
-    public void ValidateSetAutoTopUpOptionPageCancelBtn(){
+    public void ValidateSetAutoTopUpOptionPageCancelBtn() {
         TopUpPage.pressMoreOptionsOverlaySetAutoTopUpOption();
         TopUpPage.pressCancelBtn();
-        Assertions.assertTrue(HomePage.checkTheVodafoneLogo(),"checking vodafone logo And Welcome Gesture");
+        Assertions.assertElementExists(driver, HomePage.getVodafoneLogo());
     }
 }
