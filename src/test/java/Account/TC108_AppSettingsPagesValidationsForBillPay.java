@@ -1,9 +1,6 @@
 package Account;
 
-import Pages.Account;
-import Pages.ChangePlan;
-import Pages.Home;
-import Pages.Login;
+import Pages.*;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
@@ -12,12 +9,15 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC103_AccountOverlayValidationForBillPay {
+public class TC108_AppSettingsPagesValidationsForBillPay {
 
     private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
     private Account  AccountPage;
+    private Permission PermissionPage;
+    private RateUs RateUsPage;
+
     private JSONFileManager users;
 
     @BeforeClass
@@ -27,6 +27,8 @@ public class TC103_AccountOverlayValidationForBillPay {
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         AccountPage=new Account(driver);
+        PermissionPage = new Permission(driver);
+        RateUsPage = new RateUs(driver);
         users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
         String username = users.getTestData("BillPayUser.username");
         String password = users.getTestData("BillPayUser.password");
@@ -34,9 +36,21 @@ public class TC103_AccountOverlayValidationForBillPay {
         // LoginPage.acceptPermissions();
     }
     @Test
-    public void AccountOverlayValidationForBillPay  (){
+    public void AppSettingsPagesValidationsForBillPay(){
         Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         AccountPage.pressAccountTrayMenuOption();
-        Assertions.assertElementExists(driver,AccountPage.getCheckAccountOverlay());
-    }
+        Verifications.verifyElementExists(driver,AccountPage.getCheckAccountOverlay());
+        AccountPage.pressAccountSettingOption();
+        AccountPage.pressAppPermissionsOption();
+        Verifications.verifyElementExists(driver,PermissionPage.getCheckAppPermissionsPageHeader());
+        Verifications.verifyElementExists(driver,PermissionPage.getCheckAppPermissionsPageContent());
+        PermissionPage.pressAccountHeaderBackChevron();
+        Verifications.verifyElementExists(driver,AccountPage.getCheckAccountSettingsPageHeader());
+        AccountPage.pressRateUsOption();
+        Verifications.verifyElementExists(driver,RateUsPage.getCheckRateUsOverlay());
+        RateUsPage.PressNoInRateUsPage();
+        Verifications.verifyElementExists(driver,RateUsPage.getCheckSorryToHearOverlay());
+        RateUsPage.pressSorryToHearOverlayCloseButton();
+        Assertions.assertElementExists(driver, AccountPage.getCheckAccountSettingsPageHeader());
+        }
 }

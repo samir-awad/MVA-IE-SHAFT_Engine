@@ -31,6 +31,7 @@ public class TC158_ValidateMoreOptionsOverlayPAYGUser {
     }
 
     @Test
+
     public void CheckVodafoneLogoAndWelcomeGesture() {
         Assertions.assertElementExists(driver, HomePage.getVodafoneLogo());
     }

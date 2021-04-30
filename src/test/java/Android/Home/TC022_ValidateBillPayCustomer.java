@@ -27,7 +27,7 @@ public class TC022_ValidateBillPayCustomer {
     }
     @Test
     public void ValidateBillPayCustomer(){
-        Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         Verifications.verifyTrue(HomePage.checkNextBillTile());
         Verifications.verifyTrue(HomePage.checkAmountDueTile());
         Verifications.verifyTrue(HomePage.checkDirectDebitTile());

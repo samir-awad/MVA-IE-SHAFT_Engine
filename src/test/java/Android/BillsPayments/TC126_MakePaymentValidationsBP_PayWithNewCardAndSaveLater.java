@@ -29,7 +29,7 @@ public class TC126_MakePaymentValidationsBP_PayWithNewCardAndSaveLater {
     }
     @Test
     public void MakePaymentValidationsBP_PayWithNewCardAndSaveLater(){
-        Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         HomePage.pressBillsPaymentsTrayMenuOption();
         BillsPaymentsPage.pressMakeAPaymentButton();
         Verifications.verifyTrue(BillsPaymentsPage.checkMakeAPaymentOverlayHeader());

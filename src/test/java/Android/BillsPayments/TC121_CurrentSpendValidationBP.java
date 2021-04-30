@@ -30,7 +30,7 @@ public class TC121_CurrentSpendValidationBP {
     @Test
     public void ValidateCurrentSpendBP(){
 
-        Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         Verifications.verifyTrue(HomePage.checkNextBillTile());
         HomePage.pressNextBillTile();
         Verifications.verifyTrue(BillsPaymentsPage.checkCurrentSpendOverlay());

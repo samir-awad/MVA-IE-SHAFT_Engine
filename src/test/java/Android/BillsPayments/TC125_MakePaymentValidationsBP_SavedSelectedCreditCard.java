@@ -30,7 +30,7 @@ public class TC125_MakePaymentValidationsBP_SavedSelectedCreditCard {
     }
     @Test
     public void MakePaymentValidationsBP_SavedSelectedCreditCard(){
-        Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         HomePage.pressBillsPaymentsTrayMenuOption();
         BillsPaymentsPage.pressMakeAPaymentButton();
         Verifications.verifyTrue(BillsPaymentsPage.checkMakeAPaymentOverlayHeader());

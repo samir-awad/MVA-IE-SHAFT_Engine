@@ -23,7 +23,7 @@ public class TC157_ValidateTopUpConfirmationPagePAYGUser {
     private TopUp TopUpPage;
 
     @BeforeClass
-    public void beforeClass() throws IOException, ParseException {
+    public void beforeClass()  {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
@@ -35,6 +35,7 @@ public class TC157_ValidateTopUpConfirmationPagePAYGUser {
     }
 
     @Test
+
     public void CheckVodafoneLogoAndWelcomeGesture() {
         Assertions.assertElementExists(driver, HomePage.getVodafoneLogo());
     }

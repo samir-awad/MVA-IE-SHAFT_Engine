@@ -63,7 +63,7 @@ public class TC181_ValidateBillPayUserWithCreditCardAsRecurringPayment {
     @Test
     public void step4() {
         BillsPaymentsPage.pressCloseButtonInBillsPaymentsView();
-        Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         HomePage.pressAccountTrayMenuOption();
         HomePage.pressAccountSettingOption();
     }

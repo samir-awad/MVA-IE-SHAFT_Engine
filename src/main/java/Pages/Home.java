@@ -256,8 +256,8 @@ public class Home {
         return ElementActions.isElementDisplayed(driver, Support_button);
     }
 
-    public boolean checkTheVodafoneLogo() {
-        return ElementActions.isElementDisplayed(driver, VodafoneLogo);
+    public By getCheckTheVodafoneLogo() {
+        return VodafoneLogo;
     }
 
     public boolean checkSelectAccountAndSubscriptionComponent() {
