@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC158_ValidateMoreOptionsOverlayPAYGUser {
+public class TC161_ValidateTopUpWithVoucherPAYGUser {
     private WebDriver driver;
     private JSONFileManager users;
     private Login LoginPage;
@@ -31,7 +31,6 @@ public class TC158_ValidateMoreOptionsOverlayPAYGUser {
     }
 
     @Test
-
     public void CheckVodafoneLogoAndWelcomeGesture() {
         Assertions.assertElementExists(driver, HomePage.getVodafoneLogo());
     }
@@ -40,18 +39,15 @@ public class TC158_ValidateMoreOptionsOverlayPAYGUser {
     public void CheckMoreOptionsOverlay() {
         HomePage.pressBalanceTitle();
         TopUpPage.pressTopUpOverlayMoreOptionsButton();
-        Assertions.assertElementExists(driver, TopUpPage.getMoreOptionOverlayHeader_text());
+        TopUpPage.pressMoreOptionsOverlayTopUpWithVoucherOption();
+        Assertions.assertElementExists(driver, TopUpPage.getChooseTheNumber_text());
     }
 
     @Test(dependsOnMethods = "CheckMoreOptionsOverlay")
-    public void ValidateMoreOptionsOverlayBackBtn() {
-        TopUpPage.pressMoreOptionsOverlayBackButton();
-        Assertions.assertElementExists(driver, HomePage.getTopUpOverlayTitle_text());
-    }
-
-    @Test(dependsOnMethods = "ValidateMoreOptionsOverlayBackBtn")
-    public void ValidateMoreOptionsOverlayCloseBtn() {
-        TopUpPage.pressTopUpOverlayCloseButton();
-        Assertions.assertElementExists(driver, HomePage.getVodafoneLogo());
+    public void ValidateBackButton() {
+        TopUpPage.pressAutoTopUpBackButton();
+        TopUpPage.pressMoreOptionsOverlayTopUpWithVoucherOption();
+        //The following assertion sometimes fails
+        Assertions.assertElementExists(driver, TopUpPage.getVoucherTopUpHeader_text());
     }
 }

@@ -1,9 +1,15 @@
 package Login;
 
+import FileReaders.GetUserFromJson;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.validation.Assertions;
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 public class TC092_CheckOnboardingPages{
 
@@ -16,27 +22,21 @@ public class TC092_CheckOnboardingPages{
         LoginPage = new Login(driver);
     }
 
-//    @Test(priority = 1)
-//    public void Step1() {
-//        ExtentTestManager.startTest("TC092_CheckOnboardingPages","Check Terms And Conditions Page & Accept Terms And Conditions");
-//        System.out.println("Step 1 : accept And Continue In Terms And Conditions");
-//        loginPageObject = new LoginPage(GlobalDriver.appium);
-//        loginPageObject.AcceptAndContinue();
-//    }
-//
-//    @Test(priority = 2)
-//    public void Step2() throws IOException, ParseException {
-//        System.out.println("Step 2");
-//        loginPageObject.VfLogo.isDisplayed();
-//        System.out.println("I'm On Login & Register Page");
-//        loginPageObject.RegLoginBtn.click();
-//        loginPageObject.LoginAction(GetUserFromJson.getUsername("IE"),GetUserFromJson.getpassword("IE"));
-//        loginPageObject.LetsGoBtn.isDisplayed();
-//    }
-//
-//    @Test(priority = 3)
-//    public void Step3(){
-//        loginPageObject.LetsGoBtn.click();
-//
-//    }
+    @Test()
+    public void Check_And_Accept_And_Continue_In_Terms_And_Conditions() {
+        Assertions.assertElementExists(driver,LoginPage.getTermsAndConditions_Header());
+        LoginPage.acceptTermsAndConditions();
+    }
+
+    @Test(dependsOnMethods = {"Check_And_Accept_And_Continue_In_Terms_And_Conditions"})
+    public void Check_That_Im_On_Registration_And_Login_Page(){
+        Assertions.assertElementExists(driver,LoginPage.getVodafone_Logo(),"I'm on Register And Login Page");
+
+    }
+
+    @Test(dependsOnMethods = {"Check_That_Im_On_Registration_And_Login_Page"})
+    public void Step2() throws IOException, ParseException {
+        LoginPage.login(GetUserFromJson.getUsername("IE"), GetUserFromJson.getpassword("IE"));
+        Assertions.assertElementExists(driver,LoginPage.getLetsGo_Button());
+    }
 }

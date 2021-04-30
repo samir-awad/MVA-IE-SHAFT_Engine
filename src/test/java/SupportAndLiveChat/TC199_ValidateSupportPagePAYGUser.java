@@ -31,8 +31,7 @@ public class TC199_ValidateSupportPagePAYGUser {
         users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
         String username = users.getTestData("PAYGUser.username");
         String password = users.getTestData("PAYGUser.password");
-        LoginPage.acceptTermsAndConditions().login(username, password);
-        //.acceptPermissions();
+        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
     }
 
     @Test

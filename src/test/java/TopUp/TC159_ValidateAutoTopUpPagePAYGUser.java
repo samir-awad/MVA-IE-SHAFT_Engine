@@ -6,11 +6,12 @@ import Pages.TopUp;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
+import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC158_ValidateMoreOptionsOverlayPAYGUser {
+public class TC159_ValidateAutoTopUpPagePAYGUser {
     private WebDriver driver;
     private JSONFileManager users;
     private Login LoginPage;
@@ -31,27 +32,29 @@ public class TC158_ValidateMoreOptionsOverlayPAYGUser {
     }
 
     @Test
-
     public void CheckVodafoneLogoAndWelcomeGesture() {
         Assertions.assertElementExists(driver, HomePage.getVodafoneLogo());
     }
 
     @Test(dependsOnMethods = "CheckVodafoneLogoAndWelcomeGesture")
-    public void CheckMoreOptionsOverlay() {
+    public void CheckSetAutoTopUpOptionPage() {
         HomePage.pressBalanceTitle();
         TopUpPage.pressTopUpOverlayMoreOptionsButton();
+        TopUpPage.pressMoreOptionsOverlaySetAutoTopUpOption();
+        Verifications.verifyElementExists(driver, TopUpPage.getAutoTopUpPageHeader_text());
+        Assertions.assertElementExists(driver, TopUpPage.getAutoTopUpPageMyNumber_text());
+    }
+
+    @Test(dependsOnMethods = "CheckSetAutoTopUpOptionPage")
+    public void ValidateSetAutoTopUpOptionPageBackBtn() {
+        TopUpPage.pressAutoTopUpBackButton();
         Assertions.assertElementExists(driver, TopUpPage.getMoreOptionOverlayHeader_text());
     }
 
-    @Test(dependsOnMethods = "CheckMoreOptionsOverlay")
-    public void ValidateMoreOptionsOverlayBackBtn() {
-        TopUpPage.pressMoreOptionsOverlayBackButton();
-        Assertions.assertElementExists(driver, HomePage.getTopUpOverlayTitle_text());
-    }
-
-    @Test(dependsOnMethods = "ValidateMoreOptionsOverlayBackBtn")
-    public void ValidateMoreOptionsOverlayCloseBtn() {
-        TopUpPage.pressTopUpOverlayCloseButton();
+    @Test(dependsOnMethods = "ValidateSetAutoTopUpOptionPageBackBtn")
+    public void ValidateSetAutoTopUpOptionPageCancelBtn() {
+        TopUpPage.pressMoreOptionsOverlaySetAutoTopUpOption();
+        TopUpPage.pressCancelBtn();
         Assertions.assertElementExists(driver, HomePage.getVodafoneLogo());
     }
 }

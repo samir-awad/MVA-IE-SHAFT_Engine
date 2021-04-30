@@ -23,7 +23,7 @@ public class TC248_ValidateAddOnsPagePAYGUserWithMonthlyAddOns {
     private AddOns AddOnsPage;
 
     @BeforeClass
-    public void beforeClass() throws IOException, ParseException {
+    public void beforeClass(){
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
@@ -31,8 +31,7 @@ public class TC248_ValidateAddOnsPagePAYGUserWithMonthlyAddOns {
         users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
         String username = users.getTestData("PAYGUser.username");
         String password = users.getTestData("PAYGUser.password");
-        LoginPage.acceptTermsAndConditions().login(username, password);
-        //.acceptPermissions();
+        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
     }
 
     @Test

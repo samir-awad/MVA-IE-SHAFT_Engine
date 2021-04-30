@@ -2,13 +2,8 @@ package Pages;
 
 import com.shaft.gui.element.ElementActions;
 import io.appium.java_client.MobileBy;
-import io.cucumber.java.en.Then;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-
-import java.util.List;
 
 
 public class BillsPayments {
@@ -60,26 +55,26 @@ public class BillsPayments {
     public BillsPayments(WebDriver driver) {
 
         this.driver = driver;
-        if (System.getProperty("targetOperatingSystem").equals("Android")){
+        if (System.getProperty("targetOperatingSystem").equals("Android")) {
 
             CurrentSpendLastBillTitle = new MobileBy.ByAccessibilityId("id_dashboard_next_bill_details_title");
             Bills_Payments_Button = By.xpath("//android.view.ViewGroup[@content-desc=\"Button\"]");
             BillsPaymentTitle = new MobileBy.ByAccessibilityId("id_header_title_Bills_&_Payments");
-            CloseBTN = new MobileBy.ByAccessibilityId("id_header_close_icon");
+            CloseBTN = By.xpath("(//android.widget.ImageView[@content-desc=\"id_header_close_icon\"])[2]");
             Download_Button = new MobileBy.ByAccessibilityId("Download March 2021 bill");
             MakePayment_Button = By.xpath("(//android.view.ViewGroup[@content-desc=\"Button\"])[1]");
             MakeAdvancePayment_button = new MobileBy.ByAccessibilityId("Make advance payment");
             MakeAPaymentHeader = new MobileBy.ByAccessibilityId("id_bills_payments_make_payment_title");
             PaymentFirstBill = new MobileBy.ByAccessibilityId("id_bills_payments_make_payment_bill_8_value");
-            PaymentAmountField =new MobileBy.ByAccessibilityId("id_bills_payments_make_payment_amount_input");
+            PaymentAmountField = new MobileBy.ByAccessibilityId("id_bills_payments_make_payment_amount_input");
             PaymentMethod = new MobileBy.ByAccessibilityId("id_bills_payments_make_payment_payment_method_title");
             Edit_Button = By.xpath("//android.view.ViewGroup[@content-desc=\"Select or add a card to pay €48.67\"])[2]");
-            Payment_Button =new MobileBy.ByAccessibilityId("Make payment");
+            Payment_Button = new MobileBy.ByAccessibilityId("Make payment");
             VisaData = new MobileBy.ByAccessibilityId("Visa ending in 3363. Selected");
             UseSelectedCard_Button = new MobileBy.ByAccessibilityId("Use selected card");
             VestaField = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]/android.view.View");
-            NewCardAndSaveItForLater_Button =new MobileBy.ByAccessibilityId("Button. Navigates to add card screen.");
-            NewCardWithoutSaving_Button =new MobileBy.ByAccessibilityId("Button. Navigates to payment screen");
+            NewCardAndSaveItForLater_Button = new MobileBy.ByAccessibilityId("Button. Navigates to add card screen.");
+            NewCardWithoutSaving_Button = new MobileBy.ByAccessibilityId("Button. Navigates to payment screen");
             //DirectDebits
             AccountSettings_Text = new MobileBy.ByAccessibilityId("id_dashboard_my_usage_title");
             PaymentMethod_Text = new MobileBy.ByAccessibilityId("id_header_title_Payment_method");
@@ -104,9 +99,9 @@ public class BillsPayments {
             CheckSavedCardContent0_Text = new MobileBy.ByAccessibilityId("id_payment_method_card_item_description_cards_0");
             CheckSavedCardContent1_Text = new MobileBy.ByAccessibilityId("id_payment_method_card_description_cards_0");
             InvalidIbanOverlay_Title = new MobileBy.ByAccessibilityId("id_payment_method_invalid_iban_overlay_title");
-            
 
-        }else{
+
+        } else {
 
             CurrentSpendLastBillTitle = new MobileBy.ByAccessibilityId("id_dashboard_next_bill_details_title");
             Bills_Payments_Button = new MobileBy.ByAccessibilityId("Bills & payments");
@@ -117,49 +112,71 @@ public class BillsPayments {
             MakeAdvancePayment_button = new MobileBy.ByAccessibilityId("Make advance payment");
             MakeAPaymentHeader = new MobileBy.ByAccessibilityId("id_bills_payments_make_payment_title");
             PaymentFirstBill = new MobileBy.ByAccessibilityId("id_bills_payments_make_payment_bill_8_value");
-            PaymentAmountField =new MobileBy.ByAccessibilityId("id_bills_payments_make_payment_amount_input");
+            PaymentAmountField = new MobileBy.ByAccessibilityId("id_bills_payments_make_payment_amount_input");
             PaymentMethod = new MobileBy.ByAccessibilityId("Select or add a card to pay €48.67");
             Edit_Button = new MobileBy.ByAccessibilityId("Select or add a card to pay €48.67");
-            Payment_Button =new MobileBy.ByAccessibilityId("Make payment");
+            Payment_Button = new MobileBy.ByAccessibilityId("Make payment");
             VisaData = new MobileBy.ByAccessibilityId("Visa ending in 3363. Selected");
             UseSelectedCard_Button = new MobileBy.ByAccessibilityId("Use selected card");
             VestaField = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]/android.view.View");
-            NewCardAndSaveItForLater_Button =new MobileBy.ByAccessibilityId("Button. Navigates to add card screen.");
-            NewCardWithoutSaving_Button =new MobileBy.ByAccessibilityId("Button. Navigates to payment screen");
+            NewCardAndSaveItForLater_Button = new MobileBy.ByAccessibilityId("Button. Navigates to add card screen.");
+            NewCardWithoutSaving_Button = new MobileBy.ByAccessibilityId("Button. Navigates to payment screen");
+            //DirectDebits
+            AccountSettings_Text = new MobileBy.ByAccessibilityId("id_header_title_Settings");
+            PaymentMethod_Text = new MobileBy.ByAccessibilityId("Payment method");
+            CreditCardAsRecurringPayment0_Title = new MobileBy.ByAccessibilityId("id_payment_method_header_title");
+            CreditCardAsRecurringPaymentSub_Title = new MobileBy.ByAccessibilityId("id_payment_method_header_sub_title1");
+            CreditCardAsRecurringPaymentSaved_Tab = By.xpath("(//XCUIElementTypeOther[@name=\"Saved Cards\"])[2]");
+            CreditCardAsRecurringPaymentDirectDebit_Tab = By.xpath("(//XCUIElementTypeOther[@name=\"Direct Debit\"])[2]");
+            AccountHolder_Text = By.xpath("(//XCUIElementTypeTextField[@name=\"id_account_and_email_name_input\"])[1]");
+            Iban_Text = By.xpath("(//XCUIElementTypeTextField[@name=\"id_account_and_email_name_input\"])[2]");
+            NoneSavedCards_Text = new MobileBy.ByAccessibilityId("id_payment_method_card_list_no_cards_info_text");
+            NoPaymentMethod_Text = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.TextView");
+            AddNewCard_Button = new MobileBy.ByAccessibilityId("id_add_new_card_button");
+            AddNewCard_Overlay = new MobileBy.ByAccessibilityId("id_payment_method_add_card_description_main_text");
+            AddNewCardOverlayClose_Button = By.xpath("//android.widget.ImageView[@content-desc=\"id_payment_method_add_card_overlay_close\"]");
+            AddNewCardOverlayNo_Button = new MobileBy.ByAccessibilityId("id_payment_method_add_card_close_button");
+            AddNewCardOverlayContinue_Button = new MobileBy.ByAccessibilityId("id_payment_method_add_card_continue_button");
+            UseThisCard_Button = By.xpath("(//android.widget.Button[@content-desc=\"id_use_this_card_button\"])[1]");
+            UseThisCardOverlay_Text = new MobileBy.ByAccessibilityId("id_payment_method_change_card_description_main_text");
+            ChangeYourCardOverlayClose_Button = By.xpath("//android.widget.ImageView[@content-desc=\"id_payment_method_change_card_overlay_close\"]");
+            ChangeYourCardOverlayNo_Button = new MobileBy.ByAccessibilityId("id_payment_method_change_card_close_button");
+            ChangeYourCardOverlayContinue_Button = new MobileBy.ByAccessibilityId("id_payment_method_change_card_continue_button");
+            CheckSavedCardContent0_Text = new MobileBy.ByAccessibilityId("id_payment_method_card_item_description_cards_0");
+            CheckSavedCardContent1_Text = new MobileBy.ByAccessibilityId("id_payment_method_card_description_cards_0");
+            InvalidIbanOverlay_Title = new MobileBy.ByAccessibilityId("id_payment_method_invalid_iban_overlay_title");
 
         }
     }
  
     public boolean checkCurrentSpendOverlay()
     {
+
         return ElementActions.isElementDisplayed(driver, CurrentSpendLastBillTitle);
     }
 
-    public void pressViewBillsAndPaymentsButton()
-    {
+    public void pressViewBillsAndPaymentsButton() {
         ElementActions.performTouchAction(driver).tap(Bills_Payments_Button);
     }
 
     public boolean checkBillsPaymentsHeader()
     {
-
-        return  ElementActions.isElementDisplayed(driver, BillsPaymentTitle);
+        return ElementActions.isElementDisplayed(driver, BillsPaymentTitle);
     }
-    public void pressCloseButtonInBillsPaymentsView()
-    {
+
+    public void pressCloseButtonInBillsPaymentsView() {
         ElementActions.performTouchAction(driver).tap(CloseBTN);
     }
 
-    public void  pressDownloadBillButton()
-    {
+    public void pressDownloadBillButton() {
         ElementActions.performTouchAction(driver).tap(Download_Button);
     }
 
-    public void  pressMakeAPaymentButton() {
-            ElementActions.performTouchAction(driver).tap(MakePayment_Button);
+    public void pressMakeAPaymentButton() {
+        ElementActions.performTouchAction(driver).tap(MakePayment_Button);
     }
 
-    public void  pressMakeAdvancePaymentButton() {
+    public void pressMakeAdvancePaymentButton() {
         ElementActions.performTouchAction(driver).tap(MakeAdvancePayment_button);
     }
 
@@ -180,12 +197,12 @@ public class BillsPayments {
     {
         return  ElementActions.isElementDisplayed(driver, PaymentMethod);
     }
-    public void pressPaymentMethodEditButton()
-    {
+
+    public void pressPaymentMethodEditButton() {
         ElementActions.performTouchAction(driver).tap(Edit_Button);
     }
-    public void pressMakePaymentButton()
-    {
+
+    public void pressMakePaymentButton() {
         ElementActions.performTouchAction(driver).tap(Payment_Button);
     }
 
@@ -193,27 +210,26 @@ public class BillsPayments {
     {
         return  ElementActions.isElementDisplayed(driver, VisaData);
     }
-    public void  pressPayWithSelectedCardButton()
-    {
+
+    public void pressPayWithSelectedCardButton() {
         ElementActions.performTouchAction(driver).tap(UseSelectedCard_Button);
     }
 
-    public By getVestaField() {return VestaField;}
+    public By getVestaField() {
+        return VestaField;
+    }
 
-    public void pressPayWithNewCardAndSaveItForLaterButton()
-    {
+    public void pressPayWithNewCardAndSaveItForLaterButton() {
         ElementActions.performTouchAction(driver).tap(NewCardAndSaveItForLater_Button);
     }
 
-    public void pressPayWithNewCardWithoutSavingItButton()
-    {
+    public void pressPayWithNewCardWithoutSavingItButton() {
         ElementActions.performTouchAction(driver).tap(NewCardWithoutSaving_Button);
     }
 
     //DirectDebits
-    public boolean checkAccountSettingsText()
-    {
-        return  ElementActions.isElementDisplayed(driver, AccountSettings_Text);
+    public boolean checkAccountSettingsText() {
+        return ElementActions.isElementDisplayed(driver, AccountSettings_Text);
     }
 
     public boolean checkPaymentMethodText()
@@ -246,15 +262,14 @@ public class BillsPayments {
         return result;
     }
 
-    public void pressDirectDebitTab()
-    {
+    public void pressDirectDebitTab() {
         ElementActions.performTouchAction(driver).tap(CreditCardAsRecurringPaymentDirectDebit_Tab);
     }
 
-    public void pressSavedCardsTab()
-    {
+    public void pressSavedCardsTab() {
         ElementActions.performTouchAction(driver).tap(CreditCardAsRecurringPaymentSaved_Tab);
     }
+
 
     public boolean checkThatAccountOlderAndIbanAreFilled()
     {
@@ -264,7 +279,6 @@ public class BillsPayments {
         else
             result = false;
         return result;
-
     }
 
     public boolean checkThatAccountOlderAndIbanAreNotFilled()
@@ -280,16 +294,15 @@ public class BillsPayments {
 
     public boolean checkThatNoneOfTheCardsAreSavedAsRecurringPayment()
     {
+
         return ElementActions.isElementDisplayed(driver, NoneSavedCards_Text);
     }
 
-    public boolean checkNoPaymentMethodText()
-    {
+    public boolean checkNoPaymentMethodText() {
         return ElementActions.isElementDisplayed(driver, NoPaymentMethod_Text);
     }
 
-    public void pressAndNewCardButton()
-    {
+    public void pressAndNewCardButton() {
         ElementActions.performTouchAction(driver).tap(AddNewCard_Button);
     }
 
@@ -298,18 +311,15 @@ public class BillsPayments {
         return ElementActions.isElementDisplayed(driver, AddNewCard_Overlay);
     }
 
-    public void pressAddNewCardOverlayCloseButton()
-    {
+    public void pressAddNewCardOverlayCloseButton() {
         ElementActions.performTouchAction(driver).tap(AddNewCardOverlayClose_Button);
     }
 
-    public void pressAddNewCardOverlayNoButton()
-    {
+    public void pressAddNewCardOverlayNoButton() {
         ElementActions.performTouchAction(driver).tap(AddNewCardOverlayNo_Button);
     }
 
-    public void pressAddNewCardOverlayContinueButton()
-    {
+    public void pressAddNewCardOverlayContinueButton() {
         ElementActions.performTouchAction(driver).tap(AddNewCardOverlayContinue_Button);
     }
 
@@ -318,8 +328,7 @@ public class BillsPayments {
         return ElementActions.isElementDisplayed(driver, UseThisCard_Button);
     }
 
-    public void pressUseThisCardButton()
-    {
+    public void pressUseThisCardButton() {
         ElementActions.performTouchAction(driver).tap(UseThisCard_Button);
     }
 
@@ -328,8 +337,7 @@ public class BillsPayments {
         return ElementActions.isElementDisplayed(driver, UseThisCardOverlay_Text);
     }
 
-    public void pressChangeYourCardOverlayCloseButton()
-    {
+    public void pressChangeYourCardOverlayCloseButton() {
         ElementActions.performTouchAction(driver).tap(ChangeYourCardOverlayClose_Button);
     }
 
@@ -344,20 +352,17 @@ public class BillsPayments {
         return result;
     }
 
-    public void pressChangeYourCardOverlayNoButton()
-    {
+    public void pressChangeYourCardOverlayNoButton() {
         ElementActions.performTouchAction(driver).tap(ChangeYourCardOverlayNo_Button);
     }
 
-    public void pressChangeYourCardOverlayContinueButton()
-    {
+    public void pressChangeYourCardOverlayContinueButton() {
         ElementActions.performTouchAction(driver).tap(ChangeYourCardOverlayContinue_Button);
     }
 
-    public void insertAccountHolderAndInvalidIban()
-    {
-        ElementActions.type(driver, AccountHolder_Text , "Test");
-        ElementActions.type(driver, Iban_Text , "132rergert5t4grevfrv54");
+    public void insertAccountHolderAndInvalidIban() {
+        ElementActions.type(driver, AccountHolder_Text, "Test");
+        ElementActions.type(driver, Iban_Text, "132rergert5t4grevfrv54");
     }
 
     public boolean checkErrorMessageForInvalidIban()
