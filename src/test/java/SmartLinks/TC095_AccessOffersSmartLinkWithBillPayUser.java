@@ -37,7 +37,7 @@ public class TC095_AccessOffersSmartLinkWithBillPayUser
         System.setProperty("mobile_browserName","Chrome");
         System.setProperty("MobileBrowserVersion","90.0.4430.24");
         options.addArguments("user-data-dir=/data/user/0/com.android.chrome/app_chrome");
-        driver= BrowserFactory.getBrowser(BrowserFactory.BrowserType.GOOGLE_CHROME, options);
+        //driver= BrowserFactory.getBrowser(BrowserFactory.BrowserType.GOOGLE_CHROME, options);
        // driver=BrowserFactory.getBrowser();
         String OffersURL= links.getTestData("Offers.link");
         BrowserActions.navigateToURL(driver,OffersURL);

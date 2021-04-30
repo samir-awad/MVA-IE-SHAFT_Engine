@@ -33,7 +33,7 @@ public class TC160_ValidateTopUpHistoryPagePAYGUser {
 
     @Test
     public void CheckVodafoneLogoAndWelcomeGesture() {
-        Assertions.assertTrue(HomePage.checkTheVodafoneLogo(), "checking vodafone logo And Welcome Gesture");
+        Assertions.assertElementExists(driver,HomePage.getVodafoneLogo());
     }
 
     //This step App sometimes is stop working
@@ -54,7 +54,7 @@ public class TC160_ValidateTopUpHistoryPagePAYGUser {
     @Test(dependsOnMethods = "CheckTopUpHistoryPage")
     public void ValidateTopUpHistoryPageCloseBtn() {
         TopUpPage.pressCloseBtn();
-        Assertions.assertTrue(HomePage.checkTheVodafoneLogo(), "checking vodafone logo And Welcome Gesture");
+        Assertions.assertElementExists(driver,HomePage.getVodafoneLogo());
     }
 
     @Test(dependsOnMethods = "ValidateTopUpHistoryPageCloseBtn")
