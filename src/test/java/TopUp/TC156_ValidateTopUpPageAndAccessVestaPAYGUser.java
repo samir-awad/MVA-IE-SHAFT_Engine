@@ -23,7 +23,7 @@ public class TC156_ValidateTopUpPageAndAccessVestaPAYGUser {
     private JSONFileManager users;
 
     @BeforeClass
-    public void beforeClass() throws IOException, ParseException {
+    public void beforeClass() {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
@@ -57,7 +57,7 @@ public class TC156_ValidateTopUpPageAndAccessVestaPAYGUser {
         HomePage.pressTopUpTrayMenu();
         TopUpPage.pressTopUpOverlayTopUpButton();
         Verifications.verifyElementAttribute(driver,TopUpPage.getTopUpHeader_text(),
-                "text","Top up","checking top up header");
+                "text","Top up 2","checking top up header");
         Verifications.verifyElementAttribute(driver,TopUpPage.getChooseANumber_text(),
                 "text","Choose a number","checking top up page first title");
         Verifications.verifyElementAttribute(driver,TopUpPage.getChooseATopUpAmount_text(),
