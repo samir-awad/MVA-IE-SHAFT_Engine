@@ -31,7 +31,7 @@ public class TC258_ValidateFixedCustomer {
     }
     @Test
     public void ValidateFixedCustomer(){
-        Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         Verifications.verifyTrue(HomePage.checkLastBillTile());
         Verifications.verifyTrue(HomePage.checkDiscoverySection());
         Verifications.verifyTrue(HomePage.checkEssentialsSection());

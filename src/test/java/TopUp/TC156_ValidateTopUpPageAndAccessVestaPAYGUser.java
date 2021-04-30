@@ -23,7 +23,7 @@ public class TC156_ValidateTopUpPageAndAccessVestaPAYGUser {
     private JSONFileManager users;
 
     @BeforeClass
-    public void beforeClass() throws IOException, ParseException {
+    public void beforeClass()  {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
@@ -37,7 +37,8 @@ public class TC156_ValidateTopUpPageAndAccessVestaPAYGUser {
 
     @Test
     public void CheckVodafoneLogoAndWelcomeGesture(){
-        Assertions.assertTrue(HomePage.checkTheVodafoneLogo());
+
+        Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
     }
 
     @Test(dependsOnMethods = "CheckVodafoneLogoAndWelcomeGesture")
@@ -50,7 +51,7 @@ public class TC156_ValidateTopUpPageAndAccessVestaPAYGUser {
     @Test(dependsOnMethods = "CheckTopUpOverlay")
     public void CheckTopUpOverlayCloseBtn(){
         TopUpPage.pressTopUpOverlayCloseButton();
-        Assertions.assertTrue(HomePage.checkTheVodafoneLogo());
+        Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
     }
 
     @Test(dependsOnMethods = "CheckTopUpOverlayCloseBtn")

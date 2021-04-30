@@ -23,7 +23,7 @@ public class TC157_ValidateTopUpConfirmationPagePAYGUser {
     private TopUp TopUpPage;
 
     @BeforeClass
-    public void beforeClass() throws IOException, ParseException {
+    public void beforeClass()  {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
@@ -37,7 +37,7 @@ public class TC157_ValidateTopUpConfirmationPagePAYGUser {
 
     @Test
     public void CheckVodafoneLogoAndWelcomeGesture(){
-        Assertions.assertTrue(HomePage.checkTheVodafoneLogo(),"checking vodafone logo And Welcome Gesture");
+        Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
     }
 
     @Test(dependsOnMethods = "CheckVodafoneLogoAndWelcomeGesture")
@@ -64,7 +64,7 @@ public class TC157_ValidateTopUpConfirmationPagePAYGUser {
         TopUpPage.pressCloseBtn();
         Verifications.verifyElementAttribute(driver,HomePage.getBalanceTitle(),
                 "text","Balance","checking you are on home page");
-        Assertions.assertTrue(HomePage.checkTheVodafoneLogo(),"checking vodafone logo And Welcome Gesture");
+        Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
     }
 
 

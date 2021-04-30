@@ -42,7 +42,7 @@ public class TC181_ValidateBillPayUserWithCreditCardAsRecurringPayment {
         SettingsPage.pressPaymentMethodOption();
         Verifications.verifyTrue(BillsPaymentsPage.checkPaymentMethodText());
         BillsPaymentsPage.pressCloseButtonInBillsPaymentsView();
-        Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         HomePage.pressAccountTrayMenuOption();
         HomePage.pressAccountSettingOption();
         SettingsPage.pressPaymentMethodOption();

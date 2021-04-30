@@ -37,7 +37,7 @@ public class TC158_ValidateMoreOptionsOverlayPAYGUser {
 
     @Test
     public void CheckVodafoneLogoAndWelcomeGesture(){
-        Assertions.assertTrue(HomePage.checkTheVodafoneLogo(),"checking vodafone logo And Welcome Gesture");
+        Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
     }
 
     @Test(dependsOnMethods = "CheckVodafoneLogoAndWelcomeGesture")
@@ -58,7 +58,7 @@ public class TC158_ValidateMoreOptionsOverlayPAYGUser {
     @Test(dependsOnMethods = "ValidateMoreOptionsOverlayBackBtn")
     public void ValidateMoreOptionsOverlayCloseBtn(){
         TopUpPage.pressTopUpOverlayCloseButton();
-        Assertions.assertTrue(HomePage.checkTheVodafoneLogo(),"checking vodafone logo And Welcome Gesture");
+        Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
     }
 
 

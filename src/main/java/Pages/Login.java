@@ -226,5 +226,8 @@ public class Login {
     public By getReg_OurPrivacy_Link() {return Reg_OurPrivacy_Link;}
     public By getOurPrivacy_title() {return OurPrivacy_title;}
     public By getOurPrivacy_text() {return OurPrivacy_text;}
+    public By getLoginVf_Logo(){
+        return LoginVf_Logo;
+    }
 
 }

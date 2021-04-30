@@ -26,7 +26,7 @@ public class TC119_ValidatePAYGCustomer_InactiveToUp {
     }
     @Test
     public void ValidatePAYGCustomer_InactiveToUp(){
-        Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         Verifications.verifyTrue(HomePage.checkTopUpOfferTileInactiveTopUp());
         Verifications.verifyTrue(HomePage.checkBalanceTile());
         Verifications.verifyTrue(HomePage.checkTopUpHistoryTile());

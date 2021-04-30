@@ -29,7 +29,7 @@ public class TC124_MakePaymentValidationsBP_EditCardPaymentMethod {
     }
     @Test
     public void MakePaymentValidationsBP(){
-        Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         HomePage.pressBillsPaymentsTrayMenuOption();
         BillsPaymentsPage.pressMakeAdvancePaymentButton();
         Verifications.verifyTrue(BillsPaymentsPage.checkMakeAPaymentOverlayHeader());

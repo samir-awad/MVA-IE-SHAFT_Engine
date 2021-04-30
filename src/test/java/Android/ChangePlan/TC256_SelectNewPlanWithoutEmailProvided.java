@@ -28,7 +28,7 @@ public class TC256_SelectNewPlanWithoutEmailProvided {
     }
     @Test
     public void SelectNewPlanWithoutEmailProvided(){
-        Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         Verifications.verifyTrue(HomePage.checkEssentialsSection());
         HomePage.pressViewOrChangePlan();
         ChangePlanPage.pressYourPlanOverlayCloseButton();
