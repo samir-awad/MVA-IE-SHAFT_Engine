@@ -2,7 +2,9 @@ package Login;
 
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.gui.element.ElementActions;
 import com.shaft.validation.Assertions;
+import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -28,17 +30,26 @@ public class TC03_CheckLoginRegisterAndResetPages {
 
     @Test()
     public void Step2_Check_That_Im_On_Login_And_Register_Page(){
-        Assertions.assertElementExists(driver,LoginPage.getVodafone_Logo(),"I'm On Login Page");
+        Assertions.assertElementExists(driver,LoginPage.getVodafone_Logo(),"I'm On Login and Register Page");
+        LoginPage.PressReg_LoginButton();
     }
 
     @Test()
     public void  Step3_Check_Login_Page(){
-        System.out.println("Step 3 : Check Login Page");
+        Verifications.verifyElementExists(driver,LoginPage.getLoginVf_Logo());
+        Verifications.verifyElementExists(driver,LoginPage.getLoginVf_title());
+        Verifications.verifyElementExists(driver,LoginPage.getPhoneOrEmail_TxtField());
+        Verifications.verifyElementExists(driver,LoginPage.getPassword_TxtField());
+        Verifications.verifyElementExists(driver,LoginPage.getNeedToRegister_link());
+        Verifications.verifyElementExists(driver,LoginPage.getForgotPWD_link());
+        Assertions.assertElementExists(driver,LoginPage.getLoginOurPrivacy_link());
     }
 
     @Test()
     public void Step4_Check_Register_Page(){
-        System.out.println("Step 4 : Check Register Page");
+        ElementActions.performTouchAction(driver).tap(LoginPage.getNeedToRegister_link());
+        Verifications.verifyElementExists(driver,LoginPage.getReg_Register_Txt());
+        Verifications.verifyElementExists(driver,LoginPage.getReg_Register_Txt());
     }
 
     @Test()

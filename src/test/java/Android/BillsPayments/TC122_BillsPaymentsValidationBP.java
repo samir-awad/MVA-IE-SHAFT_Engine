@@ -29,7 +29,7 @@ public class TC122_BillsPaymentsValidationBP {
     @Test
     public void Bills_PaymentsValidateBP(){
 
-        Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());;
         Verifications.verifyTrue(HomePage.checkTrayMenuOptionsForBillPay());
         HomePage.pressBillsPaymentsTrayMenuOption();
         Verifications.verifyTrue(BillsPaymentsPage.checkBillsPaymentsHeader());

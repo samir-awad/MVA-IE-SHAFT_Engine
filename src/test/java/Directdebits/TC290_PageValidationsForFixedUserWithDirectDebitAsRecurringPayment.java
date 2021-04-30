@@ -1,18 +1,16 @@
 package Directdebits;
 
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.validation.Verifications;
 import Pages.BillsPayments;
 import Pages.Home;
 import Pages.Login;
 import Pages.Settings;
-import com.shaft.gui.browser.BrowserFactory;
-import com.shaft.validation.Assertions;
-import com.shaft.validation.Verifications;
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 
-public class TC182_ValidateBillPayUserWithDirectDebitAsRecurringPayment {
-
+public class TC290_PageValidationsForFixedUserWithDirectDebitAsRecurringPayment {
     private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
@@ -29,8 +27,6 @@ public class TC182_ValidateBillPayUserWithDirectDebitAsRecurringPayment {
         //  LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
     }
 
-
-    //TC182 - Page validations for a Bill Pay user with Direct Debit as recurring payment
     @Test
     public void DirectDebitAsRecurringPayment() {
         Verifications.verifyElementExists(driver, HomePage.getDirectDebit_Tab(), Verifications.VerificationType.NEGATIVE);
@@ -39,13 +35,13 @@ public class TC182_ValidateBillPayUserWithDirectDebitAsRecurringPayment {
     @Test
     public void step2() {
         HomePage.pressAccountTrayMenuOption();
-        Assertions.assertTrue(HomePage.CheckAccountOverlaySettingText());
+        Verifications.verifyTrue(HomePage.CheckAccountOverlaySettingText());
     }
 
     @Test
     public void step3() {
         HomePage.pressAccountSettingOption();
-        Assertions.assertTrue(BillsPaymentsPage.checkAccountSettingsText());
+        Verifications.verifyTrue(BillsPaymentsPage.checkAccountSettingsText());
     }
 
     @Test
@@ -53,7 +49,7 @@ public class TC182_ValidateBillPayUserWithDirectDebitAsRecurringPayment {
         SettingsPage.pressPaymentMethodOption();
         Verifications.verifyTrue(BillsPaymentsPage.checkPaymentMethodText());
         Verifications.verifyTrue(BillsPaymentsPage.checkCreditCardAsRecurringPaymentText());
-        Assertions.assertTrue(BillsPaymentsPage.checkThatAccountOlderAndIbanAreFilled());
+        Verifications.verifyTrue(BillsPaymentsPage.checkThatAccountOlderAndIbanAreFilled());
     }
 
     @Test
@@ -62,4 +58,3 @@ public class TC182_ValidateBillPayUserWithDirectDebitAsRecurringPayment {
         Verifications.verifyTrue(BillsPaymentsPage.checkThatNoneOfTheCardsAreSavedAsRecurringPayment());
     }
 }
-

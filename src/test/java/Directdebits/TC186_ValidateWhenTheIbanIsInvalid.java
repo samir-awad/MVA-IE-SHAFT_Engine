@@ -25,20 +25,21 @@ public class TC186_ValidateWhenTheIbanIsInvalid {
         HomePage = new Home(driver);
         BillsPaymentsPage = new BillsPayments(driver);
         SettingsPage = new Settings(driver);
-      //  LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
+        //  LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
     }
 
 
     //TC186 - Check input validation when the IBAN is invalid
     @Test
     public void InvalidIbanErrorMessage() {
-
         HomePage.pressDirectDebitTile();
         Verifications.verifyTrue(BillsPaymentsPage.checkPaymentMethodText());
+    }
+
+    @Test
+    public void step2() {
         BillsPaymentsPage.insertAccountHolderAndInvalidIban();
         BillsPaymentsPage.checkErrorMessageForInvalidIban();
-
-
     }
 }
 

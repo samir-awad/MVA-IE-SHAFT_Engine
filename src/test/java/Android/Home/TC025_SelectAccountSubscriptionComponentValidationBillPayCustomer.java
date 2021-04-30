@@ -26,7 +26,7 @@ public class TC025_SelectAccountSubscriptionComponentValidationBillPayCustomer {
     }
     @Test
     public void SelectAccountSubscriptionComponentValidationBillPayCustomer(){
-        Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         Verifications.verifyTrue(HomePage.checkSelectAccountAndSubscriptionComponent());
         HomePage.pressSelectAccountAndSubscriptionComponent();
         Verifications.verifyTrue(HomePage.checkSelectAccountAndSubscriptionComponentContent());

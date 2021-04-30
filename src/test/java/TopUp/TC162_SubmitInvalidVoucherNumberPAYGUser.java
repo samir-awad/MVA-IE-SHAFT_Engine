@@ -12,6 +12,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC162_SubmitInvalidVoucherNumberPAYGUser {
+
     private WebDriver driver;
     private JSONFileManager users;
     private JSONFileManager vouchers;
@@ -20,46 +21,54 @@ public class TC162_SubmitInvalidVoucherNumberPAYGUser {
     private TopUp TopUpPage;
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
+        System.setProperty("executionAddress", "0.0.0.0:4723");
+        System.setProperty("targetOperatingSystem", "iOS");
+        System.setProperty("mobile_platformVersion", "14.4");
+        System.setProperty("mobile_deviceName", "iPhone");
+        System.setProperty("mobile_automationName", "XCUITest");
+        System.setProperty("mobile_udid", "00008030-001C4D5C1E33802E");
+        System.setProperty("mobile_bundleId", "com.VodafoneIreland.MyVodafone");
+        System.setProperty("mobile_derivedDataPath", "/Users/mva-ireland/Library/Developer/Xcode/DerivedData/WebDriverAgent-ciegwgvxzxdrqthilmrmczmqvrgu");
+
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        TopUpPage= new TopUp(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
-        vouchers = new JSONFileManager(System.getProperty("testDataFolderPath")+"vouchers.json");
+        TopUpPage = new TopUp(driver);
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
+        vouchers = new JSONFileManager(System.getProperty("testDataFolderPath") + "vouchers.json");
         String username = users.getTestData("PAYGUserWithTopUp.username");
         String password = users.getTestData("PAYGUserWithTopUp.password");
-        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
+//        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
     }
 
     @Test
-    public void CheckVodafoneLogoAndWelcomeGesture(){
-        Assertions.assertTrue(HomePage.checkTheVodafoneLogo(),"checking vodafone logo And Welcome Gesture");
+    public void CheckVodafoneLogoAndWelcomeGesture() {
+        Assertions.assertElementExists(driver, HomePage.getVodafoneLogo());
     }
 
     @Test(dependsOnMethods = "CheckVodafoneLogoAndWelcomeGesture")
-    public void CheckMoreOptionsOverlay(){
+    public void CheckMoreOptionsOverlay() {
         HomePage.pressBalanceTitle();
         TopUpPage.pressTopUpOverlayMoreOptionsButton();
         TopUpPage.pressMoreOptionsOverlayTopUpWithVoucherOption();
-        Assertions.assertElementExists(driver,TopUpPage.getChooseTheNumber_text());
+        Assertions.assertElementExists(driver, TopUpPage.getChooseTheNumber_text());
     }
 
     @Test(dependsOnMethods = "CheckMoreOptionsOverlay")
-    public void CheckInsertingInvalidVoucherCode(){
+    public void CheckInsertingInvalidVoucherCode() {
         //Can't be implemented until have PAYG user with subscription and the following code is not working as expected
-        String phoneNumber = users.getTestData("PAYGUserWithoutAddOns.username");
-        String invalidVoucher= vouchers.getTestData("InvalidVoucherPAYGUser.voucher");
-        TopUpPage.submitInvalidVoucher(phoneNumber,invalidVoucher);
+        String phoneNumber = users.getTestData("PAYGUserTopup.username");
+        String invalidVoucher = vouchers.getTestData("InvalidVoucherPAYGUser.voucher");
+        TopUpPage.submitInvalidVoucher(phoneNumber, invalidVoucher);
 
     }
 
     @Test(dependsOnMethods = "CheckInsertingInvalidVoucherCode")
-    public void ValidateCloseButton(){
+    public void ValidateCloseButton() {
         TopUpPage.pressCloseBtn();
-        Verifications.verifyElementAttribute(driver,HomePage.getBalanceTitle(),
-                "text","Balance","checking you are on home page");
-        Assertions.assertTrue(HomePage.checkTheVodafoneLogo(),"checking vodafone logo And Welcome Gesture");
+        Verifications.verifyElementExists(driver, HomePage.getBalanceTitle());
+        Assertions.assertElementExists(driver, HomePage.getVodafoneLogo());
     }
 
 }

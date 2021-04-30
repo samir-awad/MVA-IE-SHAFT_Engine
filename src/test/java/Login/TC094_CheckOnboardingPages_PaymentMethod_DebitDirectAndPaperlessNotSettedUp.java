@@ -1,9 +1,15 @@
 package Login;
 
+import FileReaders.GetUserFromJson;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.validation.Assertions;
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 public class TC094_CheckOnboardingPages_PaymentMethod_DebitDirectAndPaperlessNotSettedUp {
 
@@ -16,24 +22,21 @@ public class TC094_CheckOnboardingPages_PaymentMethod_DebitDirectAndPaperlessNot
         LoginPage = new Login(driver);
     }
 
-//    @Test(priority = 1)
-//    public void Step1() {
-//        ExtentTestManager.startTest("TC094_CheckOnboardingPages_PaymentMethod_DebitDirectAndPaperlessNotSettedUp","Check Terms And Conditions Page & Accept Terms And Conditions");
-//        System.out.println("Step 1 : accept And Continue In Terms And Conditions");
-//        loginPageObject = new LoginPage(GlobalDriver.appium);
-//        loginPageObject.AcceptAndContinue();
-//    }
-//
-//    @Test(priority = 2)
-//    public void Step2() throws IOException, ParseException {
-//        System.out.println("Step 2");
-//        loginPageObject.VfLogo.isDisplayed();
-//        System.out.println("I'm On Login & Register Page");
-//        loginPageObject.RegLoginBtn.click();
-//        loginPageObject.LoginAction(GetUserFromJson.getUsername("IE"), GetUserFromJson.getpassword("IE"));
-//        loginPageObject.OnBoardingSetUpDirectDebit();
-//        loginPageObject.BackBtn.click();
-//        loginPageObject.SetUpDirectDebitBtn.isDisplayed();
-//        System.out.println("Direct Debit Is Not Setted Up");
-//    }
+    @Test()
+    public void Check_And_Accept_And_Continue_In_Terms_And_Conditions() {
+        Assertions.assertElementExists(driver,LoginPage.getTermsAndConditions_Header());
+        LoginPage.acceptTermsAndConditions();
+    }
+
+    @Test(dependsOnMethods = {"Check_And_Accept_And_Continue_In_Terms_And_Conditions"})
+    public void Check_That_Im_On_Registration_And_Login_Page(){
+        Assertions.assertElementExists(driver,LoginPage.getVodafone_Logo(),"I'm on Register And Login Page");
+
+    }
+
+    @Test(dependsOnMethods = {"Check_That_Im_On_Registration_And_Login_Page"})
+    public void Step2() throws IOException, ParseException {
+        LoginPage.login(GetUserFromJson.getUsername("IE"), GetUserFromJson.getpassword("IE"));
+        Assertions.assertElementExists(driver,LoginPage.getLetsGo_Button());
+    }
 }

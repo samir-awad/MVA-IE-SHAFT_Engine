@@ -1,7 +1,6 @@
 package Account;
 
 import Pages.Account;
-import Pages.ChangePlan;
 import Pages.Home;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
@@ -12,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC103_AccountOverlayValidationForBillPay {
+public class TC134_PersonalDetailsPageValidationForBillPay {
 
     private WebDriver driver;
     private Login LoginPage;
@@ -34,9 +33,19 @@ public class TC103_AccountOverlayValidationForBillPay {
         // LoginPage.acceptPermissions();
     }
     @Test
-    public void AccountOverlayValidationForBillPay  (){
+    public void MyRecordsPagValidationForBillPay(){
         Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         AccountPage.pressAccountTrayMenuOption();
-        Assertions.assertElementExists(driver,AccountPage.getCheckAccountOverlay());
-    }
+        Verifications.verifyElementExists(driver,AccountPage.getCheckAccountOverlay());
+        AccountPage.pressAccountSettingOption();
+        AccountPage.pressPersonalDetailsSection();
+        Verifications.verifyElementExists(driver,AccountPage.getCheckPersonalDetailsPageHeader());
+        Verifications.verifyElementExists(driver,AccountPage.getCheckPersonalDetailsPageContent());
+        AccountPage.pressBackButtonForPersonalDetails();
+        Verifications.verifyElementExists(driver,AccountPage.getCheckAccountSettingsPageHeader());
+        AccountPage.pressPersonalDetailsSection();
+        Verifications.verifyElementExists(driver,AccountPage.getCheckPersonalDetailsPageHeader());
+        AccountPage.pressCloseButtonForPersonalDetails();
+        Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+        }
 }

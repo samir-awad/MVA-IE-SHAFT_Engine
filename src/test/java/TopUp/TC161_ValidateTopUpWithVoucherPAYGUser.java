@@ -19,36 +19,35 @@ public class TC161_ValidateTopUpWithVoucherPAYGUser {
 
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        TopUpPage= new TopUp(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        TopUpPage = new TopUp(driver);
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("PAYGUserWithTopUp.username");
         String password = users.getTestData("PAYGUserWithTopUp.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
     }
 
     @Test
-    public void CheckVodafoneLogoAndWelcomeGesture(){
-        Assertions.assertTrue(HomePage.checkTheVodafoneLogo(),"checking vodafone logo And Welcome Gesture");
+    public void CheckVodafoneLogoAndWelcomeGesture() {
+        Assertions.assertElementExists(driver, HomePage.getVodafoneLogo());
     }
 
     @Test(dependsOnMethods = "CheckVodafoneLogoAndWelcomeGesture")
-    public void CheckMoreOptionsOverlay(){
+    public void CheckMoreOptionsOverlay() {
         HomePage.pressBalanceTitle();
         TopUpPage.pressTopUpOverlayMoreOptionsButton();
         TopUpPage.pressMoreOptionsOverlayTopUpWithVoucherOption();
-        Assertions.assertElementExists(driver,TopUpPage.getChooseTheNumber_text());
+        Assertions.assertElementExists(driver, TopUpPage.getChooseTheNumber_text());
     }
 
     @Test(dependsOnMethods = "CheckMoreOptionsOverlay")
-    public void ValidateBackButton(){
+    public void ValidateBackButton() {
         TopUpPage.pressAutoTopUpBackButton();
         TopUpPage.pressMoreOptionsOverlayTopUpWithVoucherOption();
         //The following assertion sometimes fails
-        Assertions.assertElementAttribute(driver,TopUpPage.getMoreOptionOverlayHeader_text(),
-                "text","More options","checking more options overlay header");
+        Assertions.assertElementExists(driver, TopUpPage.getVoucherTopUpHeader_text());
     }
 }

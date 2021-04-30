@@ -23,47 +23,42 @@ public class TC157_ValidateTopUpConfirmationPagePAYGUser {
     private TopUp TopUpPage;
 
     @BeforeClass
-    public void beforeClass() throws IOException, ParseException {
+    public void beforeClass()  {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        TopUpPage= new TopUp(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        TopUpPage = new TopUp(driver);
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("PAYGUserWithTopUp.username");
         String password = users.getTestData("PAYGUserWithTopUp.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
     }
 
     @Test
-    public void CheckVodafoneLogoAndWelcomeGesture(){
-        Assertions.assertTrue(HomePage.checkTheVodafoneLogo(),"checking vodafone logo And Welcome Gesture");
+
+    public void CheckVodafoneLogoAndWelcomeGesture() {
+        Assertions.assertElementExists(driver, HomePage.getVodafoneLogo());
     }
 
     @Test(dependsOnMethods = "CheckVodafoneLogoAndWelcomeGesture")
-    public void CheckTopUpPage(){
+    public void CheckTopUpPage() {
         HomePage.pressBalanceTitle();
         TopUpPage.pressTopUpOverlayTopUpButton();
-        Assertions.assertElementAttribute(driver,TopUpPage.getTopUpHeader_text(),
-                "text","Top up","checking top up header");
+        Assertions.assertElementExists(driver, TopUpPage.getTopUpHeader_text());
     }
 
     @Test(dependsOnMethods = "CheckTopUpPage")
-    public void ValidateConfirmationPage(){
+    public void ValidateConfirmationPage() {
         TopUpPage.pressNextBtn();
-        Verifications.verifyElementAttribute(driver,TopUpPage.getTopUpHeader_text(),
-                "text","Top up","checking top up header");
-        Verifications.verifyElementAttribute(driver,TopUpPage.getConfirmYourTopUpDetails(),
-                "text","Confirm your top up details",
-                Verifications.VerificationComparisonType.CONTAINS, Verifications.VerificationType.POSITIVE,
-                "checking content");
+        Verifications.verifyElementExists(driver, TopUpPage.getTopUpHeader_text());
+        Verifications.verifyElementExists(driver, TopUpPage.getConfirmYourTopUpDetails());
     }
 
     @Test(dependsOnMethods = "ValidateConfirmationPage")
-    public void ValidateCloseButton(){
+    public void ValidateCloseButton() {
         TopUpPage.pressCloseBtn();
-        Verifications.verifyElementAttribute(driver,HomePage.getBalanceTitle(),
-                "text","Balance","checking you are on home page");
-        Assertions.assertTrue(HomePage.checkTheVodafoneLogo(),"checking vodafone logo And Welcome Gesture");
+        Verifications.verifyElementExists(driver, HomePage.getBalanceTitle());
+        Assertions.assertElementExists(driver, HomePage.getVodafoneLogo());
     }
 
 

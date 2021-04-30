@@ -1,17 +1,16 @@
 package Directdebits;
 
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.validation.Verifications;
 import Pages.BillsPayments;
 import Pages.Home;
 import Pages.Login;
 import Pages.Settings;
-import com.shaft.gui.browser.BrowserFactory;
-import com.shaft.validation.Verifications;
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 
-public class TC183_ValidateBillPayUserWithNoPaymentMethodSetUp {
-
+public class TC291_PageValidationsForFixedUserWithNoPaymentMethodSetup {
     private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
@@ -28,25 +27,14 @@ public class TC183_ValidateBillPayUserWithNoPaymentMethodSetUp {
         // LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
     }
 
-
-    //TC183 - Page validations for a Bill Pay user with no payment method set up
     @Test
     public void DirectDebitWithNoPaymentMethodSetUp() {
         Verifications.verifyTrue(HomePage.checkDirectDebitTile());
-    }
-
-    @Test
-    public void step2() {
         HomePage.pressDirectDebitTile();
         Verifications.verifyTrue(BillsPaymentsPage.checkPaymentMethodText());
         BillsPaymentsPage.checkNoPaymentMethodText();
         BillsPaymentsPage.checkThatAccountOlderAndIbanAreNotFilled();
-    }
-
-    @Test
-    public void step3() {
         BillsPaymentsPage.pressSavedCardsTab();
         BillsPaymentsPage.checkThatNoneOfTheCardsAreSavedAsRecurringPayment();
     }
 }
-

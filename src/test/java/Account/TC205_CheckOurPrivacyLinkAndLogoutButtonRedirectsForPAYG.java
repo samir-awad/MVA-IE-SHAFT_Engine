@@ -1,9 +1,9 @@
 package Account;
 
 import Pages.Account;
-import Pages.ChangePlan;
 import Pages.Home;
 import Pages.Login;
+import Pages.Logout;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
@@ -12,12 +12,13 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC202_AccountSettingsPageValidationForPAYG {
+public class TC205_CheckOurPrivacyLinkAndLogoutButtonRedirectsForPAYG {
 
     private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
-    private Account AccountPage;
+    private Account  AccountPage;
+    private Logout LogoutPage;
     private JSONFileManager users;
 
     @BeforeClass
@@ -27,6 +28,7 @@ public class TC202_AccountSettingsPageValidationForPAYG {
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         AccountPage=new Account(driver);
+        LogoutPage = new Logout(driver);
         users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
         String username = users.getTestData("PAYGUser.username");
         String password = users.getTestData("PAYGUser.password");
@@ -34,18 +36,23 @@ public class TC202_AccountSettingsPageValidationForPAYG {
         // LoginPage.acceptPermissions();
     }
     @Test
-    public void AccountSettingsPageValidationForPAYG(){
+    public void CheckOurPrivacyLinkAndLogoutButtonRedirectsForPAYG(){
         Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         AccountPage.pressAccountTrayMenuOption();
         Verifications.verifyElementExists(driver,AccountPage.getCheckAccountOverlay());
-        AccountPage.pressAccountSettingOption();
-        Verifications.verifyElementExists(driver,AccountPage.getCheckAccountSettingsPageHeader());
-        Verifications.verifyElementExists(driver,AccountPage.getCheckAccountSettingsSection());
-        Verifications.verifyElementExists(driver,AccountPage.getCheckPersonalDetailsSection());
-        Verifications.verifyElementExists(driver,AccountPage.getCheckAppSettingsSection());
-        AccountPage.pressCloseButton();
-        Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
-
-
-    }
+        AccountPage.pressOurPrivacyLink();
+        Verifications.verifyElementExists(driver,AccountPage.getCheckOurPrivacyHeaderWithCloseButton());
+        AccountPage.pressCloseButtonInPrivacy();
+        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+        AccountPage.pressAccountTrayMenuOption();
+        Verifications.verifyElementExists(driver,AccountPage.getCheckAccountOverlay());
+        LogoutPage.pressLogoutButton();
+        Verifications.verifyElementExists(driver,LogoutPage.getCheckLogoutOverlay());
+        LogoutPage.pressLogoutNoButton();
+        Verifications.verifyElementExists(driver,AccountPage.getCheckAccountOverlay());
+        LogoutPage.pressLogoutButton();
+        Verifications.verifyElementExists(driver,LogoutPage.getCheckLogoutOverlay());
+        LogoutPage.pressLogoutYesButton();
+        Assertions.assertElementExists(driver, LoginPage.getLoginVf_Logo(), Assertions.AssertionType.POSITIVE);
+        }
 }
