@@ -23,7 +23,7 @@ public class TC156_ValidateTopUpPageAndAccessVestaPAYGUser {
     private JSONFileManager users;
 
     @BeforeClass
-    public void beforeClass()  {
+    public void beforeClass() {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);

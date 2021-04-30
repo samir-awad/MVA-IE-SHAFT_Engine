@@ -1,0 +1,24 @@
+{
+	"Offers": {
+		"link": "https://vodafone.ie/static/app.html?link=offers&medium=sms"
+	},
+	"NetPerform": {
+		"link": "https://vodafone.ie/static/app.html?link=netperform&medium=sms"
+	},
+	"Dashboard": {
+		"link": "https://vodafone.ie/static/app.html?link=dashboard&medium=sms"
+	},
+	"Bill": {
+		"link": "https://vodafone.ie/static/app.html?link=bill&medium=sms"
+	},
+	"Support": {
+		"link": "https://vodafone.ie/static/app.html?link=support&medium=sms"
+	},
+	"PersonalDetails": {
+		"link": "https://vodafone.ie/static/app.html?link=personalDetails&medium=sms"
+	},
+	"YourDetails": {
+		"link": "https://vodafone.ie/static/app.html?link=yourDetails&medium=sms"
+	}
+
+}

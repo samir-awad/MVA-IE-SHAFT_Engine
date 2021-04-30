@@ -29,6 +29,9 @@ public class AddOns {
     private By BuyAddOnsCloseOverlay_button;
     private By BuyAddOnsCancelOverlay_button;
     private By AddOneClosePage_button;
+    private By AddOneFirstListPAYG_text;
+    private By SelectPAYG_button;
+    private By BuyAddOnsOverlayClose_button;
 
     public AddOns(WebDriver driver) {
         this.driver = driver;
@@ -50,12 +53,14 @@ public class AddOns {
             OneOffListFirstItem_text = By.xpath("//hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup");
             AddOnsContinue_button = new MobileBy.ByAccessibilityId("id_continue_add_on_flow_button");
             RecurringListFirstItem_text = By.xpath("//hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]");
-            Select_button = By.xpath("(//android.widget.Button[@content-desc=\"id_select_add_on_button\"])[1]");
             Select_button = By.xpath("(//android.widget.Button[@content-desc=\"id_select_add_on_button\"])[1]/android.widget.TextView");
             RecurringContinue_button = By.xpath("(//android.view.ViewGroup[@content-desc=\"Button\"])[3]");
             BuyAddOnsCloseOverlay_button=By.xpath("//android.view.ViewGroup[@content-desc=\"id_buy_add_ons_close\"]");
             BuyAddOnsCancelOverlay_button=new MobileBy.ByAccessibilityId("id_cancel_buy_add_on_button");
             AddOneClosePage_button =new MobileBy.ByAccessibilityId("id_header_close_icon");
+            AddOneFirstListPAYG_text= new MobileBy.ByAccessibilityId("id_add_on_card_item_description1_one_off_0");
+            SelectPAYG_button= new MobileBy.ByAccessibilityId("id_select_add_on_button");
+            BuyAddOnsOverlayClose_button =By.xpath("//android.widget.ImageView[@content-desc=\"id_buy_add_ons_close\"]");
         }
         else {
             //IOS locators
@@ -108,6 +113,12 @@ public class AddOns {
         return ManageAddOns_button;
     }
 
+    public By getAddOneFirstListPAYG_text() { return AddOneFirstListPAYG_text; }
+
+    public By getAddOnsContinue_button() { return AddOnsContinue_button; }
+
+    public By getSelectPAYG_button() { return SelectPAYG_button; }
+
     //Page methods
     public void openAddOnsPage() {
         ElementActions.performTouchAction(driver).tap(GetMoreAddOns_button);
@@ -149,7 +160,17 @@ public class AddOns {
         ElementActions.performTouchAction(driver).tap(AddOneClosePage_button);
     }
 
+    public void pressFirstAddOnSelectButton(){
+        ElementActions.performTouchAction(driver).tap(SelectPAYG_button);
+    }
 
+    public void pressBuyAddOnsContinueButton(){
+        ElementActions.performTouchAction(driver).tap(AddOnsContinue_button);
+    }
+
+    public void pressBuyAddOnsOverlayCloseButton(){
+        ElementActions.performTouchAction(driver).tap(BuyAddOnsOverlayClose_button);
+    }
     //Check existence methods
     public boolean checkBuyAddOnsFirstTab() {
         return ElementActions.isElementDisplayed(driver, OneOff_tab);
