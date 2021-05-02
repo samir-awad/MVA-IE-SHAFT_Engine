@@ -29,7 +29,7 @@ public class TC254_SelectNewPlanAndProceedWithAnOutOfContract {
     @Test
     public void SelectNewPlanAndProceedWithAnOutOfContract(){
         Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
-        Verifications.verifyTrue(HomePage.checkEssentialsSection());
+        HomePage.checkEssentialsSection();
         HomePage.pressViewOrChangePlan();
         ChangePlanPage.pressYourPlanOverlayCloseButton();
         HomePage.pressViewOrChangePlan();

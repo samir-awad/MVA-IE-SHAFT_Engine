@@ -14,29 +14,52 @@ public class TC025_SelectAccountSubscriptionComponentValidationBillPayCustomer {
     private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
+
     @BeforeClass
     public void beforeClass() {
-        //System.setProperty("mobile_app", FileActions.getAbsolutePath(System.getProperty("testDataFolderPath") + "apk/", "DIG18180Fix.apk"));
+        System.setProperty("executionAddress", "0.0.0.0:4723");
+        System.setProperty("targetOperatingSystem", "iOS");
+        System.setProperty("mobile_platformVersion", "14.4");
+        System.setProperty("mobile_deviceName", "iPhone");
+        System.setProperty("mobile_automationName", "XCUITest");
+        System.setProperty("mobile_udid", "00008030-001C4D5C1E33802E");
+        System.setProperty("mobile_bundleId", "com.VodafoneIreland.MyVodafone");
+        System.setProperty("mobile_derivedDataPath", "/Users/mva-ireland/Library/Developer/Xcode/DerivedData/WebDriverAgent-ciegwgvxzxdrqthilmrmczmqvrgu");
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         //LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
-        //This method will be used to login before every test case to login with
-        //With different users credentials must be changed
     }
+
     @Test
-    public void SelectAccountSubscriptionComponentValidationBillPayCustomer(){
-        Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
-        Verifications.verifyTrue(HomePage.checkSelectAccountAndSubscriptionComponent());
+    public void CheckThatImOnHomePageAndSelectAccountAndSubscriptionComponentContentAreDisplayed() {
+        Verifications.verifyElementExists(driver, HomePage.getVodafoneLogo());
+        Assertions.assertElementExists(driver, HomePage.getChange_button());
+    }
+
+    @Test(dependsOnMethods = "CheckThatImOnHomePageAndSelectAccountAndSubscriptionComponentContentAreDisplayed")
+    public void checkSelectAccountAndSubscriptionComponentContent() {
         HomePage.pressSelectAccountAndSubscriptionComponent();
-        Verifications.verifyTrue(HomePage.checkSelectAccountAndSubscriptionComponentContent());
+        Assertions.assertElementExists(driver,HomePage.getSelectAccountAndSubscriptionTitle());
+    }
+
+    @Test(dependsOnMethods = "checkSelectAccountAndSubscriptionComponentContent")
+    public void changeTheSelectedSubscription() {
         HomePage.changeTheSelectedSubscription();
+    }
+
+    @Test(dependsOnMethods = "changeTheSelectedSubscription")
+    public void checkAccountSuccessfullySelected() {
         HomePage.changeTheSelectedAccount();
         Verifications.verifyTrue(HomePage.checkAccountSuccessfullySelected());
         HomePage.pressSelectAccountAndSubscriptionCloseButton();
+    }
+
+    @Test(dependsOnMethods = "checkAccountSuccessfullySelected")
+    public void check() {
         HomePage.pressSelectAccountAndSubscriptionComponent();
         HomePage.changeTheSelectedSubscription();
         HomePage.pressSelectAccountAndSubscriptionSelectButton();
-
     }
+
 }

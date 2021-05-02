@@ -22,15 +22,6 @@ public class TC162_SubmitInvalidVoucherNumberPAYGUser {
 
     @BeforeClass
     public void beforeClass() {
-        System.setProperty("executionAddress", "0.0.0.0:4723");
-        System.setProperty("targetOperatingSystem", "iOS");
-        System.setProperty("mobile_platformVersion", "14.4");
-        System.setProperty("mobile_deviceName", "iPhone");
-        System.setProperty("mobile_automationName", "XCUITest");
-        System.setProperty("mobile_udid", "00008030-001C4D5C1E33802E");
-        System.setProperty("mobile_bundleId", "com.VodafoneIreland.MyVodafone");
-        System.setProperty("mobile_derivedDataPath", "/Users/mva-ireland/Library/Developer/Xcode/DerivedData/WebDriverAgent-ciegwgvxzxdrqthilmrmczmqvrgu");
-
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
@@ -39,7 +30,7 @@ public class TC162_SubmitInvalidVoucherNumberPAYGUser {
         vouchers = new JSONFileManager(System.getProperty("testDataFolderPath") + "vouchers.json");
         String username = users.getTestData("PAYGUserWithTopUp.username");
         String password = users.getTestData("PAYGUserWithTopUp.password");
-//        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
+        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
     }
 
     @Test
