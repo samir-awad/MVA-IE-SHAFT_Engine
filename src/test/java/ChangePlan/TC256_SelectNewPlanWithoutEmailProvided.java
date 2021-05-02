@@ -1,4 +1,4 @@
-package Android.ChangePlan;
+package ChangePlan;
 
 import Pages.ChangePlan;
 import Pages.Home;
@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC255_SelectNewPlanWithEmailProvided {
+public class TC256_SelectNewPlanWithoutEmailProvided {
 
     private WebDriver driver;
     private Login LoginPage;
@@ -22,12 +22,12 @@ public class TC255_SelectNewPlanWithEmailProvided {
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         ChangePlanPage=new ChangePlan(driver);
-       // LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
+        //LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
         //This method will be used to login before every test case to login with
         //With different users credentials must be changed
     }
     @Test
-    public void SelectNewPlanWithEmailProvided(){
+    public void SelectNewPlanWithoutEmailProvided(){
         Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         HomePage.checkEssentialsSection();
         HomePage.pressViewOrChangePlan();
@@ -36,6 +36,6 @@ public class TC255_SelectNewPlanWithEmailProvided {
         ChangePlanPage.pressYourPlanOverlayChangePlanButton();
         Verifications.verifyTrue(ChangePlanPage.checkChangePlanPageHeader());
         ChangePlanPage.pressSelectPlanButton();
-
+    // need to complete it
     }
 }

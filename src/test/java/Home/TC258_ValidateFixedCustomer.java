@@ -1,4 +1,4 @@
-package Android.Home;
+package Home;
 
 import FileReaders.GetUserFromJson;
 import Pages.Home;

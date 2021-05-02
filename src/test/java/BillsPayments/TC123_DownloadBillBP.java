@@ -1,16 +1,15 @@
-package Android.BillsPayments;
+package BillsPayments;
 
 import Pages.BillsPayments;
 import Pages.Home;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
-import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC124_MakePaymentValidationsBP_EditCardPaymentMethod {
+public class TC123_DownloadBillBP {
 
     private WebDriver driver;
     private Login LoginPage;
@@ -28,18 +27,11 @@ public class TC124_MakePaymentValidationsBP_EditCardPaymentMethod {
         //With different users credentials must be changed
     }
     @Test
-    public void MakePaymentValidationsBP(){
+    public void DownloadABillFoBillPayUser(){
+
         Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         HomePage.pressBillsPaymentsTrayMenuOption();
-        BillsPaymentsPage.pressMakeAdvancePaymentButton();
-        Verifications.verifyTrue(BillsPaymentsPage.checkMakeAPaymentOverlayHeader());
-        Verifications.verifyTrue(BillsPaymentsPage.checkMakeAPaymentOverlayFirstBill());
-        Verifications.verifyTrue(BillsPaymentsPage.checkMakeAPaymentOverlayAmountField());
-        Verifications.verifyTrue(BillsPaymentsPage.checkMakeAPaymentOverlayPaymentMethod());
-        BillsPaymentsPage.pressPaymentMethodEditButton();
-        Verifications.verifyTrue(BillsPaymentsPage.checkMakeAPaymentOverlayPaymentMethodComponentWithSavedCard());
-        BillsPaymentsPage.pressPayWithSelectedCardButton();
-        Assertions.assertElementAttribute(driver,BillsPaymentsPage.getVestaField(),"text","Name on Card");
+        BillsPaymentsPage.pressDownloadBillButton();
 
     }
 
