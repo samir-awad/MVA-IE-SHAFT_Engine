@@ -294,7 +294,6 @@ public class Home {
 
     public By getBuyAndManageAddOns_text() { return BuyAndManageAddOns_text; }
 
-    public By getVodafoneLogo() { return VodafoneLogo; }
 
     //Check existence methods
     public void checkEssentialsSection() {
