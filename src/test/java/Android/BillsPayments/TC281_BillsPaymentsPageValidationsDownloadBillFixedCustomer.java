@@ -32,7 +32,7 @@ public class TC281_BillsPaymentsPageValidationsDownloadBillFixedCustomer {
         HomePage.pressNextBillTile();
         BillsPaymentsPage.checkBillsPaymentsHeader();
         BillsPaymentsPage.pressCloseButtonInBillsPaymentsView();
-        Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         HomePage.pressBillsPaymentsTrayMenuOption();
         Verifications.verifyTrue(BillsPaymentsPage.checkBillsPaymentsHeader());
         BillsPaymentsPage.pressDownloadBillButton();

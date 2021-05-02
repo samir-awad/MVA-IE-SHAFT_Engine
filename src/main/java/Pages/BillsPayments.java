@@ -148,8 +148,10 @@ public class BillsPayments {
 
         }
     }
+ 
+    public boolean checkCurrentSpendOverlay()
+    {
 
-    public Boolean checkCurrentSpendOverlay() {
         return ElementActions.isElementDisplayed(driver, CurrentSpendLastBillTitle);
     }
 
@@ -157,8 +159,8 @@ public class BillsPayments {
         ElementActions.performTouchAction(driver).tap(Bills_Payments_Button);
     }
 
-    public Boolean checkBillsPaymentsHeader() {
-
+    public boolean checkBillsPaymentsHeader()
+    {
         return ElementActions.isElementDisplayed(driver, BillsPaymentTitle);
     }
 
@@ -178,20 +180,22 @@ public class BillsPayments {
         ElementActions.performTouchAction(driver).tap(MakeAdvancePayment_button);
     }
 
-    public Boolean checkMakeAPaymentOverlayHeader() {
-        return ElementActions.isElementDisplayed(driver, MakeAPaymentHeader);
+    public boolean checkMakeAPaymentOverlayHeader()
+    {
+        return  ElementActions.isElementDisplayed(driver, MakeAPaymentHeader);
     }
 
-    public Boolean checkMakeAPaymentOverlayFirstBill() {
-        return ElementActions.isElementDisplayed(driver, PaymentFirstBill);
+    public boolean checkMakeAPaymentOverlayFirstBill()
+    {
+        return  ElementActions.isElementDisplayed(driver, PaymentFirstBill);
     }
-
-    public Boolean checkMakeAPaymentOverlayAmountField() {
-        return ElementActions.isElementDisplayed(driver, PaymentAmountField);
+    public boolean checkMakeAPaymentOverlayAmountField()
+    {
+        return  ElementActions.isElementDisplayed(driver, PaymentAmountField);
     }
-
-    public Boolean checkMakeAPaymentOverlayPaymentMethod() {
-        return ElementActions.isElementDisplayed(driver, PaymentMethod);
+    public boolean checkMakeAPaymentOverlayPaymentMethod()
+    {
+        return  ElementActions.isElementDisplayed(driver, PaymentMethod);
     }
 
     public void pressPaymentMethodEditButton() {
@@ -202,8 +206,9 @@ public class BillsPayments {
         ElementActions.performTouchAction(driver).tap(Payment_Button);
     }
 
-    public Boolean checkMakeAPaymentOverlayPaymentMethodComponentWithSavedCard() {
-        return ElementActions.isElementDisplayed(driver, VisaData);
+    public  boolean checkMakeAPaymentOverlayPaymentMethodComponentWithSavedCard()
+    {
+        return  ElementActions.isElementDisplayed(driver, VisaData);
     }
 
     public void pressPayWithSelectedCardButton() {
@@ -227,11 +232,13 @@ public class BillsPayments {
         return ElementActions.isElementDisplayed(driver, AccountSettings_Text);
     }
 
-    public boolean checkPaymentMethodText() {
+    public boolean checkPaymentMethodText()
+    {
         return ElementActions.isElementDisplayed(driver, PaymentMethod_Text);
     }
 
-    public Boolean checkCreditCardAsRecurringPaymentText() {
+    public boolean checkCreditCardAsRecurringPaymentText()
+    {
         Boolean FirstTab = ElementActions.isElementDisplayed(driver, CreditCardAsRecurringPayment0_Title);
         Boolean SecondTab = ElementActions.isElementDisplayed(driver, CreditCardAsRecurringPaymentSub_Title);
         Boolean result;
@@ -243,7 +250,8 @@ public class BillsPayments {
 
     }
 
-    public Boolean checkTheTwoExistingTabs() {
+    public boolean checkTheTwoExistingTabs()
+    {
         Boolean FirstTab = ElementActions.isElementDisplayed(driver, CreditCardAsRecurringPaymentSaved_Tab);
         Boolean SecondTab = ElementActions.isElementDisplayed(driver, CreditCardAsRecurringPaymentDirectDebit_Tab);
         Boolean result;
@@ -262,7 +270,9 @@ public class BillsPayments {
         ElementActions.performTouchAction(driver).tap(CreditCardAsRecurringPaymentSaved_Tab);
     }
 
-    public Boolean checkThatAccountOlderAndIbanAreFilled() {
+
+    public boolean checkThatAccountOlderAndIbanAreFilled()
+    {
         Boolean result;
         if (AccountHolder_Text != null && Iban_Text != null)
             result = true;
@@ -271,7 +281,8 @@ public class BillsPayments {
         return result;
     }
 
-    public Boolean checkThatAccountOlderAndIbanAreNotFilled() {
+    public boolean checkThatAccountOlderAndIbanAreNotFilled()
+    {
         Boolean result;
         if (AccountHolder_Text == null && Iban_Text == null)
             result = true;
@@ -281,7 +292,9 @@ public class BillsPayments {
 
     }
 
-    public Boolean checkThatNoneOfTheCardsAreSavedAsRecurringPayment() {
+    public boolean checkThatNoneOfTheCardsAreSavedAsRecurringPayment()
+    {
+
         return ElementActions.isElementDisplayed(driver, NoneSavedCards_Text);
     }
 
@@ -293,7 +306,8 @@ public class BillsPayments {
         ElementActions.performTouchAction(driver).tap(AddNewCard_Button);
     }
 
-    public Boolean checkAddNewCardOverlay() {
+    public boolean checkAddNewCardOverlay()
+    {
         return ElementActions.isElementDisplayed(driver, AddNewCard_Overlay);
     }
 
@@ -309,7 +323,8 @@ public class BillsPayments {
         ElementActions.performTouchAction(driver).tap(AddNewCardOverlayContinue_Button);
     }
 
-    public Boolean checkUseThisCardButton() {
+    public boolean checkUseThisCardButton()
+    {
         return ElementActions.isElementDisplayed(driver, UseThisCard_Button);
     }
 
@@ -317,7 +332,8 @@ public class BillsPayments {
         ElementActions.performTouchAction(driver).tap(UseThisCard_Button);
     }
 
-    public Boolean checkUseThisCardOverlay() {
+    public boolean checkUseThisCardOverlay()
+    {
         return ElementActions.isElementDisplayed(driver, UseThisCardOverlay_Text);
     }
 
@@ -325,7 +341,7 @@ public class BillsPayments {
         ElementActions.performTouchAction(driver).tap(ChangeYourCardOverlayClose_Button);
     }
 
-    public Boolean checkSavedCardsTabContent() {
+    public boolean checkSavedCardsTabContent() {
         Boolean FirstContent = ElementActions.isElementDisplayed(driver, CheckSavedCardContent0_Text);
         Boolean SecondContent = ElementActions.isElementDisplayed(driver, CheckSavedCardContent1_Text);
         Boolean result;
@@ -349,8 +365,9 @@ public class BillsPayments {
         ElementActions.type(driver, Iban_Text, "132rergert5t4grevfrv54");
     }
 
-    public Boolean checkErrorMessageForInvalidIban() {
-        return ElementActions.isElementDisplayed(driver, InvalidIbanOverlay_Title);
+    public boolean checkErrorMessageForInvalidIban()
+    {
+        return ElementActions.isElementDisplayed(driver,InvalidIbanOverlay_Title);
     }
 
 }

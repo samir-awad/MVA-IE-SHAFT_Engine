@@ -61,5 +61,6 @@ public class TC022_ValidateBillPayCustomer {
     @Test(dependsOnMethods = "CheckOtherUsefulToolsSectionIsDisplayed")
     public void CheckTrayMenuOptionsForBillPay() {
         Assertions.assertElementExists(driver, HomePage.getBillAndPayment());
+
     }
 }

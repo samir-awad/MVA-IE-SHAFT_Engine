@@ -1,7 +1,6 @@
 package Account;
 
 import Pages.Account;
-import Pages.ChangePlan;
 import Pages.Home;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
@@ -12,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC103_AccountOverlayValidationForBillPay {
+public class TC106_MyRecordsPagValidationForBillPay {
 
     private WebDriver driver;
     private Login LoginPage;
@@ -34,9 +33,23 @@ public class TC103_AccountOverlayValidationForBillPay {
         // LoginPage.acceptPermissions();
     }
     @Test
-    public void AccountOverlayValidationForBillPay  (){
+    public void MyRecordsPagValidationForBillPay(){
         Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         AccountPage.pressAccountTrayMenuOption();
-        Assertions.assertElementExists(driver,AccountPage.getCheckAccountOverlay());
-    }
+        Verifications.verifyElementExists(driver,AccountPage.getCheckAccountOverlay());
+        AccountPage.pressMyRecordsOption();
+        Verifications.verifyElementExists(driver,AccountPage.getCheckMyRecordsPageHeader());
+        Verifications.verifyElementExists(driver,AccountPage.getCheckAvailableTabOptions());
+        Verifications.verifyElementExists(driver,AccountPage.getCheckOrdersArea());
+        AccountPage.pressLettersTabOption();
+        Verifications.verifyElementExists(driver,AccountPage.getCheckThatExistsAtLeastOneLetter());
+        AccountPage.pressFirstLetter();
+        Verifications.verifyElementExists(driver,AccountPage.getCheckFirstLetterAttachmentsLink());
+        AccountPage.pressFirstLetterAttachmentsLink();
+        AccountPage.chooseAppToOpenLetterWith();
+        Verifications.verifyElementExists(driver,AccountPage.getCheckLetterIsOpenedAsPdfDocument());
+        AccountPage.goBackToMyRecordsPage();
+        AccountPage.pressMyRecordsHeaderCloseButton();
+        Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+        }
 }

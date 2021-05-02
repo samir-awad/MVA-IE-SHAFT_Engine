@@ -47,7 +47,7 @@ public class Home {
     private By TopUpOverlayTitle_text;
     private By TopUp_button;
     private By TopUpHistory_button;
-
+    private By BuyAndManageAddOns_text;
     public Home(WebDriver driver) {
         this.driver = driver;
         if (System.getProperty("targetOperatingSystem").equals("Android")) {
@@ -91,8 +91,9 @@ public class Home {
             TopUpOverlayTitle_text = new MobileBy.ByAccessibilityId("STundefinedMainTitle");
             TopUp_button = new MobileBy.ByAccessibilityId("id_tray_menu_item_Top Up");
             TopUpHistory_button = new MobileBy.ByAccessibilityId("id_dashboard_topup_history_title");
-        } else {
 
+        } else {
+          
             Discover_text = new MobileBy.ByAccessibilityId("id_dashboard_discover_title");
             BuyAndManageAddOns_button = new MobileBy.ByAccessibilityId("id_dashboard_essentials_addons_clickable");
             VodafoneLogo = new MobileBy.ByAccessibilityId("id_header_vodafone_logo");
@@ -291,6 +292,9 @@ public class Home {
     }
 
 
+    public By getBuyAndManageAddOns_text() { return BuyAndManageAddOns_text; }
+
+    public By getVodafoneLogo() { return VodafoneLogo; }
 
     //Check existence methods
     public void checkEssentialsSection() {
@@ -384,8 +388,8 @@ public class Home {
         return ElementActions.isElementDisplayed(driver, Support_button);
     }
 
-    public boolean checkTheVodafoneLogo() {
-        return ElementActions.isElementDisplayed(driver, VodafoneLogo);
+    public By getCheckTheVodafoneLogo() {
+        return VodafoneLogo;
     }
 
     public boolean checkSelectAccountAndSubscriptionComponent() {

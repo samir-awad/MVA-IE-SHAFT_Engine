@@ -1,7 +1,6 @@
 package Account;
 
 import Pages.Account;
-import Pages.ChangePlan;
 import Pages.Home;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
@@ -12,12 +11,12 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC104_AccountSettingsPageValidationForBillPay {
+public class TC228_CheckAccountNameEmailBillingDetailsPagesForBillPay {
 
     private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
-    private Account AccountPage;
+    private Account  AccountPage;
     private JSONFileManager users;
 
     @BeforeClass
@@ -34,17 +33,27 @@ public class TC104_AccountSettingsPageValidationForBillPay {
         // LoginPage.acceptPermissions();
     }
     @Test
-    public void AccountOverlayValidationForBillPay(){
+    public void CheckAccountNameEmailBillingDetailsPagesForBillPay(){
         Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         AccountPage.pressAccountTrayMenuOption();
         Verifications.verifyElementExists(driver,AccountPage.getCheckAccountOverlay());
         AccountPage.pressAccountSettingOption();
-        Verifications.verifyElementExists(driver,AccountPage.getCheckAccountSettingsPageHeader());
-        Verifications.verifyElementExists(driver,AccountPage.getCheckAccountSettingsSection());
-        Verifications.verifyElementExists(driver,AccountPage.getCheckPersonalDetailsSection());
-        Verifications.verifyElementExists(driver,AccountPage.getCheckAppSettingsSection());
-        AccountPage.pressCloseButton();
+        AccountPage.pressAccountNameAndEmailOption();
+        Verifications.verifyElementExists(driver,AccountPage.getCheckAccountNameAndEmailPageHeader());
+        Verifications.verifyElementExists(driver,AccountPage.getCheckAccountNameAndEmailPageContent());
+        AccountPage.fillEmailInputField();
+        Verifications.verifyElementAttribute(driver,AccountPage.getSaveButtonBecomesEnabled(),
+                "enabled","true","Save Button Becomes Enabled ");
+        AccountPage.pressAccountHeaderBackChevron();
+        AccountPage.pressBillingDetailsOption();
+        Verifications.verifyElementExists(driver,AccountPage.getCheckBillingDetailsPageHeader());
+        Verifications.verifyElementExists(driver,AccountPage.getCheckBillingDetailsBillingAddressSection());
+        Verifications.verifyElementExists(driver,AccountPage.getCheckBillingDetailsBillingPreferencesSection());
+        AccountPage.pressEnterAddressManuallyLink();
+        Verifications.verifyElementExists(driver,AccountPage.getCheckBillingAddressSectionFieldsForManualAddress());
+        AccountPage.pressSearchForYourAddressLink();
+        Verifications.verifyElementExists(driver,AccountPage.getCheckBillingDetailsBillingAddressSection());
+        AccountPage.pressBillingDetailsHeaderCloseButton();
         Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
-
     }
 }

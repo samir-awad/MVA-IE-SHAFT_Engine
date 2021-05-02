@@ -29,7 +29,7 @@ public class TC123_DownloadBillBP {
     @Test
     public void DownloadABillFoBillPayUser(){
 
-        Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         HomePage.pressBillsPaymentsTrayMenuOption();
         BillsPaymentsPage.pressDownloadBillButton();
 
