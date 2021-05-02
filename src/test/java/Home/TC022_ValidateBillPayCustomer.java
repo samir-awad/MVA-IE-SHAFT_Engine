@@ -1,4 +1,4 @@
-package Android.Home;
+package Home;
 
 import Pages.ChangePlan;
 import Pages.Home;

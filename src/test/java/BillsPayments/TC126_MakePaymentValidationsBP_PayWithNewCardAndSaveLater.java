@@ -1,4 +1,4 @@
-package Android.BillsPayments;
+package BillsPayments;
 
 import Pages.BillsPayments;
 import Pages.Home;

@@ -1,4 +1,4 @@
-package Android.ChangePlan;
+package ChangePlan;
 
 import Pages.BillsPayments;
 import Pages.ChangePlan;
