@@ -37,7 +37,7 @@ public class TC248_ValidateAddOnsPagePAYGUserWithMonthlyAddOns {
 
     @Test
     public void CheckEssentialsSection() {
-        Assertions.assertTrue(HomePage.checkEssentialsSection()); //Here scrolling is not working
+        HomePage.checkEssentialsSection(); //Here scrolling is not working
     }
 
     @Test(dependsOnMethods = {"CheckEssentialsSection"})

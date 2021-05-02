@@ -32,7 +32,7 @@ public class TC253_ChangePlanPageValidationsBP {
     @Test
     public void ChangePlanPageValidationsBP(){
         Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
-        Verifications.verifyTrue(HomePage.checkEssentialsSection());
+        HomePage.checkEssentialsSection();
         HomePage.pressViewOrChangePlan();
         Verifications.verifyTrue(ChangePlanPage.checkYourPlanOverlay());
         ChangePlanPage.pressYourPlanOverlayCloseButton();

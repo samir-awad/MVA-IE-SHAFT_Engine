@@ -30,9 +30,9 @@ public class TC119_ValidatePAYGCustomer_InactiveToUp {
         Verifications.verifyTrue(HomePage.checkTopUpOfferTileInactiveTopUp());
         Verifications.verifyTrue(HomePage.checkBalanceTile());
         Verifications.verifyTrue(HomePage.checkTopUpHistoryTile());
-        Verifications.verifyTrue(HomePage.checkDiscoverySection());
-        Verifications.verifyTrue(HomePage.checkEssentialsSection());
-        Verifications.verifyTrue(HomePage.checkOtherUsefulToolsSection());
+        HomePage.checkDiscoverySection();
+        HomePage.checkEssentialsSection();
+        HomePage.checkOtherUsefulToolsSection();
         Assertions.assertTrue(HomePage.checkTrayMenuOptionsForPayg());
 
     }

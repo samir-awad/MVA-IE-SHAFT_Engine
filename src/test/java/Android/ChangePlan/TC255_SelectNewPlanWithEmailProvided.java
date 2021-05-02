@@ -29,7 +29,7 @@ public class TC255_SelectNewPlanWithEmailProvided {
     @Test
     public void SelectNewPlanWithEmailProvided(){
         Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
-        Verifications.verifyTrue(HomePage.checkEssentialsSection());
+        HomePage.checkEssentialsSection();
         HomePage.pressViewOrChangePlan();
         ChangePlanPage.pressYourPlanOverlayCloseButton();
         HomePage.pressViewOrChangePlan();

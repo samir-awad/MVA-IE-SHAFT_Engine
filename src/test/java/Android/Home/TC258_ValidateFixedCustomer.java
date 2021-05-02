@@ -33,8 +33,8 @@ public class TC258_ValidateFixedCustomer {
     public void ValidateFixedCustomer(){
         Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         Verifications.verifyTrue(HomePage.checkLastBillTile());
-        Verifications.verifyTrue(HomePage.checkDiscoverySection());
-        Verifications.verifyTrue(HomePage.checkEssentialsSection());
+        HomePage.checkDiscoverySection();
+        HomePage.checkEssentialsSection();
         HomePage.pressSelectAccountAndSubscriptionComponent();
         HomePage.changeTheSelectedSubscription();
         HomePage.pressSelectAccountAndSubscriptionSelectButton();

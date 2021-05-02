@@ -35,7 +35,7 @@ public class TC168_ValidateAddOnsOverlayPAYGUserWithMonthlyAddOns {
 
     @Test
     public void CheckEssentialsSection() {
-        Assertions.assertTrue(HomePage.checkEssentialsSection());
+        HomePage.checkEssentialsSection();
     }
 
     @Test(dependsOnMethods = {"CheckEssentialsSection"})
