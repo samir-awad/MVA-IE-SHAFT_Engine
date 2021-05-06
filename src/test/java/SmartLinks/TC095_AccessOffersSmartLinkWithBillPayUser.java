@@ -1,55 +1,67 @@
 package SmartLinks;
+import Pages.Home;
 import Pages.Login;
+import Pages.Offers;
 import Pages.SmartLinks;
 import com.shaft.gui.browser.BrowserActions;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
+import com.shaft.validation.Assertions;
+import com.shaft.validation.Verifications;
+import io.appium.java_client.MobileDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 public class TC095_AccessOffersSmartLinkWithBillPayUser
 {
-    //private MobileDriver driver;
     private WebDriver driver;
-    private WebDriver nativeDriver;
     private Login LoginPage;
-   // private SmartLinks smartLinksPage;
+    private SmartLinks smartLinksPage;
+    private Offers OffersPage;
+    private Home HomePage;
     private JSONFileManager links;
     private JSONFileManager users;
-    ChromeOptions options = new ChromeOptions();
 
     @BeforeClass
     public void beforeClass(){
-        nativeDriver = BrowserFactory.getBrowser();
-        //smartLinksPage = new SmartLinks(driver);
-        LoginPage = new Login(nativeDriver);
+        driver = BrowserFactory.getBrowser();
+        smartLinksPage = new SmartLinks(driver);
+        LoginPage = new Login(driver);
+        OffersPage= new Offers(driver);
+        HomePage = new Home(driver);
         links = new JSONFileManager(System.getProperty("testDataFolderPath")+"smartLinks.json");
         users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
-        String username = users.getTestData("BillPayUser.username");
-        String password = users.getTestData("BillPayUser.password");
-        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
-        //BrowserActions.closeCurrentWindow(nativeDriver);
-
-        System.setProperty("mobile_appPackage","");
-        System.setProperty("mobile_appActivity","");
-        System.setProperty("mobile_browserName","Chrome");
-        System.setProperty("MobileBrowserVersion","90.0.4430.24");
-        options.addArguments("user-data-dir=/data/user/0/com.android.chrome/app_chrome");
-        //driver= BrowserFactory.getBrowser(BrowserFactory.BrowserType.GOOGLE_CHROME, options);
-       // driver=BrowserFactory.getBrowser();
-        String OffersURL= links.getTestData("Offers.link");
-        BrowserActions.navigateToURL(driver,OffersURL);
-        //driver.runAppInBackground(Duration.ofSeconds(-1));
-        //driver.closeApp();
+        LoginPage.acceptTermsAndConditions();
     }
 
     @Test
-    public void CheckOffersSmartLink(){
-        //String OffersURL= links.getTestData("Offers.link");
-       //driver.get(OffersURL);
-       //smartLinksPage.accessOffersSmartLink(OffersURL);
+    public void CheckAccessOffersSmartLinkBeforeLogin(){
+        String OffersURL= links.getTestData("Offers.link");
+        smartLinksPage.accessOffersSmartLink(OffersURL);
+        String username = users.getTestData("BillPayUser.username");
+        String password = users.getTestData("BillPayUser.password");
+        LoginPage.login(username, password).acceptPermissions();
+        Verifications.verifyElementMatches(driver,HomePage.getVodafoneLogo());
+        Assertions.assertElementAttribute(driver,OffersPage.getOffersHeader_text(),
+                "text","Offers","Checking offers header");
+    }
+
+    @Test(dependsOnMethods = "CheckAccessOffersSmartLinkBeforeLogin")
+    public void ValidateHeaderCloseButton(){
+        OffersPage.pressHeaderCloseButton();
+        Assertions.assertElementMatches(driver,HomePage.getVodafoneLogo());
+    }
+
+    @Test(dependsOnMethods = "ValidateHeaderCloseButton")
+    public void CheckAccessOffersSmartLinkAfterLogin(){
+        String OffersURL= links.getTestData("Offers.link");
+        smartLinksPage.accessOffersSmartLink(OffersURL);
+        Assertions.assertElementAttribute(driver,OffersPage.getOffersHeader_text(),
+                "text","Offers","Checking offers header");
     }
 
 
