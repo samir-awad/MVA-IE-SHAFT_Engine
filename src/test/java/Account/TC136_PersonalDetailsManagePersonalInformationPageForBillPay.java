@@ -11,12 +11,12 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC207_PersonalDetailsPageValidationForPAYG {
+public class TC136_PersonalDetailsManagePersonalInformationPageForBillPay {
 
     private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
-    private Account  AccountPage;
+    private Account AccountPage;
     private JSONFileManager users;
 
     @BeforeClass
@@ -27,25 +27,35 @@ public class TC207_PersonalDetailsPageValidationForPAYG {
         HomePage = new Home(driver);
         AccountPage=new Account(driver);
         users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
-        String username = users.getTestData("PAYGUser.username");
-        String password = users.getTestData("PAYGUser.password");
-        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
+        String username = users.getTestData("BillPayUser.username");
+        String password = users.getTestData("BillPayUser.password");
+        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
         // LoginPage.acceptPermissions();
     }
     @Test
-    public void PersonalDetailsPageValidationForPAYG(){
+    public void PersonalDetailsManagePersonalInformationPageForBillPay(){
         Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         AccountPage.pressAccountTrayMenuOption();
         Verifications.verifyElementExists(driver,AccountPage.getCheckAccountOverlay());
         AccountPage.pressAccountSettingOption();
-        AccountPage.pressPersonalDetailsSection();
-        Verifications.verifyElementExists(driver,AccountPage.getCheckPersonalDetailsPageHeader());
-        Verifications.verifyElementExists(driver,AccountPage.getCheckPersonalDetailsPageContent());
-        AccountPage.pressBackButtonForPersonalDetails();
         Verifications.verifyElementExists(driver,AccountPage.getCheckAccountSettingsPageHeader());
         AccountPage.pressPersonalDetailsSection();
+        AccountPage.pressManagePersonalInformationSection();
+        Verifications.verifyElementExists(driver,AccountPage.getCheckManagePersonalInformationPageHeader());
+        Verifications.verifyElementExists(driver,AccountPage.getCheckManagePersonalInformationPageContent());
+        AccountPage.pressManagePersonalInformationEditButton();
+        Verifications.verifyElementExists(driver,AccountPage.getCheckManagePersonalInformationEditContent());
+        AccountPage.pressDownloadDataRequestForm();
+        Verifications.verifyElementExists(driver,AccountPage.getCheckSubjectAccessRequestFormPdfIsOpened());
+        AccountPage.pressPdfBackButton();
+        AccountPage.pressDeletionRequestForm();
+        Assertions.assertTrue(AccountPage.CheckDeletionRequestFormExternalPage(), "Checking if external page is opened");
+        AccountPage.goBackToTheRequestInformationPage();
+        AccountPage.pressBackButtonForTheRequestInformationPage();
         Verifications.verifyElementExists(driver,AccountPage.getCheckPersonalDetailsPageHeader());
-        AccountPage.pressCloseButtonForPersonalDetails();
+        AccountPage.pressManagePersonalInformationSection();
+        AccountPage.pressCloseButtonForManagePersonalInformationSection();
         Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
-        }
+
+    }
 }

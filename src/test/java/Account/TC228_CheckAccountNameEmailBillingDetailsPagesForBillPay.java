@@ -29,7 +29,7 @@ public class TC228_CheckAccountNameEmailBillingDetailsPagesForBillPay {
         users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
         String username = users.getTestData("BillPayUser.username");
         String password = users.getTestData("BillPayUser.password");
-        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
+        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
         // LoginPage.acceptPermissions();
     }
     @Test
