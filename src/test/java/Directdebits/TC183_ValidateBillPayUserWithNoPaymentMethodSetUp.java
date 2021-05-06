@@ -38,13 +38,20 @@ public class TC183_ValidateBillPayUserWithNoPaymentMethodSetUp {
     @Test
     public void DirectDebitWithNoPaymentMethodSetUp() {
         Verifications.verifyTrue(HomePage.checkDirectDebitTile());
+    }
+
+    @Test
+    public void step2() {
         HomePage.pressDirectDebitTile();
         Verifications.verifyTrue(BillsPaymentsPage.checkPaymentMethodText());
         BillsPaymentsPage.checkNoPaymentMethodText();
         BillsPaymentsPage.checkThatAccountOlderAndIbanAreNotFilled();
+    }
+
+    @Test
+    public void step3() {
         BillsPaymentsPage.pressSavedCardsTab();
         BillsPaymentsPage.checkThatNoneOfTheCardsAreSavedAsRecurringPayment();
-
     }
 }
 

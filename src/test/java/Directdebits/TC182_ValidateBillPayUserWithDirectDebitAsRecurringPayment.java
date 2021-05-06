@@ -37,19 +37,33 @@ public class TC182_ValidateBillPayUserWithDirectDebitAsRecurringPayment {
     //TC182 - Page validations for a Bill Pay user with Direct Debit as recurring payment
     @Test
     public void DirectDebitAsRecurringPayment() {
-        Verifications.verifyElementExists(driver,HomePage.getDirectDebit_Tab(),Verifications.VerificationType.NEGATIVE);
+        Verifications.verifyElementExists(driver, HomePage.getDirectDebit_Tab(), Verifications.VerificationType.NEGATIVE);
+    }
+
+    @Test
+    public void step2() {
         HomePage.pressAccountTrayMenuOption();
-        Verifications.verifyTrue(HomePage.CheckAccountOverlaySettingText());
+        Assertions.assertTrue(HomePage.CheckAccountOverlaySettingText());
+    }
+
+    @Test
+    public void step3() {
         HomePage.pressAccountSettingOption();
-        Verifications.verifyTrue(BillsPaymentsPage.checkAccountSettingsText());
+        Assertions.assertTrue(BillsPaymentsPage.checkAccountSettingsText());
+    }
+
+    @Test
+    public void step4() {
         SettingsPage.pressPaymentMethodOption();
         Verifications.verifyTrue(BillsPaymentsPage.checkPaymentMethodText());
         Verifications.verifyTrue(BillsPaymentsPage.checkCreditCardAsRecurringPaymentText());
-        Verifications.verifyTrue(BillsPaymentsPage.checkThatAccountOlderAndIbanAreFilled());
+        Assertions.assertTrue(BillsPaymentsPage.checkThatAccountOlderAndIbanAreFilled());
+    }
+
+    @Test
+    public void step5() {
         BillsPaymentsPage.pressSavedCardsTab();
         Verifications.verifyTrue(BillsPaymentsPage.checkThatNoneOfTheCardsAreSavedAsRecurringPayment());
-
-
     }
 }
 

@@ -36,25 +36,41 @@ public class TC185_ValidateRedirectingToVestaPageAfterClickingOnUseThisCardButto
     //TC185 -  Check redirect to Vesta page after click "Use this card" button
     @Test
     public void RedirectToVestPageToUseSavedCard() {
-
         HomePage.pressAccountTrayMenuOption();
         Verifications.verifyTrue(HomePage.CheckAccountOverlaySettingText());
+    }
+
+    @Test
+    public void step2() {
         HomePage.pressAccountSettingOption();
         Verifications.verifyTrue(BillsPaymentsPage.checkAccountSettingsText());
+    }
+
+    @Test
+    public void step3() {
         SettingsPage.pressPaymentMethodOption();
         Verifications.verifyTrue(BillsPaymentsPage.checkPaymentMethodText());
+    }
+
+    @Test
+    public void step4() {
         BillsPaymentsPage.checkUseThisCardButton();
         BillsPaymentsPage.checkUseThisCardOverlay();
         BillsPaymentsPage.pressChangeYourCardOverlayCloseButton();
+    }
+
+    @Test
+    public void step5() {
         BillsPaymentsPage.checkSavedCardsTabContent();
         BillsPaymentsPage.checkUseThisCardButton();
         BillsPaymentsPage.pressChangeYourCardOverlayNoButton();
+    }
+
+    @Test
+    public void step6() {
         BillsPaymentsPage.checkSavedCardsTabContent();
         BillsPaymentsPage.checkUseThisCardButton();
         BillsPaymentsPage.pressChangeYourCardOverlayContinueButton();
-
-
-
     }
 }
 

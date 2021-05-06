@@ -10,6 +10,7 @@ import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
+import org.python.antlr.op.Add;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -23,7 +24,7 @@ public class TC248_ValidateAddOnsPagePAYGUserWithMonthlyAddOns {
     private AddOns AddOnsPage;
 
     @BeforeClass
-    public void beforeClass() throws IOException, ParseException {
+    public void beforeClass(){
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
@@ -31,13 +32,12 @@ public class TC248_ValidateAddOnsPagePAYGUserWithMonthlyAddOns {
         users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
         String username = users.getTestData("PAYGUser.username");
         String password = users.getTestData("PAYGUser.password");
-        LoginPage.acceptTermsAndConditions().login(username, password);
-        //.acceptPermissions();
+        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
     }
 
     @Test
     public void CheckEssentialsSection() {
-        Assertions.assertTrue(HomePage.checkEssentialsSection()); //Here scrolling is not working
+        HomePage.checkEssentialsSection(); //Here scrolling is not working
     }
 
     @Test(dependsOnMethods = {"CheckEssentialsSection"})
@@ -46,10 +46,36 @@ public class TC248_ValidateAddOnsPagePAYGUserWithMonthlyAddOns {
         AddOnsPage.openAddOnsPage();
         Verifications.verifyElementAttribute(driver, AddOnsPage.getAddOnsHeader_text(),
                 "text", "Buy add ons");
-        Assertions.assertElementExists(driver,
+        Verifications.verifyElementExists(driver,
                 AddOnsPage.getOneOff_tab(),
-                Assertions.AssertionType.NEGATIVE,
+                Verifications.VerificationType.NEGATIVE,
                 "Check Element Existence");
+        Verifications.verifyElementExists(driver,AddOnsPage.getAddOneFirstListPAYG_text());
+        Verifications.verifyElementExists(driver,AddOnsPage.getAddOnsContinue_button());
+        Assertions.assertElementExists(driver,AddOnsPage.getManageAddOns_button(),
+                Assertions.AssertionType.NEGATIVE,"Check That Payg Does Not Have Manage AddOns Button");
+    }
+
+    @Test(dependsOnMethods = "ValidateAddOnsPage")
+    public void CheckBuyAddOnsSelectButton(){
+        AddOnsPage.pressFirstAddOnSelectButton();
+        Assertions.assertElementAttribute(driver,AddOnsPage.getSelect_text(),"text",
+                "Selected","Check that select button is changed");
+    }
+
+    @Test(dependsOnMethods = "CheckBuyAddOnsSelectButton")
+    public void CheckBuyAddOnsOverlay(){
+        AddOnsPage.pressBuyAddOnsContinueButton();
+        Assertions.assertElementAttribute(driver,AddOnsPage.getBuyAddOnsHeaderOverlay_text(),
+                "text","Buy add ons");
+    }
+
+    @Test(dependsOnMethods = "CheckBuyAddOnsOverlay")
+    public void CheckBuyAddOnsCloseButton(){
+        AddOnsPage.pressBuyAddOnsOverlayCloseButton();
+        AddOnsPage.closeAddOnsPage();
+        Assertions.assertElementAttribute(driver,HomePage.getBuyAndManageAddOns_text(),
+                "text","Buy and manage add ons");
     }
 
 }

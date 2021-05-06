@@ -39,25 +39,25 @@ public class TC02_CheckLoginAndRegisterAndOurPrivacyPages{
         Assertions.assertElementExists(driver, LoginPage.getReg_Login_Txt(),AssertionType.POSITIVE);
     }
 
-    @Test()
+    @Test(dependsOnMethods = {"Check_Vodafone_Logo_And_Login_Text_And_Button"})
     public void check_Register_Text_And_Button(){
         Assertions.assertElementExists(driver, LoginPage.getReg_Register_button(),AssertionType.POSITIVE);
         Assertions.assertElementExists(driver, LoginPage.getReg_Register_Txt(),AssertionType.POSITIVE);
     }
 
-    @Test()
+    @Test(dependsOnMethods = {"check_Register_Text_And_Button"})
     public void check_Our_Privacy_Link(){
         Assertions.assertElementExists(driver, LoginPage.getReg_OurPrivacy_Link(),AssertionType.POSITIVE);
         ElementActions.performTouchAction(driver).tap(LoginPage.getReg_OurPrivacy_Link());
     }
 
-    @Test()
+    @Test(dependsOnMethods = {"check_Our_Privacy_Link"})
     public void check_Our_Privacy_WebView(){
-        Assertions.assertElementExists(driver, LoginPage.getReg_Register_button(),AssertionType.POSITIVE);
-        Assertions.assertElementExists(driver, LoginPage.getReg_Register_Txt(),AssertionType.POSITIVE);
+        Assertions.assertElementExists(driver, LoginPage.getOurPrivacy_title(),AssertionType.POSITIVE);
+        Assertions.assertElementExists(driver, LoginPage.getOurPrivacy_text(),AssertionType.POSITIVE);
     }
 
-    @Test()
+    @Test(dependsOnMethods = {"check_Our_Privacy_WebView"})
     public void Click_Back_And_check_VodafoneLogo_Is_Displayed_And_Im_On_Login_And_Register_Page(){
         LoginPage.PressBack();
         Assertions.assertElementExists(driver,LoginPage.getVodafone_Logo(),AssertionType.POSITIVE,"I'm On Register And Login Page");

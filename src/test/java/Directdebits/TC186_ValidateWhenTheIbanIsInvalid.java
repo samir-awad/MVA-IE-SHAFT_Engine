@@ -31,19 +31,21 @@ public class TC186_ValidateWhenTheIbanIsInvalid {
         String username = users.getTestData("IMEI-EligibleAccountBillPayUser.username");
         String password = users.getTestData("IMEI-EligibleAccountBillPayUser.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
+
     }
 
 
     //TC186 - Check input validation when the IBAN is invalid
     @Test
     public void InvalidIbanErrorMessage() {
-
         HomePage.pressDirectDebitTile();
         Verifications.verifyTrue(BillsPaymentsPage.checkPaymentMethodText());
+    }
+
+    @Test
+    public void step2() {
         BillsPaymentsPage.insertAccountHolderAndInvalidIban();
         BillsPaymentsPage.checkErrorMessageForInvalidIban();
-
-
     }
 }
 

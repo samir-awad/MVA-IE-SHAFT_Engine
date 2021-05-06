@@ -63,6 +63,7 @@ public class Login {
     private By GoToTheApp_button;
     private By Tutorials_button;
     private By GoToMyVodafone_button;
+    private By OnboardingPersonalDetailsContinuePAYG_button;
 
     public Login(WebDriver driver) {
         this.driver = driver;
@@ -92,14 +93,12 @@ public class Login {
 //            RestPassword_RegisterHere_RedirectText = new MobileBy.ByAccessibilityId("");
 //            RestPassword_RegisterHere_RedirectLink = new MobileBy.ByAccessibilityId("");
 //            RestPassword_UserName = new MobileBy.ByAccessibilityId("");
-
             Back_Arrow = new MobileBy.ByAccessibilityId("id_header_back_arrow");
             LoginVf_Logo = new MobileBy.ByAccessibilityId("id_login_vf_logo");
             LoginVf_title = new MobileBy.ByAccessibilityId("id_login_title_text");
             PhoneOrEmail_TxtField = new MobileBy.ByAccessibilityId("id_login_edittext_username");
             Password_TxtField = new MobileBy.ByAccessibilityId("id_login_edittext_password");
 //            KeepMe_Checkbox = new MobileBy.ByAccessibilityId("");
-
             Login_button = new MobileBy.ByAccessibilityId("id_login_button_login");
             LegacyOverlay_title = new MobileBy.ByAccessibilityId("error_pop_up_title");
             LegacyOverlay_text = new MobileBy.ByAccessibilityId("id_error_pop_up_message");
@@ -115,6 +114,7 @@ public class Login {
             PaymentMethod_Continue_button = new MobileBy.ByAccessibilityId("id_onboarding_payment_method_continue_button");
             Yes_Button = By.xpath("//android.widget.Button[@content-desc=\"Yes\"]/android.widget.TextView");
             OnboardingPersonalDetailsContinue_button = new MobileBy.ByAccessibilityId("id_onboarding_payment_method_continue_button");
+            OnboardingPersonalDetailsContinuePAYG_button=new MobileBy.ByAccessibilityId("id_onboarding_personal_details_continue_button");
             PermissionsContinue_button = new MobileBy.ByAccessibilityId("id_onboarding_permissions_continue_button");
             GoToTheApp_button = new MobileBy.ByAccessibilityId("OBgetStartedButton");
             Tutorials_button = new MobileBy.ByAccessibilityId("id_tutorials_tour_button");
@@ -198,6 +198,23 @@ public class Login {
         ElementActions.performTouchAction(driver).tap(GoToTheApp_button);
         ElementActions.performTouchAction(driver).tap(GoToMyVodafone_button);
     }
+    public void acceptPermissionsPAYGUser() {
+        ElementActions.performTouchAction(driver).tap(LetsGo_Button);
+        ElementActions.performTouchAction(driver).tap(PrivacyContinue_button);
+        ElementActions.performTouchAction(driver).swipeElementIntoView(PersonalPreferencesContinue_button, TouchActions.SwipeDirection.UP);
+        ElementActions.performTouchAction(driver).tap(PersonalPreferencesContinue_button);
+        //ElementActions.performTouchAction(driver).tap(PaymentMethod_Continue_button);
+        ElementActions.performTouchAction(driver).tap(OnboardingPersonalDetailsContinuePAYG_button);
+        ElementActions.performTouchAction(driver).swipeElementIntoView(PermissionsContinue_button, TouchActions.SwipeDirection.UP);
+        ElementActions.performTouchAction(driver).tap(PermissionsContinue_button);
+        ElementActions.performTouchAction(driver).tap(GoToTheApp_button);
+        ElementActions.performTouchAction(driver).tap(GoToMyVodafone_button);
+    }
+
+
+    public void PressReg_LoginButton(){
+        ElementActions.performTouchAction(driver).tap(Reg_Login_Button);
+    }
 
     public void PressBack(){
         ElementActions.performTouchAction(driver).tap(Back_Arrow);
@@ -226,5 +243,15 @@ public class Login {
     public By getReg_OurPrivacy_Link() {return Reg_OurPrivacy_Link;}
     public By getOurPrivacy_title() {return OurPrivacy_title;}
     public By getOurPrivacy_text() {return OurPrivacy_text;}
+    public By getLoginVf_Logo() {return LoginVf_Logo;}
+    public By getLoginVf_title() {return LoginVf_title;}
+    public By getPhoneOrEmail_TxtField() {return PhoneOrEmail_TxtField;}
+    public By getPassword_TxtField() {return Password_TxtField;}
+    public By getLogin_button() {return Login_button;}
+    public By getKeepMe_Checkbox() {return KeepMe_Checkbox;}
+    public By getNeedToRegister_link() {return NeedToRegister_link;}
+    public By getForgotPWD_link() {return ForgotPWD_link;}
+    public By getLoginOurPrivacy_link() {return LoginOurPrivacy_link;}
+
 
 }

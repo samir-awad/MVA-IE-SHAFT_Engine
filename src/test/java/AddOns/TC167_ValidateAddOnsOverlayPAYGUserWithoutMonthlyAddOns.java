@@ -31,13 +31,12 @@ public class TC167_ValidateAddOnsOverlayPAYGUserWithoutMonthlyAddOns {
         users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
         String username = users.getTestData("PAYGUserWithoutAddOns.username");
         String password = users.getTestData("PAYGUserWithoutAddOns.password");
-        LoginPage.acceptTermsAndConditions().login(username, password);
-                //.acceptPermissions();
+        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
     }
 
     @Test
     public void CheckEssentialsSection() {
-        Assertions.assertTrue(HomePage.checkEssentialsSection());
+        HomePage.checkEssentialsSection();
     }
 
     @Test(dependsOnMethods = {"CheckEssentialsSection"})

@@ -36,22 +36,30 @@ public class TC184_ValidateRedirectingToVestaPageAfterClickingOnAddNewCardButton
 
     //TC184 -  Check redirect to Vesta page after click "Add new card" button
     @Test
-
     public void RedirectToVestPageToAddNewCard() {
         Verifications.verifyTrue(HomePage.checkDirectDebitTile());
+    }
+
+    @Test
+    public void step2() {
         HomePage.pressDirectDebitTile();
         Verifications.verifyTrue(BillsPaymentsPage.checkPaymentMethodText());
         BillsPaymentsPage.pressSavedCardsTab();
+    }
+
+    @Test
+    public void step3() {
         BillsPaymentsPage.pressAndNewCardButton();
         Verifications.verifyTrue(BillsPaymentsPage.checkAddNewCardOverlay());
         BillsPaymentsPage.pressAddNewCardOverlayCloseButton();
+    }
+
+    @Test
+    public void step4() {
         BillsPaymentsPage.pressAndNewCardButton();
         BillsPaymentsPage.pressAddNewCardOverlayNoButton();
         BillsPaymentsPage.pressAddNewCardOverlayCloseButton();
         BillsPaymentsPage.pressAddNewCardOverlayContinueButton();
-
-
-
     }
 }
 

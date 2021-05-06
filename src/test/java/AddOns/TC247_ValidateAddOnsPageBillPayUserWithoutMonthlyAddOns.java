@@ -23,7 +23,7 @@ public class TC247_ValidateAddOnsPageBillPayUserWithoutMonthlyAddOns {
     private AddOns AddOnsPage;
 
     @BeforeClass
-    public void beforeClass() throws IOException, ParseException {
+    public void beforeClass(){
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
@@ -36,7 +36,7 @@ public class TC247_ValidateAddOnsPageBillPayUserWithoutMonthlyAddOns {
 
     @Test
     public void CheckEssentialsSection() {
-        Assertions.assertTrue(HomePage.checkEssentialsSection()); //Here scrolling is not working
+        HomePage.checkEssentialsSection(); //Here scrolling is not working
 
     }
 

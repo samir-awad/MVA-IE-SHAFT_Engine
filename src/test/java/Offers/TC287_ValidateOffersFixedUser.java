@@ -33,7 +33,7 @@ public class TC287_ValidateOffersFixedUser {
 
     @Test
     public void CheckDiscoverySection(){
-        Assertions.assertTrue(HomePage.checkDiscoverySection());
+       HomePage.checkDiscoverySection();
     }
 
     @Test(dependsOnMethods = "CheckDiscoverySection")

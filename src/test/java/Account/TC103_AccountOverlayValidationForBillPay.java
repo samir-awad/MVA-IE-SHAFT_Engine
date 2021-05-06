@@ -5,6 +5,7 @@ import Pages.ChangePlan;
 import Pages.Home;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
@@ -17,6 +18,8 @@ public class TC103_AccountOverlayValidationForBillPay {
     private Login LoginPage;
     private Home HomePage;
     private Account  AccountPage;
+    private JSONFileManager users;
+
     @BeforeClass
     public void beforeClass() {
         //System.setProperty("mobile_app", FileActions.getAbsolutePath(System.getProperty("testDataFolderPath") + "apk/", "DIG18180Fix.apk"));
@@ -24,14 +27,16 @@ public class TC103_AccountOverlayValidationForBillPay {
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         AccountPage=new Account(driver);
-        //LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
-        //This method will be used to login before every test case to login with
-        //With different users credentials must be changed
+        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        String username = users.getTestData("BillPayUser.username");
+        String password = users.getTestData("BillPayUser.password");
+        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
+        // LoginPage.acceptPermissions();
     }
     @Test
     public void AccountOverlayValidationForBillPay  (){
-        Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         AccountPage.pressAccountTrayMenuOption();
-        Assertions.assertTrue(AccountPage.checkAccountOverlay());
+        Assertions.assertElementExists(driver,AccountPage.getCheckAccountOverlay());
     }
 }
