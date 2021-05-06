@@ -1,6 +1,7 @@
 package Pages;
 
 import com.shaft.gui.element.ElementActions;
+import com.shaft.gui.element.TouchActions;
 import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -22,7 +23,7 @@ public class Account {
     private By SaveButtonBecomesEnabled;
     private By HeaderBackChevron_Button;
     private By BillingDetailsOption;
-    private By DetailsPageHeader;
+    private By BillingDetailsPageHeader;
     private By DetailsPageContent;
     private By DetailsHeaderClose_Button;
     private By DetailsBillingPreferencesSection;
@@ -51,6 +52,33 @@ public class Account {
     private By PersonalDetailsPageContent;
     private By BackForPersonalDetails_Button;
     private By CloseForPersonalDetails_Button;
+    private By YourDetailsSection;
+    private By YourDetailsPageHeader;
+    private By YourDetailsPageContent;
+    private By YourDetailsEdit_Button;
+    private By YourDetailsCancel_Button;
+    private By BackForDetailsPage_Button;
+    private By CloseForDetailsPage_Button;
+    private By ManagePersonalInformation_Section;
+    private By ManagePersonalInformationPageHeader;
+    private By ManagePersonalInformationPageContent;
+    private By ManagePersonalInformationEdit_Button;
+    private By ManagePersonalInformationEditContent;
+    private By DownloadDataRequestForm_Button;
+    private By DeletionRequestForm_Button;
+    private By BackForTheRequestInformationPage_Button;
+    private By CloseForManagePersonalInformationSection_Button;
+    private By SubjectAccessRequestFormPdfIsOpened;
+    private By PdfBack_Button;
+    private By Chrome_driver;
+    private By MarketingPreferences_Section;
+    private By MarketingPreferencesPageHeader;
+    private By MarketingPreferencesPageContent;
+    private By MarketingPreferencesEdit_Button;
+    private By MarketingPreferencesEditContent;
+    private By MarketingPreferencesCancel_Button;
+    private By BackForMarketingPreferencesPage_Button;
+    private By CloseForMarketingPreferencesPage_Button;
 
     public Account(WebDriver driver) {
 
@@ -71,7 +99,7 @@ public class Account {
             SaveButtonBecomesEnabled = new MobileBy.ByAccessibilityId("Button");
             HeaderBackChevron_Button = new MobileBy.ByAccessibilityId("id_header_back_arrow");
             BillingDetailsOption = By.xpath("(//android.widget.TextView[@content-desc=\"id_account_settings_item_title\"])[2]");
-            DetailsPageHeader = new MobileBy.ByAccessibilityId("id_header_title_Billing_details");
+            BillingDetailsPageHeader = new MobileBy.ByAccessibilityId("id_header_title_Billing_details");
             DetailsPageContent = new MobileBy.ByAccessibilityId("id_billing_address_content_card_title");
             DetailsHeaderClose_Button = By.xpath("(//android.widget.ImageView[@content-desc=\"Close button\"])[2]");
             DetailsBillingPreferencesSection  = new MobileBy.ByAccessibilityId("id_billing_preferences_content_card_title");
@@ -100,6 +128,34 @@ public class Account {
             PersonalDetailsPageContent = new MobileBy.ByAccessibilityId("id_personal_details_card_your_details_title");
             BackForPersonalDetails_Button = new MobileBy.ByAccessibilityId("id_header_back_arrow");
             CloseForPersonalDetails_Button = By.xpath("(//android.widget.ImageView[@content-desc=\"id_header_close_icon\"])[2]");
+            YourDetailsSection = new MobileBy.ByAccessibilityId("id_personal_details_card_your_details_title");
+            YourDetailsPageHeader = new MobileBy.ByAccessibilityId("id_header_title_Your_details");
+            YourDetailsPageContent = new MobileBy.ByAccessibilityId("id_personal_details_your_details_title");
+            YourDetailsEdit_Button = new MobileBy.ByAccessibilityId("id_personal_details_your_details_button_edit");
+            YourDetailsCancel_Button = new MobileBy.ByAccessibilityId("id_personal_details_your_details_button_cancel");
+            BackForDetailsPage_Button = By.xpath("(//android.widget.ImageView[@content-desc=\"id_header_back_arrow\"])[2]");
+            CloseForDetailsPage_Button = By.xpath("(//android.widget.ImageView[@content-desc=\"id_header_close_icon\"])[3]");
+            ManagePersonalInformation_Section = new MobileBy.ByAccessibilityId("id_personal_details_card_personal_information_title");
+            ManagePersonalInformationPageHeader = new MobileBy.ByAccessibilityId("id_header_title_Request_Information");
+            ManagePersonalInformationPageContent = new MobileBy.ByAccessibilityId("id_personal_details_manage_personal_information_content_card_data_protection_your_rights_title");
+            ManagePersonalInformationEdit_Button = new MobileBy.ByAccessibilityId("id_personal_details_manage_personal_information_button_data_protection_your_rights");
+            ManagePersonalInformationEditContent = new MobileBy.ByAccessibilityId("id_personal_details_manage_personal_information_subject_access_request_title");
+            DownloadDataRequestForm_Button = new MobileBy.ByAccessibilityId("id_personal_details_manage_personal_information_button_subject_access_request");
+            DeletionRequestForm_Button = new MobileBy.ByAccessibilityId("id_personal_details_manage_personal_information_button_request_deletion");
+            BackForTheRequestInformationPage_Button = By.xpath("(//android.widget.ImageView[@content-desc=\"id_header_back_arrow\"])[2]");
+            CloseForManagePersonalInformationSection_Button = By.xpath("(//android.widget.ImageView[@content-desc=\"id_header_close_icon\"])[3]");
+            SubjectAccessRequestFormPdfIsOpened = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.TextView");
+            PdfBack_Button = new MobileBy.ByAccessibilityId("Navigate up");
+            Chrome_driver = By.id("com.android.chrome:id/url_bar");
+            MarketingPreferences_Section = new MobileBy.ByAccessibilityId("");
+            MarketingPreferencesPageHeader = new MobileBy.ByAccessibilityId("");
+            MarketingPreferencesPageContent = new MobileBy.ByAccessibilityId("");
+            MarketingPreferencesEdit_Button = new MobileBy.ByAccessibilityId("");
+            MarketingPreferencesEditContent = new MobileBy.ByAccessibilityId("");
+            MarketingPreferencesCancel_Button = new MobileBy.ByAccessibilityId("");
+            BackForMarketingPreferencesPage_Button = new MobileBy.ByAccessibilityId("");
+            CloseForMarketingPreferencesPage_Button = new MobileBy.ByAccessibilityId("");
+
 
         } else
             {
@@ -111,6 +167,24 @@ public class Account {
     public By getSaveButtonBecomesEnabled() {
         return SaveButtonBecomesEnabled;
     }
+    public By getCheckMarketingPreferencesPageHeader(){
+        return MarketingPreferencesPageHeader;
+    }
+    public By getCheckMarketingPreferencesEditContent(){
+        return MarketingPreferencesEditContent;
+    }
+    public By getCheckMarketingPreferencesPageContent(){
+        return MarketingPreferencesPageContent;
+    }
+    public void  pressMarketingPreferencesCancelButton() {
+        ElementActions.performTouchAction(driver).tap(MarketingPreferencesCancel_Button);
+    }
+    public void  pressBackButtonForMarketingPreferencesPage() {
+        ElementActions.performTouchAction(driver).tap(BackForMarketingPreferencesPage_Button);
+    }
+    public void  pressCloseButtonForMarketingPreferencesPage() {
+        ElementActions.performTouchAction(driver).tap(CloseForMarketingPreferencesPage_Button);
+    }
     public void pressAccountTrayMenuOption()
     {
         ElementActions.performTouchAction(driver).tap(AccountTry_Button);
@@ -118,11 +192,72 @@ public class Account {
     public void pressBackButtonForPersonalDetails(){
         ElementActions.performTouchAction(driver).tap(BackForPersonalDetails_Button);
     }
+    public void pressMarketingPreferencesEditButton(){
+        ElementActions.performTouchAction(driver).tap(MarketingPreferencesEdit_Button);
+    }
+    public void pressPdfBackButton(){
+        ElementActions.performTouchAction(driver).tap(PdfBack_Button);
+    }
+    public void pressYourDetailsSection(){
+        ElementActions.performTouchAction(driver).tap(YourDetailsSection);
+    }
+    public void pressYourDetailsCancelButton(){
+        ElementActions.performTouchAction(driver).swipeElementIntoView(YourDetailsCancel_Button, TouchActions.SwipeDirection.UP);
+        ElementActions.performTouchAction(driver).tap(YourDetailsCancel_Button);
+    }
+    public void pressBackButtonForDetailsPage(){
+        ElementActions.performTouchAction(driver).tap(BackForDetailsPage_Button);
+    }
+    public void pressCloseButtonForDetailsPage(){
+        ElementActions.performTouchAction(driver).tap(CloseForDetailsPage_Button);
+    }
+    public boolean CheckDeletionRequestFormExternalPage() {
+        return ElementActions.isElementDisplayed(driver, Chrome_driver);
+    }
     public void pressCloseButtonForPersonalDetails(){
         ElementActions.performTouchAction(driver).tap(CloseForPersonalDetails_Button);
     }
+    public void pressBackButtonForTheRequestInformationPage(){
+        ElementActions.performTouchAction(driver).tap(BackForTheRequestInformationPage_Button);
+    }
+    public void pressCloseButtonForManagePersonalInformationSection(){
+        ElementActions.performTouchAction(driver).tap(CloseForManagePersonalInformationSection_Button);
+    }
+    public void pressManagePersonalInformationSection(){
+        ElementActions.performTouchAction(driver).tap(ManagePersonalInformation_Section);
+    }
+    public By getCheckSubjectAccessRequestFormPdfIsOpened(){
+        return SubjectAccessRequestFormPdfIsOpened;
+    }
+    public void goBackToTheRequestInformationPage() {
+        driver.navigate().back();
+    }
+    public void pressManagePersonalInformationEditButton(){
+        ElementActions.performTouchAction(driver).tap(ManagePersonalInformationEdit_Button);
+    }
+    public void pressMarketingPreferencesSection(){
+        ElementActions.performTouchAction(driver).tap(MarketingPreferences_Section);
+    }
+    public void pressDeletionRequestForm(){
+        ElementActions.performTouchAction(driver).tap(DeletionRequestForm_Button);
+    }
+    public void pressYourDetailsEditButton(){
+        ElementActions.performTouchAction(driver).tap(YourDetailsEdit_Button);
+    }
     public By getCheckAccountOverlay(){
         return AccountOverlay;
+    }
+    public By getCheckYourDetailsPageHeader(){
+        return YourDetailsPageHeader;
+    }
+    public By getCheckYourDetailsPageContent(){
+        return YourDetailsPageContent;
+    }
+    public By getCheckManagePersonalInformationEditContent(){
+        return  ManagePersonalInformationEditContent;
+    }
+    public void pressDownloadDataRequestForm(){
+        ElementActions.performTouchAction(driver).tap(DownloadDataRequestForm_Button);
     }
     public void pressPersonalDetailsSection(){
         ElementActions.performTouchAction(driver).tap(PersonalDetailsSection);
@@ -137,8 +272,14 @@ public class Account {
     public void pressMyRecordsHeaderCloseButton(){
         ElementActions.performTouchAction(driver).tap(MyRecordsHeaderClose_Button);
     }
+    public By getCheckManagePersonalInformationPageContent(){
+        return ManagePersonalInformationPageContent;
+    }
     public By getCheckPersonalDetailsPageContent(){
         return PersonalDetailsPageContent;
+    }
+    public By getCheckManagePersonalInformationPageHeader(){
+        return ManagePersonalInformationPageHeader;
     }
 
     public void goBackToMyRecordsPage(){
@@ -232,7 +373,7 @@ public class Account {
         ElementActions.performTouchAction(driver).tap(BillingDetailsOption);
     }
     public By getCheckBillingDetailsPageHeader(){
-        return DetailsPageHeader;
+        return BillingDetailsPageHeader;
     }
 
     public By getCheckBillingDetailsPageContent(){
