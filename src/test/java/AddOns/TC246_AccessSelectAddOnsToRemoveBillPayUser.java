@@ -35,7 +35,7 @@ public class TC246_AccessSelectAddOnsToRemoveBillPayUser {
 
     @Test
     public void CheckEssentialsSection() {
-        Assertions.assertTrue(HomePage.checkEssentialsSection());
+        HomePage.checkEssentialsSection();
     }
 
     @Test(dependsOnMethods = {"CheckEssentialsSection"})

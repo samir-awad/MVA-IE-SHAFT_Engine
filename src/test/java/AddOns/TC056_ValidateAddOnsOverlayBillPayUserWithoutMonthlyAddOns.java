@@ -37,7 +37,7 @@ public class TC056_ValidateAddOnsOverlayBillPayUserWithoutMonthlyAddOns {
 
     @Test
     public void CheckEssentialsSection() {
-        Assertions.assertTrue(HomePage.checkEssentialsSection());
+       HomePage.checkEssentialsSection();
     }
 
     @Test(dependsOnMethods = {"CheckEssentialsSection"})

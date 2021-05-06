@@ -35,7 +35,7 @@ public class TC244_ValidateSelectAddOnsToRemoveOverlayBillPayUser {
 
     @Test
     public void CheckEssentialsSection() {
-        Assertions.assertTrue(HomePage.checkEssentialsSection());
+        HomePage.checkEssentialsSection();
     }
 
     @Test(dependsOnMethods = "CheckEssentialsSection")

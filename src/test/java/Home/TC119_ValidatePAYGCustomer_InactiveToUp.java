@@ -1,13 +1,15 @@
-package Android.Home;
+package Home;
 
 import Pages.Home;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.validation.Assertions;
+import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC024_CheckThatTheTutorialTileBecomesUnavailableAfter5loginWithBillPay{
+public class TC119_ValidatePAYGCustomer_InactiveToUp {
 
     private WebDriver driver;
     private Login LoginPage;
@@ -23,8 +25,15 @@ public class TC024_CheckThatTheTutorialTileBecomesUnavailableAfter5loginWithBill
         //With different users credentials must be changed
     }
     @Test
-    public void CheckThatTheTutorialTileBecomesUnavailableAfter5loginWithBillPay(){
-
+    public void ValidatePAYGCustomer_InactiveToUp(){
+        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+        Verifications.verifyTrue(HomePage.checkTopUpOfferTileInactiveTopUp());
+        Verifications.verifyTrue(HomePage.checkBalanceTile());
+        Verifications.verifyTrue(HomePage.checkTopUpHistoryTile());
+        HomePage.checkDiscoverySection();
+        HomePage.checkEssentialsSection();
+        HomePage.checkOtherUsefulToolsSection();
+        Assertions.assertTrue(HomePage.checkTrayMenuOptionsForPayg());
 
     }
 }

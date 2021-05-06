@@ -2,6 +2,7 @@ package Pages;
 
 import com.shaft.gui.element.ElementActions;
 import com.shaft.gui.element.TouchActions;
+import com.shaft.validation.Assertions;
 import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -99,7 +100,6 @@ public class Home {
             BillTile = new MobileBy.ByAccessibilityId("id_dashboard_next_bill_clickable");
             ClickNextBillTitle = new MobileBy.ByAccessibilityId("id_dashboard_next_bill_clickable");
             Essentials_text = new MobileBy.ByAccessibilityId("id_dashboard_essentials_title");
-            BillAndPayment = new MobileBy.ByAccessibilityId("id_tray_menu_item_Bills & Payments");
             ShowMore_button = new MobileBy.ByAccessibilityId("id_dashboard_essentials_see_more_less_label");
             OtherUsefulTools_text = new MobileBy.ByAccessibilityId("id_dashboard_tools_title");
             BillAndPayment = new MobileBy.ByAccessibilityId("id_tray_menu_item_Bills & Payments");
@@ -110,8 +110,8 @@ public class Home {
             Support_button = new MobileBy.ByAccessibilityId("id_dashboard_live_chat_tile_title");
             SeeAllOffers_button = new MobileBy.ByAccessibilityId("id_dashboard_discover_see_all_offers_label");
             ClickNextBillTitle = new MobileBy.ByAccessibilityId("id_dashboard_next_bill_title");
-            AmountDueTile = new MobileBy.ByAccessibilityId("id_dashboard_amount_due_title");
-            DirectDebitTile = new MobileBy.ByAccessibilityId("id_dashboard_direct_debit_title");
+            AmountDueTile = new MobileBy.ByAccessibilityId("id_dashboard_amount_due_clickable");
+            DirectDebitTile = new MobileBy.ByAccessibilityId("id_dashboard_direct_debit_clickable");
             OtherUsefulTools = new MobileBy.ByAccessibilityId("id_dashboard_tools_title");
             ChangePlan_Button = new MobileBy.ByAccessibilityId("d_dashboard_essentials_change_plan_clickable");
             InactiveToUp = new MobileBy.ByAccessibilityId("id_dashboard_my_usage_exception_noActiveTopUpOffer_text");
@@ -119,7 +119,7 @@ public class Home {
             TopUpHistoryTile = new MobileBy.ByAccessibilityId("id_dashboard_topup_history_title");
             PAYG_Tray = new MobileBy.ByAccessibilityId("id_tray_menu_item_Top Up");
             ActiveToUp = new MobileBy.ByAccessibilityId("id_dashboard_my_usage_plan_name");
-            Change_button = new MobileBy.ByAccessibilityId("id_dashboard_change_subscription");
+            Change_button = MobileBy.xpath("//XCUIElementTypeStaticText[@name=\"id_dashboard_change_subscription\"]");
             SelectAccountAndSubscriptionTitle = new MobileBy.ByAccessibilityId("id_dashboard_change_subscription_title");
             NewSubscription = By.xpath("(//android.view.ViewGroup[@content-desc=\"id_dashboard_change_subscription_subscriptions_item\"])[2]");
             ChangeAccount = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.widget.Spinner");
@@ -160,14 +160,145 @@ public class Home {
         return BalanceTitle;
     }
 
+    public By getVodafoneLogo() {
+        return VodafoneLogo;
+    }
+    public By getDiscover_text() {
+        return Discover_text;
+    }
+
+    public By getOffersPageHeader_button() {
+        return OffersPageHeader_button;
+    }
+
+    public By getSupport_button() {
+        return Support_button;
+    }
+
+    public By getBuyAndManageAddOns_button() {
+        return BuyAndManageAddOns_button;
+    }
+
+    public By getBillTile() {
+        return BillTile;
+    }
+
+    public By getClickNextBillTitle() {
+        return ClickNextBillTitle;
+    }
+
+    public By getBillAndPayment() {
+        return BillAndPayment;
+    }
+
+    public By getShowMore_button() {
+        return ShowMore_button;
+    }
+
+    public By getOtherUsefulTools_text() {
+        return OtherUsefulTools_text;
+    }
+
+    public By getUnlockYourDevice_text() {
+        return UnlockYourDevice_text;
+    }
+
+    public By getAmountDueTile() {
+        return AmountDueTile;
+    }
+
+    public By getDirectDebitTile() {
+        return DirectDebitTile;
+    }
+
+    public By getOtherUsefulTools() {
+        return OtherUsefulTools;
+    }
+
+    public By getChangePlan_Button() {
+        return ChangePlan_Button;
+    }
+
+    public By getInactiveToUp() {
+        return InactiveToUp;
+    }
+
+    public By getTopUpHistoryTile() {
+        return TopUpHistoryTile;
+    }
+
+    public By getPAYG_Tray() {
+        return PAYG_Tray;
+    }
+
+    public By getActiveToUp() {
+        return ActiveToUp;
+    }
+
+    public By getChange_button() {
+        return Change_button;
+    }
+
+    public By getSelectAccountAndSubscriptionTitle() {
+        return SelectAccountAndSubscriptionTitle;
+    }
+
+    public By getNewSubscription() {
+        return NewSubscription;
+    }
+
+    public By getChangeAccount() {
+        return ChangeAccount;
+    }
+
+    public By getAccountChanged() {
+        return AccountChanged;
+    }
+
+    public By getClose_Button() {
+        return Close_Button;
+    }
+
+    public By getSelect_Button() {
+        return Select_Button;
+    }
+
+    public By getLastBileTile() {
+        return LastBileTile;
+    }
+
+    public By getTvAddOnsTile() {
+        return TvAddOnsTile;
+    }
+
+    public By getEssentialsSectionFixed_WithTV() {
+        return EssentialsSectionFixed_WithTV;
+    }
+
+    public By getAccountOverlaySetting_text() {
+        return AccountOverlaySetting_text;
+    }
+
+    public By getAccount() {
+        return Account;
+    }
+
+    public By getTopUp_button() {
+        return TopUp_button;
+    }
+
+    public By getTopUpHistory_button() {
+        return TopUpHistory_button;
+    }
+
+
     public By getBuyAndManageAddOns_text() { return BuyAndManageAddOns_text; }
 
-    public By getVodafoneLogo() { return VodafoneLogo; }
 
     //Check existence methods
-    public boolean checkEssentialsSection() {
+    public void checkEssentialsSection() {
         ElementActions.performTouchAction(driver).swipeElementIntoView(BuyAndManageAddOns_button, TouchActions.SwipeDirection.DOWN);
-        return ElementActions.isElementDisplayed(driver, Essentials_text);
+        Assertions.assertElementExists(driver, Essentials_text);
     }
 
     public boolean checkEssentialsSectionFixedWithTv() {
@@ -191,9 +322,9 @@ public class Home {
         ElementActions.performTouchAction(driver).tap(Close_Button);
     }
 
-    public boolean checkOtherUsefulToolsSection() {
+    public void checkOtherUsefulToolsSection() {
         ElementActions.performTouchAction(driver).swipeElementIntoView(OtherUsefulTools, TouchActions.SwipeDirection.DOWN);
-        return ElementActions.isElementDisplayed(driver, OtherUsefulTools);
+        Assertions.assertElementExists(driver,OtherUsefulTools);
     }
 
     public boolean checkAccountSuccessfullySelected() {
@@ -246,9 +377,9 @@ public class Home {
         return ElementActions.isElementDisplayed(driver, DirectDebitTile);
     }
 
-    public boolean checkDiscoverySection() {
+    public void checkDiscoverySection() {
         ElementActions.performTouchAction(driver).swipeElementIntoView(Discover_text, TouchActions.SwipeDirection.DOWN);
-        return ElementActions.isElementDisplayed(driver, Discover_text);
+        Assertions.assertElementExists(driver, Discover_text);
     }
 
     //for Bill Pay

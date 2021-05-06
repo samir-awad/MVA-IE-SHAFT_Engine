@@ -38,7 +38,7 @@ public class TC066_ValidateOffersBillPayUser {
 
     @Test
     public void CheckDiscoverySection(){
-        Assertions.assertTrue(HomePage.checkDiscoverySection());
+       HomePage.checkDiscoverySection();
     }
 
     @Test(dependsOnMethods = "CheckDiscoverySection")

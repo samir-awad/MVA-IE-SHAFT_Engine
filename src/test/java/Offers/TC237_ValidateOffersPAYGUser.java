@@ -36,7 +36,7 @@ public class TC237_ValidateOffersPAYGUser {
 
     @Test
     public void CheckDiscoverySection() {
-        Assertions.assertTrue(HomePage.checkDiscoverySection());
+        HomePage.checkDiscoverySection();
     }
 
     @Test(dependsOnMethods = "CheckDiscoverySection")

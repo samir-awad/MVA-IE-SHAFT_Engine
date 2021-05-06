@@ -36,7 +36,7 @@ public class TC247_ValidateAddOnsPageBillPayUserWithoutMonthlyAddOns {
 
     @Test
     public void CheckEssentialsSection() {
-        Assertions.assertTrue(HomePage.checkEssentialsSection()); //Here scrolling is not working
+        HomePage.checkEssentialsSection(); //Here scrolling is not working
 
     }
 

@@ -1,16 +1,13 @@
-package Android.Home;
+package Home;
 
-import Pages.ChangePlan;
 import Pages.Home;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
-import com.shaft.validation.Assertions;
-import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC022_ValidateBillPayCustomer {
+public class TC023_TutorialValidationsBillPayCustomer {
 
     private WebDriver driver;
     private Login LoginPage;
@@ -26,14 +23,8 @@ public class TC022_ValidateBillPayCustomer {
         //With different users credentials must be changed
     }
     @Test
-    public void ValidateBillPayCustomer(){
-        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
-        Verifications.verifyTrue(HomePage.checkNextBillTile());
-        Verifications.verifyTrue(HomePage.checkAmountDueTile());
-        Verifications.verifyTrue(HomePage.checkDirectDebitTile());
-        Verifications.verifyTrue(HomePage.checkDiscoverySection());
-        Verifications.verifyTrue(HomePage.checkEssentialsSection());
-        Verifications.verifyTrue(HomePage.checkOtherUsefulToolsSection());
-        Assertions.assertTrue(HomePage.checkTrayMenuOptionsForBillPay());
+    public void TutorialValidationsBillPayCustomer(){
+
+
     }
 }

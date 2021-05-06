@@ -1,17 +1,16 @@
-package Android.BillsPayments;
+package BillsPayments;
 
 import Pages.BillsPayments;
 import Pages.Home;
 import Pages.Login;
 import com.shaft.cli.FileActions;
 import com.shaft.gui.browser.BrowserFactory;
-import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC282_MakePaymentValidationsFixedUserSavedAndSelectedCreditCard {
+public class TC283_MakePaymentValidationsFixedUserWithUnsavedCreditCardPayWithNewCardWithoutSavingIt {
 
     private WebDriver driver;
     private Login LoginPage;
@@ -29,17 +28,16 @@ public class TC282_MakePaymentValidationsFixedUserSavedAndSelectedCreditCard {
         //With different users credentials must be changed
     }
     @Test
-    public void MakePaymentValidationsFixedUserSavedAndSelectedCreditCard(){
+    public void MakePaymentValidationsFixedUserWithUnsavedCreditCardPayWithNewCardWithoutSavingIt(){
         HomePage.pressBillsPaymentsTrayMenuOption();
-        Verifications.verifyTrue(BillsPaymentsPage.checkBillsPaymentsHeader());
         BillsPaymentsPage.pressMakeAPaymentButton();
-        BillsPaymentsPage.checkMakeAPaymentOverlayHeader();
-        BillsPaymentsPage.checkMakeAPaymentOverlayAmountField();
+        Verifications.verifyTrue(BillsPaymentsPage.checkMakeAPaymentOverlayHeader());
+        Verifications.verifyTrue(BillsPaymentsPage.checkMakeAPaymentOverlayFirstBill());
+        Verifications.verifyTrue(BillsPaymentsPage.checkMakeAPaymentOverlayAmountField());
+        Verifications.verifyTrue(BillsPaymentsPage.checkMakeAPaymentOverlayPaymentMethod());
+        BillsPaymentsPage.pressPaymentMethodEditButton();
 
-        BillsPaymentsPage.checkMakeAPaymentOverlayPaymentMethod();
-        BillsPaymentsPage.pressMakePaymentButton();
-        Assertions.assertElementAttribute(driver,BillsPaymentsPage.getVestaField(),"text","Name on Card");
-
+        BillsPaymentsPage.pressPayWithNewCardWithoutSavingItButton();
 
 
     }

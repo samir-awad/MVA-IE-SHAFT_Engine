@@ -1,4 +1,4 @@
-package Android.Home;
+package Home;
 
 import Pages.Home;
 import Pages.Login;
@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC119_ValidatePAYGCustomer_InactiveToUp {
+public class TC120_ValidatePAYGCustomer_ActiveToUp {
 
     private WebDriver driver;
     private Login LoginPage;
@@ -25,14 +25,14 @@ public class TC119_ValidatePAYGCustomer_InactiveToUp {
         //With different users credentials must be changed
     }
     @Test
-    public void ValidatePAYGCustomer_InactiveToUp(){
+    public void ValidatePAYGCustomer_ActiveToUp(){
         Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
-        Verifications.verifyTrue(HomePage.checkTopUpOfferTileInactiveTopUp());
+        Verifications.verifyTrue(HomePage.checkTopUpOfferTileActiveTopUp());
         Verifications.verifyTrue(HomePage.checkBalanceTile());
         Verifications.verifyTrue(HomePage.checkTopUpHistoryTile());
-        Verifications.verifyTrue(HomePage.checkDiscoverySection());
-        Verifications.verifyTrue(HomePage.checkEssentialsSection());
-        Verifications.verifyTrue(HomePage.checkOtherUsefulToolsSection());
+        HomePage.checkDiscoverySection();
+        HomePage.checkEssentialsSection();
+        HomePage.checkOtherUsefulToolsSection();
         Assertions.assertTrue(HomePage.checkTrayMenuOptionsForPayg());
 
     }
