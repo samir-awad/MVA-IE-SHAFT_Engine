@@ -115,9 +115,9 @@ public class Account {
             LettersTabOption = By.id("Letter");
             ThatExistsAtLeastOneLetter = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[2]/android.view.View[2]/android.view.View/android.view.View[4]/android.view.View/android.view.View/android.view.View[1]");
             FirstLetterAttachmentsLink = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[7]/android.widget.Button");
-            AppToOpenLetterWith = By.xpath("");
-            LetterIsOpenedAsPdfDocument = By.xpath("");
-            BackToMyRecordsPage = By.xpath("");
+            //AppToOpenLetterWith = By.xpath("");
+          //  LetterIsOpenedAsPdfDocument = By.xpath("");
+           // BackToMyRecordsPage = By.xpath("");
             MyRecordsHeaderClose_Button=new MobileBy.ByAccessibilityId("id_header_close_icon");
             OurPrivacyLink = new MobileBy.ByAccessibilityId("id_account_overlay_our_privacy");
             OurPrivacyHeader = new MobileBy.ByAccessibilityId("id_header_title_Our_Privacy");
@@ -127,7 +127,8 @@ public class Account {
             PersonalDetailsPageHeader=new MobileBy.ByAccessibilityId("id_header_title_Personal_details");
             PersonalDetailsPageContent = new MobileBy.ByAccessibilityId("id_personal_details_card_your_details_title");
             BackForPersonalDetails_Button = new MobileBy.ByAccessibilityId("id_header_back_arrow");
-            CloseForPersonalDetails_Button = By.xpath("(//android.widget.ImageView[@content-desc=\"id_header_close_icon\"])[2]");
+            CloseForPersonalDetails_Button =new MobileBy.ByAccessibilityId("id_header_close_icon");
+            //CloseForPersonalDetails_Button = By.xpath("(//android.widget.ImageView[@content-desc=\"id_header_close_icon\"])[2]");
             YourDetailsSection = new MobileBy.ByAccessibilityId("id_personal_details_card_your_details_title");
             YourDetailsPageHeader = new MobileBy.ByAccessibilityId("id_header_title_Your_details");
             YourDetailsPageContent = new MobileBy.ByAccessibilityId("id_personal_details_your_details_title");
@@ -147,6 +148,7 @@ public class Account {
             SubjectAccessRequestFormPdfIsOpened = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.TextView");
             PdfBack_Button = new MobileBy.ByAccessibilityId("Navigate up");
             Chrome_driver = By.id("com.android.chrome:id/url_bar");
+            /*
             MarketingPreferences_Section = new MobileBy.ByAccessibilityId("");
             MarketingPreferencesPageHeader = new MobileBy.ByAccessibilityId("");
             MarketingPreferencesPageContent = new MobileBy.ByAccessibilityId("");
@@ -154,8 +156,7 @@ public class Account {
             MarketingPreferencesEditContent = new MobileBy.ByAccessibilityId("");
             MarketingPreferencesCancel_Button = new MobileBy.ByAccessibilityId("");
             BackForMarketingPreferencesPage_Button = new MobileBy.ByAccessibilityId("");
-            CloseForMarketingPreferencesPage_Button = new MobileBy.ByAccessibilityId("");
-
+            CloseForMarketingPreferencesPage_Button = new MobileBy.ByAccessibilityId("");*/
 
         } else
             {

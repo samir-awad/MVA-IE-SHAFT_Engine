@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC097_AccessNetPerformSmartLinkWithBillPayUser {
+public class TC189_AccessNetPerformSmartLinkWithPAYGUser {
 
     private WebDriver driver;
     private Login LoginPage;
@@ -36,14 +36,13 @@ public class TC097_AccessNetPerformSmartLinkWithBillPayUser {
 
     @Test
     public void CheckAccessNetPerformSmartLinkBeforeLogin(){
-        //Link is not working
         String netPerformLink= links.getTestData("NetPerform.link");
         SmartLinksPage.accessSmartLink(netPerformLink);
-        String username = users.getTestData("BillPayUser.username");
-        String password = users.getTestData("BillPayUser.password");
-        LoginPage.login(username, password).acceptPermissions();
+        String username = users.getTestData("PAYGUser.username");
+        String password = users.getTestData("PAYGUser.password");
+        LoginPage.login(username, password).acceptPermissionsPAYGUser();
         SpeedCheckerPage.pressOkGrantPermissionButton();
-        Assertions.assertElementAttribute(driver,SpeedCheckerPage.getSpeedCheckerHeader_text(),
+        Assertions.assertElementMatches(driver,SpeedCheckerPage.getSpeedCheckerHeader_text(),
                 "text","Speed checker","Checking speed header");
     }
 

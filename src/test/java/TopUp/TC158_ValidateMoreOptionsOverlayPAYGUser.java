@@ -40,7 +40,7 @@ public class TC158_ValidateMoreOptionsOverlayPAYGUser {
     public void CheckMoreOptionsOverlay() {
         HomePage.pressBalanceTitle();
         TopUpPage.pressTopUpOverlayMoreOptionsButton();
-        Assertions.assertElementExists(driver, TopUpPage.getMoreOptionOverlayHeader_text());
+        Assertions.assertElementExists(driver, TopUpPage.getTopUpOverlayHeader_text());
     }
 
     @Test(dependsOnMethods = "CheckMoreOptionsOverlay")

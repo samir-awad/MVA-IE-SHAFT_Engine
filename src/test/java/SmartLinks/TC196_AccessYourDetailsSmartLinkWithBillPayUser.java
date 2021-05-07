@@ -1,56 +1,61 @@
 package SmartLinks;
 
+import Pages.Account;
 import Pages.Home;
 import Pages.Login;
+import Pages.SmartLinks;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC196_AccessYourDetailsSmartLinkWithBillPayUser {
     private WebDriver driver;
-    private WebDriver nativeDriver;
     private Login LoginPage;
     private Home HomePage;
+    private SmartLinks SmartLinksPage;
+    private Account AccountPage;
     private JSONFileManager links;
     private JSONFileManager users;
-    ChromeOptions options = new ChromeOptions();
 
     @BeforeClass
     public void beforeClass(){
-        nativeDriver = BrowserFactory.getBrowser();
-        LoginPage = new Login(nativeDriver);
-        HomePage= new Home(nativeDriver);
+        driver = BrowserFactory.getBrowser();
+        LoginPage = new Login(driver);
+        HomePage= new Home(driver);
+        SmartLinksPage = new SmartLinks(driver);
+        AccountPage= new Account(driver);
         links = new JSONFileManager(System.getProperty("testDataFolderPath")+"smartLinks.json");
         users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
         LoginPage.acceptTermsAndConditions();
-        //close app
     }
 
     @Test
     public void CheckAccessYourDetailsSmartLinkBeforeLogin(){
-        //accessYourDetailsSmartLink
+        String yourDetailsURL= links.getTestData("YourDetails.link");
+        SmartLinksPage.accessSmartLink(yourDetailsURL);
         String username = users.getTestData("BillPayUser.username");
         String password = users.getTestData("BillPayUser.password");
         LoginPage.login(username, password).acceptPermissions();
-        //checkYourDetailsPageHeader
-
+        Assertions.assertElementAttribute(driver,AccountPage.getCheckYourDetailsPageHeader(),
+                "text","Your details");
     }
 
     @Test(dependsOnMethods = "CheckAccessYourDetailsSmartLinkBeforeLogin")
     public void CheckPersonalDetailsCloseButton(){
-        //pressCloseButton
-        Assertions.assertElementExists(nativeDriver,HomePage.getVodafoneLogo());
+        AccountPage.pressCloseButtonForPersonalDetails();
+        Assertions.assertElementMatches(driver,HomePage.getVodafoneLogo());
 
     }
 
     @Test(dependsOnMethods ="CheckPersonalDetailsCloseButton")
     public void CheckAccessYourDetailsSmartLinkAfterLogin(){
-        //close app
-        //accessYourDetailsSmartLink
-        //checkYourDetailsPageHeader
+        String yourDetailsURL= links.getTestData("YourDetails.link");
+        SmartLinksPage.accessSmartLink(yourDetailsURL);
+        Assertions.assertElementAttribute(driver,AccountPage.getCheckYourDetailsPageHeader(),
+                "text","Your details");
     }
+
 }

@@ -48,7 +48,7 @@ public class TC159_ValidateAutoTopUpPagePAYGUser {
     @Test(dependsOnMethods = "CheckSetAutoTopUpOptionPage")
     public void ValidateSetAutoTopUpOptionPageBackBtn() {
         TopUpPage.pressAutoTopUpBackButton();
-        Assertions.assertElementExists(driver, TopUpPage.getMoreOptionOverlayHeader_text());
+        Assertions.assertElementExists(driver, TopUpPage.getTopUpOverlayHeader_text());
     }
 
     @Test(dependsOnMethods = "ValidateSetAutoTopUpOptionPageBackBtn")
