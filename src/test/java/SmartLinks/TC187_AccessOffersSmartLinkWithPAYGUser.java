@@ -1,4 +1,5 @@
 package SmartLinks;
+
 import Pages.Home;
 import Pages.Login;
 import Pages.Offers;
@@ -6,13 +7,11 @@ import Pages.SmartLinks;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
-import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC095_AccessOffersSmartLinkWithBillPayUser
-{
+public class TC187_AccessOffersSmartLinkWithPAYGUser {
     private WebDriver driver;
     private Login LoginPage;
     private SmartLinks smartLinksPage;
@@ -37,9 +36,9 @@ public class TC095_AccessOffersSmartLinkWithBillPayUser
     public void CheckAccessOffersSmartLinkBeforeLogin(){
         String OffersURL= links.getTestData("Offers.link");
         smartLinksPage.accessSmartLink(OffersURL);
-        String username = users.getTestData("BillPayUser.username");
-        String password = users.getTestData("BillPayUser.password");
-        LoginPage.login(username, password).acceptPermissions();
+        String username = users.getTestData("PAYGUser.username");
+        String password = users.getTestData("PAYGUser.password");
+        LoginPage.login(username, password).acceptPermissionsPAYGUser();
         Assertions.assertElementAttribute(driver,OffersPage.getOffersHeader_text(),
                 "text","Offers","Checking offers header");
     }
@@ -57,9 +56,4 @@ public class TC095_AccessOffersSmartLinkWithBillPayUser
         Assertions.assertElementAttribute(driver,OffersPage.getOffersHeader_text(),
                 "text","Offers","Checking offers header");
     }
-
-
-
-
-
 }

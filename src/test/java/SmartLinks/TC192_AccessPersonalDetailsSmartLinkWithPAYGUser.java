@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC101_AccessPersonalDetailsSmartLinkWithBillPayUser {
+public class TC192_AccessPersonalDetailsSmartLinkWithPAYGUser {
     private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
@@ -38,9 +38,9 @@ public class TC101_AccessPersonalDetailsSmartLinkWithBillPayUser {
     public void CheckAccessPersonalDetailsSmartLinkBeforeLogin(){
         String personalDetailsURL= links.getTestData("PersonalDetails.link");
         smartLinksPage.accessSmartLink(personalDetailsURL);
-        String username = users.getTestData("BillPayUser.username");
-        String password = users.getTestData("BillPayUser.password");
-        LoginPage.login(username, password).acceptPermissions();
+        String username = users.getTestData("PAYGUser.username");
+        String password = users.getTestData("PAYGUser.password");
+        LoginPage.login(username, password).acceptPermissionsPAYGUser();
         Assertions.assertElementAttribute(driver,AccountPage.getCheckPersonalDetailsPageHeader(),
                 "text","Personal details");
     }

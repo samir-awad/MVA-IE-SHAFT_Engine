@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC096_AccessDashboardSmartLinkWithBillPayUser {
+public class TC190_ConfirmAccessBillSmartLinkWithWillRedirectUserToTheDashboard {
     private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
@@ -23,26 +23,26 @@ public class TC096_AccessDashboardSmartLinkWithBillPayUser {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage= new Home(driver);
-        SmartLinksPage= new SmartLinks(driver);
+        SmartLinksPage = new SmartLinks(driver);
         links = new JSONFileManager(System.getProperty("testDataFolderPath")+"smartLinks.json");
         users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
         LoginPage.acceptTermsAndConditions();
     }
 
     @Test
-    public void CheckAccessDashboardSmartLinkBeforeLogin(){
-        String DashboardLink= links.getTestData("Dashboard.link");
-        SmartLinksPage.accessSmartLink(DashboardLink);
-        String username = users.getTestData("BillPayUser.username");
-        String password = users.getTestData("BillPayUser.password");
-        LoginPage.login(username, password).acceptPermissions();
+    public void CheckAccessBillSmartLinkBeforeLogin(){
+        String billURL= links.getTestData("Bill.link");
+        SmartLinksPage.accessSmartLink(billURL);
+        String username = users.getTestData("PAYGUser.username");
+        String password = users.getTestData("PAYGUser.password");
+        LoginPage.login(username, password).acceptPermissionsPAYGUser();
         Assertions.assertElementMatches(driver,HomePage.getVodafoneLogo());
     }
 
-    @Test(dependsOnMethods = "CheckAccessDashboardSmartLinkBeforeLogin")
-    public void CheckAccessDashboardSmartLinkAfterLogin(){
-        String DashboardLink= links.getTestData("Dashboard.link");
-        SmartLinksPage.accessSmartLink(DashboardLink);
+    @Test(dependsOnMethods ="CheckAccessBillSmartLinkBeforeLogin")
+    public void CheckAccessBillSmartLinkAfterLogin(){
+        String billURL= links.getTestData("Bill.link");
+        SmartLinksPage.accessSmartLink(billURL);
         Assertions.assertElementMatches(driver,HomePage.getVodafoneLogo());
     }
 

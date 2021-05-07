@@ -6,12 +6,11 @@ import Pages.SmartLinks;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
-import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC095_AccessOffersSmartLinkWithBillPayUser
+public class TC269_AccessOffersSmartLinkWithFixedUser
 {
     private WebDriver driver;
     private Login LoginPage;
@@ -37,8 +36,8 @@ public class TC095_AccessOffersSmartLinkWithBillPayUser
     public void CheckAccessOffersSmartLinkBeforeLogin(){
         String OffersURL= links.getTestData("Offers.link");
         smartLinksPage.accessSmartLink(OffersURL);
-        String username = users.getTestData("BillPayUser.username");
-        String password = users.getTestData("BillPayUser.password");
+        String username = users.getTestData("FixedUser.username");
+        String password = users.getTestData("FixedUser.password");
         LoginPage.login(username, password).acceptPermissions();
         Assertions.assertElementAttribute(driver,OffersPage.getOffersHeader_text(),
                 "text","Offers","Checking offers header");

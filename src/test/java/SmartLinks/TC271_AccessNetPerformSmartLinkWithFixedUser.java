@@ -7,12 +7,11 @@ import Pages.SpeedChecker;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
-import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC097_AccessNetPerformSmartLinkWithBillPayUser {
+public class TC271_AccessNetPerformSmartLinkWithFixedUser {
 
     private WebDriver driver;
     private Login LoginPage;
@@ -39,8 +38,8 @@ public class TC097_AccessNetPerformSmartLinkWithBillPayUser {
         //Link is not working
         String netPerformLink= links.getTestData("NetPerform.link");
         SmartLinksPage.accessSmartLink(netPerformLink);
-        String username = users.getTestData("BillPayUser.username");
-        String password = users.getTestData("BillPayUser.password");
+        String username = users.getTestData("FixedUser.username");
+        String password = users.getTestData("FixedUser.password");
         LoginPage.login(username, password).acceptPermissions();
         SpeedCheckerPage.pressOkGrantPermissionButton();
         Assertions.assertElementAttribute(driver,SpeedCheckerPage.getSpeedCheckerHeader_text(),

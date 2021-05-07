@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC096_AccessDashboardSmartLinkWithBillPayUser {
+public class TC188_AccessDashboardSmartLinkWithPAYGUser {
     private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
@@ -33,9 +33,9 @@ public class TC096_AccessDashboardSmartLinkWithBillPayUser {
     public void CheckAccessDashboardSmartLinkBeforeLogin(){
         String DashboardLink= links.getTestData("Dashboard.link");
         SmartLinksPage.accessSmartLink(DashboardLink);
-        String username = users.getTestData("BillPayUser.username");
-        String password = users.getTestData("BillPayUser.password");
-        LoginPage.login(username, password).acceptPermissions();
+        String username = users.getTestData("PAYGUser.username");
+        String password = users.getTestData("PAYGUser.password");
+        LoginPage.login(username, password).acceptPermissionsPAYGUser();
         Assertions.assertElementMatches(driver,HomePage.getVodafoneLogo());
     }
 
@@ -43,7 +43,6 @@ public class TC096_AccessDashboardSmartLinkWithBillPayUser {
     public void CheckAccessDashboardSmartLinkAfterLogin(){
         String DashboardLink= links.getTestData("Dashboard.link");
         SmartLinksPage.accessSmartLink(DashboardLink);
-        Assertions.assertElementMatches(driver,HomePage.getVodafoneLogo());
+        Assertions.assertElementExists(driver,HomePage.getVodafoneLogo());
     }
-
 }

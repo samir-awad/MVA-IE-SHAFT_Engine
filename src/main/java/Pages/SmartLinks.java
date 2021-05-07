@@ -14,7 +14,7 @@ public class SmartLinks {
         this.driver = (MobileDriver) driver;
     }
 
-    public void accessOffersSmartLink(String URL){
+    public void accessSmartLink(String URL){
         ElementActions.performTouchAction(driver).sendAppToBackground(-1);
         //driver.runAppInBackground(Duration.ofSeconds(-1));
         //BrowserActions.navigateToURL(driver,URL);

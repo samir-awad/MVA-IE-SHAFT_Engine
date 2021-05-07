@@ -7,12 +7,11 @@ import Pages.SmartLinks;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
-import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC098_AccessBillsSmartLinkWithBillPayUser {
+public class TC272_AccessBillsSmartLinkWithFixedUser {
     private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
@@ -37,8 +36,8 @@ public class TC098_AccessBillsSmartLinkWithBillPayUser {
     public void CheckAccessBillSmartLinkBeforeLogin(){
         String billLink= links.getTestData("Bill.link");
         SmartLinksPage.accessSmartLink(billLink);
-        String username = users.getTestData("BillPayUser.username");
-        String password = users.getTestData("BillPayUser.password");
+        String username = users.getTestData("FixedUser.username");
+        String password = users.getTestData("FixedUser.password");
         LoginPage.login(username, password).acceptPermissions();
         Assertions.assertElementAttribute(driver,BillsPaymentsPage.getBillsPaymentTitle(),
                 "text","Bills & Payments");
