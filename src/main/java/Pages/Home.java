@@ -48,6 +48,8 @@ public class Home {
     private By TopUp_button;
     private By TopUpHistory_button;
     private By BuyAndManageAddOns_text;
+    private By TakeQuickTour_Tile;
+
     public Home(WebDriver driver) {
         this.driver = driver;
         if (System.getProperty("targetOperatingSystem").equals("Android")) {
@@ -93,7 +95,7 @@ public class Home {
             TopUpHistory_button = new MobileBy.ByAccessibilityId("id_dashboard_topup_history_title");
 
         } else {
-          
+
             Discover_text = new MobileBy.ByAccessibilityId("id_dashboard_discover_title");
             BuyAndManageAddOns_button = new MobileBy.ByAccessibilityId("id_dashboard_essentials_addons_clickable");
             VodafoneLogo = new MobileBy.ByAccessibilityId("id_header_vodafone_logo");
@@ -135,6 +137,8 @@ public class Home {
             TopUpOverlayTitle_text = new MobileBy.ByAccessibilityId("STundefinedMainTitle");
             TopUp_button = new MobileBy.ByAccessibilityId("id_tray_menu_item_Top Up");
             TopUpHistory_button = new MobileBy.ByAccessibilityId("id_dashboard_topup_history_title");
+            TakeQuickTour_Tile=MobileBy.AccessibilityId("id_dashboard_whats_new_clickable");
+
 
         }
     }
@@ -163,6 +167,7 @@ public class Home {
     public By getVodafoneLogo() {
         return VodafoneLogo;
     }
+
     public By getDiscover_text() {
         return Discover_text;
     }
@@ -291,18 +296,23 @@ public class Home {
         return TopUpHistory_button;
     }
 
+    public By getBuyAndManageAddOns_text() {
+        return BuyAndManageAddOns_text;
+    }
 
-    public By getBuyAndManageAddOns_text() { return BuyAndManageAddOns_text; }
+    public By getTakeQuickTour_Tile() {
+        return TakeQuickTour_Tile;
+    }
 
 
     //Check existence methods
     public void checkEssentialsSection() {
-        ElementActions.performTouchAction(driver).swipeElementIntoView(BuyAndManageAddOns_button, TouchActions.SwipeDirection.DOWN);
+        ElementActions.performTouchAction(driver).swipeElementIntoView(BuyAndManageAddOns_button, TouchActions.SwipeDirection.UP);
         Assertions.assertElementExists(driver, Essentials_text);
     }
 
     public boolean checkEssentialsSectionFixedWithTv() {
-        ElementActions.performTouchAction(driver).swipeElementIntoView(EssentialsSectionFixed_WithTV, TouchActions.SwipeDirection.DOWN);
+        ElementActions.performTouchAction(driver).swipeElementIntoView(EssentialsSectionFixed_WithTV, TouchActions.SwipeDirection.UP);
         return ElementActions.isElementDisplayed(driver, EssentialsSectionFixed_WithTV);
     }
 
@@ -323,8 +333,8 @@ public class Home {
     }
 
     public void checkOtherUsefulToolsSection() {
-        ElementActions.performTouchAction(driver).swipeElementIntoView(OtherUsefulTools, TouchActions.SwipeDirection.DOWN);
-        Assertions.assertElementExists(driver,OtherUsefulTools);
+        ElementActions.performTouchAction(driver).swipeElementIntoView(OtherUsefulTools, TouchActions.SwipeDirection.UP);
+        Assertions.assertElementExists(driver, OtherUsefulTools);
     }
 
     public boolean checkAccountSuccessfullySelected() {
@@ -378,7 +388,7 @@ public class Home {
     }
 
     public void checkDiscoverySection() {
-        ElementActions.performTouchAction(driver).swipeElementIntoView(Discover_text, TouchActions.SwipeDirection.DOWN);
+        ElementActions.performTouchAction(driver).swipeElementIntoView(Discover_text, TouchActions.SwipeDirection.UP);
         Assertions.assertElementExists(driver, Discover_text);
     }
 
