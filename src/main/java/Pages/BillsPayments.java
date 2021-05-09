@@ -51,6 +51,9 @@ public class BillsPayments {
     private By CheckSavedCardContent1_Text;
     private By InvalidIbanOverlay_Title;
 
+    public By getBillsPaymentTitle() {
+        return BillsPaymentTitle;
+    }
 
     public BillsPayments(WebDriver driver) {
 
@@ -60,7 +63,7 @@ public class BillsPayments {
             CurrentSpendLastBillTitle = new MobileBy.ByAccessibilityId("id_dashboard_next_bill_details_title");
             Bills_Payments_Button = By.xpath("//android.view.ViewGroup[@content-desc=\"Button\"]");
             BillsPaymentTitle = new MobileBy.ByAccessibilityId("id_header_title_Bills_&_Payments");
-            CloseBTN = By.xpath("(//android.widget.ImageView[@content-desc=\"id_header_close_icon\"])[2]");
+            CloseBTN = new MobileBy.ByAccessibilityId("id_header_close_icon");
             Download_Button = new MobileBy.ByAccessibilityId("Download March 2021 bill");
             MakePayment_Button = By.xpath("(//android.view.ViewGroup[@content-desc=\"Button\"])[1]");
             MakeAdvancePayment_button = new MobileBy.ByAccessibilityId("Make advance payment");

@@ -26,6 +26,7 @@ public class ChangeTopUpOffer {
     private By ViewDetailsNewTopUpOffer_button;
     private By OptIn_button;
 
+
     public ChangeTopUpOffer(WebDriver driver) {
         this.driver = driver;
         if (System.getProperty("targetOperatingSystem").equals("Android")) {
@@ -66,6 +67,7 @@ public class ChangeTopUpOffer {
             YourTopUpOffer_title = MobileBy.AccessibilityId("Your top up offer id_change_top_up_offer_close");
             ChangeTopUpOfferOverlay_CloseButton = MobileBy.AccessibilityId("id_change_top_up_offer_close");
             OptIn_button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"Opt in\"])[1]");
+
         }
     }
 
@@ -145,4 +147,5 @@ public class ChangeTopUpOffer {
     public By getChangeTopUpOfferHeader_text() {
         return ChangeTopUpOfferHeader_text;
     }
+
 }

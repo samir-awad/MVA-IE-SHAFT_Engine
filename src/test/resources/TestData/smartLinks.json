@@ -19,6 +19,14 @@
 	},
 	"YourDetails": {
 		"link": "https://vodafone.ie/static/app.html?link=yourDetails&medium=sms"
+	},
+	"TopUp": {
+		"link": "https://vodafone.ie/static/app.html?link=topup&medium=sms"
+	},
+	"AutoTopUp": {
+		"link": "https://vodafone.ie/static/app.html?link=autoTopUp&medium=sms"
+	},
+	"ChangeTopUp": {
+		"link": "https://vodafone.ie/static/app.html?link=changeTopUpOffer&medium=sms"
 	}
-
 }
