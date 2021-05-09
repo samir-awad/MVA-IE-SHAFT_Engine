@@ -32,7 +32,7 @@ public class TC083A_ValidateSuccessfulSendWebTextToMoreThatOneRecipientUsingBill
 
     @Test
     public void checkTheVodafoneLogo() {
-        Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+    	 Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
     }
 
     @Test (dependsOnMethods = {"checkTheVodafoneLogo"})

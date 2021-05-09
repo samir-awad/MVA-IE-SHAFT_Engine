@@ -32,8 +32,8 @@ public class TC082B_ValidatieWebTextPageAndSuccessfulSendWebtextToOneRecipientUs
 
     @Test
     public void checkTheVodafoneLogo() {
-        Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
-    }
+    	 Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+    	 }
 
     @Test (dependsOnMethods = {"checkTheVodafoneLogo"})
     public void checkOtherUsefulToolsSection() {
@@ -41,7 +41,7 @@ public class TC082B_ValidatieWebTextPageAndSuccessfulSendWebtextToOneRecipientUs
     }
     @Test(dependsOnMethods = {"checkOtherUsefulToolsSection"})
     public void pressSendWebtextOption() {
-        HomePage.pressSendWebtextOption();
+        //HomePage.pressSendWebtextOption();
         Assertions.assertTrue(OtherUsefulToolsPage.checkWebtextForm());
         Verifications.verifyTrue(OtherUsefulToolsPage.checkWebtextPageHeader());
         OtherUsefulToolsPage.fillOutTheWebtextForm();
