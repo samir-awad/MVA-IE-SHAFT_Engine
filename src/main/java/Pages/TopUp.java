@@ -11,7 +11,6 @@ public class TopUp {
     private By TopUpOverlayClose_button;
     private By TopUpOverlay_button;
     private By TopUpHeader_text;
-
     private By TopUpHeaderClose_button;
     private By ChooseANumber_text;
     private By ChooseATopUpAmount_text;
@@ -133,10 +132,6 @@ public class TopUp {
 
     public By getMoreOptionsOverlay_button() {
         return MoreOptionsOverlay_button;
-    }
-
-    public By getMoreOptionsOverlayHeader_text() {
-        return MoreOptionsOverlayHeader_text;
     }
 
     public By getMoreOptionsOverlayBack_button() {
