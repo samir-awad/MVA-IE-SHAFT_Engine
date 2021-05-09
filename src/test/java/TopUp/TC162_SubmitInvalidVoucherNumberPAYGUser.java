@@ -4,16 +4,19 @@ import Pages.Home;
 import Pages.Login;
 import Pages.TopUp;
 import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.gui.element.ElementActions;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
+import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileDriver;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC162_SubmitInvalidVoucherNumberPAYGUser {
 
-    private WebDriver driver;
+    private MobileDriver driver;
     private JSONFileManager users;
     private JSONFileManager vouchers;
     private Login LoginPage;
@@ -22,7 +25,7 @@ public class TC162_SubmitInvalidVoucherNumberPAYGUser {
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         TopUpPage = new TopUp(driver);
@@ -47,12 +50,22 @@ public class TC162_SubmitInvalidVoucherNumberPAYGUser {
     }
 
     @Test(dependsOnMethods = "CheckMoreOptionsOverlay")
-    public void CheckInsertingInvalidVoucherCode() {
-        //Can't be implemented until have PAYG user with subscription and the following code is not working as expected
+    public void GetInvalidVoucher() {
         String phoneNumber = users.getTestData("PAYGUserTopup.username");
         String invalidVoucher = vouchers.getTestData("InvalidVoucherPAYGUser.voucher");
-        TopUpPage.submitInvalidVoucher(phoneNumber, invalidVoucher);
+        //TopUpPage.submitInvalidVoucher(phoneNumber, invalidVoucher);
+    }
 
+    @Test
+    public void submitInvalidVoucher(String phoneNumber, String Voucher) {
+        ElementActions.performTouchAction(driver).tap(TopUpPage.getTopUpAnotherNumber_button());
+        driver.findElement(TopUpPage.getInsertPhoneNumber_editbox()).clear();
+        driver.findElement(TopUpPage.getInsertPhoneNumber_editbox()).sendKeys(phoneNumber);
+        driver.hideKeyboard();
+        driver.findElement(TopUpPage.getInsertVoucherCode_editbox()).clear();
+        driver.findElement(TopUpPage.getInsertVoucherCode_editbox()).sendKeys(Voucher);
+        driver.hideKeyboard();
+        ElementActions.performTouchAction(driver).tap(TopUpPage.getSubmit_button());
     }
 
     @Test(dependsOnMethods = "CheckInsertingInvalidVoucherCode")

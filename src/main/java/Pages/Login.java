@@ -2,13 +2,16 @@ package Pages;
 
 import com.shaft.gui.element.ElementActions;
 import com.shaft.gui.element.TouchActions;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class Login {
-    private final WebDriver driver;
-
+    private final AppiumDriver driver;
+    private Home HomePage;
     private By termsAndConditions_Header;
     private By termsAndConditions_Txt;
     private By AcceptTerms_button;
@@ -64,15 +67,18 @@ public class Login {
     private By Tutorials_button;
     private By GoToMyVodafone_button;
     private By OnboardingPersonalDetailsContinuePAYG_button;
+    private By Logout_button;
+    private By Skip_button;
+    private By Scroll;
 
     public Login(WebDriver driver) {
-        this.driver = driver;
-        if (System.getProperty("targetOperatingSystem").equals("Android")){
+        this.driver = (AppiumDriver) driver;
+        if (System.getProperty("targetOperatingSystem").equals("Android")) {
 
             termsAndConditions_Header = new MobileBy.ByAccessibilityId("id_accordion_description_title");
             termsAndConditions_Txt = By.xpath("(//android.widget.TextView[@content-desc=\"id_tc_content_item\"])[2]");
             AcceptTerms_button = new MobileBy.ByAccessibilityId("id_TC_switch_accept_terms");
-            Continue_button= new MobileBy.ByAccessibilityId("id_tc_agree_button");
+            Continue_button = new MobileBy.ByAccessibilityId("id_tc_agree_button");
             Vodafone_Logo = new MobileBy.ByAccessibilityId("id_login_and_register_logo");
             Reg_Login_Txt = new MobileBy.ByAccessibilityId("id_login_and_register_login_text");
             Reg_Login_Button = new MobileBy.ByAccessibilityId("signup_signin_login_btn");
@@ -104,8 +110,8 @@ public class Login {
             LegacyOverlay_text = new MobileBy.ByAccessibilityId("id_error_pop_up_message");
             LegacyGoToMyVfWeb_button = new MobileBy.ByAccessibilityId("Go to My Vodafone web");
             LegacyCancel_button = new MobileBy.ByAccessibilityId("Cancel");
-            Invalid_UserName_PWD_title =new MobileBy.ByAccessibilityId("error_pop_up_title");
-            Invalid_UserName_PWD_text =new MobileBy.ByAccessibilityId("id_error_pop_up_message");
+            Invalid_UserName_PWD_title = new MobileBy.ByAccessibilityId("error_pop_up_title");
+            Invalid_UserName_PWD_text = new MobileBy.ByAccessibilityId("id_error_pop_up_message");
             Invalid_UserName_PWD_Ok_button = new MobileBy.ByAccessibilityId("Ok");
             Invalid_UserName_PWD_UpdatePWD_button = new MobileBy.ByAccessibilityId("Update Password");
             LetsGo_Button = By.xpath("//android.widget.TextView[@content-desc=\"OBstartButton\"]");
@@ -114,21 +120,21 @@ public class Login {
             PaymentMethod_Continue_button = new MobileBy.ByAccessibilityId("id_onboarding_payment_method_continue_button");
             Yes_Button = By.xpath("//android.widget.Button[@content-desc=\"Yes\"]/android.widget.TextView");
             OnboardingPersonalDetailsContinue_button = new MobileBy.ByAccessibilityId("id_onboarding_payment_method_continue_button");
-            OnboardingPersonalDetailsContinuePAYG_button=new MobileBy.ByAccessibilityId("id_onboarding_personal_details_continue_button");
+            OnboardingPersonalDetailsContinuePAYG_button = new MobileBy.ByAccessibilityId("id_onboarding_personal_details_continue_button");
             PermissionsContinue_button = new MobileBy.ByAccessibilityId("id_onboarding_permissions_continue_button");
             GoToTheApp_button = new MobileBy.ByAccessibilityId("OBgetStartedButton");
             Tutorials_button = new MobileBy.ByAccessibilityId("id_tutorials_tour_button");
             GoToMyVodafone_button = new MobileBy.ByAccessibilityId("id_tutorials_dismiss_button");
 
 
-        }else{
+        } else {
 
-            termsAndConditions_Header =new MobileBy.ByAccessibilityId("id_accordion_description_title");
+            termsAndConditions_Header = new MobileBy.ByAccessibilityId("id_accordion_description_title");
             termsAndConditions_Txt = By.xpath("(//XCUIElementTypeStaticText[@name=\"id_tc_content_item\"])[2]");
-            AcceptTerms_button = new MobileBy.ByAccessibilityId("id_TC_switch_accept_terms");
-            Continue_button= new MobileBy.ByAccessibilityId("Continue");
-            Vodafone_Logo=new MobileBy.ByAccessibilityId("id_login_and_register_logo");
-            Reg_Login_Button=new MobileBy.ByAccessibilityId("Login");
+            AcceptTerms_button = MobileBy.xpath("//XCUIElementTypeOther[@name=\"id_TC_switch_accept_terms\"]");
+            Continue_button =  MobileBy.AccessibilityId("Continue");
+            Vodafone_Logo = new MobileBy.ByAccessibilityId("id_login_and_register_logo");
+            Reg_Login_Button = new MobileBy.ByAccessibilityId("Login");
             OurPrivacy_title = new MobileBy.ByAccessibilityId("id_header_title_Our_Privacy");
             OurPrivacy_text = By.xpath("//XCUIElementTypeStaticText[@name=\"We're committed to keeping you informed about the information we use to bring you our products and services. Each section gives detail on the information we collect, what we do with it and how you can manage it.\"]");
             LoginVf_Logo = new MobileBy.ByAccessibilityId("id_login_vf_logo");
@@ -136,29 +142,31 @@ public class Login {
             PhoneOrEmail_TxtField = new MobileBy.ByAccessibilityId("id_login_edittext_username");
             Password_TxtField = new MobileBy.ByAccessibilityId("id_login_edittext_password");
             KeepMe_Checkbox = new MobileBy.ByAccessibilityId("id_login_switch_keepmeloggedin");
-            Login_button=new MobileBy.ByAccessibilityId("Login");
-            NeedToRegister_link =By.xpath("//XCUIElementTypeStaticText[@name=\"id_login_textview_needtoregister\"]");
+            Login_button = new MobileBy.ByAccessibilityId("Login");
+            NeedToRegister_link = By.xpath("//XCUIElementTypeStaticText[@name=\"id_login_textview_needtoregister\"]");
             ForgotPWD_link = By.xpath("//XCUIElementTypeStaticText[@name=\"id_login_textview_forgotyourpassword\"]");
             LoginOurPrivacy_link = By.xpath("//XCUIElementTypeStaticText[@name=\"id_login_textview_ourprivacy\"]");
             LegacyOverlay_title = new MobileBy.ByAccessibilityId("error_pop_up_title");
             LegacyOverlay_text = new MobileBy.ByAccessibilityId("id_error_pop_up_message");
             LegacyGoToMyVfWeb_button = new MobileBy.ByAccessibilityId("Go to My Vodafone web");
             LegacyCancel_button = new MobileBy.ByAccessibilityId("Cancel");
-            LetsGo_Button =new MobileBy.ByAccessibilityId("OBstartButton");
-            Invalid_UserName_PWD_title =new MobileBy.ByAccessibilityId("error_pop_up_title");
-            Invalid_UserName_PWD_text =new MobileBy.ByAccessibilityId("id_error_pop_up_message");
+            LetsGo_Button = new MobileBy.ByAccessibilityId("OBstartButton");
+            Invalid_UserName_PWD_title = new MobileBy.ByAccessibilityId("error_pop_up_title");
+            Invalid_UserName_PWD_text = new MobileBy.ByAccessibilityId("id_error_pop_up_message");
             Invalid_UserName_PWD_Ok_button = new MobileBy.ByAccessibilityId("Ok");
             Invalid_UserName_PWD_UpdatePWD_button = new MobileBy.ByAccessibilityId("Update Password");
             Login_Inline_Error = new MobileBy.ByAccessibilityId("//XCUIElementTypeStaticText[@name=\"Email is not valid\"]");
             PrivacyContinue_button = new MobileBy.ByAccessibilityId("Continue");
-            PersonalPreferencesContinue_button = By.xpath("(//XCUIElementTypeOther[@name=\"Continue\"])[2]");
-            PaymentMethod_Continue_button =By.xpath("(//XCUIElementTypeOther[@name=\"Continue\"])[2]");
+            PersonalPreferencesContinue_button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"Continue\"])[2]");
+            PaymentMethod_Continue_button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"Continue\"])[2]");
             Yes_Button = By.xpath("//XCUIElementTypeOther[@name=\"Yes\"]");
             NotNow_Button = new MobileBy.ByAccessibilityId("Not now");
-            PermissionsContinue_button =By.xpath("(//XCUIElementTypeOther[@name=\"Continue\"])[2]");
-            GoToTheApp_button = new MobileBy.ByAccessibilityId("Go to the app");
+            PermissionsContinue_button = By.xpath("(//XCUIElementTypeOther[@name=\"Continue\"])[2]");
+            GoToTheApp_button = new MobileBy.ByAccessibilityId("OBgetStartedButton");
             Tutorials_button = new MobileBy.ByAccessibilityId("Take a quick tour");
-            GoToMyVodafone_button = new MobileBy.ByAccessibilityId("OBgetStartedButton");
+            Skip_button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"Skip\"])[2]");
+            GoToMyVodafone_button = new MobileBy.ByAccessibilityId("Go to My Vodafone");
+            Scroll=MobileBy.AccessibilityId("Permissions for an improved experience You can change these from your settings screen later. Location This app collects location data to help us improving your network experience by detecting weak coverage spots to improve our network with your measurements, also if you are not using the app. Location Permission Switch. Current value: denied Contacts We'll use your contact for you to select recipients directly from your phone book. Contacts Permission Switch. Current value: denied Push notifications \"My Vodafone\" would like to send you notifications which may include alerts, sounds and icons. Push notifications Permission Switch. Current value: denied Network We may collect data including location, performance & installed apps that we can use to improve our service. This data may not be linked back to you in any way. Network Permission Switch. Current value: undefined Personalised services and recommendations We make recommendations & tailor our service based on your location, quality of your connectivity and installed apps data consumption. Personalised services and recommendations is not available at the moment. Continue");
         }
     }
 
@@ -168,18 +176,19 @@ public class Login {
         return this;
     }
 
-    public void EnterPasswordAndLogin(String password){
+    public Login EnterPasswordAndLogin(String password) {
         ElementActions.type(driver, Password_TxtField, password);
         ElementActions.performTouchAction(driver).tap(Login_button);
+        return this;
     }
 
-    public void EnterUserName(String username){
+    public Login EnterUserName(String username) {
         ElementActions.type(driver, PhoneOrEmail_TxtField, username);
+        return this;
     }
 
-    public Login login(String username,String password) {
+    public Login login(String username, String password) {
         ElementActions.performTouchAction(driver).tap(Reg_Login_Button);
-
         ElementActions.type(driver, PhoneOrEmail_TxtField, username);
         ElementActions.type(driver, Password_TxtField, password);
         ElementActions.performTouchAction(driver).tap(Login_button);
@@ -192,12 +201,24 @@ public class Login {
         ElementActions.performTouchAction(driver).swipeElementIntoView(PersonalPreferencesContinue_button, TouchActions.SwipeDirection.UP);
         ElementActions.performTouchAction(driver).tap(PersonalPreferencesContinue_button);
         ElementActions.performTouchAction(driver).tap(PaymentMethod_Continue_button);
-       //ElementActions.performTouchAction(driver).tap(OnboardingPersonalDetailsContinue_button);
-        ElementActions.performTouchAction(driver).swipeElementIntoView(PermissionsContinue_button, TouchActions.SwipeDirection.UP);
+        ElementActions.performTouchAction(driver).swipeElementIntoView(PermissionsContinue_button, TouchActions.SwipeDirection.DOWN);
         ElementActions.performTouchAction(driver).tap(PermissionsContinue_button);
         ElementActions.performTouchAction(driver).tap(GoToTheApp_button);
         ElementActions.performTouchAction(driver).tap(GoToMyVodafone_button);
     }
+
+    public void acceptPermissionsWithoutSkipingTutorials() {
+        ElementActions.performTouchAction(driver).tap(LetsGo_Button);
+        ElementActions.performTouchAction(driver).tap(PrivacyContinue_button);
+        ElementActions.performTouchAction(driver).swipeElementIntoView(PersonalPreferencesContinue_button, TouchActions.SwipeDirection.UP);
+        ElementActions.performTouchAction(driver).tap(PersonalPreferencesContinue_button);
+        ElementActions.performTouchAction(driver).tap(PaymentMethod_Continue_button);
+        ElementActions.performTouchAction(driver).swipeElementIntoView(PermissionsContinue_button, TouchActions.SwipeDirection.UP);
+        ElementActions.performTouchAction(driver).tap(PermissionsContinue_button);
+        ElementActions.performTouchAction(driver).tap(GoToTheApp_button);
+        ElementActions.performTouchAction(driver).tap(Tutorials_button);
+    }
+
     public void acceptPermissionsPAYGUser() {
         ElementActions.performTouchAction(driver).tap(LetsGo_Button);
         ElementActions.performTouchAction(driver).tap(PrivacyContinue_button);
@@ -212,46 +233,156 @@ public class Login {
     }
 
 
-    public void PressReg_LoginButton(){
+    public void PressReg_LoginButton() {
         ElementActions.performTouchAction(driver).tap(Reg_Login_Button);
     }
 
-    public void PressBack(){
+    public void PressBack() {
         ElementActions.performTouchAction(driver).tap(Back_Arrow);
     }
 
-    public By getLetsGo_Button() {return LetsGo_Button;}
-    public By getVodafone_Logo() {return Vodafone_Logo;}
-    public By getAcceptTerms_button() {return AcceptTerms_button;}
-    public By getContinue_button() {return Continue_button;}
-    public By getTermsAndConditions_Header() { return termsAndConditions_Header;}
-    public By getTermsAndConditions_Txt() { return termsAndConditions_Txt; }
-    public By getReg_Login_Button() {return Reg_Login_Button;}
-    public By getReg_Login_Txt() {return Reg_Login_Txt;}
-    public By getReg_Register_Txt() {return Reg_Register_Txt;}
-    public By getReg_Register_button() {return Reg_Register_button;}
-    public By getLegacyOverlay_title() {return LegacyOverlay_title;}
-    public By getLegacyOverlay_text() {return LegacyOverlay_text;}
-    public By getLegacyGoToMyVfWeb_button() {return LegacyGoToMyVfWeb_button;}
-    public By getLegacyCancel_button() {return LegacyCancel_button;}
-    public By getInvalid_UserName_PWD_title() {return Invalid_UserName_PWD_title;}
-    public By getInvalid_UserName_PWD_text() {return Invalid_UserName_PWD_text;}
-    public By getInvalid_UserName_PWD_UpdatePWD_button() {return Invalid_UserName_PWD_UpdatePWD_button;}
-    public By getInvalid_UserName_PWD_Ok_button() {return Invalid_UserName_PWD_Ok_button;}
-    public By getRestPassword_Title() {return RestPassword_Title;}
-    public By getLogin_Inline_Error() {return Login_Inline_Error;}
-    public By getReg_OurPrivacy_Link() {return Reg_OurPrivacy_Link;}
-    public By getOurPrivacy_title() {return OurPrivacy_title;}
-    public By getOurPrivacy_text() {return OurPrivacy_text;}
-    public By getLoginVf_Logo() {return LoginVf_Logo;}
-    public By getLoginVf_title() {return LoginVf_title;}
-    public By getPhoneOrEmail_TxtField() {return PhoneOrEmail_TxtField;}
-    public By getPassword_TxtField() {return Password_TxtField;}
-    public By getLogin_button() {return Login_button;}
-    public By getKeepMe_Checkbox() {return KeepMe_Checkbox;}
-    public By getNeedToRegister_link() {return NeedToRegister_link;}
-    public By getForgotPWD_link() {return ForgotPWD_link;}
-    public By getLoginOurPrivacy_link() {return LoginOurPrivacy_link;}
+    public void Logout() {
+        ElementActions.performTouchAction(driver).tap(HomePage.getAccount());
+        ElementActions.performTouchAction(driver).tap(getLogout_button());
+    }
 
+    public By getLetsGo_Button() {
+        return LetsGo_Button;
+    }
 
+    public By getVodafone_Logo() {
+        return Vodafone_Logo;
+    }
+
+    public By getAcceptTerms_button() {
+        return AcceptTerms_button;
+    }
+
+    public By getContinue_button() {
+        return Continue_button;
+    }
+
+    public By getTermsAndConditions_Header() {
+        return termsAndConditions_Header;
+    }
+
+    public By getTermsAndConditions_Txt() {
+        return termsAndConditions_Txt;
+    }
+
+    public By getReg_Login_Button() {
+        return Reg_Login_Button;
+    }
+
+    public By getReg_Login_Txt() {
+        return Reg_Login_Txt;
+    }
+
+    public By getReg_Register_Txt() {
+        return Reg_Register_Txt;
+    }
+
+    public By getReg_Register_button() {
+        return Reg_Register_button;
+    }
+
+    public By getLegacyOverlay_title() {
+        return LegacyOverlay_title;
+    }
+
+    public By getLegacyOverlay_text() {
+        return LegacyOverlay_text;
+    }
+
+    public By getLegacyGoToMyVfWeb_button() {
+        return LegacyGoToMyVfWeb_button;
+    }
+
+    public By getLegacyCancel_button() {
+        return LegacyCancel_button;
+    }
+
+    public By getInvalid_UserName_PWD_title() {
+        return Invalid_UserName_PWD_title;
+    }
+
+    public By getInvalid_UserName_PWD_text() {
+        return Invalid_UserName_PWD_text;
+    }
+
+    public By getInvalid_UserName_PWD_UpdatePWD_button() {
+        return Invalid_UserName_PWD_UpdatePWD_button;
+    }
+
+    public By getInvalid_UserName_PWD_Ok_button() {
+        return Invalid_UserName_PWD_Ok_button;
+    }
+
+    public By getRestPassword_Title() {
+        return RestPassword_Title;
+    }
+
+    public By getLogin_Inline_Error() {
+        return Login_Inline_Error;
+    }
+
+    public By getReg_OurPrivacy_Link() {
+        return Reg_OurPrivacy_Link;
+    }
+
+    public By getOurPrivacy_title() {
+        return OurPrivacy_title;
+    }
+
+    public By getOurPrivacy_text() {
+        return OurPrivacy_text;
+    }
+
+    public By getLoginVf_Logo() {
+        return LoginVf_Logo;
+    }
+
+    public By getLoginVf_title() {
+        return LoginVf_title;
+    }
+
+    public By getPhoneOrEmail_TxtField() {
+        return PhoneOrEmail_TxtField;
+    }
+
+    public By getPassword_TxtField() {
+        return Password_TxtField;
+    }
+
+    public By getLogin_button() {
+        return Login_button;
+    }
+
+    public By getKeepMe_Checkbox() {
+        return KeepMe_Checkbox;
+    }
+
+    public By getNeedToRegister_link() {
+        return NeedToRegister_link;
+    }
+
+    public By getForgotPWD_link() {
+        return ForgotPWD_link;
+    }
+
+    public By getLoginOurPrivacy_link() {
+        return LoginOurPrivacy_link;
+    }
+
+    public By getLogout_button() {
+        return Logout_button;
+    }
+
+    public By getTutorials_button() {
+        return Tutorials_button;
+    }
+
+    public By getSkip_button() {
+        return Skip_button;
+    }
 }

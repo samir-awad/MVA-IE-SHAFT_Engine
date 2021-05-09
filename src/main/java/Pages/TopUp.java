@@ -103,6 +103,79 @@ public class TopUp {
         return VoucherTopUpHeader_text;
     }
 
+    public By getTopUpOverlayClose_button() {
+        return TopUpOverlayClose_button;
+    }
+
+    public By getTopUpOverlay_button() {
+        return TopUpOverlay_button;
+    }
+
+    public By getTopUpHeaderClose_button() {
+        return TopUpHeaderClose_button;
+    }
+
+    public By getChangePaymentMethod_button() {
+        return ChangePaymentMethod_button;
+    }
+
+    public By getAddPaymentCard_button() {
+        return AddPaymentCard_button;
+    }
+
+    public By getChrome_driver() {
+        return Chrome_driver;
+    }
+
+    public By getNext_button() {
+        return Next_button;
+    }
+
+    public By getMoreOptionsOverlay_button() {
+        return MoreOptionsOverlay_button;
+    }
+
+    public By getMoreOptionsOverlayHeader_text() {
+        return MoreOptionsOverlayHeader_text;
+    }
+
+    public By getMoreOptionsOverlayBack_button() {
+        return MoreOptionsOverlayBack_button;
+    }
+
+    public By getSetAnAutomaticTopUp_button() {
+        return SetAnAutomaticTopUp_button;
+    }
+
+    public By getAutoTopUpPageHeaderBack_button() {
+        return AutoTopUpPageHeaderBack_button;
+    }
+
+    public By getCheckYourTopUpHistory_button() {
+        return CheckYourTopUpHistory_button;
+    }
+
+    public By getTopUpWithAVoucher_button() {
+        return TopUpWithAVoucher_button;
+    }
+
+    public By getTopUpAnotherNumber_button() {
+        return TopUpAnotherNumber_button;
+    }
+
+    public By getInsertPhoneNumber_editbox() {
+        return InsertPhoneNumber_editbox;
+    }
+
+    public By getInsertVoucherCode_editbox() {
+        return InsertVoucherCode_editbox;
+    }
+
+    public By getSubmit_button() {
+        return Submit_button;
+    }
+
+
     public TopUp(WebDriver driver) {
         this.driver = driver;
         if (System.getProperty("targetOperatingSystem").equals("Android")) {

@@ -12,32 +12,44 @@ public class Logout {
     private By LogoutOverlay;
     private By LogoutNo_Button;
     private By LogoutYes_Button;
+    private Home HomePage;
+
 
     public Logout(WebDriver driver) {
 
         this.driver = driver;
-        if (System.getProperty("targetOperatingSystem").equals("Android"))
-        {
-            Logout_Button = new MobileBy.ByAccessibilityId("id_account_overlay_button_logout");
-            LogoutOverlay = new MobileBy.ByAccessibilityId("error_pop_up_title");
-            LogoutNo_Button = new MobileBy.ByAccessibilityId("id_error_pop_up_close_button");
-            LogoutYes_Button = new MobileBy.ByAccessibilityId("id_error_pop_up_main_button");
-        }
-        else
-        {
+        if (System.getProperty("targetOperatingSystem").equals("Android")) {
+            Logout_Button = MobileBy.AccessibilityId("id_account_overlay_button_logout");
+            LogoutOverlay = MobileBy.AccessibilityId("error_pop_up_title");
+            LogoutNo_Button = MobileBy.AccessibilityId("id_error_pop_up_close_button");
+            LogoutYes_Button = MobileBy.AccessibilityId("id_error_pop_up_main_button");
+        } else {
+            Logout_Button = MobileBy.AccessibilityId("Log out");
+            LogoutYes_Button=MobileBy.AccessibilityId("Yes");
+            LogoutNo_Button=MobileBy.AccessibilityId("No");
         }
 
     }
-    public void pressLogoutButton(){
+
+    public void pressLogoutButton() {
         ElementActions.performTouchAction(driver).tap(Logout_Button);
     }
-    public By getCheckLogoutOverlay(){
+
+    public void LogOut() {
+        ElementActions.performTouchAction(driver).tap(HomePage.getAccount());
+        ElementActions.performTouchAction(driver).tap(Logout_Button);
+        ElementActions.performTouchAction(driver).tap(LogoutYes_Button);
+    }
+
+    public By getCheckLogoutOverlay() {
         return LogoutOverlay;
     }
-    public void pressLogoutNoButton(){
+
+    public void pressLogoutNoButton() {
         ElementActions.performTouchAction(driver).tap(LogoutNo_Button);
     }
-    public void pressLogoutYesButton(){
+
+    public void pressLogoutYesButton() {
         ElementActions.performTouchAction(driver).tap(LogoutYes_Button);
     }
 }
