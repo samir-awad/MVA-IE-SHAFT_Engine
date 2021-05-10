@@ -1,4 +1,4 @@
-package Android.OtherUsefulTools;
+package OtherUsefulTools;
 
 import Pages.Home;
 import Pages.Login;
@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC259_CheckNACRequestPagesUsingDeviceNotSavedOnSystemWthBillPayUser {
+public class TC085B_ValidateWebTextWithOnlyTheRecipientAndCheckThatSendButtonStillDisabledUsingBillPayUser {
         private WebDriver driver;
         private Login LoginPage;
         private Home HomePage;
@@ -25,32 +25,27 @@ public class TC259_CheckNACRequestPagesUsingDeviceNotSavedOnSystemWthBillPayUser
             HomePage = new Home(driver);
             OtherUsefulToolsPage = new OtherUsefulTools(driver);
             users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
-            String username = users.getTestData("BillPayUserWithWebText.username");
-            String password = users.getTestData("BillPayUserWithWebText.password");
+            String username = users.getTestData("OutOfContractBillPayUser.username");
+            String password = users.getTestData("OutOfContractBillPayUser.password");
             LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
         }
 
         @Test
         public void checkTheVodafoneLogo() {
-            Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+       	 Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         }
 
         @Test (dependsOnMethods = {"checkTheVodafoneLogo"})
         public void checkOtherUsefulToolsSection() {
             HomePage.checkOtherUsefulToolsSection();
         }
-
         @Test(dependsOnMethods = {"checkOtherUsefulToolsSection"})
-        public void pressNacRequestOption() {
-            HomePage.pressNacRequestOption();
-            OtherUsefulToolsPage.checkNacFewThingsFirstPageContent();
-
-        }
-
-        @Test(dependsOnMethods = {"pressNacRequestOption"})
-        public void pressNacFewThingsFirstContinueButton() {
-            OtherUsefulToolsPage.pressNacFewThingsFirstContinueButton();
-            OtherUsefulToolsPage.checkNacRequestWithDevicePageContent();
+        public void pressSendWebtextOption() {
+            //HomePage.pressSendWebtextOption();
+            Assertions.assertTrue(OtherUsefulToolsPage.checkWebtextForm());
+            Verifications.verifyTrue(OtherUsefulToolsPage.checkWebtextPageHeader());
+            OtherUsefulToolsPage.fillInRecipient();
+            OtherUsefulToolsPage.checkSendButtonStillDisabled();
         }
 
 

@@ -1,4 +1,4 @@
-package Android.OtherUsefulTools;
+package OtherUsefulTools;
 
 import Pages.Home;
 import Pages.Login;
@@ -32,7 +32,7 @@ public class TC086B_ValidateWebtextWithOnlyTheMessageAndCheckThatSendButtonStill
 
         @Test
         public void checkTheVodafoneLogo() {
-            Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+       	 Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         }
 
         @Test (dependsOnMethods = {"checkTheVodafoneLogo"})
@@ -41,7 +41,7 @@ public class TC086B_ValidateWebtextWithOnlyTheMessageAndCheckThatSendButtonStill
         }
         @Test(dependsOnMethods = {"checkOtherUsefulToolsSection"})
         public void pressSendWebtextOption() {
-            HomePage.pressSendWebtextOption();
+            //HomePage.pressSendWebtextOption();
             Assertions.assertTrue(OtherUsefulToolsPage.checkWebtextForm());
             Verifications.verifyTrue(OtherUsefulToolsPage.checkWebtextPageHeader());
             OtherUsefulToolsPage.fillInMessage();

@@ -1,4 +1,4 @@
-package Android.OtherUsefulTools;
+package OtherUsefulTools;
 
 import Pages.Home;
 import Pages.Login;
@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC084A_ValidateWritingWebTextWithMoreThanTheAllowedCharactersUsingBillPayUser{
+public class TC087A_ValidateSchedulingWebtextToSendLaterOverlayUsingBillPayUser {
         private WebDriver driver;
         private Login LoginPage;
         private Home HomePage;
@@ -32,7 +32,7 @@ public class TC084A_ValidateWritingWebTextWithMoreThanTheAllowedCharactersUsingB
 
         @Test
         public void checkTheVodafoneLogo() {
-            Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+       	 Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         }
 
         @Test (dependsOnMethods = {"checkTheVodafoneLogo"})
@@ -41,11 +41,11 @@ public class TC084A_ValidateWritingWebTextWithMoreThanTheAllowedCharactersUsingB
         }
         @Test(dependsOnMethods = {"checkOtherUsefulToolsSection"})
         public void pressSendWebtextOption() {
-            HomePage.pressSendWebtextOption();
+            //HomePage.pressSendWebtextOption();
             Assertions.assertTrue(OtherUsefulToolsPage.checkWebtextForm());
             Verifications.verifyTrue(OtherUsefulToolsPage.checkWebtextPageHeader());
-            OtherUsefulToolsPage.fillInTheMessageWithMoreThanTheAllowedCharacters();
-            OtherUsefulToolsPage.checkRemainingCharactersText();
+            OtherUsefulToolsPage.fillInMessage();
+            OtherUsefulToolsPage.checkSendButtonStillDisabled();
         }
 
 

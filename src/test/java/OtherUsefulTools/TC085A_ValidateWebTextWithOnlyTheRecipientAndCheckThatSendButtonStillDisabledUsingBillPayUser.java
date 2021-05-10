@@ -1,4 +1,4 @@
-package Android.OtherUsefulTools;
+package OtherUsefulTools;
 
 import Pages.Home;
 import Pages.Login;
@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC087A_ValidateSchedulingWebtextToSendLaterOverlayUsingBillPayUser {
+public class TC085A_ValidateWebTextWithOnlyTheRecipientAndCheckThatSendButtonStillDisabledUsingBillPayUser {
         private WebDriver driver;
         private Login LoginPage;
         private Home HomePage;
@@ -32,7 +32,7 @@ public class TC087A_ValidateSchedulingWebtextToSendLaterOverlayUsingBillPayUser 
 
         @Test
         public void checkTheVodafoneLogo() {
-            Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+       	 Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         }
 
         @Test (dependsOnMethods = {"checkTheVodafoneLogo"})
@@ -41,10 +41,10 @@ public class TC087A_ValidateSchedulingWebtextToSendLaterOverlayUsingBillPayUser 
         }
         @Test(dependsOnMethods = {"checkOtherUsefulToolsSection"})
         public void pressSendWebtextOption() {
-            HomePage.pressSendWebtextOption();
+            //HomePage.pressSendWebtextOption();
             Assertions.assertTrue(OtherUsefulToolsPage.checkWebtextForm());
             Verifications.verifyTrue(OtherUsefulToolsPage.checkWebtextPageHeader());
-            OtherUsefulToolsPage.fillInMessage();
+            OtherUsefulToolsPage.fillInRecipient();
             OtherUsefulToolsPage.checkSendButtonStillDisabled();
         }
 

@@ -1,4 +1,4 @@
-package Android.OtherUsefulTools;
+package OtherUsefulTools;
 
 import Pages.Home;
 import Pages.Login;
@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC087B_ValidateSchedulingWebtextToSendLaterOverlayUsingBillPayUser {
+public class TC086A_ValidateWebtextWithOnlyTheMessageAndCheckThatSendButtonStillDisabledUsingBillPayUser {
         private WebDriver driver;
         private Login LoginPage;
         private Home HomePage;
@@ -25,14 +25,14 @@ public class TC087B_ValidateSchedulingWebtextToSendLaterOverlayUsingBillPayUser 
             HomePage = new Home(driver);
             OtherUsefulToolsPage = new OtherUsefulTools(driver);
             users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
-            String username = users.getTestData("OutOfContractBillPayUser.username");
-            String password = users.getTestData("OutOfContractBillPayUser.password");
+            String username = users.getTestData("BillPayUserWithWebText.username");
+            String password = users.getTestData("BillPayUserWithWebText.password");
             LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
         }
 
         @Test
         public void checkTheVodafoneLogo() {
-            Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+       	 Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         }
 
         @Test (dependsOnMethods = {"checkTheVodafoneLogo"})
@@ -41,10 +41,10 @@ public class TC087B_ValidateSchedulingWebtextToSendLaterOverlayUsingBillPayUser 
         }
         @Test(dependsOnMethods = {"checkOtherUsefulToolsSection"})
         public void pressSendWebtextOption() {
-            HomePage.pressSendWebtextOption();
+            //HomePage.pressSendWebtextOption();
             Assertions.assertTrue(OtherUsefulToolsPage.checkWebtextForm());
             Verifications.verifyTrue(OtherUsefulToolsPage.checkWebtextPageHeader());
-            OtherUsefulToolsPage.fillInMessage();
+            OtherUsefulToolsPage.fillInRecipient();
             OtherUsefulToolsPage.checkSendButtonStillDisabled();
         }
 

@@ -1,10 +1,11 @@
-package Android.OtherUsefulTools;
+package OtherUsefulTools;
 
 import Pages.Home;
 import Pages.Login;
 import Pages.OtherUsefulTools;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
+import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
@@ -31,7 +32,7 @@ public class TC260_CheckNACRequestPagesAndTheReturnedErrorToasterUsingIMEIFromNo
 
         @Test
         public void checkTheVodafoneLogo() {
-            Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+       	 Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
         }
 
         @Test (dependsOnMethods = {"checkTheVodafoneLogo"})
@@ -41,7 +42,7 @@ public class TC260_CheckNACRequestPagesAndTheReturnedErrorToasterUsingIMEIFromNo
 
         @Test(dependsOnMethods = {"checkOtherUsefulToolsSection"})
         public void pressNacRequestOption() {
-            HomePage.pressNacRequestOption();
+            //HomePage.pressNacRequestOption();
             OtherUsefulToolsPage.checkNacFewThingsFirstPageContent();
 
         }

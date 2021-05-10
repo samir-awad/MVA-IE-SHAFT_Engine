@@ -1,5 +1,6 @@
-package Android.OtherUsefulTools;
+package OtherUsefulTools;
 
+import Pages.AddOns;
 import Pages.Home;
 import Pages.Login;
 import Pages.OtherUsefulTools;
@@ -11,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC083B_ValidateSuccessfulSendWebTextToMoreThanOneRecipientUsingBillPayUser {
+public class TC082A_ValidateWebTextPageAndSuccessfulSendWebTextToOneRecipientUsingBillPayUser {
     private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
@@ -25,14 +26,14 @@ public class TC083B_ValidateSuccessfulSendWebTextToMoreThanOneRecipientUsingBill
         HomePage = new Home(driver);
         OtherUsefulToolsPage = new OtherUsefulTools(driver);
         users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
-        String username = users.getTestData("OutOfContractBillPayUser.username");
-        String password = users.getTestData("OutOfContractBillPayUser.password");
+        String username = users.getTestData("BillPayUserWithWebText.username");
+        String password = users.getTestData("BillPayUserWithWebText.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
     }
 
     @Test
     public void checkTheVodafoneLogo() {
-        Verifications.verifyTrue(HomePage.checkTheVodafoneLogo());
+        Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
     }
 
     @Test (dependsOnMethods = {"checkTheVodafoneLogo"})
@@ -41,11 +42,17 @@ public class TC083B_ValidateSuccessfulSendWebTextToMoreThanOneRecipientUsingBill
     }
     @Test(dependsOnMethods = {"checkOtherUsefulToolsSection"})
     public void pressSendWebtextOption() {
-        HomePage.pressSendWebtextOption();
+        //HomePage.pressSendWebtextOption();
         Assertions.assertTrue(OtherUsefulToolsPage.checkWebtextForm());
         Verifications.verifyTrue(OtherUsefulToolsPage.checkWebtextPageHeader());
-        OtherUsefulToolsPage.fillOutTheWebtextFormWithMoreThanOneRecipient();
+        OtherUsefulToolsPage.fillOutTheWebtextForm();
         OtherUsefulToolsPage.pressSendButton();
+    }
+    @Test(dependsOnMethods = {"pressSendWebtextOption"})
+    public void WebtextInternationalVerificationOverlay(){
+        Assertions.assertTrue(OtherUsefulToolsPage.WebtextInternationalToast());
+        OtherUsefulToolsPage.pressWebtextInternationalConfirmButton();
+
     }
 
 }

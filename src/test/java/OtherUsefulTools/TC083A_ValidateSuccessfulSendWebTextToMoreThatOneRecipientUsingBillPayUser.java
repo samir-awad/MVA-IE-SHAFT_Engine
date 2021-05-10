@@ -1,4 +1,4 @@
-package Android.OtherUsefulTools;
+package OtherUsefulTools;
 
 import Pages.Home;
 import Pages.Login;
@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC082B_ValidatieWebTextPageAndSuccessfulSendWebtextToOneRecipientUsingBillPayUser {
+public class TC083A_ValidateSuccessfulSendWebTextToMoreThatOneRecipientUsingBillPayUser {
     private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
@@ -25,15 +25,15 @@ public class TC082B_ValidatieWebTextPageAndSuccessfulSendWebtextToOneRecipientUs
         HomePage = new Home(driver);
         OtherUsefulToolsPage = new OtherUsefulTools(driver);
         users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
-        String username = users.getTestData("OutOfContractBillPayUser.username");
-        String password = users.getTestData("OutOfContractBillPayUser.password");
+        String username = users.getTestData("BillPayUserWithWebText.username");
+        String password = users.getTestData("BillPayUserWithWebText.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
     }
 
     @Test
     public void checkTheVodafoneLogo() {
     	 Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
-    	 }
+    }
 
     @Test (dependsOnMethods = {"checkTheVodafoneLogo"})
     public void checkOtherUsefulToolsSection() {
@@ -44,7 +44,7 @@ public class TC082B_ValidatieWebTextPageAndSuccessfulSendWebtextToOneRecipientUs
         //HomePage.pressSendWebtextOption();
         Assertions.assertTrue(OtherUsefulToolsPage.checkWebtextForm());
         Verifications.verifyTrue(OtherUsefulToolsPage.checkWebtextPageHeader());
-        OtherUsefulToolsPage.fillOutTheWebtextForm();
+        OtherUsefulToolsPage.fillOutTheWebtextFormWithMoreThanOneRecipient();
         OtherUsefulToolsPage.pressSendButton();
     }
 

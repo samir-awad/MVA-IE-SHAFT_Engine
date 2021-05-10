@@ -1,4 +1,4 @@
-package Android.OtherUsefulTools;
+package OtherUsefulTools;
 
 import Pages.Home;
 import Pages.Login;
@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC083A_ValidateSuccessfulSendWebTextToMoreThatOneRecipientUsingBillPayUser {
+public class TC082B_ValidatieWebTextPageAndSuccessfulSendWebtextToOneRecipientUsingBillPayUser {
     private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
@@ -25,15 +25,15 @@ public class TC083A_ValidateSuccessfulSendWebTextToMoreThatOneRecipientUsingBill
         HomePage = new Home(driver);
         OtherUsefulToolsPage = new OtherUsefulTools(driver);
         users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
-        String username = users.getTestData("BillPayUserWithWebText.username");
-        String password = users.getTestData("BillPayUserWithWebText.password");
+        String username = users.getTestData("OutOfContractBillPayUser.username");
+        String password = users.getTestData("OutOfContractBillPayUser.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
     }
 
     @Test
     public void checkTheVodafoneLogo() {
     	 Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
-    }
+    	 }
 
     @Test (dependsOnMethods = {"checkTheVodafoneLogo"})
     public void checkOtherUsefulToolsSection() {
@@ -41,10 +41,10 @@ public class TC083A_ValidateSuccessfulSendWebTextToMoreThatOneRecipientUsingBill
     }
     @Test(dependsOnMethods = {"checkOtherUsefulToolsSection"})
     public void pressSendWebtextOption() {
-        HomePage.pressSendWebtextOption();
+        //HomePage.pressSendWebtextOption();
         Assertions.assertTrue(OtherUsefulToolsPage.checkWebtextForm());
         Verifications.verifyTrue(OtherUsefulToolsPage.checkWebtextPageHeader());
-        OtherUsefulToolsPage.fillOutTheWebtextFormWithMoreThanOneRecipient();
+        OtherUsefulToolsPage.fillOutTheWebtextForm();
         OtherUsefulToolsPage.pressSendButton();
     }
 
