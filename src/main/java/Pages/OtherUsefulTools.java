@@ -54,15 +54,22 @@ public class OtherUsefulTools {
     private By NACRequest_Button;
     private By NACRequestCancelFlow_Button;
     private By InvalidIMEIMessage_Text;
+    private By AccessContactsPermissionAllow_button;
 
 
+    public By getWebtextPageHeader_Text() {
+        return WebtextPageHeader_Text;
+    }
 
+    public By getWebtextInternationalToast() {
+        return WebtextInternationalToast_Text;
+    }
 
     public OtherUsefulTools(WebDriver driver) {
         this.driver = driver;
         if (System.getProperty("targetOperatingSystem").equals("Android")) {
             WebtextPageHeader_Text = new MobileBy.ByAccessibilityId("id_dashboard_essentials_change_plan_label");
-            WebtextHeaderClose_Button = By.xpath("//android.view.ViewGroup[@content-desc=\"d_dashboard_essentials_change_plan_clickable\"]/android.widget.ImageView[2]");
+            WebtextHeaderClose_Button = new MobileBy.ByAccessibilityId("id_header_close_icon");
             Recipients_Text = new MobileBy.ByAccessibilityId("id_dashboard_essentials_mccm_upgrades_description_label");
             WebTextInputMessage_Text = new MobileBy.ByAccessibilityId("id_webtext_input_message");
             Send_Button = new MobileBy.ByAccessibilityId("id_webtext_button_send");
@@ -95,6 +102,7 @@ public class OtherUsefulTools {
             NACRequest_Button = new MobileBy.ByAccessibilityId("id_nac_request_button");
             NACRequestCancelFlow_Button = new MobileBy.ByAccessibilityId("id_nac_request_cancel_flow_button");
             InvalidIMEIMessage_Text = By.xpath("hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.widget.TextView[2]");
+            AccessContactsPermissionAllow_button= By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.Button[1]");
         } else {
         }
     }
@@ -103,11 +111,19 @@ public class OtherUsefulTools {
         return ElementActions.isElementDisplayed(driver, WebtextPageHeader_Text);
     }
 
-    public void pressWebtextHeaderCloseButton() {
-        ElementActions.performTouchAction(driver).tap(WebtextHeaderClose_Button);
+    public By getRecipients_Text() {
+        return Recipients_Text;
     }
 
-    public boolean checkWebtextForm() {
+    public By getWebTextInputMessage_Text() {
+        return WebTextInputMessage_Text;
+    }
+
+    public By getSend_Button() {
+        return Send_Button;
+    }
+
+    public boolean checkWebTextForm() {
         boolean Recipients = ElementActions.isElementDisplayed(driver, Recipients_Text);
         boolean InputMessage = ElementActions.isElementDisplayed(driver, WebTextInputMessage_Text);
         boolean Send = ElementActions.isElementDisplayed(driver, Send_Button);
@@ -237,7 +253,14 @@ public class OtherUsefulTools {
 
     public void clearTheNACRequestInput() {
         driver.findElement(FewThingsFirstIMEI_Input).clear();
+    }
 
+    public void pressWebTextHeaderCloseButton(){
+        ElementActions.performTouchAction(driver).tap(WebtextHeaderClose_Button);
+    }
+
+    public void acceptAccessYourContactsPermissions(){
+        ElementActions.performTouchAction(driver).tap(AccessContactsPermissionAllow_button);
     }
 }
 

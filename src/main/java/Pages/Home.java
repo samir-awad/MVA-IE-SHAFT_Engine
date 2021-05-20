@@ -49,6 +49,7 @@ public class Home {
     private By TopUpHistory_button;
     private By BuyAndManageAddOns_text;
     private By TakeQuickTour_Tile;
+    private By SendWebText_button;
 
     public Home(WebDriver driver) {
         this.driver = driver;
@@ -93,6 +94,7 @@ public class Home {
             TopUpOverlayTitle_text = new MobileBy.ByAccessibilityId("STundefinedMainTitle");
             TopUp_button = new MobileBy.ByAccessibilityId("id_tray_menu_item_Top Up");
             TopUpHistory_button = new MobileBy.ByAccessibilityId("id_dashboard_topup_history_title");
+            SendWebText_button= new MobileBy.ByAccessibilityId("id_dashboard_tools_webtext_label");
 
         } else {
 
@@ -216,9 +218,6 @@ public class Home {
         return DirectDebitTile;
     }
 
-    public By getOtherUsefulTools() {
-        return OtherUsefulTools;
-    }
 
     public By getChangePlan_Button() {
         return ChangePlan_Button;
@@ -335,6 +334,11 @@ public class Home {
     public void checkOtherUsefulToolsSection() {
         ElementActions.performTouchAction(driver).swipeElementIntoView(OtherUsefulTools, TouchActions.SwipeDirection.UP);
         Assertions.assertElementExists(driver, OtherUsefulTools);
+    }
+
+    public void swipeToOtherUsefulTools(){
+        ElementActions.performTouchAction(driver).swipeElementIntoView(OtherUsefulTools, TouchActions.SwipeDirection.UP);
+
     }
 
     public boolean checkAccountSuccessfullySelected() {
@@ -478,6 +482,10 @@ public class Home {
 
     public void pressSupportTrayView() {
         ElementActions.performTouchAction(driver).tap(SupportTrayMenuPAYG);
+    }
+
+    public void pressSendWebTextOption(){
+        ElementActions.performTouchAction(driver).tap(SendWebText_button);
     }
 
 }
