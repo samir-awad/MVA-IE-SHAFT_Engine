@@ -11,6 +11,8 @@ public class SupportAndLiveChat {
     private By SupportHeader_text;
     private By SupportHeaderClose_button;
     private By MinimizeLiveChat_button;
+    private By Support_title;
+    private By Support_Subtitle;
 
     //Bill Pay
     private By FirstSupportTitle_textBP;
@@ -32,6 +34,7 @@ public class SupportAndLiveChat {
     private By LiveChatFormQuestions_inputText;
     private By LiveChatFormStartChat_button;
 
+
     public By getFirstSupportTitle_textBP() {
         return FirstSupportTitle_textBP;
     }
@@ -46,6 +49,14 @@ public class SupportAndLiveChat {
 
     public By getSupportHeader_text() {
         return SupportHeader_text;
+    }
+
+    public By getSupport_title() {
+        return Support_title;
+    }
+
+    public By getSupport_Subtitle() {
+        return Support_Subtitle;
     }
 
     public By getChatNow_button() {
@@ -112,7 +123,45 @@ public class SupportAndLiveChat {
             LiveChatFormQuestions_inputText = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[2]/android.view.View[2]/android.view.View[3]/android.view.View/android.view.View[2]/android.widget.EditText");
             LiveChatFormStartChat_button = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[2]/android.view.View[2]/android.view.View[3]/android.view.View/android.view.View[3]");
 
-        } else {//IOS Locators
+        } else {
+            //IOS Locators
+
+            SupportHeader_text = MobileBy.AccessibilityId("Support");
+            SupportHeaderClose_button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"id_header_close_icon\"])[2]");
+            Support_title = MobileBy.AccessibilityId("id_chat_heading_text");
+            Support_Subtitle = MobileBy.AccessibilityId("id_chat_subheading_text");
+            MinimizeLiveChat_button = MobileBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[2]/android.view.View[1]/android.view.View[3]");
+
+            //"What are you looking for" Element Bill Pay
+            FirstSupportTitle_textBP = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[2]");
+
+            //"Select Support Topic" Element Bill Pay
+            SecondSupportTitle_textBP = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[4]");
+
+            //"Account" Element Bill Pay
+            SupportListFirstItem_textBP = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[5]/android.view.View/android.view.View[2]");
+
+            //"Need for" Element PAYG
+            FirstSupportTitle_textPAYG = new MobileBy.ByAccessibilityId("id_chat_heading_text");
+
+            //"Available from" Element PAYG
+            SecondSupportTitle_textPAYG = new MobileBy.ByAccessibilityId("id_chat_subheading_text");
+
+            //"Account" Element PAYG
+            SupportListFirstItem_textPAYG = By.xpath("//android.view.View[@content-desc=\"Account and top up Help for account and credit queries\"]/android.view.View/android.view.View[1]");
+
+            //"Click Here" Element Fixed
+            FirstSupportTitle_textFixed = new MobileBy.ByAccessibilityId("click here");
+
+            //"Account" Element Fixed
+            SupportListFirstItem_textFixed = new MobileBy.ByAccessibilityId("Account and billing How to manage your TV bills and payments");
+
+
+            //live chat component
+            ChatNow_button = MobileBy.AccessibilityId("Chat Now");
+            LiveChatFormFullName_inputText = MobileBy.xpath("//XCUIElementTypeOther[@name=\"See our most popular Bill pay support topics | Vodafone\"]/XCUIElementTypeOther[45]/XCUIElementTypeTextField");
+            LiveChatFormQuestions_inputText = MobileBy.xpath("//XCUIElementTypeOther[@name=\"See our most popular Bill pay support topics | Vodafone\"]/XCUIElementTypeOther[48]/XCUIElementTypeTextView");
+            LiveChatFormStartChat_button = MobileBy.AccessibilityId("Start chat");
         }
     }
 
@@ -124,14 +173,15 @@ public class SupportAndLiveChat {
         ElementActions.performTouchAction(driver).tap(MinimizeLiveChat_button);
     }
 
-    public void pressChatNowButton(){
+    public void pressChatNowButton() {
         ElementActions.performTouchAction(driver).tap(ChatNow_button);
     }
 
-    public void fillLiveChatFormAndPressStartChat(){
-        ElementActions.type(driver,LiveChatFormFullName_inputText,"Nora Ahmed");
-        ElementActions.type(driver,LiveChatFormQuestions_inputText,"My Question");
-        //ElementActions.performTouchAction(driver).tap(LiveChatFormStartChat_button); //This step must be on SIT3 environment
+    public void fillLiveChatFormAndPressStartChat() {
+        ElementActions.type(driver, LiveChatFormFullName_inputText, "Nora Ahmed");
+        ElementActions.type(driver, LiveChatFormQuestions_inputText, "My Question");
+        ElementActions.performTouchAction(driver).tap(LiveChatFormStartChat_button); //This step must be on SIT3 environment
+
 
     }
 

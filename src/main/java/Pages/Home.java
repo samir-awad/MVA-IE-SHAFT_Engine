@@ -111,8 +111,8 @@ public class Home {
             OtherUsefulTools_text = new MobileBy.ByAccessibilityId("id_dashboard_tools_title");
             UnlockYourDevice_text = new MobileBy.ByAccessibilityId("id_dashboard_tools_nac_label");
             OffersPageHeader_button = new MobileBy.ByAccessibilityId("id_dashboard_discover_card_image");
-            Support_button = new MobileBy.ByAccessibilityId("id_dashboard_live_chat_tile_title");
-            SeeAllOffers_button = new MobileBy.ByAccessibilityId("id_dashboard_discover_see_all_offers_label");
+            Support_button = new MobileBy.ByAccessibilityId("id_tray_menu_item_Support");
+            SeeAllOffers_button = new MobileBy.ByAccessibilityId("id_dashboard_discover_see_all_offers");
             ClickNextBillTitle = new MobileBy.ByAccessibilityId("id_dashboard_next_bill_title");
             AmountDueTile = new MobileBy.ByAccessibilityId("id_dashboard_amount_due_clickable");
             DirectDebitTile = new MobileBy.ByAccessibilityId("id_dashboard_direct_debit_clickable");
@@ -133,15 +133,13 @@ public class Home {
             LastBileTile = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.widget.TextView[1]");
             TvAddOnsTile = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.ViewGroup/android.widget.TextView[1]");
             EssentialsSectionFixed_WithTV = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[6]/android.widget.TextView");
-            SupportTrayMenuPAYG = new MobileBy.ByAccessibilityId("id_tray_menu_item_label_Support");
+            SupportTrayMenuPAYG = new MobileBy.ByAccessibilityId("id_tray_menu_item_Support");
             AccountOverlaySetting_text = new MobileBy.ByAccessibilityId("Settings Account, personal details & app settings");
             Account = new MobileBy.ByAccessibilityId("id_tray_menu_item_Account");
             TopUpOverlayTitle_text = new MobileBy.ByAccessibilityId("STundefinedMainTitle");
             TopUp_button = new MobileBy.ByAccessibilityId("id_tray_menu_item_Top Up");
             TopUpHistory_button = new MobileBy.ByAccessibilityId("id_dashboard_topup_history_title");
             TakeQuickTour_Tile=MobileBy.AccessibilityId("id_dashboard_whats_new_clickable");
-
-
         }
     }
 
@@ -465,14 +463,17 @@ public class Home {
     }
 
     public void opedAddOnsOverlay() {
+        ElementActions.performTouchAction(driver).swipeElementIntoView(BuyAndManageAddOns_button, TouchActions.SwipeDirection.UP);
         ElementActions.performTouchAction(driver).tap(BuyAndManageAddOns_button);
     }
 
     public void pressSeeAllOffersLink() {
+        ElementActions.performTouchAction(driver).swipeElementIntoView(SeeAllOffers_button, TouchActions.SwipeDirection.UP);
         ElementActions.performTouchAction(driver).tap(SeeAllOffers_button);
     }
 
     public void openOffersPageHeader() {
+        ElementActions.performTouchAction(driver).swipeElementIntoView(OffersPageHeader_button, TouchActions.SwipeDirection.UP);
         ElementActions.performTouchAction(driver).tap(OffersPageHeader_button);
     }
 

@@ -37,11 +37,26 @@ public class ChangePlan {
          ViewDetails_Button = new MobileBy.ByAccessibilityId("id_change_plan_Bill Pay_view_button");
          SimOnlyTab = new MobileBy.ByAccessibilityId("SIM only");
          CloseCurrentPlanDetails = By.xpath("//android.widget.ImageView[@content-desc=\"id_change_plan_close\"]");
-         AvailablePlanDetails = new MobileBy.ByAccessibilityId("");
-         PlanDetailsClose_Button = new MobileBy.ByAccessibilityId("");
+         //AvailablePlanDetails = new MobileBy.ByAccessibilityId("");
+         //PlanDetailsClose_Button = new MobileBy.ByAccessibilityId("");
          PlanDetailsTitle = By.xpath("(//android.widget.TextView[@content-desc=\"id_change_plan_title\"])[1]");
 
         }else{
+
+            PlanTitle = MobileBy.AccessibilityId("id_dashboard_your_plan_details_title");
+            ChangePlan_Button = MobileBy.AccessibilityId("Change plan");
+            YourPlanClose_Button = MobileBy.AccessibilityId("id_dashboard_your_plan_details_close");
+            ChangePlanTitle = MobileBy.AccessibilityId("id_header_title_Change_plan");
+            ChangePlanClose_Button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"id_header_close_icon\"])[2]");
+            ViewCurrentPlanDetails = MobileBy.AccessibilityId("View details");
+            SelectPlan_Button = new MobileBy.ByAccessibilityId("id_change_plan_Bill Pay_select_button");
+            ViewDetails_Button = new MobileBy.ByAccessibilityId("id_change_plan_Bill Pay_view_button");
+            SimOnlyTab = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"SIM only \"])[2]");
+            CloseCurrentPlanDetails = MobileBy.AccessibilityId("id_change_plan_close");
+            //AvailablePlanDetails = new MobileBy.ByAccessibilityId("");
+            //PlanDetailsClose_Button = new MobileBy.ByAccessibilityId("");
+            PlanDetailsTitle = By.xpath("(//android.widget.TextView[@content-desc=\"id_change_plan_title\"])[1]");
+
         }
     }
 

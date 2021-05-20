@@ -55,13 +55,9 @@ public class TC239_ValidateSupportPageFixedUser {
         }
 
     @Test(dependsOnMethods = "CheckSupportCloseBtn")
-    public void CheckSupportPageTitleAndSubTitle(){
+    public void CheckSupportPageTitleAndSubTitle() {
         HomePage.pressSupportTrayView();
-
-        Verifications.verifyElementExists(driver,SupportAndLiveChatPage.getFirstSupportTitle_textFixed(),
-                "Checking first support title, click here ");
-
-        Assertions.assertElementExists(driver,SupportAndLiveChatPage.getSupportListFirstItem_textFixed(),
-                "Checking first item in support topic list, Account");
+        Verifications.verifyElementExists(driver, SupportAndLiveChatPage.getSupport_title());
+        Assertions.assertElementExists(driver, SupportAndLiveChatPage.getSupport_Subtitle());
     }
 }

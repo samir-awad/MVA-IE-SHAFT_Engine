@@ -24,6 +24,7 @@ public class TC157_ValidateTopUpConfirmationPagePAYGUser {
 
     @BeforeClass
     public void beforeClass()  {
+        System.setProperty("mobile_app",System.getProperty("user.dir")+"//App//144_AUTO.apk");
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);

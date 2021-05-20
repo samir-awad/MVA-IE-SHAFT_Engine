@@ -22,12 +22,12 @@ public class TC057_ValidateAddOnsOverlayBillPayUserWithMonthlyAddOns {
     private JSONFileManager users;
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         AddOnsPage = new AddOns(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("BillPayUser.username");
         String password = users.getTestData("BillPayUser.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
@@ -41,16 +41,13 @@ public class TC057_ValidateAddOnsOverlayBillPayUserWithMonthlyAddOns {
     @Test(dependsOnMethods = {"CheckEssentialsSection"})
     public void ValidateAddOnsOverlayText() {
         HomePage.opedAddOnsOverlay();
-        Assertions.assertElementAttribute(driver, AddOnsPage.getAddOnsExpiresOverlay_text(), "text",
-                "Expires", Assertions.AssertionComparisonType.CONTAINS,
-                Assertions.AssertionType.POSITIVE);
+        Assertions.assertElementExists(driver, AddOnsPage.getAddOnsExpiresOverlay_text());
     }
 
-    @Test(dependsOnMethods = {"CheckEssentialsSection","ValidateAddOnsOverlayText"})
+    @Test(dependsOnMethods = {"CheckEssentialsSection", "ValidateAddOnsOverlayText"})
     public void ValidateAddOnsOverlayCloseButton() {
         AddOnsPage.closeAddOnsOverlay();
-        Assertions.assertElementAttribute(driver, HomePage.getEssentials_text(),
-                "text", "Essentials");
+        Assertions.assertElementExists(driver, HomePage.getEssentials_text());
     }
 
 }

@@ -25,6 +25,7 @@ public class TC162_SubmitInvalidVoucherNumberPAYGUser {
 
     @BeforeClass
     public void beforeClass() {
+        System.setProperty("mobile_app",System.getProperty("user.dir")+"//App//144_AUTO.apk");
         driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
@@ -53,22 +54,23 @@ public class TC162_SubmitInvalidVoucherNumberPAYGUser {
     public void GetInvalidVoucher() {
         String phoneNumber = users.getTestData("PAYGUserTopup.username");
         String invalidVoucher = vouchers.getTestData("InvalidVoucherPAYGUser.voucher");
-        //TopUpPage.submitInvalidVoucher(phoneNumber, invalidVoucher);
+        TopUpPage.submitInvalidVoucher(phoneNumber, invalidVoucher);
     }
 
-    @Test
-    public void submitInvalidVoucher(String phoneNumber, String Voucher) {
-        ElementActions.performTouchAction(driver).tap(TopUpPage.getTopUpAnotherNumber_button());
-        driver.findElement(TopUpPage.getInsertPhoneNumber_editbox()).clear();
-        driver.findElement(TopUpPage.getInsertPhoneNumber_editbox()).sendKeys(phoneNumber);
-        driver.hideKeyboard();
-        driver.findElement(TopUpPage.getInsertVoucherCode_editbox()).clear();
-        driver.findElement(TopUpPage.getInsertVoucherCode_editbox()).sendKeys(Voucher);
-        driver.hideKeyboard();
-        ElementActions.performTouchAction(driver).tap(TopUpPage.getSubmit_button());
-    }
+//    @Test
+//    public void submitInvalidVoucher(String phoneNumber, String Voucher) {
+//        ElementActions.isElementClickable(driver,TopUpPage.getTopUpAnotherNumber_button());
+//        ElementActions.performTouchAction(driver).tap(TopUpPage.getTopUpAnotherNumber_button());
+//        driver.findElement(TopUpPage.getInsertPhoneNumber_editbox()).clear();
+//        driver.findElement(TopUpPage.getInsertPhoneNumber_editbox()).sendKeys(phoneNumber);
+//        driver.hideKeyboard();
+//        driver.findElement(TopUpPage.getInsertVoucherCode_editbox()).clear();
+//        driver.findElement(TopUpPage.getInsertVoucherCode_editbox()).sendKeys(Voucher);
+//        driver.hideKeyboard();
+//        ElementActions.performTouchAction(driver).tap(TopUpPage.getSubmit_button());
+//    }
 
-    @Test(dependsOnMethods = "CheckInsertingInvalidVoucherCode")
+    @Test(dependsOnMethods = "GetInvalidVoucher")
     public void ValidateCloseButton() {
         TopUpPage.pressCloseBtn();
         Verifications.verifyElementExists(driver, HomePage.getBalanceTitle());

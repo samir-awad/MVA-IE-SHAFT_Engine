@@ -24,6 +24,14 @@ public class TC072A_ValidateSupportPageBillPayUser {
 
     @BeforeClass
     public void beforeClass(){
+        System.setProperty("executionAddress", "0.0.0.0:4723");
+        System.setProperty("targetOperatingSystem", "iOS");
+        System.setProperty("mobile_platformVersion", "13.5.1");
+        System.setProperty("mobile_automationName", "XCUITest");
+        System.setProperty("mobile_udid", "00008030-001C4D5C1E33802E");
+        System.setProperty("mobile_bundleId", "com.VodafoneIreland.MyVodafone");
+        System.setProperty("mobile_derivedDataPath","/Users/mva-ireland/Library/Developer/Xcode/DerivedData/WebDriverAgent-ciegwgvxzxdrqthilmrmczmqvrgu");
+        //System.setProperty("mobile_app",System.getProperty("user.dir")+"//App//97_AUTO.ipa");
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
@@ -31,37 +39,33 @@ public class TC072A_ValidateSupportPageBillPayUser {
         users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
         String username = users.getTestData("BillPayUser.username");
         String password = users.getTestData("BillPayUser.password");
-        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
+        //LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
     }
 
     @Test
     public void CheckSupportSection(){
-        Assertions.assertTrue(HomePage.checkSupportSection());
+        Assertions.assertElementExists(driver,HomePage.getSupport_button());
     }
 
     @Test(dependsOnMethods = "CheckSupportSection")
     public void CheckSupportHeader(){
     HomePage.pressSupportTitle();
-    Assertions.assertElementAttribute(driver,SupportAndLiveChatPage.getSupportHeader_text(),
-            "text","Support");
+    Assertions.assertElementExists(driver,SupportAndLiveChatPage.getSupportHeader_text());
     }
 
     @Test(dependsOnMethods = "CheckSupportHeader")
     public void CheckSupportCloseBtn(){
     SupportAndLiveChatPage.pressSupportHeaderCloseButton();
-        Assertions.assertTrue(HomePage.checkSupportSection());
+        Assertions.assertElementExists(driver,HomePage.getSupport_button());
     }
 
     @Test(dependsOnMethods = "CheckSupportCloseBtn")
     public void CheckSupportPageTitleAndSubTitle(){
         HomePage.pressSupportTitle();
-        SupportAndLiveChatPage.minimizeLiveChat();
-        Verifications.verifyElementExists(driver,SupportAndLiveChatPage.getFirstSupportTitle_textBP(),
-                "Checking first support title");
-        Verifications.verifyElementExists(driver,SupportAndLiveChatPage.getSecondSupportTitle_textBP(),
-                "Checking second support title");
-        Assertions.assertElementExists(driver,SupportAndLiveChatPage.getSupportListFirstItem_textBP(),
-                "Checking first item in support topic list");
+        //SupportAndLiveChatPage.minimizeLiveChat();
+        Verifications.verifyElementExists(driver,SupportAndLiveChatPage.getSupport_title());
+        Assertions.assertElementExists(driver,SupportAndLiveChatPage.getSupport_Subtitle());
+
     }
 
 }

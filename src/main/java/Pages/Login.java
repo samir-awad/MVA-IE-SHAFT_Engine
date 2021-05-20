@@ -198,11 +198,11 @@ public class Login {
     public void acceptPermissions() {
         ElementActions.performTouchAction(driver).tap(LetsGo_Button);
         ElementActions.performTouchAction(driver).tap(PrivacyContinue_button);
-        ElementActions.performTouchAction(driver).swipeElementIntoView(PersonalPreferencesContinue_button, TouchActions.SwipeDirection.UP);
-        ElementActions.performTouchAction(driver).tap(PersonalPreferencesContinue_button);
+        ElementActions.performTouchAction(driver).swipeElementIntoView(PersonalPreferencesContinue_button, TouchActions.SwipeDirection.UP)
+                .tap(PersonalPreferencesContinue_button);
         ElementActions.performTouchAction(driver).tap(PaymentMethod_Continue_button);
-        ElementActions.performTouchAction(driver).swipeElementIntoView(PermissionsContinue_button, TouchActions.SwipeDirection.DOWN);
-        ElementActions.performTouchAction(driver).tap(PermissionsContinue_button);
+        ElementActions.performTouchAction(driver).swipeElementIntoView(PermissionsContinue_button, TouchActions.SwipeDirection.UP)
+                .tap(PermissionsContinue_button);
         ElementActions.performTouchAction(driver).tap(GoToTheApp_button);
         ElementActions.performTouchAction(driver).tap(GoToMyVodafone_button);
     }
@@ -224,7 +224,7 @@ public class Login {
         ElementActions.performTouchAction(driver).tap(PrivacyContinue_button);
         ElementActions.performTouchAction(driver).swipeElementIntoView(PersonalPreferencesContinue_button, TouchActions.SwipeDirection.UP);
         ElementActions.performTouchAction(driver).tap(PersonalPreferencesContinue_button);
-        //ElementActions.performTouchAction(driver).tap(PaymentMethod_Continue_button);
+        ElementActions.performTouchAction(driver).tap(PaymentMethod_Continue_button);
         ElementActions.performTouchAction(driver).tap(OnboardingPersonalDetailsContinuePAYG_button);
         ElementActions.performTouchAction(driver).swipeElementIntoView(PermissionsContinue_button, TouchActions.SwipeDirection.UP);
         ElementActions.performTouchAction(driver).tap(PermissionsContinue_button);

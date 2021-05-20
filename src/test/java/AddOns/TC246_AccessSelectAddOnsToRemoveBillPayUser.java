@@ -22,12 +22,12 @@ public class TC246_AccessSelectAddOnsToRemoveBillPayUser {
     private Login LoginPage;
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         AddOnsPage = new AddOns(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("BillPayUser.username");
         String password = users.getTestData("BillPayUser.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
@@ -40,17 +40,17 @@ public class TC246_AccessSelectAddOnsToRemoveBillPayUser {
 
     @Test(dependsOnMethods = {"CheckEssentialsSection"})
     public void CheckAccessToAddOnsPage() {
-    HomePage.opedAddOnsOverlay();
-    AddOnsPage.openAddOnsPage();
-    Assertions.assertElementAttribute(driver,AddOnsPage.getAddOnsHeader_text(),
-            "text","Buy add ons","Check add ons page is loaded");
+        HomePage.opedAddOnsOverlay();
+        AddOnsPage.openAddOnsPage();
+        Assertions.assertElementAttribute(driver, AddOnsPage.getAddOnsHeader_text(),
+                "text", "Buy add ons", "Check add ons page is loaded");
     }
 
-    @Test(dependsOnMethods = {"CheckEssentialsSection","CheckAccessToAddOnsPage"})
-    public void CheckAccessToSelectAddOns(){
-    AddOnsPage.openManageAddOnsOverlay();
-    Assertions.assertElementAttribute(driver,AddOnsPage.getManageAddOnsOverlayHeader_text(),
-            "text","Select add ons to remove","checking manage add ons header");
+    @Test(dependsOnMethods = {"CheckEssentialsSection", "CheckAccessToAddOnsPage"})
+    public void CheckAccessToSelectAddOns() {
+        AddOnsPage.openManageAddOnsOverlay();
+        Assertions.assertElementAttribute(driver, AddOnsPage.getManageAddOnsOverlayHeader_text(),
+                "text", "Select add ons to remove", "checking manage add ons header");
     }
 
 }

@@ -23,12 +23,12 @@ public class TC247_ValidateAddOnsPageBillPayUserWithoutMonthlyAddOns {
     private AddOns AddOnsPage;
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         AddOnsPage = new AddOns(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("BillPayUserWithoutAddOns.username");
         String password = users.getTestData("BillPayUserWithoutAddOns.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
@@ -48,8 +48,8 @@ public class TC247_ValidateAddOnsPageBillPayUserWithoutMonthlyAddOns {
                 "text", "Buy add ons");
 
         //Why the following assertion throw exception at the beginning then it pass?
-        Assertions.assertElementExists(driver,AddOnsPage.getManageAddOns_button(),
-                Assertions.AssertionType.NEGATIVE,"Check That Manage AddOns Button Is Not Displayed");
+        Assertions.assertElementExists(driver, AddOnsPage.getManageAddOns_button(),
+                Assertions.AssertionType.NEGATIVE, "Check That Manage AddOns Button Is Not Displayed");
     }
 
 }
