@@ -42,7 +42,7 @@ public class TC087A_ValidateSchedulingWebtextToSendLaterOverlayUsingBillPayUser 
         @Test(dependsOnMethods = {"checkOtherUsefulToolsSection"})
         public void pressSendWebtextOption() {
             //HomePage.pressSendWebtextOption();
-            Assertions.assertTrue(OtherUsefulToolsPage.checkWebtextForm());
+            Assertions.assertTrue(OtherUsefulToolsPage.checkWebTextForm());
             Verifications.verifyTrue(OtherUsefulToolsPage.checkWebtextPageHeader());
             OtherUsefulToolsPage.fillInMessage();
             OtherUsefulToolsPage.checkSendButtonStillDisabled();

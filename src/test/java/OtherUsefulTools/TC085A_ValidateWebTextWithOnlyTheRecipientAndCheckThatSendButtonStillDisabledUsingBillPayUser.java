@@ -42,7 +42,7 @@ public class TC085A_ValidateWebTextWithOnlyTheRecipientAndCheckThatSendButtonSti
         @Test(dependsOnMethods = {"checkOtherUsefulToolsSection"})
         public void pressSendWebtextOption() {
             //HomePage.pressSendWebtextOption();
-            Assertions.assertTrue(OtherUsefulToolsPage.checkWebtextForm());
+            Assertions.assertTrue(OtherUsefulToolsPage.checkWebTextForm());
             Verifications.verifyTrue(OtherUsefulToolsPage.checkWebtextPageHeader());
             OtherUsefulToolsPage.fillInRecipient();
             OtherUsefulToolsPage.checkSendButtonStillDisabled();
