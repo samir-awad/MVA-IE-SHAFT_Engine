@@ -79,6 +79,29 @@ public class Account {
     private By MarketingPreferencesCancel_Button;
     private By BackForMarketingPreferencesPage_Button;
     private By CloseForMarketingPreferencesPage_Button;
+    private By DataPreferencesSection;
+    private By DataPreferencesPageHeader;
+    private By DataPreferencesPageContent;
+    private By DataPreferencesEdit_Button;
+    private By DataPreferencesEditContent;
+    private By DataPreferencesCancel_Button;
+    private By BackForDataPreferences_Button;
+    private By CloseForDataPreference_Button;
+    private By SecuritySection;
+    private By SecurityPageHeader;
+    private By SecurityPageContent;
+    private By SecurityEditPassword_Button;
+    private By ChangePasswordPageHeader;
+    private By ChangePasswordPageContent;
+    private By ChangePasswordCancel_Button;
+    private By SecurityEditPin_Button;
+    private By ChangePinPageHeader;
+    private By ChangePinPageContent;
+    private By ChangePinCancel_Button;
+    private By BackForSecurityPage_Button;
+    private By CloseForSecurityPage_Button;
+    private By BiometricsOption;
+
 
     public Account(WebDriver driver) {
 
@@ -148,16 +171,37 @@ public class Account {
             SubjectAccessRequestFormPdfIsOpened = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.TextView");
             PdfBack_Button = new MobileBy.ByAccessibilityId("Navigate up");
             Chrome_driver = By.id("com.android.chrome:id/url_bar");
-            /*
-            MarketingPreferences_Section = new MobileBy.ByAccessibilityId("");
-            MarketingPreferencesPageHeader = new MobileBy.ByAccessibilityId("");
-            MarketingPreferencesPageContent = new MobileBy.ByAccessibilityId("");
-            MarketingPreferencesEdit_Button = new MobileBy.ByAccessibilityId("");
-            MarketingPreferencesEditContent = new MobileBy.ByAccessibilityId("");
-            MarketingPreferencesCancel_Button = new MobileBy.ByAccessibilityId("");
-            BackForMarketingPreferencesPage_Button = new MobileBy.ByAccessibilityId("");
-            CloseForMarketingPreferencesPage_Button = new MobileBy.ByAccessibilityId("");*/
 
+            MarketingPreferences_Section = new MobileBy.ByAccessibilityId("id_personal_details_card_marketing_preferences_title");
+            MarketingPreferencesPageHeader = new MobileBy.ByAccessibilityId("id_header_title_Marketing_preferences");
+            MarketingPreferencesPageContent = new MobileBy.ByAccessibilityId("id_personal_details_marketing_preferences_title");
+            MarketingPreferencesEdit_Button = new MobileBy.ByAccessibilityId("id_personal_details_marketing_preferences_button_edit");
+            MarketingPreferencesEditContent = new MobileBy.ByAccessibilityId("id_personal_details_marketing_preferences_edit_description");
+            MarketingPreferencesCancel_Button = new MobileBy.ByAccessibilityId("id_personal_details_marketing_preferences_edit_button_cancel");
+            BackForMarketingPreferencesPage_Button = By.xpath("(//android.widget.ImageView[@content-desc=\"id_header_back_arrow\"])[2]");
+            CloseForMarketingPreferencesPage_Button = By.xpath("(//android.widget.ImageView[@content-desc=\"id_header_close_icon\"])[3]");
+            DataPreferencesSection = new MobileBy.ByAccessibilityId("id_personal_details_card_data_preferences_title");
+            DataPreferencesPageHeader = new MobileBy.ByAccessibilityId("id_header_title_Data_preferences");
+            DataPreferencesPageContent = new MobileBy.ByAccessibilityId("id_personal_details_data_preferences_title");
+            DataPreferencesEdit_Button = new MobileBy.ByAccessibilityId("id_personal_details_data_preferences_edit_button");
+            DataPreferencesEditContent = new MobileBy.ByAccessibilityId("id_personal_details_data_preferences_basic_permissions_title");
+            DataPreferencesCancel_Button= new MobileBy.ByAccessibilityId("id_personal_details_data_preferences_cancel_button");
+            BackForDataPreferences_Button =By.xpath("(//android.widget.ImageView[@content-desc=\"id_header_back_arrow\"])[2]");
+            CloseForDataPreference_Button = By.xpath("(//android.widget.ImageView[@content-desc=\"id_header_close_icon\"])[3]");
+            SecuritySection = new MobileBy.ByAccessibilityId("id_personal_details_card_security_title");
+            SecurityPageHeader = new MobileBy.ByAccessibilityId("id_header_title_Security");
+            SecurityPageContent = new MobileBy.ByAccessibilityId("id_personal_details_security_title");
+            SecurityEditPassword_Button = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.widget.ImageView");
+            ChangePasswordPageHeader = new MobileBy.ByAccessibilityId("id_header_title_Change_Password");
+            ChangePasswordPageContent = new MobileBy.ByAccessibilityId("id_personal_details_security_change_password_title");
+            ChangePasswordCancel_Button = new MobileBy.ByAccessibilityId("id_change_password_cancel_button");
+            SecurityEditPin_Button = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[5]/android.widget.ImageView");
+            ChangePinPageHeader = new MobileBy.ByAccessibilityId("id_header_title_Change_PIN");
+            ChangePinPageContent = new MobileBy.ByAccessibilityId("id_personal_details_security_change_PIN_title");
+            ChangePinCancel_Button = new MobileBy.ByAccessibilityId("id_change_pin_cancel_button");
+            BackForSecurityPage_Button = By.xpath("(//android.widget.ImageView[@content-desc=\"id_header_back_arrow\"])[2]");
+            CloseForSecurityPage_Button = By.xpath("(//android.widget.ImageView[@content-desc=\"id_header_close_icon\"])[3]");
+            BiometricsOption = new MobileBy.ByAccessibilityId("");
         } else
             {
         }
@@ -177,8 +221,63 @@ public class Account {
     public By getCheckMarketingPreferencesPageContent(){
         return MarketingPreferencesPageContent;
     }
+    public By getCheckDataPreferencesEditContent(){
+        return DataPreferencesEditContent;
+    }
+    public By getCheckDataPreferencesPageContent(){
+        return DataPreferencesPageContent;
+    }
+    public By getCheckDataPreferencesPageHeader(){
+        return DataPreferencesPageHeader;
+    }
+    public By getCheckSecurityPageHeader(){ return SecurityPageHeader; }
+    public By getCheckSecurityPageContent(){ return SecurityPageContent; }
+    public By getCheckChangePasswordPageHeader(){return ChangePasswordPageHeader;}
+    public By getCheckChangePasswordPageContent(){return ChangePasswordPageContent;}
+    public By getCheckChangePinPageHeader(){return ChangePinPageHeader; }
+    public By getCheckChangePinPageContent(){return ChangePinPageContent;}
+    public By getCheckBiometricsOption(){return BiometricsOption;}
+    public void pressDataPreferencesEditButton(){
+        ElementActions.performTouchAction(driver).tap(DataPreferencesEdit_Button);
+    }
+    public void pressChangePinCancelButton(){
+        ElementActions.performTouchAction(driver).tap(ChangePinCancel_Button);
+    }
+    public void pressBackButtonForSecurityPage(){
+        ElementActions.performTouchAction(driver).tap(BackForSecurityPage_Button);
+    }
+    public void pressCloseButtonForSecurityPage(){
+        ElementActions.performTouchAction(driver).tap(CloseForSecurityPage_Button);
+    }
+    public void pressChangePasswordCancelButton(){
+      ElementActions.performTouchAction(driver).swipeElementIntoView(ChangePasswordCancel_Button, TouchActions.SwipeDirection.UP);
+      ElementActions.performTouchAction(driver).tap(ChangePasswordCancel_Button);
+    }
+    public void pressSecurityEditPinButton(){
+        ElementActions.performTouchAction(driver).tap(SecurityEditPin_Button);
+    }
+    public void  pressSecurityEditPasswordButton(){
+        ElementActions.performTouchAction(driver).tap(SecurityEditPassword_Button);
+    }
+    public void pressDataPreferencesCancelButton(){
+        ElementActions.performTouchAction(driver).swipeElementIntoView(DataPreferencesCancel_Button, TouchActions.SwipeDirection.UP);
+        ElementActions.performTouchAction(driver).tap(DataPreferencesCancel_Button);
+    }
+    public void pressSecuritySection(){
+        ElementActions.performTouchAction(driver).tap(SecuritySection);
+    }
+    public void pressBackButtonForDataPreferences(){
+        ElementActions.performTouchAction(driver).tap(BackForDataPreferences_Button);
+    }
+    public void pressCloseButtonForDataPreference(){
+        ElementActions.performTouchAction(driver).tap(CloseForDataPreference_Button);
+    }
     public void  pressMarketingPreferencesCancelButton() {
         ElementActions.performTouchAction(driver).tap(MarketingPreferencesCancel_Button);
+    }
+
+    public void pressDataPreferencesSection(){
+        ElementActions.performTouchAction(driver).tap(DataPreferencesSection);
     }
     public void  pressBackButtonForMarketingPreferencesPage() {
         ElementActions.performTouchAction(driver).tap(BackForMarketingPreferencesPage_Button);

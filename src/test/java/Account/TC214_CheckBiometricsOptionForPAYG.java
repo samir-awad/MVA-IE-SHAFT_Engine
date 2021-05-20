@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC211_PersonalDetailsMarketingPreferencesPageValidationForPAYG {
+public class TC214_CheckBiometricsOptionForPAYG {
 
     private WebDriver driver;
     private Login LoginPage;
@@ -40,30 +40,7 @@ public class TC211_PersonalDetailsMarketingPreferencesPageValidationForPAYG {
     @Test(dependsOnMethods = "CheckAccountView")
     public void CheckAccountSetting() {
         AccountPage.pressAccountSettingOption();
-        Assertions.assertElementExists(driver,AccountPage.getCheckAccountSettingsPageHeader());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckAccountSettingsPageHeader());
+        Assertions.assertElementExists(driver,AccountPage.getCheckBiometricsOption());
     }
-     @Test(dependsOnMethods = "CheckAccountSetting")
-     public void CheckMarketingPreferencesSection() {
-         AccountPage.pressPersonalDetailsSection();
-         AccountPage.pressMarketingPreferencesSection();
-         Verifications.verifyElementExists(driver, AccountPage.getCheckMarketingPreferencesPageHeader());
-         Verifications.verifyElementExists(driver, AccountPage.getCheckMarketingPreferencesPageContent());
-         AccountPage.pressMarketingPreferencesEditButton();
-         Assertions.assertElementExists(driver,AccountPage.getCheckMarketingPreferencesEditContent());
-     }
-
-      @Test(dependsOnMethods = "CheckMarketingPreferencesSection")
-      public void ValidateTheMarketingPreferencesPage() {
-          AccountPage.pressMarketingPreferencesCancelButton();
-          Verifications.verifyElementExists(driver, AccountPage.getCheckMarketingPreferencesPageContent());
-          AccountPage.pressBackButtonForMarketingPreferencesPage();
-          Assertions.assertElementExists(driver,AccountPage.getCheckPersonalDetailsPageHeader());
-      }
-       @Test(dependsOnMethods = "ValidateTheMarketingPreferencesPage")
-       public void ValidateBackToDashBoard() {
-           AccountPage.pressMarketingPreferencesSection();
-           AccountPage.pressCloseButtonForMarketingPreferencesPage();
-           Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
-       }
-
 }

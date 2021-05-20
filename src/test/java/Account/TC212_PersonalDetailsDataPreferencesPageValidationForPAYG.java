@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC137_PersonalDetailsMarketingPreferencesPageValidationForBillPay {
+public class TC212_PersonalDetailsDataPreferencesPageValidationForPAYG {
 
     private WebDriver driver;
     private Login LoginPage;
@@ -27,9 +27,9 @@ public class TC137_PersonalDetailsMarketingPreferencesPageValidationForBillPay {
         HomePage = new Home(driver);
         AccountPage=new Account(driver);
         users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
-        String username = users.getTestData("BillPayUser.username");
-        String password = users.getTestData("BillPayUser.password");
-        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();// LoginPage.acceptPermissions();
+        String username = users.getTestData("PAYGUser.username");
+        String password = users.getTestData("PAYGUser.password");
+        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();// LoginPage.acceptPermissions();
     }
     @Test
     public void CheckAccountView() {
@@ -43,26 +43,25 @@ public class TC137_PersonalDetailsMarketingPreferencesPageValidationForBillPay {
         Assertions.assertElementExists(driver,AccountPage.getCheckAccountSettingsPageHeader());
     }
      @Test(dependsOnMethods = "CheckAccountSetting")
-     public void CheckMarketingPreferencesSection() {
+     public void CheckDataPreferencesSection() {
          AccountPage.pressPersonalDetailsSection();
-         AccountPage.pressMarketingPreferencesSection();
-         Verifications.verifyElementExists(driver, AccountPage.getCheckMarketingPreferencesPageHeader());
-         Verifications.verifyElementExists(driver, AccountPage.getCheckMarketingPreferencesPageContent());
-         AccountPage.pressMarketingPreferencesEditButton();
-         Assertions.assertElementExists(driver,AccountPage.getCheckMarketingPreferencesEditContent());
+         AccountPage.pressDataPreferencesSection();
+         Verifications.verifyElementExists(driver, AccountPage.getCheckDataPreferencesPageHeader());
+         Verifications.verifyElementExists(driver, AccountPage.getCheckDataPreferencesPageContent());
+         AccountPage.pressDataPreferencesEditButton();
+         Assertions.assertElementExists(driver,AccountPage.getCheckDataPreferencesEditContent());
      }
-
-      @Test(dependsOnMethods = "CheckMarketingPreferencesSection")
-      public void ValidateTheMarketingPreferencesPage() {
-          AccountPage.pressMarketingPreferencesCancelButton();
-          Verifications.verifyElementExists(driver, AccountPage.getCheckMarketingPreferencesPageContent());
-          AccountPage.pressBackButtonForMarketingPreferencesPage();
+      @Test(dependsOnMethods = "CheckDataPreferencesSection")
+      public void ValidateTheDataPreferencesPage() {
+          AccountPage.pressDataPreferencesCancelButton();
+          Verifications.verifyElementExists(driver, AccountPage.getCheckDataPreferencesPageContent());
+          AccountPage.pressBackButtonForDataPreferences();
           Assertions.assertElementExists(driver,AccountPage.getCheckPersonalDetailsPageHeader());
       }
-       @Test(dependsOnMethods = "ValidateTheMarketingPreferencesPage")
+       @Test(dependsOnMethods = "ValidateTheDataPreferencesPage")
        public void ValidateBackToDashBoard() {
-           AccountPage.pressMarketingPreferencesSection();
-           AccountPage.pressCloseButtonForMarketingPreferencesPage();
+           AccountPage.pressDataPreferencesSection();
+           AccountPage.pressCloseButtonForDataPreference();
            Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
        }
 
