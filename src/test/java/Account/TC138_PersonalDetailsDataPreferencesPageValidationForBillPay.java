@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TC137_PersonalDetailsMarketingPreferencesPageValidationForBillPay {
+public class TC138_PersonalDetailsDataPreferencesPageValidationForBillPay {
 
     private WebDriver driver;
     private Login LoginPage;
@@ -42,28 +42,27 @@ public class TC137_PersonalDetailsMarketingPreferencesPageValidationForBillPay {
         AccountPage.pressAccountSettingOption();
         Assertions.assertElementExists(driver,AccountPage.getCheckAccountSettingsPageHeader());
     }
-     @Test(dependsOnMethods = "CheckAccountSetting")
-     public void CheckMarketingPreferencesSection() {
-         AccountPage.pressPersonalDetailsSection();
-         AccountPage.pressMarketingPreferencesSection();
-         Verifications.verifyElementExists(driver, AccountPage.getCheckMarketingPreferencesPageHeader());
-         Verifications.verifyElementExists(driver, AccountPage.getCheckMarketingPreferencesPageContent());
-         AccountPage.pressMarketingPreferencesEditButton();
-         Assertions.assertElementExists(driver,AccountPage.getCheckMarketingPreferencesEditContent());
-     }
-
-      @Test(dependsOnMethods = "CheckMarketingPreferencesSection")
-      public void ValidateTheMarketingPreferencesPage() {
-          AccountPage.pressMarketingPreferencesCancelButton();
-          Verifications.verifyElementExists(driver, AccountPage.getCheckMarketingPreferencesPageContent());
-          AccountPage.pressBackButtonForMarketingPreferencesPage();
-          Assertions.assertElementExists(driver,AccountPage.getCheckPersonalDetailsPageHeader());
-      }
-       @Test(dependsOnMethods = "ValidateTheMarketingPreferencesPage")
-       public void ValidateBackToDashBoard() {
-           AccountPage.pressMarketingPreferencesSection();
-           AccountPage.pressCloseButtonForMarketingPreferencesPage();
-           Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
-       }
+    @Test(dependsOnMethods = "CheckAccountSetting")
+    public void CheckDataPreferencesSection() {
+        AccountPage.pressPersonalDetailsSection();
+        AccountPage.pressDataPreferencesSection();
+        Verifications.verifyElementExists(driver, AccountPage.getCheckDataPreferencesPageHeader());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckDataPreferencesPageContent());
+        AccountPage.pressDataPreferencesEditButton();
+        Assertions.assertElementExists(driver,AccountPage.getCheckDataPreferencesEditContent());
+    }
+    @Test(dependsOnMethods = "CheckDataPreferencesSection")
+    public void ValidateTheDataPreferencesPage() {
+        AccountPage.pressDataPreferencesCancelButton();
+        Verifications.verifyElementExists(driver, AccountPage.getCheckDataPreferencesPageContent());
+        AccountPage.pressBackButtonForDataPreferences();
+        Assertions.assertElementExists(driver,AccountPage.getCheckPersonalDetailsPageHeader());
+    }
+    @Test(dependsOnMethods = "ValidateTheDataPreferencesPage")
+    public void ValidateBackToDashBoard() {
+        AccountPage.pressDataPreferencesSection();
+        AccountPage.pressCloseButtonForDataPreference();
+        Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+    }
 
 }
