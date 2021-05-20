@@ -14,6 +14,7 @@ public class TC120_ValidatePAYGCustomer_ActiveToUp {
     private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
+
     @BeforeClass
     public void beforeClass() {
         //System.setProperty("mobile_app", FileActions.getAbsolutePath(System.getProperty("testDataFolderPath") + "apk/", "DIG18180Fix.apk"));
@@ -24,16 +25,44 @@ public class TC120_ValidatePAYGCustomer_ActiveToUp {
         //This method will be used to login before every test case to login with
         //With different users credentials must be changed
     }
-    @Test
-    public void ValidatePAYGCustomer_ActiveToUp(){
-        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
-        Verifications.verifyTrue(HomePage.checkTopUpOfferTileActiveTopUp());
-        Verifications.verifyTrue(HomePage.checkBalanceTile());
-        Verifications.verifyTrue(HomePage.checkTopUpHistoryTile());
-        HomePage.checkDiscoverySection();
-        HomePage.checkEssentialsSection();
-        HomePage.checkOtherUsefulToolsSection();
-        Assertions.assertTrue(HomePage.checkTrayMenuOptionsForPayg());
 
+    @Test
+    public void CheckThatImOnHome() {
+        Assertions.assertElementExists(driver, HomePage.getCheckTheVodafoneLogo());
+    }
+
+    @Test
+    public void CheckActiveTopupIsDisplayed() {
+        Assertions.assertElementExists(driver, HomePage.getActiveToUp());
+    }
+
+    @Test
+    public void CheckBalanceTileIsDisplayed() {
+        Assertions.assertElementExists(driver, HomePage.getBalanceTitle());
+    }
+
+    @Test
+    public void CheckTopUpHistoryTileIsDisplayed() {
+        Assertions.assertElementExists(driver, HomePage.getTopUpHistoryTile());
+    }
+
+    @Test
+    public void CheckDiscoverySection() {
+        HomePage.checkDiscoverySection();
+    }
+
+    @Test
+    public void CheckEssentialsSection() {
+        HomePage.checkEssentialsSection();
+    }
+
+    @Test
+    public void CheckOtherUsefulToolsSection() {
+        HomePage.checkOtherUsefulToolsSection();
+    }
+
+    @Test
+    public void CheckTopupInTrayMenu() {
+        Assertions.assertElementExists(driver, HomePage.getPAYG_Tray());
     }
 }

@@ -9,7 +9,6 @@ import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -37,11 +36,10 @@ public class TC099_AccessSupportSmartLinkWithBillPayUser {
     @Test
     public void CheckAccessSupportSmartLinkBeforeLogin(){
         String supportURL= links.getTestData("Support.link");
-        smartLinksPage.accessOffersSmartLink(supportURL);
+        smartLinksPage.accessSmartLink(supportURL);
         String username = users.getTestData("BillPayUser.username");
         String password = users.getTestData("BillPayUser.password");
         LoginPage.login(username, password).acceptPermissions();
-        Verifications.verifyElementMatches(driver,HomePage.getVodafoneLogo());
         Assertions.assertElementAttribute(driver,SupportAndLiveChatPage.getSupportHeader_text(),
                 "text","Support");
     }
@@ -55,7 +53,7 @@ public class TC099_AccessSupportSmartLinkWithBillPayUser {
     @Test(dependsOnMethods ="CheckSupportHeaderCloseButton")
     public void CheckAccessSupportSmartLinkAfterLogin(){
         String supportURL= links.getTestData("Support.link");
-        smartLinksPage.accessOffersSmartLink(supportURL);
+        smartLinksPage.accessSmartLink(supportURL);
         Assertions.assertElementAttribute(driver,SupportAndLiveChatPage.getSupportHeader_text(),
                 "text","Support");
     }

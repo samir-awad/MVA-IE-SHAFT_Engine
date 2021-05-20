@@ -6,9 +6,7 @@ import Pages.SmartLinks;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
-import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -34,7 +32,7 @@ public class TC096_AccessDashboardSmartLinkWithBillPayUser {
     @Test
     public void CheckAccessDashboardSmartLinkBeforeLogin(){
         String DashboardLink= links.getTestData("Dashboard.link");
-        SmartLinksPage.accessOffersSmartLink(DashboardLink);
+        SmartLinksPage.accessSmartLink(DashboardLink);
         String username = users.getTestData("BillPayUser.username");
         String password = users.getTestData("BillPayUser.password");
         LoginPage.login(username, password).acceptPermissions();
@@ -44,12 +42,8 @@ public class TC096_AccessDashboardSmartLinkWithBillPayUser {
     @Test(dependsOnMethods = "CheckAccessDashboardSmartLinkBeforeLogin")
     public void CheckAccessDashboardSmartLinkAfterLogin(){
         String DashboardLink= links.getTestData("Dashboard.link");
-        SmartLinksPage.accessOffersSmartLink(DashboardLink);
+        SmartLinksPage.accessSmartLink(DashboardLink);
         Assertions.assertElementMatches(driver,HomePage.getVodafoneLogo());
     }
-
-
-
-
 
 }

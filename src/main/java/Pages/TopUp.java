@@ -2,11 +2,7 @@ package Pages;
 
 import com.shaft.gui.element.ElementActions;
 import com.shaft.gui.element.TouchActions;
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.DriverMobileCommand;
 import io.appium.java_client.MobileBy;
-import io.appium.java_client.MobileDriver;
-import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -28,7 +24,7 @@ public class TopUp {
     private By Next_button; //general locator in Top up page
     private By ConfirmYourTopUpDetails;
     private By MoreOptionsOverlay_button;
-    private By MoreOptionsOverlayHeader_text;
+    private By TopUpOverlayHeader_text;
     private By MoreOptionsOverlayBack_button;
     private By SetAnAutomaticTopUp_button;
     private By AutoTopUpPageHeader_text;
@@ -78,8 +74,8 @@ public class TopUp {
         return ConfirmYourTopUpDetails;
     }
 
-    public By getMoreOptionOverlayHeader_text() {
-        return MoreOptionsOverlayHeader_text;
+    public By getTopUpOverlayHeader_text() {
+        return TopUpOverlayHeader_text;
     }
 
     public By getAutoTopUpPageHeader_text() {
@@ -106,6 +102,75 @@ public class TopUp {
         return VoucherTopUpHeader_text;
     }
 
+    public By getTopUpOverlayClose_button() {
+        return TopUpOverlayClose_button;
+    }
+
+    public By getTopUpOverlay_button() {
+        return TopUpOverlay_button;
+    }
+
+    public By getTopUpHeaderClose_button() {
+        return TopUpHeaderClose_button;
+    }
+
+    public By getChangePaymentMethod_button() {
+        return ChangePaymentMethod_button;
+    }
+
+    public By getAddPaymentCard_button() {
+        return AddPaymentCard_button;
+    }
+
+    public By getChrome_driver() {
+        return Chrome_driver;
+    }
+
+    public By getNext_button() {
+        return Next_button;
+    }
+
+    public By getMoreOptionsOverlay_button() {
+        return MoreOptionsOverlay_button;
+    }
+
+    public By getMoreOptionsOverlayBack_button() {
+        return MoreOptionsOverlayBack_button;
+    }
+
+    public By getSetAnAutomaticTopUp_button() {
+        return SetAnAutomaticTopUp_button;
+    }
+
+    public By getAutoTopUpPageHeaderBack_button() {
+        return AutoTopUpPageHeaderBack_button;
+    }
+
+    public By getCheckYourTopUpHistory_button() {
+        return CheckYourTopUpHistory_button;
+    }
+
+    public By getTopUpWithAVoucher_button() {
+        return TopUpWithAVoucher_button;
+    }
+
+    public By getTopUpAnotherNumber_button() {
+        return TopUpAnotherNumber_button;
+    }
+
+    public By getInsertPhoneNumber_editbox() {
+        return InsertPhoneNumber_editbox;
+    }
+
+    public By getInsertVoucherCode_editbox() {
+        return InsertVoucherCode_editbox;
+    }
+
+    public By getSubmit_button() {
+        return Submit_button;
+    }
+
+
     public TopUp(WebDriver driver) {
         this.driver = driver;
         if (System.getProperty("targetOperatingSystem").equals("Android")) {
@@ -124,7 +189,7 @@ public class TopUp {
             Next_button = new MobileBy.ByAccessibilityId("Next");
             ConfirmYourTopUpDetails = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[2]");
             TopUpHeaderClose_button = new MobileBy.ByAccessibilityId("id_header_close_icon");
-            MoreOptionsOverlayHeader_text = new MobileBy.ByAccessibilityId("STundefinedMainTitle");
+            TopUpOverlayHeader_text = new MobileBy.ByAccessibilityId("STundefinedMainTitle");
             VoucherTopUpHeader_text = MobileBy.AccessibilityId("STundefinedMainTitle");
             MoreOptionsOverlay_button = By.xpath("(//android.widget.Button[@content-desc=\"id_top_up_button\"])[2]/android.widget.TextView");
             MoreOptionsOverlayBack_button = By.xpath("//android.widget.Button[@content-desc=\"id_top_up_more_options_back_button\"]/android.widget.TextView");
@@ -157,7 +222,7 @@ public class TopUp {
             Next_button = MobileBy.xpath("//XCUIElementTypeStaticText[@name=\"Next\"]");
             ConfirmYourTopUpDetails = MobileBy.AccessibilityId("Confirm your top up details");
             TopUpHeaderClose_button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"id_header_close_icon\"])[2]");
-            MoreOptionsOverlayHeader_text = new MobileBy.ByAccessibilityId("STundefinedMainTitle");
+            TopUpOverlayHeader_text = new MobileBy.ByAccessibilityId("STundefinedMainTitle");
             VoucherTopUpHeader_text = MobileBy.AccessibilityId("id_header_title_Top_up");
             MoreOptionsOverlay_button = MobileBy.AccessibilityId("More options");
             MoreOptionsOverlayBack_button = MobileBy.AccessibilityId("Back");

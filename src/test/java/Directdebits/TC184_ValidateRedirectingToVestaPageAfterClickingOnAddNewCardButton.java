@@ -5,6 +5,7 @@ import Pages.Home;
 import Pages.Login;
 import Pages.Settings;
 import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
@@ -17,6 +18,7 @@ public class TC184_ValidateRedirectingToVestaPageAfterClickingOnAddNewCardButton
     private Home HomePage;
     private BillsPayments BillsPaymentsPage;
     private Settings SettingsPage;
+    private JSONFileManager users;
 
     @BeforeClass
     public void beforeClass() {
@@ -25,7 +27,10 @@ public class TC184_ValidateRedirectingToVestaPageAfterClickingOnAddNewCardButton
         HomePage = new Home(driver);
         BillsPaymentsPage = new BillsPayments(driver);
         SettingsPage = new Settings(driver);
-        // LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
+        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        String username = users.getTestData("TC183_BillPayCredentialsUser_DirectDebit.username");
+        String password = users.getTestData("TC183_BillPayCredentialsUser_DirectDebit.password");
+        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
     }
 
 

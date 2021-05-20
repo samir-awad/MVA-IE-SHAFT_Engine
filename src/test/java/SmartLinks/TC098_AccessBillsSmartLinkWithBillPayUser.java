@@ -36,11 +36,10 @@ public class TC098_AccessBillsSmartLinkWithBillPayUser {
     @Test
     public void CheckAccessBillSmartLinkBeforeLogin(){
         String billLink= links.getTestData("Bill.link");
-        SmartLinksPage.accessOffersSmartLink(billLink);
+        SmartLinksPage.accessSmartLink(billLink);
         String username = users.getTestData("BillPayUser.username");
         String password = users.getTestData("BillPayUser.password");
         LoginPage.login(username, password).acceptPermissions();
-        Verifications.verifyElementMatches(driver,HomePage.getVodafoneLogo());
         Assertions.assertElementAttribute(driver,BillsPaymentsPage.getBillsPaymentTitle(),
                 "text","Bills & Payments");
     }
@@ -55,7 +54,7 @@ public class TC098_AccessBillsSmartLinkWithBillPayUser {
     @Test(dependsOnMethods ="CheckBillCloseButton")
     public void CheckAccessBillSmartLinkAfterLogin(){
         String billLink= links.getTestData("Bill.link");
-        SmartLinksPage.accessOffersSmartLink(billLink);
+        SmartLinksPage.accessSmartLink(billLink);
         Assertions.assertElementAttribute(driver,BillsPaymentsPage.getBillsPaymentTitle(),
                 "text","Bills & Payments");
     }

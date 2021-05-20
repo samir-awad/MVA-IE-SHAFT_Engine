@@ -1,6 +1,7 @@
 package Login;
 
 import FileReaders.GetUserFromJson;
+import FileReaders.jsonReader;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Assertions;
@@ -37,7 +38,7 @@ public class TC04_LoginSuccessfullyWithBillPayCustomer {
 
     @Test(dependsOnMethods = {"Check_That_Im_On_Registration_And_Login_Page"})
     public void Step2() throws IOException, ParseException{
-        LoginPage.login(GetUserFromJson.getUsername("IE"), GetUserFromJson.getpassword("IE"));
+        LoginPage.login(jsonReader.getUserName("BillPay.username"), jsonReader.getPassword("BillPay.password"));
         Assertions.assertElementExists(driver,LoginPage.getLetsGo_Button());
     }
 }
