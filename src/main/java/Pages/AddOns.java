@@ -7,15 +7,15 @@ import org.openqa.selenium.WebDriver;
 
 public class AddOns {
     private final WebDriver driver;
-    private By AddOnsHeader_text ;
-    private By AddOnsHeaderOverlay_text ;
+    private By AddOnsHeader_text;
+    private By AddOnsHeaderOverlay_text;
     private By BuyAddOnsHeaderOverlay_text;
-    private By ManageAddOnsOverlayHeader_text ;
-    private By OneOff_tab ;
+    private By ManageAddOnsOverlayHeader_text;
+    private By OneOff_tab;
     private By Recurring_tab;
     private By Recurring_tab_text;
     private By NoActiveAddOnsOverlay_text;
-    private By AddOnsCloseOverlay_button ;
+    private By AddOnsCloseOverlay_button;
     private By GetMoreAddOns_button;
     private By ManageAddOnsOverlay_button;
     private By ManageAddOns_button;
@@ -55,17 +55,22 @@ public class AddOns {
             RecurringListFirstItem_text = By.xpath("//hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]");
             Select_button = By.xpath("(//android.widget.Button[@content-desc=\"id_select_add_on_button\"])[1]/android.widget.TextView");
             RecurringContinue_button = By.xpath("(//android.view.ViewGroup[@content-desc=\"Button\"])[3]");
-            BuyAddOnsCloseOverlay_button=By.xpath("//android.view.ViewGroup[@content-desc=\"id_buy_add_ons_close\"]");
-            BuyAddOnsCancelOverlay_button=new MobileBy.ByAccessibilityId("id_cancel_buy_add_on_button");
-            AddOneClosePage_button =new MobileBy.ByAccessibilityId("id_header_close_icon");
-            AddOneFirstListPAYG_text= new MobileBy.ByAccessibilityId("id_add_on_card_item_description1_one_off_0");
-            SelectPAYG_button= new MobileBy.ByAccessibilityId("id_select_add_on_button");
-            BuyAddOnsOverlayClose_button =By.xpath("//android.widget.ImageView[@content-desc=\"id_buy_add_ons_close\"]");
-        }
-        else {
+            BuyAddOnsCloseOverlay_button = By.xpath("//android.view.ViewGroup[@content-desc=\"id_buy_add_ons_close\"]");
+            BuyAddOnsCancelOverlay_button = new MobileBy.ByAccessibilityId("id_cancel_buy_add_on_button");
+            AddOneClosePage_button = new MobileBy.ByAccessibilityId("id_header_close_icon");
+            AddOneFirstListPAYG_text = new MobileBy.ByAccessibilityId("id_add_on_card_item_description1_one_off_0");
+            SelectPAYG_button = new MobileBy.ByAccessibilityId("id_select_add_on_button");
+            BuyAddOnsOverlayClose_button = By.xpath("//android.widget.ImageView[@content-desc=\"id_buy_add_ons_close\"]");
+        } else {
             //IOS locators
+            NoActiveAddOnsOverlay_text = MobileBy.xpath("//XCUIElementTypeStaticText[@name=\"You have no active add ons.\"]");
+            AddOnsCloseOverlay_button = MobileBy.AccessibilityId("id_dashboard_manage_addons_sheet_close");
+            AddOnsExpiresOverlay_text = MobileBy.AccessibilityId("manageAddOns_item_date");
+            ManageAddOnsOverlay_button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"Manage monthly add ons\"])[2]");
+            ManageAddOnsOverlayHeader_text = MobileBy.AccessibilityId("id_dashboard_manage_addons_sheet_title");
+            SelectAddOnsToRemoveOverlayCancel_button = MobileBy.AccessibilityId("Cancel");
+            AddOnsHeaderOverlay_text = MobileBy.AccessibilityId("id_dashboard_manage_addons_sheet_title");
         }
-
     }
 
     //Getters of the elements
@@ -113,11 +118,66 @@ public class AddOns {
         return ManageAddOns_button;
     }
 
-    public By getAddOneFirstListPAYG_text() { return AddOneFirstListPAYG_text; }
+    public By getAddOneFirstListPAYG_text() {
+        return AddOneFirstListPAYG_text;
+    }
 
-    public By getAddOnsContinue_button() { return AddOnsContinue_button; }
+    public By getAddOnsContinue_button() {
+        return AddOnsContinue_button;
+    }
 
-    public By getSelectPAYG_button() { return SelectPAYG_button; }
+    public By getSelectPAYG_button() {
+        return SelectPAYG_button;
+    }
+
+    public By getRecurring_tab() {
+        return Recurring_tab;
+    }
+
+    public By getAddOnsCloseOverlay_button() {
+        return AddOnsCloseOverlay_button;
+    }
+
+    public By getGetMoreAddOns_button() {
+        return GetMoreAddOns_button;
+    }
+
+    public By getManageAddOnsOverlay_button() {
+        return ManageAddOnsOverlay_button;
+    }
+
+    public By getSelectAddOnsToRemoveOverlayCancel_button() {
+        return SelectAddOnsToRemoveOverlayCancel_button;
+    }
+
+    public By getOneOffListFirstItem_text() {
+        return OneOffListFirstItem_text;
+    }
+
+    public By getRecurringListFirstItem_text() {
+        return RecurringListFirstItem_text;
+    }
+
+    public By getSelect_button() {
+        return Select_button;
+    }
+
+    public By getBuyAddOnsCloseOverlay_button() {
+        return BuyAddOnsCloseOverlay_button;
+    }
+
+    public By getBuyAddOnsCancelOverlay_button() {
+        return BuyAddOnsCancelOverlay_button;
+    }
+
+    public By getAddOneClosePage_button() {
+        return AddOneClosePage_button;
+    }
+
+    public By getBuyAddOnsOverlayClose_button() {
+        return BuyAddOnsOverlayClose_button;
+    }
+
 
     //Page methods
     public void openAddOnsPage() {
@@ -148,7 +208,7 @@ public class AddOns {
         ElementActions.performTouchAction(driver).tap(RecurringContinue_button);
     }
 
-    public void closeBuyAddOnsOverlay(){
+    public void closeBuyAddOnsOverlay() {
         ElementActions.performTouchAction(driver).tap(BuyAddOnsCloseOverlay_button);
     }
 
@@ -160,17 +220,18 @@ public class AddOns {
         ElementActions.performTouchAction(driver).tap(AddOneClosePage_button);
     }
 
-    public void pressFirstAddOnSelectButton(){
+    public void pressFirstAddOnSelectButton() {
         ElementActions.performTouchAction(driver).tap(SelectPAYG_button);
     }
 
-    public void pressBuyAddOnsContinueButton(){
+    public void pressBuyAddOnsContinueButton() {
         ElementActions.performTouchAction(driver).tap(AddOnsContinue_button);
     }
 
-    public void pressBuyAddOnsOverlayCloseButton(){
+    public void pressBuyAddOnsOverlayCloseButton() {
         ElementActions.performTouchAction(driver).tap(BuyAddOnsOverlayClose_button);
     }
+
     //Check existence methods
     public boolean checkBuyAddOnsFirstTab() {
         return ElementActions.isElementDisplayed(driver, OneOff_tab);
@@ -199,6 +260,5 @@ public class AddOns {
     public boolean checkManageAddOnsBtn() {
         return ElementActions.isElementDisplayed(driver, ManageAddOns_button);
     }
-
 
 }

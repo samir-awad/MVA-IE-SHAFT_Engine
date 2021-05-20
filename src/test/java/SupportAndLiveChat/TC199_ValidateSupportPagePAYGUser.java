@@ -24,6 +24,14 @@ public class TC199_ValidateSupportPagePAYGUser {
 
     @BeforeClass
     public void beforeClass(){
+        System.setProperty("executionAddress", "0.0.0.0:4723");
+        System.setProperty("targetOperatingSystem", "iOS");
+        System.setProperty("mobile_platformVersion", "13.5.1");
+        System.setProperty("mobile_automationName", "XCUITest");
+        System.setProperty("mobile_udid", "00008030-001C4D5C1E33802E");
+        System.setProperty("mobile_bundleId", "com.VodafoneIreland.MyVodafone");
+        System.setProperty("mobile_derivedDataPath","/Users/mva-ireland/Library/Developer/Xcode/DerivedData/WebDriverAgent-ciegwgvxzxdrqthilmrmczmqvrgu");
+        //System.setProperty("mobile_app",System.getProperty("user.dir")+"//App//97_AUTO.ipa");
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
@@ -31,7 +39,8 @@ public class TC199_ValidateSupportPagePAYGUser {
         users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
         String username = users.getTestData("PAYGUser.username");
         String password = users.getTestData("PAYGUser.password");
-        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
+        LoginPage.acceptTermsAndConditions().login(username, password);
+        LoginPage.acceptPermissions();
     }
 
     @Test
@@ -57,12 +66,7 @@ public class TC199_ValidateSupportPagePAYGUser {
     @Test(dependsOnMethods = "CheckSupportCloseBtn")
     public void CheckSupportPageTitleAndSubTitle(){
         HomePage.pressSupportTrayView();
-
-        Verifications.verifyElementExists(driver,SupportAndLiveChatPage.getFirstSupportTitle_textPAYG(),
-                "Checking first support title");
-        Verifications.verifyElementExists(driver,SupportAndLiveChatPage.getSecondSupportTitle_textPAYG(),
-                "Checking second support title");
-        Assertions.assertElementExists(driver,SupportAndLiveChatPage.getSupportListFirstItem_textPAYG(),
-                "Checking first item in support topic list");
+        Verifications.verifyElementExists(driver,SupportAndLiveChatPage.getSupport_title());
+        Assertions.assertElementExists(driver,SupportAndLiveChatPage.getSupport_Subtitle());
     }
 }

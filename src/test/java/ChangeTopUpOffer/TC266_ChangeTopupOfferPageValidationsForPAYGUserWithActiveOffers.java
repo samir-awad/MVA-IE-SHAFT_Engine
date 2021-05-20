@@ -50,6 +50,7 @@ public class TC266_ChangeTopupOfferPageValidationsForPAYGUserWithActiveOffers {
     public void ClickOnChangeTopUpOfferAndCheckHeaderAndCurrentOffer() {
         ElementActions.performTouchAction(driver).tap(ChangeTopUpOfferPage.getChangeTopUpOffer_button());
         Verifications.verifyElementExists(driver, ChangeTopUpOfferPage.getChangeTopUpOfferHeader_text());
+        Verifications.verifyElementExists(driver, ChangeTopUpOfferPage.getYourTopUpOffer_title());
         Verifications.verifyElementExists(driver, ChangeTopUpOfferPage.getCurrentTopUpOffer_name());
         Verifications.verifyElementExists(driver, ChangeTopUpOfferPage.getCurrentTopUpOffer_title());
         Assertions.assertElementExists(driver, ChangeTopUpOfferPage.getCurrentTopUpOffer_value());

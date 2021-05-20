@@ -20,13 +20,14 @@ public class TC161_ValidateTopUpWithVoucherPAYGUser {
 
     @BeforeClass
     public void beforeClass() {
+        System.setProperty("mobile_app",System.getProperty("user.dir")+"//App//144_AUTO.apk");
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         TopUpPage = new TopUp(driver);
         users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
-        String username = users.getTestData("PAYGUserWithTopUp.username");
-        String password = users.getTestData("PAYGUserWithTopUp.password");
+        String username = users.getTestData("PAYGVoucher.username");
+        String password = users.getTestData("PAYGVoucher.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
     }
 
@@ -41,13 +42,12 @@ public class TC161_ValidateTopUpWithVoucherPAYGUser {
         TopUpPage.pressTopUpOverlayMoreOptionsButton();
         TopUpPage.pressMoreOptionsOverlayTopUpWithVoucherOption();
         Assertions.assertElementExists(driver, TopUpPage.getChooseTheNumber_text());
+
     }
 
     @Test(dependsOnMethods = "CheckMoreOptionsOverlay")
-    public void ValidateBackButton() {
+    public void ValidateMoreOtionsOverlayTitle() {
         TopUpPage.pressAutoTopUpBackButton();
-        TopUpPage.pressMoreOptionsOverlayTopUpWithVoucherOption();
-        //The following assertion sometimes fails
         Assertions.assertElementExists(driver, TopUpPage.getVoucherTopUpHeader_text());
     }
 }

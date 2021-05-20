@@ -21,13 +21,14 @@ public class TC244_ValidateSelectAddOnsToRemoveOverlayBillPayUser {
     private Home HomePage;
     private AddOns AddOnsPage;
     private Login LoginPage;
+
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
         driver = BrowserFactory.getBrowser();
-        LoginPage= new Login(driver);
+        LoginPage = new Login(driver);
         HomePage = new Home(driver);
         AddOnsPage = new AddOns(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("BillPayUser.username");
         String password = users.getTestData("BillPayUser.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
@@ -47,8 +48,8 @@ public class TC244_ValidateSelectAddOnsToRemoveOverlayBillPayUser {
                 Assertions.AssertionComparisonType.CONTAINS, Assertions.AssertionType.POSITIVE);
     }
 
-    @Test(dependsOnMethods = {"CheckEssentialsSection","CheckSelectAddOnsToRemoveOverlay"})
-    public void ValidateSelectAddOnsToRemoveOverlay(){
+    @Test(dependsOnMethods = {"CheckEssentialsSection", "CheckSelectAddOnsToRemoveOverlay"})
+    public void ValidateSelectAddOnsToRemoveOverlay() {
         AddOnsPage.closeAddOnsOverlay(); //using "X" button
         HomePage.opedAddOnsOverlay();
         AddOnsPage.openManageAddOnsOverlay();

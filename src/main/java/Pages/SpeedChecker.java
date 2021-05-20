@@ -24,28 +24,27 @@ public class SpeedChecker {
         this.driver = driver;
         if (System.getProperty("targetOperatingSystem").equals("Android")) {
             SpeedCheckerHeader_text = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.TextView");
-            SpeedCheckerClose_button= new MobileBy.ByAccessibilityId("NPcloseIcon");
-            GrantPermission_button= new MobileBy.ByAccessibilityId("id_error_pop_up_main_button");
-            PleaseProceed_button= new MobileBy.ByAccessibilityId("NPgrantPermissionOkActionButton");
-            NoThanks_button= new MobileBy.ByAccessibilityId("NPgrantPermissionNoButton");
-            Allow_button=By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.Button[1]");
-        }
-        else {
+            SpeedCheckerClose_button = new MobileBy.ByAccessibilityId("NPcloseIcon");
+            GrantPermission_button = new MobileBy.ByAccessibilityId("id_error_pop_up_main_button");
+            PleaseProceed_button = new MobileBy.ByAccessibilityId("NPgrantPermissionOkActionButton");
+            NoThanks_button = new MobileBy.ByAccessibilityId("NPgrantPermissionNoButton");
+            Allow_button = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.Button[1]");
+        } else {
             //IOS locators
         }
     }
 
-    public void pressSpeedCheckerHeaderCloseButton(){
+    public void pressSpeedCheckerHeaderCloseButton() {
         ElementActions.performTouchAction(driver).tap(SpeedCheckerClose_button);
     }
 
-    public void pressOkGrantPermissionButton(){
+    public void pressOkGrantPermissionButton() {
         ElementActions.performTouchAction(driver).tap(GrantPermission_button);
         ElementActions.performTouchAction(driver).tap(Allow_button);
         ElementActions.performTouchAction(driver).tap(PleaseProceed_button);
     }
 
-    public void pressNoThanksButton(){
+    public void pressNoThanksButton() {
         ElementActions.performTouchAction(driver).tap(NoThanks_button);
 
     }

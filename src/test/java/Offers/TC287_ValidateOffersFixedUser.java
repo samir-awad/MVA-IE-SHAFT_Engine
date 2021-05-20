@@ -1,5 +1,6 @@
 package Offers;
 
+import FileReaders.jsonReader;
 import Pages.Home;
 import Pages.Login;
 import Pages.Offers;
@@ -25,10 +26,7 @@ public class TC287_ValidateOffersFixedUser {
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         OffersPage=new Offers(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
-        String username = users.getTestData("FixedUser.username");
-        String password = users.getTestData("FixedUser.password");
-        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
+        LoginPage.acceptTermsAndConditions().login(jsonReader.getUserName("FixedUser.username"), jsonReader.getPassword("FixedUser.password")).acceptPermissions();
     }
 
     @Test
@@ -39,8 +37,7 @@ public class TC287_ValidateOffersFixedUser {
     @Test(dependsOnMethods = "CheckDiscoverySection")
     public void ValidateSeeAllOffersLink(){
         HomePage.pressSeeAllOffersLink();
-        Assertions.assertElementAttribute(driver,OffersPage.getOffersHeader_text(),
-                "text","Offers");
+        Assertions.assertElementExists(driver,OffersPage.getOffersHeader_text());
     }
 
     @Test(dependsOnMethods = "ValidateSeeAllOffersLink")
@@ -52,17 +49,14 @@ public class TC287_ValidateOffersFixedUser {
     @Test(dependsOnMethods = "ValidateHeaderCloseButton")
     public void CheckOffersPageContent(){
         HomePage.pressSeeAllOffersLink();
-        Assertions.assertElementAttribute(driver,OffersPage.getFindOutMore_button(),
-                "text","Find out more","Checking offers content");
+        Assertions.assertElementExists(driver,OffersPage.getFindOutMore_button());
     }
 
     @Test(dependsOnMethods = "CheckOffersPageContent")
     public void CheckAnotherOffers(){
         OffersPage.swipeToAnotherOffer();
-        Verifications.verifyElementAttribute(driver,OffersPage.getOffersHeader_text(),
-                "text","Offers");
-        Assertions.assertElementAttribute(driver,OffersPage.getFindOutMore_button(),
-                "text","Find out more","Checking offers content");
+        Verifications.verifyElementExists(driver,OffersPage.getOffersHeader_text());
+        Assertions.assertElementExists(driver,OffersPage.getFindOutMore_button());
     }
 
     @Test(dependsOnMethods = "CheckAnotherOffers")
@@ -70,13 +64,11 @@ public class TC287_ValidateOffersFixedUser {
         OffersPage.pressOffersButton();
         if (OffersPage.isExternalWebpageOpened()){
             OffersPage.goBackToAppFromExternalPage();
-            Assertions.assertElementAttribute(driver,OffersPage.getOffersHeader_text(),
-                    "text","Offers","Checking if you went back to offers page from external offers page");
+            Assertions.assertElementExists(driver,OffersPage.getOffersHeader_text());
         }
         else if(OffersPage.isInternalWebpageOpened()){
             OffersPage.goBackToAppFromInternalPage();
-            Assertions.assertElementAttribute(driver,OffersPage.getFindOutMore_button(),
-                    "text","Find out more","Checking if you went back from internal offers page");
+            Assertions.assertElementExists(driver,OffersPage.getFindOutMore_button());
         }
 
     }

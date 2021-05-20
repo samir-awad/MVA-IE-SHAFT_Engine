@@ -15,23 +15,39 @@ public class TC254_SelectNewPlanAndProceedWithAnOutOfContract {
     private Login LoginPage;
     private Home HomePage;
     private ChangePlan ChangePlanPage;
+
     @BeforeClass
     public void beforeClass() {
         //System.setProperty("mobile_app", FileActions.getAbsolutePath(System.getProperty("testDataFolderPath") + "apk/", "DIG18180Fix.apk"));
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        ChangePlanPage=new ChangePlan(driver);
-       // LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
-        //This method will be used to login before every test case to login with
-        //With different users credentials must be changed
+        ChangePlanPage = new ChangePlan(driver);
     }
+
     @Test
-    public void SelectNewPlanAndProceedWithAnOutOfContract(){
-        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+    public void Login() {
+        //LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
+    }
+
+    @Test
+    public void CheckThatImOnHomeScreen() {
+        Verifications.verifyElementExists(driver, HomePage.getCheckTheVodafoneLogo());
+    }
+
+    @Test
+    public void checkEssentialsSection() {
         HomePage.checkEssentialsSection();
+    }
+
+    @Test
+    public void CheckViewOrChangeYourPlan() {
         HomePage.pressViewOrChangePlan();
         ChangePlanPage.pressYourPlanOverlayCloseButton();
+    }
+
+    @Test
+    public void checkChangeYourPlanOption() {
         HomePage.pressViewOrChangePlan();
         ChangePlanPage.pressYourPlanOverlayChangePlanButton();
         Verifications.verifyTrue(ChangePlanPage.checkChangePlanPageHeader());

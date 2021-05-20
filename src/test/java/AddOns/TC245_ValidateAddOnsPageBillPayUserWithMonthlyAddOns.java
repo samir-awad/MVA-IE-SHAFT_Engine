@@ -20,15 +20,15 @@ public class TC245_ValidateAddOnsPageBillPayUserWithMonthlyAddOns {
     private JSONFileManager users;
     private Home HomePage;
     private AddOns AddOnsPage;
-    private  Login LoginPage;
+    private Login LoginPage;
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         AddOnsPage = new AddOns(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("BillPayUser.username");
         String password = users.getTestData("BillPayUser.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
@@ -47,16 +47,16 @@ public class TC245_ValidateAddOnsPageBillPayUserWithMonthlyAddOns {
         Verifications.verifyElementAttribute(driver, AddOnsPage.getAddOnsHeader_text(),
                 "text", "Buy add ons");
 
-        Verifications.verifyTrue(AddOnsPage.checkBuyAddOnsFirstTab(),"Checking One Off tab");
+        Verifications.verifyTrue(AddOnsPage.checkBuyAddOnsFirstTab(), "Checking One Off tab");
 
-        Verifications.verifyTrue(AddOnsPage.checkBuyAddOnsSecondTab(),"Checking recurring tab");
+        Verifications.verifyTrue(AddOnsPage.checkBuyAddOnsSecondTab(), "Checking recurring tab");
 
-        Verifications.verifyTrue(AddOnsPage.checkOneOffListFirstItem(),"Checking first list item in one off tab");
+        Verifications.verifyTrue(AddOnsPage.checkOneOffListFirstItem(), "Checking first list item in one off tab");
 
         Verifications.verifyElementAttribute(driver, AddOnsPage.getOneOff_tab(),
                 "text", "One off");
 
-        Verifications.verifyTrue(AddOnsPage.checkAddOnsContinueBtn(),"Checking continue button");
+        Verifications.verifyTrue(AddOnsPage.checkAddOnsContinueBtn(), "Checking continue button");
 
         Assertions.assertTrue(AddOnsPage.checkManageAddOnsBtn(), "Checking Manage add ons button");
 
@@ -115,7 +115,7 @@ public class TC245_ValidateAddOnsPageBillPayUserWithMonthlyAddOns {
     @Test(dependsOnMethods = "ValidateCancelingBuyAddOnsOverlay")
     public void ValidateClosingAddOnsPage() {
         AddOnsPage.closeAddOnsPage();
-        Assertions.assertElementExists(driver,HomePage.getEssentials_text()); //change to buy and manage add ons
+        Assertions.assertElementExists(driver, HomePage.getEssentials_text()); //change to buy and manage add ons
     }
 
 

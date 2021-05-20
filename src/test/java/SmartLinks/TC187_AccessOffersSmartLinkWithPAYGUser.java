@@ -38,7 +38,7 @@ public class TC187_AccessOffersSmartLinkWithPAYGUser {
         smartLinksPage.accessSmartLink(OffersURL);
         String username = users.getTestData("PAYGUser.username");
         String password = users.getTestData("PAYGUser.password");
-        LoginPage.login(username, password).acceptPermissionsPAYGUser();
+        LoginPage.login(username, password).acceptPermissions();
         Assertions.assertElementAttribute(driver,OffersPage.getOffersHeader_text(),
                 "text","Offers","Checking offers header");
     }

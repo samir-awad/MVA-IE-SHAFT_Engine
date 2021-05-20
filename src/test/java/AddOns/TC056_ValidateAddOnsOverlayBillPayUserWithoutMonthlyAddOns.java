@@ -24,12 +24,12 @@ public class TC056_ValidateAddOnsOverlayBillPayUserWithoutMonthlyAddOns {
     private JSONFileManager users;
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        AddOnsPage=new AddOns(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        AddOnsPage = new AddOns(driver);
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("BillPayUserWithoutAddOns.username");
         String password = users.getTestData("BillPayUserWithoutAddOns.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
@@ -37,23 +37,22 @@ public class TC056_ValidateAddOnsOverlayBillPayUserWithoutMonthlyAddOns {
 
     @Test
     public void CheckEssentialsSection() {
-       HomePage.checkEssentialsSection();
+        HomePage.checkEssentialsSection();
     }
 
     @Test(dependsOnMethods = {"CheckEssentialsSection"})
     public void ValidateAddOnsOverlayText() {
-    HomePage.opedAddOnsOverlay();
-        Verifications.verifyTrue(AddOnsPage.checkAddOnsOverlay());
-        Assertions.assertElementAttribute(driver,AddOnsPage.getNoActiveAddOnsOverlay_text(),
-                "text","You have no active add ons.",
+        HomePage.opedAddOnsOverlay();
+        Verifications.verifyElementExists(driver, AddOnsPage.getNoActiveAddOnsOverlay_text());
+        Assertions.assertElementAttribute(driver, AddOnsPage.getNoActiveAddOnsOverlay_text(),
+                "text", "You have no active add ons.",
                 Assertions.AssertionComparisonType.CONTAINS, Assertions.AssertionType.POSITIVE);
     }
 
     @Test(dependsOnMethods = "ValidateAddOnsOverlayText")
-    public void ValidateAddOnsOverlayCloseButton(){
+    public void ValidateAddOnsOverlayCloseButton() {
         AddOnsPage.closeAddOnsOverlay();
-        Assertions.assertElementAttribute(driver,HomePage.getEssentials_text(),
-                "text","Essentials");
+        Assertions.assertElementExists(driver, HomePage.getEssentials_text());
     }
 
 

@@ -42,10 +42,11 @@ public class Offers {
         this.driver = driver;
 
         if (System.getProperty("targetOperatingSystem").equals("Android")) {
+            //Android Locators
             OffersHeader_text = new MobileBy.ByAccessibilityId("id_header_title_Offers");
             OffersHeaderClose_button = new MobileBy.ByAccessibilityId("id_header_close_icon");
-            FindOutMore_button = By.xpath("//android.widget.Button[@content-desc=\"id_offers_button\"]/android.widget.TextView\n");
-            SwipeLeft_button = new MobileBy.ByAccessibilityId("id_offers_button_previous");
+            FindOutMore_button = MobileBy.xpath("//android.widget.Button[@content-desc=\"id_offers_button\"]/android.widget.TextView\n");
+            SwipeLeft_button = MobileBy.AccessibilityId("id_offers_button_previous");
             Chrome_driver = By.id("com.android.chrome:id/url_bar");
             FirstInternalOffer_image = By.xpath("(//android.view.View[@content-desc=\"Offer_Selection\"])[1]");
             InternalOfferBack_button = new MobileBy.ByAccessibilityId("id_header_back_arrow");
@@ -54,7 +55,18 @@ public class Offers {
             FirstOfferTitle_button = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[1]/android.view.View[1]");
             FirstOfferContinue_button = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]/android.widget.Button");
         } else {
-            //IOS locators
+            //IOS Locators
+            OffersHeader_text = MobileBy.AccessibilityId("id_header_title_Offers");
+            OffersHeaderClose_button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"id_header_close_icon\"])[2]");
+            FindOutMore_button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"Find out more\"])[2]");
+            SwipeLeft_button = MobileBy.AccessibilityId("Go to previous offer");
+            Chrome_driver = MobileBy.AccessibilityId("URL");
+            FirstInternalOffer_image = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"id_offers_image_background\"])[4]");
+            InternalOfferBack_button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"id_header_back_arrow\"])[2]");
+
+            //PAYG offers page
+            FirstOfferTitle_button = MobileBy.xpath("//XCUIElementTypeStaticText[@name=\"Your Fantastic Offers Reward\"]");
+            FirstOfferContinue_button = MobileBy.AccessibilityId("Continue");
         }
     }
 

@@ -1,6 +1,5 @@
 package TopUp;
 
-import FileReaders.GetUserFromJson;
 import Pages.Home;
 import Pages.Login;
 import Pages.TopUp;
@@ -8,12 +7,10 @@ import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
-import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
 
 public class TC156_ValidateTopUpPageAndAccessVestaPAYGUser {
     private WebDriver driver;
@@ -24,6 +21,7 @@ public class TC156_ValidateTopUpPageAndAccessVestaPAYGUser {
 
     @BeforeClass
     public void beforeClass() {
+        System.setProperty("mobile_app",System.getProperty("user.dir")+"//App//144_AUTO.apk");
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
@@ -35,8 +33,8 @@ public class TC156_ValidateTopUpPageAndAccessVestaPAYGUser {
     }
 
     @Test
-    public void CheckVodafoneLogoAndWelcomeGesture(){
-        Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+    public void CheckVodafoneLogoAndWelcomeGesture() {
+        Assertions.assertElementExists(driver, HomePage.getCheckTheVodafoneLogo());
     }
 
     @Test(dependsOnMethods = "CheckVodafoneLogoAndWelcomeGesture")
@@ -48,7 +46,7 @@ public class TC156_ValidateTopUpPageAndAccessVestaPAYGUser {
     @Test(dependsOnMethods = "CheckTopUpOverlay")
     public void CheckTopUpOverlayCloseBtn() {
         TopUpPage.pressTopUpOverlayCloseButton();
-        Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+        Assertions.assertElementExists(driver, HomePage.getCheckTheVodafoneLogo());
     }
 
     @Test(dependsOnMethods = "CheckTopUpOverlayCloseBtn")
