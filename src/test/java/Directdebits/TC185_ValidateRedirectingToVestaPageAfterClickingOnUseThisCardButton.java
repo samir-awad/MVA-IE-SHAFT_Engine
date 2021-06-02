@@ -5,6 +5,7 @@ import Pages.Home;
 import Pages.Login;
 import Pages.Settings;
 import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.gui.element.ElementActions;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
@@ -50,10 +51,12 @@ public class TC185_ValidateRedirectingToVestaPageAfterClickingOnUseThisCardButto
     public void step3() {
         SettingsPage.pressPaymentMethodOption();
         Verifications.verifyTrue(BillsPaymentsPage.checkPaymentMethodText());
+        ElementActions.performTouchAction(driver).tap(BillsPaymentsPage.getCreditCardAsRecurringPaymentSaved_Tab());
     }
 
     @Test
     public void step4() {
+
         BillsPaymentsPage.checkUseThisCardButton();
         BillsPaymentsPage.checkUseThisCardOverlay();
         BillsPaymentsPage.pressChangeYourCardOverlayCloseButton();

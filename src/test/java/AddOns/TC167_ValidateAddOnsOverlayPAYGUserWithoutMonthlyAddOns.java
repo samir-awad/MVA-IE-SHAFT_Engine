@@ -1,6 +1,5 @@
 package AddOns;
 
-import FileReaders.GetUserFromJson;
 import Pages.AddOns;
 import Pages.Home;
 import Pages.Login;

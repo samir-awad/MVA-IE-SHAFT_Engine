@@ -4,6 +4,7 @@ import Pages.Home;
 import Pages.Login;
 import Pages.OtherUsefulTools;
 import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.gui.element.ElementActions;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
@@ -38,11 +39,12 @@ public class TC260_CheckNACRequestPagesAndTheReturnedErrorToasterUsingIMEIFromNo
         @Test (dependsOnMethods = {"checkTheVodafoneLogo"})
         public void checkOtherUsefulToolsSection() {
             HomePage.checkOtherUsefulToolsSection();
+            ElementActions.performTouchAction(driver).tap(HomePage.getDevicesAndSim_button());
         }
 
         @Test(dependsOnMethods = {"checkOtherUsefulToolsSection"})
         public void pressNacRequestOption() {
-            //HomePage.pressNacRequestOption();
+            HomePage.pressNacRequestOption();
             OtherUsefulToolsPage.checkNacFewThingsFirstPageContent();
 
         }

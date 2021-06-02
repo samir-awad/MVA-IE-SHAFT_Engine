@@ -1,6 +1,6 @@
 package Login;
 
-import FileReaders.GetUserFromJson;
+import FileReaders.jsonReader;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Assertions;
@@ -30,8 +30,8 @@ public class TC06_LoginWithInvalidUsername{
     }
 
     @Test(priority = 2)
-    public void Step2() throws IOException, ParseException {
-        LoginPage.EnterUserName(GetUserFromJson.getUsername("Wrong Password"));
+    public void Step2() {
+        LoginPage.EnterUserName(jsonReader.getUserName("Wrong Password.username"));
         Assertions.assertElementExists(driver,LoginPage.getLogin_Inline_Error(), Assertions.AssertionType.POSITIVE);
     }
 

@@ -63,6 +63,8 @@ public class AddOns {
             BuyAddOnsOverlayClose_button = By.xpath("//android.widget.ImageView[@content-desc=\"id_buy_add_ons_close\"]");
         } else {
             //IOS locators
+            AddOnsHeader_text = MobileBy.AccessibilityId("id_header_title_Buy_add_ons");
+            AddOnsHeaderOverlay_text = MobileBy.AccessibilityId("id_dashboard_manage_addons_sheet_title");
             NoActiveAddOnsOverlay_text = MobileBy.xpath("//XCUIElementTypeStaticText[@name=\"You have no active add ons.\"]");
             AddOnsCloseOverlay_button = MobileBy.AccessibilityId("id_dashboard_manage_addons_sheet_close");
             AddOnsExpiresOverlay_text = MobileBy.AccessibilityId("manageAddOns_item_date");
@@ -70,6 +72,8 @@ public class AddOns {
             ManageAddOnsOverlayHeader_text = MobileBy.AccessibilityId("id_dashboard_manage_addons_sheet_title");
             SelectAddOnsToRemoveOverlayCancel_button = MobileBy.AccessibilityId("Cancel");
             AddOnsHeaderOverlay_text = MobileBy.AccessibilityId("id_dashboard_manage_addons_sheet_title");
+            GetMoreAddOns_button = MobileBy.AccessibilityId("Get more add ons");
+            BuyAddOnsOverlayClose_button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"id_header_close_icon\"])[2]");
         }
     }
 

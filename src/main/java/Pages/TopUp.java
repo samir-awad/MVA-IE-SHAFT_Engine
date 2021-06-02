@@ -3,11 +3,12 @@ package Pages;
 import com.shaft.gui.element.ElementActions;
 import com.shaft.gui.element.TouchActions;
 import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class TopUp {
-    private final WebDriver driver;
+    private final MobileDriver driver;
     private By TopUpOverlayClose_button;
     private By TopUpOverlay_button;
     private By TopUpHeader_text;
@@ -172,7 +173,7 @@ public class TopUp {
 
 
     public TopUp(WebDriver driver) {
-        this.driver = driver;
+        this.driver = (MobileDriver) driver;
         if (System.getProperty("targetOperatingSystem").equals("Android")) {
 
             TopUpOverlayClose_button = new MobileBy.ByAccessibilityId("STundefinedCloseBtn");
@@ -225,8 +226,8 @@ public class TopUp {
             ConfirmYourTopUpDetails = MobileBy.AccessibilityId("Confirm your top up details");
             TopUpHeaderClose_button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"id_header_close_icon\"])[2]");
             TopUpOverlayHeader_text = new MobileBy.ByAccessibilityId("STundefinedMainTitle");
-//            VoucherTopUpHeader_text = MobileBy.AccessibilityId("id_header_title_Top_up");
-            VoucherTopUpHeader_text = MobileBy.xpath("//android.widget.TextView[@content-desc=\"id_header_title_Top_up\"]");
+            VoucherTopUpHeader_text = MobileBy.AccessibilityId("STundefinedMainTitle");
+            //VoucherTopUpHeader_text = MobileBy.xpath("//android.widget.TextView[@content-desc=\"id_header_title_Top_up\"]");
             MoreOptionsOverlay_button = MobileBy.AccessibilityId("More options");
             MoreOptionsOverlayBack_button = MobileBy.AccessibilityId("Back");
             SetAnAutomaticTopUp_button = new MobileBy.ByAccessibilityId("id_top_up_more_options_auto_top_up_clickable");
@@ -326,10 +327,12 @@ public class TopUp {
         ElementActions.performTouchAction(driver).tap(getTopUpAnotherNumber_button());
         driver.findElement(getInsertPhoneNumber_editbox()).clear();
         driver.findElement(getInsertPhoneNumber_editbox()).sendKeys(phoneNumber);
-        ElementActions.performTouchAction(driver).hideNativeKeyboard();
+        driver.hideKeyboard();
+        //ElementActions.performTouchAction(driver).hideNativeKeyboard();
         driver.findElement(getInsertVoucherCode_editbox()).clear();
         driver.findElement(getInsertVoucherCode_editbox()).sendKeys(Voucher);
-        ElementActions.performTouchAction(driver).hideNativeKeyboard();
+        driver.hideKeyboard();
+        //ElementActions.performTouchAction(driver).hideNativeKeyboard();
         ElementActions.performTouchAction(driver).tap(getSubmit_button());
     }
 

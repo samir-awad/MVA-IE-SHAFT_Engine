@@ -49,6 +49,163 @@ public class BillsPayments {
     private By ChangeYourCardOverlayContinue_Button;
     private By CheckSavedCardContent0_Text;
     private By CheckSavedCardContent1_Text;
+
+    public By getCurrentSpendLastBillTitle() {
+        return CurrentSpendLastBillTitle;
+    }
+
+    public By getBills_Payments_Button() {
+        return Bills_Payments_Button;
+    }
+
+    public By getCloseBTN() {
+        return CloseBTN;
+    }
+
+    public By getDownload_Button() {
+        return Download_Button;
+    }
+
+    public By getMakePayment_Button() {
+        return MakePayment_Button;
+    }
+
+    public By getMakeAdvancePayment_button() {
+        return MakeAdvancePayment_button;
+    }
+
+    public By getMakeAPaymentHeader() {
+        return MakeAPaymentHeader;
+    }
+
+    public By getPaymentFirstBill() {
+        return PaymentFirstBill;
+    }
+
+    public By getPaymentAmountField() {
+        return PaymentAmountField;
+    }
+
+    public By getPaymentMethod() {
+        return PaymentMethod;
+    }
+
+    public By getEdit_Button() {
+        return Edit_Button;
+    }
+
+    public By getPayment_Button() {
+        return Payment_Button;
+    }
+
+    public By getVisaData() {
+        return VisaData;
+    }
+
+    public By getUseSelectedCard_Button() {
+        return UseSelectedCard_Button;
+    }
+
+    public By getNewCardAndSaveItForLater_Button() {
+        return NewCardAndSaveItForLater_Button;
+    }
+
+    public By getNewCardWithoutSaving_Button() {
+        return NewCardWithoutSaving_Button;
+    }
+
+    public By getAccountSettings_Text() {
+        return AccountSettings_Text;
+    }
+
+    public By getPaymentMethod_Text() {
+        return PaymentMethod_Text;
+    }
+
+    public By getCreditCardAsRecurringPayment0_Title() {
+        return CreditCardAsRecurringPayment0_Title;
+    }
+
+    public By getCreditCardAsRecurringPaymentSub_Title() {
+        return CreditCardAsRecurringPaymentSub_Title;
+    }
+
+    public By getCreditCardAsRecurringPaymentSaved_Tab() {
+        return CreditCardAsRecurringPaymentSaved_Tab;
+    }
+
+    public By getCreditCardAsRecurringPaymentDirectDebit_Tab() {
+        return CreditCardAsRecurringPaymentDirectDebit_Tab;
+    }
+
+    public By getAccountHolder_Text() {
+        return AccountHolder_Text;
+    }
+
+    public By getIban_Text() {
+        return Iban_Text;
+    }
+
+    public By getNoneSavedCards_Text() {
+        return NoneSavedCards_Text;
+    }
+
+    public By getNoPaymentMethod_Text() {
+        return NoPaymentMethod_Text;
+    }
+
+    public By getAddNewCard_Button() {
+        return AddNewCard_Button;
+    }
+
+    public By getAddNewCard_Overlay() {
+        return AddNewCard_Overlay;
+    }
+
+    public By getAddNewCardOverlayClose_Button() {
+        return AddNewCardOverlayClose_Button;
+    }
+
+    public By getAddNewCardOverlayNo_Button() {
+        return AddNewCardOverlayNo_Button;
+    }
+
+    public By getAddNewCardOverlayContinue_Button() {
+        return AddNewCardOverlayContinue_Button;
+    }
+
+    public By getUseThisCard_Button() {
+        return UseThisCard_Button;
+    }
+
+    public By getUseThisCardOverlay_Text() {
+        return UseThisCardOverlay_Text;
+    }
+
+    public By getChangeYourCardOverlayClose_Button() {
+        return ChangeYourCardOverlayClose_Button;
+    }
+
+    public By getChangeYourCardOverlayNo_Button() {
+        return ChangeYourCardOverlayNo_Button;
+    }
+
+    public By getChangeYourCardOverlayContinue_Button() {
+        return ChangeYourCardOverlayContinue_Button;
+    }
+
+    public By getCheckSavedCardContent0_Text() {
+        return CheckSavedCardContent0_Text;
+    }
+
+    public By getCheckSavedCardContent1_Text() {
+        return CheckSavedCardContent1_Text;
+    }
+
+    public By getInvalidIbanOverlay_Title() {
+        return InvalidIbanOverlay_Title;
+    }
+
     private By InvalidIbanOverlay_Title;
 
     public By getBillsPaymentTitle() {
@@ -94,7 +251,7 @@ public class BillsPayments {
             AddNewCardOverlayClose_Button = By.xpath("//android.widget.ImageView[@content-desc=\"id_payment_method_add_card_overlay_close\"]");
             AddNewCardOverlayNo_Button = new MobileBy.ByAccessibilityId("id_payment_method_add_card_close_button");
             AddNewCardOverlayContinue_Button = new MobileBy.ByAccessibilityId("id_payment_method_add_card_continue_button");
-            UseThisCard_Button = By.xpath("(//android.widget.Button[@content-desc=\"id_use_this_card_button\"])[1]");
+            UseThisCard_Button = MobileBy.xpath("(//android.widget.Button[@content-desc=\\\"id_use_this_card_button\\\"])[1]");
             UseThisCardOverlay_Text = new MobileBy.ByAccessibilityId("id_payment_method_change_card_description_main_text");
             ChangeYourCardOverlayClose_Button = By.xpath("//android.widget.ImageView[@content-desc=\"id_payment_method_change_card_overlay_close\"]");
             ChangeYourCardOverlayNo_Button = new MobileBy.ByAccessibilityId("id_payment_method_change_card_close_button");
@@ -134,13 +291,13 @@ public class BillsPayments {
             AccountHolder_Text = By.xpath("(//XCUIElementTypeTextField[@name=\"id_account_and_email_name_input\"])[1]");
             Iban_Text = By.xpath("(//XCUIElementTypeTextField[@name=\"id_account_and_email_name_input\"])[2]");
             NoneSavedCards_Text = new MobileBy.ByAccessibilityId("id_payment_method_card_list_no_cards_info_text");
-            NoPaymentMethod_Text = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.TextView");
+            NoPaymentMethod_Text = MobileBy.xpath("//XCUIElementTypeStaticText[@name=\"You don't currently have a payment method set up.\"]");
             AddNewCard_Button = new MobileBy.ByAccessibilityId("id_add_new_card_button");
             AddNewCard_Overlay = new MobileBy.ByAccessibilityId("id_payment_method_add_card_description_main_text");
             AddNewCardOverlayClose_Button = By.xpath("//android.widget.ImageView[@content-desc=\"id_payment_method_add_card_overlay_close\"]");
             AddNewCardOverlayNo_Button = new MobileBy.ByAccessibilityId("id_payment_method_add_card_close_button");
             AddNewCardOverlayContinue_Button = new MobileBy.ByAccessibilityId("id_payment_method_add_card_continue_button");
-            UseThisCard_Button = By.xpath("(//android.widget.Button[@content-desc=\"id_use_this_card_button\"])[1]");
+            UseThisCard_Button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\\\"Use this card\\\"])[2]");
             UseThisCardOverlay_Text = new MobileBy.ByAccessibilityId("id_payment_method_change_card_description_main_text");
             ChangeYourCardOverlayClose_Button = By.xpath("//android.widget.ImageView[@content-desc=\"id_payment_method_change_card_overlay_close\"]");
             ChangeYourCardOverlayNo_Button = new MobileBy.ByAccessibilityId("id_payment_method_change_card_close_button");
@@ -151,9 +308,8 @@ public class BillsPayments {
 
         }
     }
- 
-    public boolean checkCurrentSpendOverlay()
-    {
+
+    public boolean checkCurrentSpendOverlay() {
 
         return ElementActions.isElementDisplayed(driver, CurrentSpendLastBillTitle);
     }
@@ -162,8 +318,7 @@ public class BillsPayments {
         ElementActions.performTouchAction(driver).tap(Bills_Payments_Button);
     }
 
-    public boolean checkBillsPaymentsHeader()
-    {
+    public boolean checkBillsPaymentsHeader() {
         return ElementActions.isElementDisplayed(driver, BillsPaymentTitle);
     }
 
@@ -183,22 +338,20 @@ public class BillsPayments {
         ElementActions.performTouchAction(driver).tap(MakeAdvancePayment_button);
     }
 
-    public boolean checkMakeAPaymentOverlayHeader()
-    {
-        return  ElementActions.isElementDisplayed(driver, MakeAPaymentHeader);
+    public boolean checkMakeAPaymentOverlayHeader() {
+        return ElementActions.isElementDisplayed(driver, MakeAPaymentHeader);
     }
 
-    public boolean checkMakeAPaymentOverlayFirstBill()
-    {
-        return  ElementActions.isElementDisplayed(driver, PaymentFirstBill);
+    public boolean checkMakeAPaymentOverlayFirstBill() {
+        return ElementActions.isElementDisplayed(driver, PaymentFirstBill);
     }
-    public boolean checkMakeAPaymentOverlayAmountField()
-    {
-        return  ElementActions.isElementDisplayed(driver, PaymentAmountField);
+
+    public boolean checkMakeAPaymentOverlayAmountField() {
+        return ElementActions.isElementDisplayed(driver, PaymentAmountField);
     }
-    public boolean checkMakeAPaymentOverlayPaymentMethod()
-    {
-        return  ElementActions.isElementDisplayed(driver, PaymentMethod);
+
+    public boolean checkMakeAPaymentOverlayPaymentMethod() {
+        return ElementActions.isElementDisplayed(driver, PaymentMethod);
     }
 
     public void pressPaymentMethodEditButton() {
@@ -209,9 +362,8 @@ public class BillsPayments {
         ElementActions.performTouchAction(driver).tap(Payment_Button);
     }
 
-    public  boolean checkMakeAPaymentOverlayPaymentMethodComponentWithSavedCard()
-    {
-        return  ElementActions.isElementDisplayed(driver, VisaData);
+    public boolean checkMakeAPaymentOverlayPaymentMethodComponentWithSavedCard() {
+        return ElementActions.isElementDisplayed(driver, VisaData);
     }
 
     public void pressPayWithSelectedCardButton() {
@@ -235,13 +387,11 @@ public class BillsPayments {
         return ElementActions.isElementDisplayed(driver, AccountSettings_Text);
     }
 
-    public boolean checkPaymentMethodText()
-    {
+    public boolean checkPaymentMethodText() {
         return ElementActions.isElementDisplayed(driver, PaymentMethod_Text);
     }
 
-    public boolean checkCreditCardAsRecurringPaymentText()
-    {
+    public boolean checkCreditCardAsRecurringPaymentText() {
         Boolean FirstTab = ElementActions.isElementDisplayed(driver, CreditCardAsRecurringPayment0_Title);
         Boolean SecondTab = ElementActions.isElementDisplayed(driver, CreditCardAsRecurringPaymentSub_Title);
         Boolean result;
@@ -253,8 +403,7 @@ public class BillsPayments {
 
     }
 
-    public boolean checkTheTwoExistingTabs()
-    {
+    public boolean checkTheTwoExistingTabs() {
         Boolean FirstTab = ElementActions.isElementDisplayed(driver, CreditCardAsRecurringPaymentSaved_Tab);
         Boolean SecondTab = ElementActions.isElementDisplayed(driver, CreditCardAsRecurringPaymentDirectDebit_Tab);
         Boolean result;
@@ -274,8 +423,7 @@ public class BillsPayments {
     }
 
 
-    public boolean checkThatAccountOlderAndIbanAreFilled()
-    {
+    public boolean checkThatAccountOlderAndIbanAreFilled() {
         Boolean result;
         if (AccountHolder_Text != null && Iban_Text != null)
             result = true;
@@ -284,8 +432,7 @@ public class BillsPayments {
         return result;
     }
 
-    public boolean checkThatAccountOlderAndIbanAreNotFilled()
-    {
+    public boolean checkThatAccountOlderAndIbanAreNotFilled() {
         Boolean result;
         if (AccountHolder_Text == null && Iban_Text == null)
             result = true;
@@ -295,8 +442,7 @@ public class BillsPayments {
 
     }
 
-    public boolean checkThatNoneOfTheCardsAreSavedAsRecurringPayment()
-    {
+    public boolean checkThatNoneOfTheCardsAreSavedAsRecurringPayment() {
 
         return ElementActions.isElementDisplayed(driver, NoneSavedCards_Text);
     }
@@ -309,8 +455,7 @@ public class BillsPayments {
         ElementActions.performTouchAction(driver).tap(AddNewCard_Button);
     }
 
-    public boolean checkAddNewCardOverlay()
-    {
+    public boolean checkAddNewCardOverlay() {
         return ElementActions.isElementDisplayed(driver, AddNewCard_Overlay);
     }
 
@@ -326,17 +471,16 @@ public class BillsPayments {
         ElementActions.performTouchAction(driver).tap(AddNewCardOverlayContinue_Button);
     }
 
-    public boolean checkUseThisCardButton()
-    {
-        return ElementActions.isElementDisplayed(driver, UseThisCard_Button);
+    public void checkUseThisCardButton() {
+        driver.findElement(UseThisCard_Button).click();
+        //ElementActions.isElementDisplayed(driver, UseThisCard_Button);
     }
 
     public void pressUseThisCardButton() {
         ElementActions.performTouchAction(driver).tap(UseThisCard_Button);
     }
 
-    public boolean checkUseThisCardOverlay()
-    {
+    public boolean checkUseThisCardOverlay() {
         return ElementActions.isElementDisplayed(driver, UseThisCardOverlay_Text);
     }
 
@@ -368,9 +512,8 @@ public class BillsPayments {
         ElementActions.type(driver, Iban_Text, "132rergert5t4grevfrv54");
     }
 
-    public boolean checkErrorMessageForInvalidIban()
-    {
-        return ElementActions.isElementDisplayed(driver,InvalidIbanOverlay_Title);
+    public boolean checkErrorMessageForInvalidIban() {
+        return ElementActions.isElementDisplayed(driver, InvalidIbanOverlay_Title);
     }
 
 }

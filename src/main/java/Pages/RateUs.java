@@ -12,7 +12,6 @@ public class RateUs {
     private By SorryToHearOverlayClose_Button;
 
 
-
     public RateUs(WebDriver driver) {
 
         this.driver = driver;
@@ -25,18 +24,19 @@ public class RateUs {
     }
 
 
-    public By getCheckRateUsOverlay(){
+    public By getCheckRateUsOverlay() {
         return CheckRateUsOverlay;
     }
 
-    public By getCheckSorryToHearOverlay(){
+    public By getCheckSorryToHearOverlay() {
         return CheckRateUsOverlay;
     }
 
-    public void pressSorryToHearOverlayCloseButton(){
+    public void pressSorryToHearOverlayCloseButton() {
         ElementActions.performTouchAction(driver).tap(NoInRateUsPage_Button);
     }
-    public void  PressNoInRateUsPage(){
+
+    public void PressNoInRateUsPage() {
         ElementActions.performTouchAction(driver).tap(NoInRateUsPage_Button);
     }
 }

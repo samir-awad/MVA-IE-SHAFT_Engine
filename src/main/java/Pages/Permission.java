@@ -1,4 +1,5 @@
 package Pages;
+
 import com.shaft.gui.element.ElementActions;
 import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
@@ -12,29 +13,26 @@ public class Permission {
     private By AppPermissionsPageContent;
     private By AccountHeaderBackChevron;
 
-    public Permission(WebDriver driver)
-    {
+    public Permission(WebDriver driver) {
 
         this.driver = driver;
-        if (System.getProperty("targetOperatingSystem").equals("Android"))
-        {
+        if (System.getProperty("targetOperatingSystem").equals("Android")) {
             AppPermissionsPageHeader = new MobileBy.ByAccessibilityId("id_header_title_Permissions");
             AppPermissionsPageContent = new MobileBy.ByAccessibilityId("id_settings_permission_title_Location");
             AccountHeaderBackChevron = new MobileBy.ByAccessibilityId("id_header_back_arrow");
-        }
-        else
-            {
+        } else {
         }
     }
 
-    public By getCheckAppPermissionsPageHeader()
-    {
+    public By getCheckAppPermissionsPageHeader() {
         return AppPermissionsPageHeader;
     }
-    public By getCheckAppPermissionsPageContent(){
+
+    public By getCheckAppPermissionsPageContent() {
         return AppPermissionsPageContent;
     }
-    public void pressAccountHeaderBackChevron(){
+
+    public void pressAccountHeaderBackChevron() {
         ElementActions.performTouchAction(driver).tap(AccountHeaderBackChevron);
     }
 

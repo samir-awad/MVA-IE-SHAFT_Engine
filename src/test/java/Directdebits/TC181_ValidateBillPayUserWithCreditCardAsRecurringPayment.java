@@ -27,15 +27,6 @@ public class TC181_ValidateBillPayUserWithCreditCardAsRecurringPayment {
 
     @BeforeClass
     public void beforeClass() {
-        System.setProperty("executionAddress", "0.0.0.0:4723");
-        System.setProperty("targetOperatingSystem", "iOS");
-        System.setProperty("mobile_platformVersion", "14.4");
-        System.setProperty("mobile_deviceName", "iPhone");
-        System.setProperty("mobile_automationName", "XCUITest");
-        System.setProperty("mobile_udid", "00008030-001C4D5C1E33802E");
-        System.setProperty("mobile_bundleId", "com.VodafoneIreland.MyVodafone");
-        System.setProperty("mobile_derivedDataPath", "/Users/mva-ireland/Library/Developer/Xcode/DerivedData/WebDriverAgent-ciegwgvxzxdrqthilmrmczmqvrgu");
-
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
@@ -43,7 +34,7 @@ public class TC181_ValidateBillPayUserWithCreditCardAsRecurringPayment {
         SettingsPage = new Settings(driver);
         users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
         String username = users.getTestData("TC181_BillPayCredentialsUser_DirectDebit.username");
-        String password = users.getTestData("ITC181_BillPayCredentialsUser_DirectDebit.password");
+        String password = users.getTestData("TC181_BillPayCredentialsUser_DirectDebit.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
     }
 

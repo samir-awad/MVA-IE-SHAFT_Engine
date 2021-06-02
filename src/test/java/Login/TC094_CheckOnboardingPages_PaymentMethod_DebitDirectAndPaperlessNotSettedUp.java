@@ -1,15 +1,13 @@
 package Login;
 
-import FileReaders.GetUserFromJson;
+import FileReaders.jsonReader;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.gui.element.ElementActions;
 import com.shaft.validation.Assertions;
-import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
-import java.io.IOException;
 
 public class TC094_CheckOnboardingPages_PaymentMethod_DebitDirectAndPaperlessNotSettedUp {
 
@@ -35,8 +33,15 @@ public class TC094_CheckOnboardingPages_PaymentMethod_DebitDirectAndPaperlessNot
     }
 
     @Test(dependsOnMethods = {"Check_That_Im_On_Registration_And_Login_Page"})
-    public void Step2() throws IOException, ParseException {
-        LoginPage.login(GetUserFromJson.getUsername("IE"), GetUserFromJson.getpassword("IE"));
+    public void LoginAndCheckThatAmOnOnboardingPage() {
+        LoginPage.login(jsonReader.getUserName("IE.username"), jsonReader.getPassword("IE.password"));
         Assertions.assertElementExists(driver,LoginPage.getLetsGo_Button());
+    }
+
+    @Test(dependsOnMethods = {"LoginAndCheckThatAmOnOnboardingPage"})
+    public void CheckYourPrivacyIsDisplayed() {
+
+        Assertions.assertElementExists(driver,LoginPage.getPrivacyContinue_button());
+        ElementActions.performTouchAction(driver).tap(LoginPage.getPrivacyContinue_button());
     }
 }

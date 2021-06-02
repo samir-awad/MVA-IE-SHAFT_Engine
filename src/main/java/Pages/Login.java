@@ -69,7 +69,7 @@ public class Login {
     private By OnboardingPersonalDetailsContinuePAYG_button;
     private By Logout_button;
     private By Skip_button;
-    private By Scroll;
+
 
     public Login(WebDriver driver) {
         this.driver = (AppiumDriver) driver;
@@ -121,10 +121,10 @@ public class Login {
             Yes_Button = By.xpath("//android.widget.Button[@content-desc=\"Yes\"]/android.widget.TextView");
             OnboardingPersonalDetailsContinue_button = new MobileBy.ByAccessibilityId("id_onboarding_payment_method_continue_button");
             OnboardingPersonalDetailsContinuePAYG_button = new MobileBy.ByAccessibilityId("id_onboarding_personal_details_continue_button");
-            PermissionsContinue_button = new MobileBy.ByAccessibilityId("id_onboarding_permissions_continue_button");
-            GoToTheApp_button = new MobileBy.ByAccessibilityId("OBgetStartedButton");
+            PermissionsContinue_button = MobileBy.AccessibilityId("id_onboarding_permissions_continue_button");
+            GoToTheApp_button = MobileBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[5]/android.view.ViewGroup");
             Tutorials_button = new MobileBy.ByAccessibilityId("id_tutorials_tour_button");
-            GoToMyVodafone_button = new MobileBy.ByAccessibilityId("id_tutorials_dismiss_button");
+            GoToMyVodafone_button = MobileBy.AccessibilityId("id_tutorials_dismiss_button");
 
 
         } else {
@@ -132,7 +132,7 @@ public class Login {
             termsAndConditions_Header = new MobileBy.ByAccessibilityId("id_accordion_description_title");
             termsAndConditions_Txt = By.xpath("(//XCUIElementTypeStaticText[@name=\"id_tc_content_item\"])[2]");
             AcceptTerms_button = MobileBy.xpath("//XCUIElementTypeOther[@name=\"id_TC_switch_accept_terms\"]");
-            Continue_button =  MobileBy.AccessibilityId("Continue");
+            Continue_button = MobileBy.AccessibilityId("Continue");
             Vodafone_Logo = new MobileBy.ByAccessibilityId("id_login_and_register_logo");
             Reg_Login_Button = new MobileBy.ByAccessibilityId("Login");
             OurPrivacy_title = new MobileBy.ByAccessibilityId("id_header_title_Our_Privacy");
@@ -166,11 +166,17 @@ public class Login {
             Tutorials_button = new MobileBy.ByAccessibilityId("Take a quick tour");
             Skip_button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"Skip\"])[2]");
             GoToMyVodafone_button = new MobileBy.ByAccessibilityId("Go to My Vodafone");
-            Scroll=MobileBy.AccessibilityId("Permissions for an improved experience You can change these from your settings screen later. Location This app collects location data to help us improving your network experience by detecting weak coverage spots to improve our network with your measurements, also if you are not using the app. Location Permission Switch. Current value: denied Contacts We'll use your contact for you to select recipients directly from your phone book. Contacts Permission Switch. Current value: denied Push notifications \"My Vodafone\" would like to send you notifications which may include alerts, sounds and icons. Push notifications Permission Switch. Current value: denied Network We may collect data including location, performance & installed apps that we can use to improve our service. This data may not be linked back to you in any way. Network Permission Switch. Current value: undefined Personalised services and recommendations We make recommendations & tailor our service based on your location, quality of your connectivity and installed apps data consumption. Personalised services and recommendations is not available at the moment. Continue");
+            RestPassword_Title = new MobileBy.ByAccessibilityId("id_forgotpassword_title");
+            Reg_Login_Txt = MobileBy.AccessibilityId("id_login_and_register_login_text");
+            Reg_Register_Txt = MobileBy.AccessibilityId("id_login_and_register_register_text");
+            Reg_OurPrivacy_Link = MobileBy.xpath("//XCUIElementTypeStaticText[@name=\"tv_our_privacy\"]");
+            Reg_Register_button = MobileBy.AccessibilityId("Register");
+            Back_Arrow = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"id_header_back_arrow\"])[2]");
         }
     }
 
     public Login acceptTermsAndConditions() {
+        ElementActions.waitForElementToBePresent(driver, AcceptTerms_button, 5, true);
         ElementActions.performTouchAction(driver).tap(AcceptTerms_button);
         ElementActions.performTouchAction(driver).tap(Continue_button);
         return this;
@@ -196,14 +202,21 @@ public class Login {
     }
 
     public void acceptPermissions() {
+        ElementActions.isElementDisplayed(driver, LetsGo_Button);
         ElementActions.performTouchAction(driver).tap(LetsGo_Button);
+        ElementActions.isElementDisplayed(driver, PrivacyContinue_button);
         ElementActions.performTouchAction(driver).tap(PrivacyContinue_button);
-        ElementActions.performTouchAction(driver).swipeElementIntoView(PersonalPreferencesContinue_button, TouchActions.SwipeDirection.UP)
-                .tap(PersonalPreferencesContinue_button);
+        ElementActions.performTouchAction(driver).swipeElementIntoView(PersonalPreferencesContinue_button, TouchActions.SwipeDirection.UP);
+        ElementActions.isElementDisplayed(driver, PersonalPreferencesContinue_button);
+        ElementActions.performTouchAction(driver).tap(PersonalPreferencesContinue_button);
+        ElementActions.isElementDisplayed(driver, PaymentMethod_Continue_button);
         ElementActions.performTouchAction(driver).tap(PaymentMethod_Continue_button);
-        ElementActions.performTouchAction(driver).swipeElementIntoView(PermissionsContinue_button, TouchActions.SwipeDirection.UP)
-                .tap(PermissionsContinue_button);
+        ElementActions.performTouchAction(driver).swipeElementIntoView(PermissionsContinue_button, TouchActions.SwipeDirection.UP);
+        ElementActions.isElementDisplayed(driver, PermissionsContinue_button);
+        ElementActions.performTouchAction(driver).tap(PermissionsContinue_button);
+        ElementActions.isElementDisplayed(driver, GoToTheApp_button);
         ElementActions.performTouchAction(driver).tap(GoToTheApp_button);
+        ElementActions.isElementDisplayed(driver, GoToMyVodafone_button);
         ElementActions.performTouchAction(driver).tap(GoToMyVodafone_button);
     }
 
@@ -384,5 +397,93 @@ public class Login {
 
     public By getSkip_button() {
         return Skip_button;
+    }
+
+    public By getRegistration_Title() {
+        return Registration_Title;
+    }
+
+    public By getRegistration_SendToken() {
+        return Registration_SendToken;
+    }
+
+    public By getRegistration_OurPrivacy() {
+        return Registration_OurPrivacy;
+    }
+
+    public By getRegistration_ResetYourPassword_RedirectText() {
+        return Registration_ResetYourPassword_RedirectText;
+    }
+
+    public By getRegistration_ResetYourPassword_RedirectLink() {
+        return Registration_ResetYourPassword_RedirectLink;
+    }
+
+    public By getRegistration_UserName() {
+        return Registration_UserName;
+    }
+
+    public By getRestPassword_SendToken() {
+        return RestPassword_SendToken;
+    }
+
+    public By getRestPassword_OurPrivacy() {
+        return RestPassword_OurPrivacy;
+    }
+
+    public By getRestPassword_RegisterHere_RedirectText() {
+        return RestPassword_RegisterHere_RedirectText;
+    }
+
+    public By getRestPassword_RegisterHere_RedirectLink() {
+        return RestPassword_RegisterHere_RedirectLink;
+    }
+
+    public By getRestPassword_UserName() {
+        return RestPassword_UserName;
+    }
+
+    public By getBack_Arrow() {
+        return Back_Arrow;
+    }
+
+    public By getPrivacyContinue_button() {
+        return PrivacyContinue_button;
+    }
+
+    public By getPaymentMethod_Continue_button() {
+        return PaymentMethod_Continue_button;
+    }
+
+    public By getPersonalPreferencesContinue_button() {
+        return PersonalPreferencesContinue_button;
+    }
+
+    public By getYes_Button() {
+        return Yes_Button;
+    }
+
+    public By getNotNow_Button() {
+        return NotNow_Button;
+    }
+
+    public By getOnboardingPersonalDetailsContinue_button() {
+        return OnboardingPersonalDetailsContinue_button;
+    }
+
+    public By getPermissionsContinue_button() {
+        return PermissionsContinue_button;
+    }
+
+    public By getGoToTheApp_button() {
+        return GoToTheApp_button;
+    }
+
+    public By getGoToMyVodafone_button() {
+        return GoToMyVodafone_button;
+    }
+
+    public By getOnboardingPersonalDetailsContinuePAYG_button() {
+        return OnboardingPersonalDetailsContinuePAYG_button;
     }
 }

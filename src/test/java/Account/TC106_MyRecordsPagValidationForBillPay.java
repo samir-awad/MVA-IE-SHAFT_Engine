@@ -16,40 +16,66 @@ public class TC106_MyRecordsPagValidationForBillPay {
     private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
-    private Account  AccountPage;
+    private Account AccountPage;
     private JSONFileManager users;
 
     @BeforeClass
     public void beforeClass() {
-        //System.setProperty("mobile_app", FileActions.getAbsolutePath(System.getProperty("testDataFolderPath") + "apk/", "DIG18180Fix.apk"));
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        AccountPage=new Account(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        AccountPage = new Account(driver);
+    }
+
+    @Test
+    public void Login() {
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("BillPayUser.username");
         String password = users.getTestData("BillPayUser.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
-        // LoginPage.acceptPermissions();
     }
-    @Test
-    public void MyRecordsPagValidationForBillPay(){
-        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+
+    @Test(dependsOnMethods = "Login")
+    public void CheckThatImOnHomePage() {
+        Assertions.assertElementExists(driver, HomePage.getCheckTheVodafoneLogo());
+    }
+
+    @Test(dependsOnMethods = "CheckThatImOnHomePage")
+    public void ValidateAccountOverlay() {
         AccountPage.pressAccountTrayMenuOption();
-        Verifications.verifyElementExists(driver,AccountPage.getCheckAccountOverlay());
+        Assertions.assertElementExists(driver, AccountPage.getCheckAccountOverlay());
+    }
+
+    @Test(dependsOnMethods = "CheckThatImOnHomePage")
+    public void GoToMyRecordsAndValidateOrderArea() {
         AccountPage.pressMyRecordsOption();
-        Verifications.verifyElementExists(driver,AccountPage.getCheckMyRecordsPageHeader());
-        Verifications.verifyElementExists(driver,AccountPage.getCheckAvailableTabOptions());
-        Verifications.verifyElementExists(driver,AccountPage.getCheckOrdersArea());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckMyRecordsPageHeader());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckAvailableTabOptions());
+        Assertions.assertElementExists(driver, AccountPage.getCheckOrdersArea());
+    }
+
+    @Test(dependsOnMethods = "CheckThatImOnHomePage")
+    public void ValidateLetterTab() {
         AccountPage.pressLettersTabOption();
-        Verifications.verifyElementExists(driver,AccountPage.getCheckThatExistsAtLeastOneLetter());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckThatExistsAtLeastOneLetter());
+    }
+    @Test(dependsOnMethods = "CheckThatImOnHomePage")
+    public void ValidateFirstLetter() {
         AccountPage.pressFirstLetter();
-        Verifications.verifyElementExists(driver,AccountPage.getCheckFirstLetterAttachmentsLink());
+        Assertions.assertElementExists(driver, AccountPage.getCheckFirstLetterAttachmentsLink());
+    }
+
+    @Test(dependsOnMethods = "CheckThatImOnHomePage")
+    public void OpenAttachmentInPDFViewer() {
         AccountPage.pressFirstLetterAttachmentsLink();
         AccountPage.chooseAppToOpenLetterWith();
-        Verifications.verifyElementExists(driver,AccountPage.getCheckLetterIsOpenedAsPdfDocument());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckLetterIsOpenedAsPdfDocument());
+    }
+
+    @Test(dependsOnMethods = "CheckThatImOnHomePage")
+    public void GoBackToMyRecordsPageAndCloseIt() {
         AccountPage.goBackToMyRecordsPage();
         AccountPage.pressMyRecordsHeaderCloseButton();
-        Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
-        }
+        Assertions.assertElementExists(driver, HomePage.getCheckTheVodafoneLogo());
+    }
 }

@@ -25,13 +25,13 @@ public class TC02_CheckLoginAndRegisterAndOurPrivacyPages{
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
     }
-/*
+
 	@Test()
 	public void Check_And_Accept_And_Continue_In_Terms_And_Conditions() {
         Assertions.assertElementExists(driver,LoginPage.getTermsAndConditions_Header(),AssertionType.POSITIVE);
         LoginPage.acceptTermsAndConditions();
 	}
-*/
+
     @Test(dependsOnMethods = {"Check_And_Accept_And_Continue_In_Terms_And_Conditions"})
 	public void Check_Vodafone_Logo_And_Login_Text_And_Button(){
         Assertions.assertElementExists(driver,LoginPage.getVodafone_Logo(),AssertionType.POSITIVE);

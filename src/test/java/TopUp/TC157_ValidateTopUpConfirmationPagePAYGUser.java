@@ -1,6 +1,5 @@
 package TopUp;
 
-import FileReaders.GetUserFromJson;
 import Pages.Home;
 import Pages.Login;
 import Pages.TopUp;

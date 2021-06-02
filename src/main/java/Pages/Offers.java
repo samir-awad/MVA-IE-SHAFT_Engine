@@ -2,12 +2,13 @@ package Pages;
 
 import com.shaft.gui.element.ElementActions;
 import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class Offers {
 
-    private final WebDriver driver;
+    private final MobileDriver driver;
     //Bill Pay
     private By OffersHeader_text;
     private By OffersHeaderClose_button;
@@ -19,6 +20,27 @@ public class Offers {
 
     //PAYG offers page
     private By FirstOfferTitle_button;
+
+    public By getOffersHeaderClose_button() {
+        return OffersHeaderClose_button;
+    }
+
+    public By getSwipeLeft_button() {
+        return SwipeLeft_button;
+    }
+
+    public By getChrome_driver() {
+        return Chrome_driver;
+    }
+
+    public By getFirstInternalOffer_image() {
+        return FirstInternalOffer_image;
+    }
+
+    public By getInternalOfferBack_button() {
+        return InternalOfferBack_button;
+    }
+
     private By FirstOfferContinue_button;
 
     //Getters
@@ -39,7 +61,7 @@ public class Offers {
     }
 
     public Offers(WebDriver driver) {
-        this.driver = driver;
+        this.driver = (MobileDriver) driver;
 
         if (System.getProperty("targetOperatingSystem").equals("Android")) {
             //Android Locators
@@ -76,7 +98,9 @@ public class Offers {
     }
 
     public void swipeToAnotherOffer() {
-        ElementActions.performTouchAction(driver).tap(SwipeLeft_button);
+        ElementActions.waitForElementToBePresent(driver, SwipeLeft_button, 5, true);
+        //ElementActions.performTouchAction(driver).tap(SwipeLeft_button);
+        ElementActions.click(driver, SwipeLeft_button);
     }
 
     public void pressOffersButton() {
@@ -84,7 +108,7 @@ public class Offers {
     }
 
     public void goBackToAppFromExternalPage() {
-        driver.navigate().back();
+        driver.activateApp("com.VodafoneIreland.MyVodafone");
     }
 
     public void goBackToAppFromInternalPage() {

@@ -1,12 +1,12 @@
 package Home;
 
-import FileReaders.GetUserFromJson;
+import FileReaders.jsonReader;
 import Pages.Home;
 import Pages.Login;
-import com.shaft.cli.FileActions;
 import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.gui.element.ElementActions;
+import com.shaft.gui.element.TouchActions;
 import com.shaft.validation.Assertions;
-import com.shaft.validation.Verifications;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
@@ -22,14 +22,10 @@ public class TC258_ValidateFixedCustomer {
 
     @BeforeClass
     public void beforeClass() throws IOException, ParseException {
-        //System.setProperty("mobile_app", FileActions.getAbsolutePath(System.getProperty("testDataFolderPath") + "apk/", "DIG18180Fix.apk"));
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        //  LoginPage.login(GetUserFromJson.getUsername("FixedUser"), GetUserFromJson.getpassword("FixedUser"));
-        LoginPage.acceptTermsAndConditions().login(GetUserFromJson.getUsername("FixedUser"), GetUserFromJson.getpassword("FixedUser")).acceptPermissions();
-        //This method will be used to login before every test case to login with
-        //With different users credentials must be changed
+        LoginPage.acceptTermsAndConditions().login(jsonReader.getUserName("FixedUser.username"), jsonReader.getPassword("FixedUser.password")).acceptPermissions();
     }
 
     @Test
@@ -37,40 +33,38 @@ public class TC258_ValidateFixedCustomer {
         Assertions.assertElementExists(driver, HomePage.getCheckTheVodafoneLogo());
     }
 
-    @Test
+    @Test(dependsOnMethods = "ValidateFixedCustomer")
     public void CheckLastBillTile() {
         Assertions.assertElementExists(driver, HomePage.getLastBileTile());
     }
 
-    @Test
+    @Test(dependsOnMethods = "CheckLastBillTile")
+    public void checkTvAddOnsTile() {
+        ElementActions.performTouchAction(driver).swipeElementIntoView(HomePage.getTvAddOnsTile(), TouchActions.SwipeDirection.DOWN);
+        Assertions.assertElementExists(driver, HomePage.getTvAddOnsTile());
+    }
+
+    @Test(dependsOnMethods = "checkTvAddOnsTile")
     public void CheckDiscoverySection() {
         HomePage.checkDiscoverySection();
     }
 
-    @Test
+    @Test(dependsOnMethods = "CheckDiscoverySection")
     public void CheckEssentialsSection() {
-        HomePage.checkEssentialsSection();
+        ElementActions.performTouchAction(driver).swipeElementIntoView(HomePage.getEssentials_ShowMore(), TouchActions.SwipeDirection.UP);
+        Assertions.assertElementExists(driver,HomePage.getEssentials_text());
     }
 
-    @Test
+    @Test(dependsOnMethods = "CheckEssentialsSection")
+    public void checkTrayMenuOptionsForBillPay() {
+        Assertions.assertElementExists(driver, HomePage.getBillAndPayment());
+    }
+
+    @Test(dependsOnMethods = "checkTrayMenuOptionsForBillPay")
     public void ChangeSelectedSubscription() {
+        ElementActions.performTouchAction(driver).swipeElementIntoView(HomePage.getChange_button(), TouchActions.SwipeDirection.UP);
         HomePage.pressSelectAccountAndSubscriptionComponent();
         HomePage.changeTheSelectedSubscription();
         HomePage.pressSelectAccountAndSubscriptionSelectButton();
-    }
-
-    @Test
-    public void checkTvAddOnsTile() {
-        Assertions.assertElementExists(driver, HomePage.getTvAddOnsTile());
-    }
-
-    @Test
-    public void checkEssentialsSectionFixedWithTv() {
-        Assertions.assertElementExists(driver, HomePage.getEssentialsSectionFixed_WithTV());
-    }
-
-    @Test
-    public void checkTrayMenuOptionsForBillPay() {
-        Assertions.assertElementExists(driver, HomePage.getBillAndPayment());
     }
 }
