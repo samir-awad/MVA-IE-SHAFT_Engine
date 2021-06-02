@@ -1,6 +1,6 @@
 package Login;
 
-import FileReaders.GetUserFromJson;
+import FileReaders.jsonReader;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.gui.element.ElementActions;
@@ -30,15 +30,16 @@ public class TC05_LoginWithWrongPassword{
     }
 
     @Test()
-    public void Login_With_Invalid_Password_FirstTime() throws  IOException, ParseException {
-        LoginPage.login(GetUserFromJson.getUsername("Wrong Password"),GetUserFromJson.getpassword("Wrong Password"));
-        Assertions.assertEquals("Sorry, you have entered the wrong password. Please try again. This is your 1/5 attempt. If you enter your password incorrectly 5 times your account will be temporarily locked. If you don’t know your password, you can reset it below.",LoginPage.getInvalid_UserName_PWD_title());
+    public void Login_With_Invalid_Password_FirstTime() {
+        LoginPage.login(jsonReader.getUserName("Wrong Password.username"),jsonReader.getPassword("Wrong Password.password"));
+        Assertions.assertElementExists(driver,LoginPage.getInvalid_UserName_PWD_title());
     }
 
     @Test()
-    public void Step3() throws IOException, ParseException{
-        LoginPage.EnterPasswordAndLogin(GetUserFromJson.getpassword("Wrong Password"));
-        Assertions.assertEquals("Sorry, you have entered the wrong password. Please try again. This is your 2/5 attempt. If you enter your password incorrectly 5 times your account will be temporarily locked. If you don’t know your password, you can reset it below.",LoginPage.getInvalid_UserName_PWD_title());
+    public void Step3() {
+        ElementActions.performTouchAction(driver).tap(LoginPage.getInvalid_UserName_PWD_Ok_button());
+        LoginPage.EnterPasswordAndLogin(jsonReader.getPassword("Wrong Password"));
+        Assertions.assertElementExists(driver,LoginPage.getInvalid_UserName_PWD_title());
     }
 
     @Test()

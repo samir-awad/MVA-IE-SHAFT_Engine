@@ -25,8 +25,9 @@ public class Logout {
             LogoutYes_Button = MobileBy.AccessibilityId("id_error_pop_up_main_button");
         } else {
             Logout_Button = MobileBy.AccessibilityId("Log out");
-            LogoutYes_Button=MobileBy.AccessibilityId("Yes");
-            LogoutNo_Button=MobileBy.AccessibilityId("No");
+            LogoutYes_Button = MobileBy.AccessibilityId("Yes");
+            LogoutNo_Button = MobileBy.AccessibilityId("No");
+            LogoutOverlay = MobileBy.AccessibilityId("error_pop_up_title");
         }
 
     }

@@ -1,6 +1,6 @@
 package Login;
 
-import FileReaders.GetUserFromJson;
+import FileReaders.jsonReader;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Assertions;
@@ -34,8 +34,8 @@ public class TC118_LoginWithPAYGLegacyCustomer{
     }
 
     @Test()
-    public void Step2() throws IOException, ParseException {
-        LoginPage.login(GetUserFromJson.getUsername("LegacyPAYG"), GetUserFromJson.getpassword("LegacyPAYG"));
+    public void LoginWithPAYGLegacyCustomer() {
+        LoginPage.login(jsonReader.getUserName("LegacyPAYG.username"), jsonReader.getPassword("LegacyPAYG.password"));
         Assertions.assertElementExists(driver,LoginPage.getLegacyOverlay_title(), Assertions.AssertionType.POSITIVE);
     }
 }

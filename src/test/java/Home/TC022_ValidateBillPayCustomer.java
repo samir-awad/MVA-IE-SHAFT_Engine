@@ -1,5 +1,6 @@
 package Home;
 
+import FileReaders.jsonReader;
 import Pages.ChangePlan;
 import Pages.Home;
 import Pages.Login;
@@ -20,10 +21,14 @@ public class TC022_ValidateBillPayCustomer {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        //LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
     }
 
     @Test
+    public void LoginWithBillPayUser() {
+        LoginPage.acceptTermsAndConditions().login(jsonReader.getUserName("BillPayUserWithWebText.username"), jsonReader.getPassword("BillPayUserWithWebText.password")).acceptPermissions();
+    }
+
+    @Test(dependsOnMethods = "LoginWithBillPayUser")
     public void CheckVodafoneLogoIsDisplayed() {
         Assertions.assertElementExists(driver, HomePage.getVodafoneLogo());
     }

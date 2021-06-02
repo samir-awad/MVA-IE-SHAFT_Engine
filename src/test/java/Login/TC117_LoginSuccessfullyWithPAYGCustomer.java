@@ -1,6 +1,6 @@
 package Login;
 
-import FileReaders.GetUserFromJson;
+import FileReaders.jsonReader;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Assertions;
@@ -36,8 +36,8 @@ public class TC117_LoginSuccessfullyWithPAYGCustomer {
     }
 
     @Test(dependsOnMethods = {"Check_That_Im_On_Registration_And_Login_Page"})
-    public void Step2() throws IOException, ParseException {
-        LoginPage.login(GetUserFromJson.getUsername("PAYGUser"), GetUserFromJson.getpassword("PAYGUser"));
+    public void LoginWithPAYGCustomer() {
+        LoginPage.login(jsonReader.getUserName("PAYGUser.username"), jsonReader.getPassword("PAYGUser.password"));
         Assertions.assertElementExists(driver, LoginPage.getLetsGo_Button());
     }
 }

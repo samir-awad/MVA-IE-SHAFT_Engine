@@ -17,26 +17,34 @@ public class TC103_AccountOverlayValidationForBillPay {
     private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
-    private Account  AccountPage;
+    private Account AccountPage;
     private JSONFileManager users;
 
     @BeforeClass
     public void beforeClass() {
-        //System.setProperty("mobile_app", FileActions.getAbsolutePath(System.getProperty("testDataFolderPath") + "apk/", "DIG18180Fix.apk"));
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        AccountPage=new Account(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        AccountPage = new Account(driver);
+
+    }
+
+    @Test
+    public void Login() {
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("BillPayUser.username");
         String password = users.getTestData("BillPayUser.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
-        // LoginPage.acceptPermissions();
     }
-    @Test
-    public void AccountOverlayValidationForBillPay  (){
-        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+
+    @Test(dependsOnMethods = "Login")
+    public void CheckImOnHomePage() {
+        Verifications.verifyElementExists(driver, HomePage.getCheckTheVodafoneLogo());
+    }
+
+    @Test(dependsOnMethods = "CheckImOnHomePage")
+    public void CheckAccountOverlay() {
         AccountPage.pressAccountTrayMenuOption();
-        Assertions.assertElementExists(driver,AccountPage.getCheckAccountOverlay());
+        Assertions.assertElementExists(driver, AccountPage.getCheckAccountOverlay());
     }
 }

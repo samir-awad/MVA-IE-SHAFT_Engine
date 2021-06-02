@@ -4,6 +4,7 @@ import FileReaders.jsonReader;
 import Pages.Home;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.gui.element.ElementActions;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
@@ -21,10 +22,14 @@ public class TC025_SelectAccountSubscriptionComponentValidationBillPayCustomer {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        LoginPage.acceptTermsAndConditions().login(jsonReader.getUserName("BillPay.username"),jsonReader.getPassword("BillPay.password")).acceptPermissions();//fluent design
     }
 
     @Test
+    public void LoginWithBillPayUser(){
+        LoginPage.acceptTermsAndConditions().login(jsonReader.getUserName("BillPayUser.username"),jsonReader.getPassword("BillPayUser.password")).acceptPermissions();
+    }
+
+    @Test(dependsOnMethods = "LoginWithBillPayUser")
     public void CheckThatImOnHomePageAndSelectAccountAndSubscriptionComponentContentAreDisplayed() {
         Verifications.verifyElementExists(driver, HomePage.getVodafoneLogo());
         Assertions.assertElementExists(driver, HomePage.getChange_button());
@@ -44,7 +49,8 @@ public class TC025_SelectAccountSubscriptionComponentValidationBillPayCustomer {
     @Test(dependsOnMethods = "changeTheSelectedSubscription")
     public void checkAccountSuccessfullySelected() {
         HomePage.changeTheSelectedAccount();
-        Verifications.verifyTrue(HomePage.checkAccountSuccessfullySelected());
+        ElementActions.performTouchAction(driver).tap(HomePage.getSelect_Button());
+        //Verifications.verifyTrue(HomePage.checkAccountSuccessfullySelected());
         HomePage.pressSelectAccountAndSubscriptionCloseButton();
     }
 

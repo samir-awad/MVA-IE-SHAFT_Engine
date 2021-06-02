@@ -8,13 +8,15 @@ import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
+import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
 public class TC066_ValidateOffersBillPayUser {
-    private WebDriver driver;
+    private AppiumDriver driver;
     private Login LoginPage;
     private Home HomePage;
     private Offers OffersPage;
@@ -23,15 +25,7 @@ public class TC066_ValidateOffersBillPayUser {
 
     @BeforeClass
     public void beforeClass(){
-        System.setProperty("executionAddress", "0.0.0.0:4723");
-        System.setProperty("targetOperatingSystem", "iOS");
-        System.setProperty("mobile_platformVersion", "13.5.1");
-        System.setProperty("mobile_automationName", "XCUITest");
-        System.setProperty("mobile_udid", "00008030-001C4D5C1E33802E");
-        System.setProperty("mobile_bundleId", "com.VodafoneIreland.MyVodafone");
-        System.setProperty("mobile_derivedDataPath","/Users/mva-ireland/Library/Developer/Xcode/DerivedData/WebDriverAgent-ciegwgvxzxdrqthilmrmczmqvrgu");
-        System.setProperty("mobile_app",System.getProperty("user.dir")+"//App//97_AUTO.ipa");
-        driver = BrowserFactory.getBrowser();
+        driver = (AppiumDriver) BrowserFactory.getBrowser();
         users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
         LoginPage = new Login(driver);
         HomePage = new Home(driver);

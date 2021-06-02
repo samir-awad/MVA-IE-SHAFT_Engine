@@ -1,6 +1,6 @@
 package Login;
 
-import FileReaders.GetUserFromJson;
+import FileReaders.jsonReader;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Assertions;
@@ -34,8 +34,8 @@ public class TC07_LoginWithBillPayLegacyCustomer{
     }
 
     @Test()
-    public void Step2() throws IOException, ParseException {
-        LoginPage.login(GetUserFromJson.getUsername("LegacyBillPay"), GetUserFromJson.getpassword("LegacyBillPay")); // need Legacy User for Bill Pay
+    public void LoginWithLegacyBillPayUser() throws IOException, ParseException {
+        LoginPage.login(jsonReader.getUserName("LegacyBillPay.username"), jsonReader.getPassword("LegacyBillPay.password")); // need Legacy User for Bill Pay
         Assertions.assertElementExists(driver,LoginPage.getLegacyOverlay_title(), Assertions.AssertionType.POSITIVE);
     }
 }

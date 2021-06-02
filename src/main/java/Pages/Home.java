@@ -50,96 +50,100 @@ public class Home {
     private By BuyAndManageAddOns_text;
     private By TakeQuickTour_Tile;
     private By SendWebText_button;
+    private By Essentials_ShowMore;
+    private By DevicesAndSim_button;
 
     public Home(WebDriver driver) {
         this.driver = driver;
         if (System.getProperty("targetOperatingSystem").equals("Android")) {
 
-            Discover_text = new MobileBy.ByAccessibilityId("id_dashboard_discover_title");
-            BuyAndManageAddOns_button = new MobileBy.ByAccessibilityId("id_dashboard_essentials_addons_clickable");
-            VodafoneLogo = new MobileBy.ByAccessibilityId("id_header_vodafone_logo");
-            BillTile = new MobileBy.ByAccessibilityId("id_dashboard_next_bill_title");
-            ClickNextBillTitle = new MobileBy.ByAccessibilityId("id_dashboard_next_bill_title");
-            Essentials_text = new MobileBy.ByAccessibilityId("id_dashboard_essentials_title");
-            BillAndPayment = new MobileBy.ByAccessibilityId("id_tray_menu_item_Bills & Payments");
-            ShowMore_button = new MobileBy.ByAccessibilityId("id_dashboard_essentials_see_more_less_label");
-            OtherUsefulTools_text = new MobileBy.ByAccessibilityId("id_dashboard_tools_title");
-            UnlockYourDevice_text = new MobileBy.ByAccessibilityId("id_dashboard_tools_nac_label");
-            OffersPageHeader_button = new MobileBy.ByAccessibilityId("id_dashboard_discover_card_image");
-            Support_button = new MobileBy.ByAccessibilityId("id_dashboard_live_chat_tile_title");
-            SeeAllOffers_button = new MobileBy.ByAccessibilityId("id_dashboard_discover_see_all_offers_label");
-            ClickNextBillTitle = new MobileBy.ByAccessibilityId("id_dashboard_next_bill_title");
-            AmountDueTile = new MobileBy.ByAccessibilityId("id_dashboard_amount_due_title");
-            DirectDebitTile = new MobileBy.ByAccessibilityId("id_dashboard_direct_debit_title");
-            OtherUsefulTools = new MobileBy.ByAccessibilityId("id_dashboard_tools_title");
-            ChangePlan_Button = new MobileBy.ByAccessibilityId("d_dashboard_essentials_change_plan_clickable");
-            InactiveToUp = new MobileBy.ByAccessibilityId("id_dashboard_my_usage_exception_noActiveTopUpOffer_text");
-            BalanceTitle = new MobileBy.ByAccessibilityId("id_dashboard_balance_title");
-            TopUpHistoryTile = new MobileBy.ByAccessibilityId("id_dashboard_topup_history_title");
-            PAYG_Tray = new MobileBy.ByAccessibilityId("id_tray_menu_item_Top Up");
-            ActiveToUp = new MobileBy.ByAccessibilityId("id_dashboard_my_usage_plan_name");
-            Change_button = new MobileBy.ByAccessibilityId("id_dashboard_change_subscription");
-            SelectAccountAndSubscriptionTitle = new MobileBy.ByAccessibilityId("id_dashboard_change_subscription_title");
-            NewSubscription = By.xpath("(//android.view.ViewGroup[@content-desc=\"id_dashboard_change_subscription_subscriptions_item\"])[2]");
-            ChangeAccount = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.widget.Spinner");
-            AccountChanged = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.ListView/android.widget.CheckedTextView[1]");
-            Close_Button = By.xpath("//android.widget.ImageView[@content-desc=\"id_dashboard_change_subscription_close\"]");
-            Select_Button = new MobileBy.ByAccessibilityId("id_dashboard_change_subscription_select_button");
-            LastBileTile = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.widget.TextView[1]");
-            TvAddOnsTile = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.ViewGroup/android.widget.TextView[1]");
-            EssentialsSectionFixed_WithTV = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[6]/android.widget.TextView");
-            SupportTrayMenuPAYG = new MobileBy.ByAccessibilityId("id_tray_menu_item_label_Support");
-            AccountOverlaySetting_text = new MobileBy.ByAccessibilityId("id_account_overlay_Settings_title");
-            Account = new MobileBy.ByAccessibilityId("id_tray_menu_item_Account");
-            TopUpOverlayTitle_text = new MobileBy.ByAccessibilityId("STundefinedMainTitle");
-            TopUp_button = new MobileBy.ByAccessibilityId("id_tray_menu_item_Top Up");
-            TopUpHistory_button = new MobileBy.ByAccessibilityId("id_dashboard_topup_history_title");
-            SendWebText_button= new MobileBy.ByAccessibilityId("id_dashboard_tools_webtext_label");
+            Discover_text = MobileBy.AccessibilityId("id_dashboard_discover_title");
+            BuyAndManageAddOns_button = MobileBy.AccessibilityId("id_dashboard_essentials_addons_clickable");
+            VodafoneLogo = MobileBy.AccessibilityId("id_header_vodafone_logo");
+            BillTile = MobileBy.AccessibilityId("id_dashboard_next_bill_title");
+            ClickNextBillTitle = MobileBy.AccessibilityId("id_dashboard_next_bill_title");
+            Essentials_text = MobileBy.AccessibilityId("id_dashboard_essentials_title");
+            BillAndPayment = MobileBy.AccessibilityId("id_tray_menu_item_Bills & Payments");
+            ShowMore_button = MobileBy.AccessibilityId("id_dashboard_essentials_see_more_less_label");
+            OtherUsefulTools_text = MobileBy.AccessibilityId("id_dashboard_tools_title");
+            UnlockYourDevice_text = MobileBy.AccessibilityId("id_dashboard_tools_device_and_sim_b_sheet_NAC_clickable");
+            OffersPageHeader_button = MobileBy.AccessibilityId("id_dashboard_discover_card_image");
+            Support_button = MobileBy.AccessibilityId("id_dashboard_live_chat_tile_title");
+            SeeAllOffers_button = MobileBy.AccessibilityId("id_dashboard_discover_see_all_offers_label");
+            ClickNextBillTitle = MobileBy.AccessibilityId("id_dashboard_next_bill_title");
+            AmountDueTile = MobileBy.AccessibilityId("id_dashboard_amount_due_title");
+            DirectDebitTile = MobileBy.AccessibilityId("id_dashboard_direct_debit_title");
+            OtherUsefulTools = MobileBy.AccessibilityId("id_dashboard_tools_title");
+            ChangePlan_Button = MobileBy.AccessibilityId("d_dashboard_essentials_change_plan_clickable");
+            InactiveToUp = MobileBy.AccessibilityId("id_dashboard_my_usage_exception_noActiveTopUpOffer_text");
+            BalanceTitle = MobileBy.AccessibilityId("id_dashboard_balance_title");
+            TopUpHistoryTile = MobileBy.AccessibilityId("id_dashboard_topup_history_title");
+            PAYG_Tray = MobileBy.AccessibilityId("id_tray_menu_item_Top Up");
+            ActiveToUp = MobileBy.AccessibilityId("id_dashboard_my_usage_plan_name");
+            Change_button = MobileBy.AccessibilityId("id_dashboard_change_subscription");
+            SelectAccountAndSubscriptionTitle = MobileBy.AccessibilityId("id_dashboard_change_subscription_title");
+            NewSubscription = MobileBy.xpath("(//android.view.ViewGroup[@content-desc=\"id_dashboard_change_subscription_subscriptions_item\"])[2]");
+            ChangeAccount = MobileBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.widget.Spinner");
+            AccountChanged = MobileBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.ListView/android.widget.CheckedTextView[1]");
+            Close_Button = MobileBy.xpath("//android.widget.ImageView[@content-desc=\"id_dashboard_change_subscription_close\"]");
+            Select_Button = MobileBy.AccessibilityId("id_dashboard_change_subscription_select_button");
+            LastBileTile = MobileBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.widget.TextView[1]");
+            TvAddOnsTile = MobileBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.ViewGroup/android.widget.TextView[1]");
+            EssentialsSectionFixed_WithTV = MobileBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[6]/android.widget.TextView");
+            SupportTrayMenuPAYG = MobileBy.AccessibilityId("id_tray_menu_item_label_Support");
+            AccountOverlaySetting_text = MobileBy.AccessibilityId("id_account_overlay_Settings_title");
+            Account = MobileBy.AccessibilityId("id_tray_menu_item_Account");
+            TopUpOverlayTitle_text = MobileBy.AccessibilityId("STundefinedMainTitle");
+            TopUp_button = MobileBy.AccessibilityId("id_tray_menu_item_Top Up");
+            TopUpHistory_button = MobileBy.AccessibilityId("id_dashboard_topup_history_title");
+            SendWebText_button = MobileBy.AccessibilityId("id_dashboard_tools_webtext_label");
+            DevicesAndSim_button = MobileBy.AccessibilityId("id_dashboard_tools_device_and_sim_clickable");
 
         } else {
 
-            Discover_text = new MobileBy.ByAccessibilityId("id_dashboard_discover_title");
-            BuyAndManageAddOns_button = new MobileBy.ByAccessibilityId("id_dashboard_essentials_addons_clickable");
-            VodafoneLogo = new MobileBy.ByAccessibilityId("id_header_vodafone_logo");
-            BillTile = new MobileBy.ByAccessibilityId("id_dashboard_next_bill_clickable");
-            ClickNextBillTitle = new MobileBy.ByAccessibilityId("id_dashboard_next_bill_clickable");
-            Essentials_text = new MobileBy.ByAccessibilityId("id_dashboard_essentials_title");
-            ShowMore_button = new MobileBy.ByAccessibilityId("id_dashboard_essentials_see_more_less_label");
-            OtherUsefulTools_text = new MobileBy.ByAccessibilityId("id_dashboard_tools_title");
-            BillAndPayment = new MobileBy.ByAccessibilityId("id_tray_menu_item_Bills & Payments");
-            ShowMore_button = new MobileBy.ByAccessibilityId("id_dashboard_essentials_see_more_less_label");
-            OtherUsefulTools_text = new MobileBy.ByAccessibilityId("id_dashboard_tools_title");
-            UnlockYourDevice_text = new MobileBy.ByAccessibilityId("id_dashboard_tools_nac_label");
-            OffersPageHeader_button = new MobileBy.ByAccessibilityId("id_dashboard_discover_card_image");
-            Support_button = new MobileBy.ByAccessibilityId("id_tray_menu_item_Support");
-            SeeAllOffers_button = new MobileBy.ByAccessibilityId("id_dashboard_discover_see_all_offers");
-            ClickNextBillTitle = new MobileBy.ByAccessibilityId("id_dashboard_next_bill_title");
-            AmountDueTile = new MobileBy.ByAccessibilityId("id_dashboard_amount_due_clickable");
-            DirectDebitTile = new MobileBy.ByAccessibilityId("id_dashboard_direct_debit_clickable");
-            OtherUsefulTools = new MobileBy.ByAccessibilityId("id_dashboard_tools_title");
-            ChangePlan_Button = new MobileBy.ByAccessibilityId("d_dashboard_essentials_change_plan_clickable");
-            InactiveToUp = new MobileBy.ByAccessibilityId("id_dashboard_my_usage_exception_noActiveTopUpOffer_text");
-            BalanceTitle = new MobileBy.ByAccessibilityId("id_dashboard_balance_clickable");
-            TopUpHistoryTile = new MobileBy.ByAccessibilityId("id_dashboard_topup_history_title");
-            PAYG_Tray = new MobileBy.ByAccessibilityId("id_tray_menu_item_Top Up");
-            ActiveToUp = new MobileBy.ByAccessibilityId("id_dashboard_my_usage_plan_name");
+            Discover_text = MobileBy.AccessibilityId("id_dashboard_discover_title");
+            BuyAndManageAddOns_button = MobileBy.AccessibilityId("id_dashboard_essentials_addons_clickable");
+            VodafoneLogo = MobileBy.AccessibilityId("id_header_vodafone_logo");
+            BillTile = MobileBy.AccessibilityId("id_dashboard_next_bill_clickable");
+            ClickNextBillTitle = MobileBy.AccessibilityId("id_dashboard_next_bill_clickable");
+            Essentials_text = MobileBy.AccessibilityId("id_dashboard_essentials_title");
+            ShowMore_button = MobileBy.AccessibilityId("id_dashboard_essentials_see_more_less_label");
+            OtherUsefulTools_text = MobileBy.AccessibilityId("id_dashboard_tools_title");
+            BillAndPayment = MobileBy.AccessibilityId("id_tray_menu_item_Bills & Payments");
+            ShowMore_button = MobileBy.AccessibilityId("id_dashboard_essentials_see_more_less_label");
+            OtherUsefulTools_text = MobileBy.AccessibilityId("id_dashboard_tools_title");
+            UnlockYourDevice_text = MobileBy.AccessibilityId("id_dashboard_tools_nac_label");
+            OffersPageHeader_button = MobileBy.AccessibilityId("id_dashboard_discover_card_image");
+            Support_button = MobileBy.AccessibilityId("id_tray_menu_item_Support");
+            SeeAllOffers_button = MobileBy.AccessibilityId("id_dashboard_discover_see_all_offers");
+            ClickNextBillTitle = MobileBy.AccessibilityId("id_dashboard_next_bill_title");
+            AmountDueTile = MobileBy.AccessibilityId("id_dashboard_amount_due_clickable");
+            DirectDebitTile = MobileBy.AccessibilityId("id_dashboard_direct_debit_clickable");
+            OtherUsefulTools = MobileBy.AccessibilityId("id_dashboard_tools_title");
+            ChangePlan_Button = MobileBy.AccessibilityId("d_dashboard_essentials_change_plan_clickable");
+            InactiveToUp = MobileBy.AccessibilityId("id_dashboard_my_usage_exception_noActiveTopUpOffer_text");
+            BalanceTitle = MobileBy.AccessibilityId("id_dashboard_balance_clickable");
+            TopUpHistoryTile = MobileBy.AccessibilityId("id_dashboard_topup_history_title");
+            PAYG_Tray = MobileBy.AccessibilityId("id_tray_menu_item_Top Up");
+            ActiveToUp = MobileBy.AccessibilityId("id_dashboard_my_usage_plan_name");
             Change_button = MobileBy.xpath("//XCUIElementTypeStaticText[@name=\"id_dashboard_change_subscription\"]");
-            SelectAccountAndSubscriptionTitle = new MobileBy.ByAccessibilityId("id_dashboard_change_subscription_title");
-            NewSubscription = By.xpath("(//android.view.ViewGroup[@content-desc=\"id_dashboard_change_subscription_subscriptions_item\"])[2]");
-            ChangeAccount = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.widget.Spinner");
-            AccountChanged = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.ListView/android.widget.CheckedTextView[1]");
-            Close_Button = By.xpath("//android.widget.ImageView[@content-desc=\"id_dashboard_change_subscription_close\"]");
-            Select_Button = new MobileBy.ByAccessibilityId("id_dashboard_change_subscription_select_button");
-            LastBileTile = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.widget.TextView[1]");
-            TvAddOnsTile = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.ViewGroup/android.widget.TextView[1]");
-            EssentialsSectionFixed_WithTV = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[6]/android.widget.TextView");
-            SupportTrayMenuPAYG = new MobileBy.ByAccessibilityId("id_tray_menu_item_Support");
-            AccountOverlaySetting_text = new MobileBy.ByAccessibilityId("Settings Account, personal details & app settings");
-            Account = new MobileBy.ByAccessibilityId("id_tray_menu_item_Account");
-            TopUpOverlayTitle_text = new MobileBy.ByAccessibilityId("STundefinedMainTitle");
-            TopUp_button = new MobileBy.ByAccessibilityId("id_tray_menu_item_Top Up");
-            TopUpHistory_button = new MobileBy.ByAccessibilityId("id_dashboard_topup_history_title");
-            TakeQuickTour_Tile=MobileBy.AccessibilityId("id_dashboard_whats_new_clickable");
+            SelectAccountAndSubscriptionTitle = MobileBy.AccessibilityId("id_dashboard_change_subscription_title");
+            NewSubscription = MobileBy.AccessibilityId("id_dashboard_change_subscription_subscriptions");
+            ChangeAccount = MobileBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.widget.Spinner");
+            AccountChanged = MobileBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.ListView/android.widget.CheckedTextView[1]");
+            Close_Button = MobileBy.xpath("//android.widget.ImageView[@content-desc=\"id_dashboard_change_subscription_close\"]");
+            Select_Button = MobileBy.AccessibilityId("Select");
+            LastBileTile = MobileBy.AccessibilityId("id_dashboard_last_bill_clickable");
+            TvAddOnsTile = MobileBy.AccessibilityId("id_dashboard_tv_addons_clickable");
+            EssentialsSectionFixed_WithTV = MobileBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[6]/android.widget.TextView");
+            SupportTrayMenuPAYG = MobileBy.AccessibilityId("id_tray_menu_item_Support");
+            AccountOverlaySetting_text = MobileBy.AccessibilityId("Settings Account, personal details & app settings");
+            Account = MobileBy.AccessibilityId("id_tray_menu_item_Account");
+            TopUpOverlayTitle_text = MobileBy.AccessibilityId("STundefinedMainTitle");
+            TopUp_button = MobileBy.AccessibilityId("id_tray_menu_item_Top Up");
+            TopUpHistory_button = MobileBy.AccessibilityId("id_dashboard_topup_history_title");
+            TakeQuickTour_Tile = MobileBy.AccessibilityId("id_dashboard_whats_new_clickable");
+            Essentials_ShowMore = MobileBy.AccessibilityId("id_dashboard_essentials_see_more_less");
         }
     }
 
@@ -302,6 +306,23 @@ public class Home {
     }
 
 
+    public By getEssentials_ShowMore() {
+        return Essentials_ShowMore;
+    }
+
+    public By getOtherUsefulTools() {
+        return OtherUsefulTools;
+    }
+
+    public By getSendWebText_button() {
+        return SendWebText_button;
+    }
+
+    public By getDevicesAndSim_button() {
+        return DevicesAndSim_button;
+    }
+
+
     //Check existence methods
     public void checkEssentialsSection() {
         ElementActions.performTouchAction(driver).swipeElementIntoView(BuyAndManageAddOns_button, TouchActions.SwipeDirection.UP);
@@ -330,11 +351,11 @@ public class Home {
     }
 
     public void checkOtherUsefulToolsSection() {
-        ElementActions.performTouchAction(driver).swipeElementIntoView(OtherUsefulTools, TouchActions.SwipeDirection.UP);
+        ElementActions.performTouchAction(driver).swipeElementIntoView(DevicesAndSim_button, TouchActions.SwipeDirection.UP);
         Assertions.assertElementExists(driver, OtherUsefulTools);
     }
 
-    public void swipeToOtherUsefulTools(){
+    public void swipeToOtherUsefulTools() {
         ElementActions.performTouchAction(driver).swipeElementIntoView(OtherUsefulTools, TouchActions.SwipeDirection.UP);
 
     }
@@ -485,8 +506,11 @@ public class Home {
         ElementActions.performTouchAction(driver).tap(SupportTrayMenuPAYG);
     }
 
-    public void pressSendWebTextOption(){
+    public void pressSendWebTextOption() {
         ElementActions.performTouchAction(driver).tap(SendWebText_button);
     }
 
+    public void pressNacRequestOption() {
+        ElementActions.performTouchAction(driver).tap(getUnlockYourDevice_text());
+    }
 }

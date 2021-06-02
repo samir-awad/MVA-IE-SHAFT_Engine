@@ -5,6 +5,7 @@ import Pages.Home;
 import Pages.Login;
 import Pages.Offers;
 import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.gui.element.ElementActions;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
@@ -54,7 +55,10 @@ public class TC287_ValidateOffersFixedUser {
 
     @Test(dependsOnMethods = "CheckOffersPageContent")
     public void CheckAnotherOffers(){
-        OffersPage.swipeToAnotherOffer();
+        //OffersPage.swipeToAnotherOffer();
+        ElementActions.waitForElementToBePresent(driver,OffersPage.getSwipeLeft_button(),5,true);
+        //ElementActions.performTouchAction(driver).tap(SwipeLeft_button);
+        ElementActions.click(driver,OffersPage.getSwipeLeft_button());
         Verifications.verifyElementExists(driver,OffersPage.getOffersHeader_text());
         Assertions.assertElementExists(driver,OffersPage.getFindOutMore_button());
     }

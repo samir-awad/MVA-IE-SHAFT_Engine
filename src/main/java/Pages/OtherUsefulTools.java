@@ -1,22 +1,23 @@
 package Pages;
 
-        import com.helger.commons.state.IEnabledIndicator;
-        import com.mysql.cj.xdevapi.Schema;
-        import com.shaft.gui.element.ElementActions;
-        import com.shaft.gui.element.TouchActions;
-        import com.shaft.validation.Verifications;
-        import groovy.util.ObservableSet;
-        import io.appium.java_client.MobileBy;
-        import jdk.jfr.Enabled;
-        import net.bytebuddy.asm.Advice;
-        import org.apache.xmlbeans.impl.xb.xsdschema.Element;
-        import org.aspectj.apache.bcel.classfile.annotation.ElementValue;
-        import org.openqa.selenium.By;
-        import org.openqa.selenium.WebDriver;
-        import org.testng.Assert;
-        import org.testng.asserts.Assertion;
+import com.helger.commons.state.IEnabledIndicator;
+import com.mysql.cj.xdevapi.Schema;
+import com.shaft.gui.element.ElementActions;
+import com.shaft.gui.element.TouchActions;
+import com.shaft.validation.Assertions;
+import com.shaft.validation.Verifications;
+import groovy.util.ObservableSet;
+import io.appium.java_client.MobileBy;
+import jdk.jfr.Enabled;
+import net.bytebuddy.asm.Advice;
+import org.apache.xmlbeans.impl.xb.xsdschema.Element;
+import org.aspectj.apache.bcel.classfile.annotation.ElementValue;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.asserts.Assertion;
 
-        import java.security.Key;
+import java.security.Key;
 
 public class OtherUsefulTools {
     private final WebDriver driver;
@@ -83,18 +84,18 @@ public class OtherUsefulTools {
             ChangeDate_Spinner = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.widget.Spinner");
             SelectedNewDateSpinner_Item = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.ListView/android.widget.CheckedTextView[3]");
             SendMessageNow_Text = By.xpath("(//android.widget.TextView[@content-desc=\"id_webtext_sending_options_title\"])[2]");
-            NacRequestPageHeader_Text = new MobileBy.ByAccessibilityId("id_dashboard_discover_card_image");
-            FewThingsFirst_Title= new MobileBy.ByAccessibilityId("id_nac_request_content_card_title");
-            FewThingsFirstContent1_Title=new MobileBy.ByAccessibilityId("id_dashboard_essentials_title");
+            NacRequestPageHeader_Text = new MobileBy.ByAccessibilityId("id_header_title_Request_NAC");
+            FewThingsFirst_Title = new MobileBy.ByAccessibilityId("id_nac_request_content_card_title");
+            FewThingsFirstContent1_Title = new MobileBy.ByAccessibilityId("id_dashboard_essentials_title");
             FewThingsUnlockedDescription_Text = new MobileBy.ByAccessibilityId("id_a_few_things_unlocked_description");
-            FewThingsFirstContent2_Title= new MobileBy.ByAccessibilityId("id_a_few_things_elegible_title");
-            FewThingsElegibleDescriptionBillPay_Text= new MobileBy.ByAccessibilityId("id_a_few_things_elegible_description_bill_pay");
-            FewThingsElegibleRule0_Text= new MobileBy.ByAccessibilityId("id_a_few_things_elegible_rule0");
-            FewThingsElegibleBillPayRule0_Text= new MobileBy.ByAccessibilityId("id_a_few_things_elegible_bill_pay_rule0");
-            FewThingsElegibleBillPayRule1_Text= new MobileBy.ByAccessibilityId("id_a_few_things_elegible_bill_pay_rule1");
-            FewThingsElegibleBillPayRule2_Text= new MobileBy.ByAccessibilityId("id_a_few_things_elegible_bill_pay_rule2");
-            FewThingsFirstContent2_Link= new MobileBy.ByAccessibilityId("id_a_few_things_first_FAQs_bill_pay");
-            NacFewThingsFirstContinue_Button= new MobileBy.ByAccessibilityId("id_nac_request_start_flow_button");
+            FewThingsFirstContent2_Title = new MobileBy.ByAccessibilityId("id_a_few_things_elegible_title");
+            FewThingsElegibleDescriptionBillPay_Text = new MobileBy.ByAccessibilityId("id_a_few_things_elegible_description_bill_pay");
+            FewThingsElegibleRule0_Text = new MobileBy.ByAccessibilityId("id_a_few_things_elegible_rule0");
+            FewThingsElegibleBillPayRule0_Text = new MobileBy.ByAccessibilityId("id_a_few_things_elegible_bill_pay_rule0");
+            FewThingsElegibleBillPayRule1_Text = new MobileBy.ByAccessibilityId("id_a_few_things_elegible_bill_pay_rule1");
+            FewThingsElegibleBillPayRule2_Text = new MobileBy.ByAccessibilityId("id_a_few_things_elegible_bill_pay_rule2");
+            FewThingsFirstContent2_Link = new MobileBy.ByAccessibilityId("id_a_few_things_first_FAQs_bill_pay");
+            NacFewThingsFirstContinue_Button = new MobileBy.ByAccessibilityId("id_nac_request_start_flow_button");
             RequestNAC_Title = new MobileBy.ByAccessibilityId("id_header_title_Request_NAC");
             NACRequestContentCard_Title = new MobileBy.ByAccessibilityId("id_nac_request_content_card_title");
             FewThingsFirstUnlocked_Title = new MobileBy.ByAccessibilityId("id_a_few_things_first_unlocked_title");
@@ -102,7 +103,7 @@ public class OtherUsefulTools {
             NACRequest_Button = new MobileBy.ByAccessibilityId("id_nac_request_button");
             NACRequestCancelFlow_Button = new MobileBy.ByAccessibilityId("id_nac_request_cancel_flow_button");
             InvalidIMEIMessage_Text = By.xpath("hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.widget.TextView[2]");
-            AccessContactsPermissionAllow_button= By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.Button[1]");
+            AccessContactsPermissionAllow_button = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.Button[1]");
         } else {
         }
     }
@@ -179,10 +180,10 @@ public class OtherUsefulTools {
     }
 
     public boolean checkSendButtonStillDisabled() {
-            if (ElementActions.isElementClickable(driver, Send_Button)) {
-                return false;
-            } else
-                return true;
+        if (ElementActions.isElementClickable(driver, Send_Button)) {
+            return false;
+        } else
+            return true;
     }
 
     public void pressSendingOptionsChangeButton() {
@@ -193,7 +194,7 @@ public class OtherUsefulTools {
         return ElementActions.isElementDisplayed(driver, SetMessageSendTime_Title);
     }
 
-    public void chooseAnotherTime(){
+    public void chooseAnotherTime() {
         ElementActions.performTouchAction(driver).tap(ChangeDate_Spinner);
         driver.findElement(By.xpath("SelectedNewDateSpinner_Item")).click();
         ElementActions.performTouchAction(driver).tap(SelectTimeOption_Button);
@@ -201,28 +202,16 @@ public class OtherUsefulTools {
 
     }
 
-    public boolean checkNacFewThingsFirstPageContent(){
-        if (ElementActions.isElementDisplayed(driver, FewThingsFirst_Title) &&
-                ElementActions.isElementDisplayed(driver, FewThingsFirstContent1_Title) &&
-                ElementActions.isElementDisplayed(driver, FewThingsUnlockedDescription_Text) &&
-                ElementActions.isElementDisplayed(driver, FewThingsFirstContent2_Title) &&
-                ElementActions.isElementDisplayed(driver, FewThingsElegibleDescriptionBillPay_Text) &&
-                ElementActions.isElementDisplayed(driver, FewThingsElegibleRule0_Text) &&
-                ElementActions.isElementDisplayed(driver, FewThingsElegibleBillPayRule0_Text) &&
-                ElementActions.isElementDisplayed(driver, FewThingsElegibleBillPayRule1_Text) &&
-                ElementActions.isElementDisplayed(driver, FewThingsElegibleBillPayRule2_Text) &&
-                ElementActions.isElementDisplayed(driver, FewThingsFirstContent2_Link) &&
-                ElementActions.isElementDisplayed(driver, NacFewThingsFirstContinue_Button))
-            return true;
-        else
-            return false;
-    }
-
-    public void pressNacFewThingsFirstContinueButton(){
+    public void checkNacFewThingsFirstPageContent() {
+        Assertions.assertElementExists(driver, NacRequestPageHeader_Text);
         ElementActions.performTouchAction(driver).tap(NacFewThingsFirstContinue_Button);
     }
 
-    public boolean checkNacRequestWithDevicePageContent(){
+    public void pressNacFewThingsFirstContinueButton() {
+        ElementActions.performTouchAction(driver).tap(NacFewThingsFirstContinue_Button);
+    }
+
+    public boolean checkNacRequestWithDevicePageContent() {
         if (ElementActions.isElementDisplayed(driver, RequestNAC_Title) &&
                 ElementActions.isElementDisplayed(driver, NACRequestContentCard_Title) &&
                 ElementActions.isElementDisplayed(driver, FewThingsFirstUnlocked_Title) &&
@@ -234,20 +223,20 @@ public class OtherUsefulTools {
             return false;
     }
 
-    public void addAnInvalidImei(){
-        ElementActions.type(driver, FewThingsFirstIMEI_Input , "123abc");
+    public void addAnInvalidImei() {
+        ElementActions.type(driver, FewThingsFirstIMEI_Input, "123abc");
         ElementActions.keyPress(driver, FewThingsFirstIMEI_Input, "Enter");
     }
 
-    public void addAValidImeiButNotExistingInTheSystem(){
-        ElementActions.type(driver, FewThingsFirstIMEI_Input , "2720180139982648935301190402004372");
+    public void addAValidImeiButNotExistingInTheSystem() {
+        ElementActions.type(driver, FewThingsFirstIMEI_Input, "2720180139982648935301190402004372");
         ElementActions.keyPress(driver, FewThingsFirstIMEI_Input, "Enter");
     }
 
-    public boolean checkErrorMessageAndThatNacRequestContinueButtonStillDisabled(){
+    public boolean checkErrorMessageAndThatNacRequestContinueButtonStillDisabled() {
 
         return ElementActions.isElementDisplayed(driver, InvalidIMEIMessage_Text)
-                && !ElementActions.isElementClickable(driver, NACRequest_Button );
+                && !ElementActions.isElementClickable(driver, NACRequest_Button);
 
     }
 
@@ -255,11 +244,11 @@ public class OtherUsefulTools {
         driver.findElement(FewThingsFirstIMEI_Input).clear();
     }
 
-    public void pressWebTextHeaderCloseButton(){
+    public void pressWebTextHeaderCloseButton() {
         ElementActions.performTouchAction(driver).tap(WebtextHeaderClose_Button);
     }
 
-    public void acceptAccessYourContactsPermissions(){
+    public void acceptAccessYourContactsPermissions() {
         ElementActions.performTouchAction(driver).tap(AccessContactsPermissionAllow_button);
     }
 }

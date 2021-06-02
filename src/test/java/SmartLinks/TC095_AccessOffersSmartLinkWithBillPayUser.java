@@ -7,6 +7,7 @@ import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -22,14 +23,6 @@ public class TC095_AccessOffersSmartLinkWithBillPayUser
 
     @BeforeClass
     public void beforeClass(){
-        System.setProperty("executionAddress", "0.0.0.0:4723");
-        System.setProperty("targetOperatingSystem", "iOS");
-        System.setProperty("mobile_platformVersion", "13.5.1");
-        System.setProperty("mobile_automationName", "XCUITest");
-        System.setProperty("mobile_udid", "00008030-001C4D5C1E33802E");
-        System.setProperty("mobile_bundleId", "com.VodafoneIreland.MyVodafone");
-        System.setProperty("mobile_derivedDataPath","/Users/mva-ireland/Library/Developer/Xcode/DerivedData/WebDriverAgent-ciegwgvxzxdrqthilmrmczmqvrgu");
-       // System.setProperty("mobile_app",System.getProperty("user.dir")+"//App//97_AUTO.ipa");
         driver = BrowserFactory.getBrowser();
         smartLinksPage = new SmartLinks(driver);
         LoginPage = new Login(driver);
@@ -64,9 +57,5 @@ public class TC095_AccessOffersSmartLinkWithBillPayUser
         Assertions.assertElementAttribute(driver,OffersPage.getOffersHeader_text(),
                 "text","Offers","Checking offers header");
     }
-
-
-
-
 
 }
