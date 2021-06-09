@@ -1,5 +1,6 @@
 package BillsPayments;
 
+import FileReaders.jsonReader;
 import Pages.BillsPayments;
 import Pages.Home;
 import Pages.Login;
@@ -16,21 +17,20 @@ public class TC121_CurrentSpendValidationBP {
     private Login LoginPage;
     private Home HomePage;
     private BillsPayments BillsPaymentsPage;
-  @BeforeClass
+
+    @BeforeClass
     public void beforeClass() {
-        //System.setProperty("mobile_app", FileActions.getAbsolutePath(System.getProperty("testDataFolderPath") + "apk/", "DIG18180Fix.apk"));
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        BillsPaymentsPage=new BillsPayments(driver);
-        //LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
-        //This method will be used to login before every test case to login with
-        //With different users credentials must be changed
+        BillsPaymentsPage = new BillsPayments(driver);
+        LoginPage.acceptTermsAndConditions().login(jsonReader.getUserName("BillPayUser.username"), jsonReader.getPassword("BillPayUser.password")).acceptPermissions();
     }
-    @Test
-    public void ValidateCurrentSpendBP(){
 
-        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+    @Test
+    public void ValidateCurrentSpendBP() {
+
+        Verifications.verifyElementExists(driver, HomePage.getCheckTheVodafoneLogo());
         Verifications.verifyTrue(HomePage.checkNextBillTile());
         HomePage.pressNextBillTile();
         Verifications.verifyTrue(BillsPaymentsPage.checkCurrentSpendOverlay());

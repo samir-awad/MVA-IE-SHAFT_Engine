@@ -41,7 +41,7 @@ public class TC083A_ValidateSuccessfulSendWebTextToMoreThatOneRecipientUsingBill
     }
     @Test(dependsOnMethods = {"checkOtherUsefulToolsSection"})
     public void pressSendWebtextOption() {
-        //HomePage.pressSendWebtextOption();
+        HomePage.pressSendWebTextOption();
         Assertions.assertTrue(OtherUsefulToolsPage.checkWebTextForm());
         Verifications.verifyTrue(OtherUsefulToolsPage.checkWebtextPageHeader());
         OtherUsefulToolsPage.fillOutTheWebtextFormWithMoreThanOneRecipient();

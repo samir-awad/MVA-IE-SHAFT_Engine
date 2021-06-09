@@ -47,9 +47,19 @@
 		"password": "Mountainview01!"
 	},
 
-	"Wrong Password": {
+	"WrongPassword": {
 		"username": "0879512912",
 		"password": "Mountainview01"
+	},
+
+	"WrongUsername": {
+		"username": "s@g",
+		"password": "Mountainview01"
+	},
+
+	"PAYGWithoutTopUpOffer": {
+		"username": "0871711384",
+		"password": "Aa123456!"
 	},
 
 	"BillPayUser": {

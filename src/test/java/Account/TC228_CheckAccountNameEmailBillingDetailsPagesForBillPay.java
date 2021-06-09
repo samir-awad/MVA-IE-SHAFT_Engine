@@ -16,44 +16,63 @@ public class TC228_CheckAccountNameEmailBillingDetailsPagesForBillPay {
     private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
-    private Account  AccountPage;
+    private Account AccountPage;
     private JSONFileManager users;
 
     @BeforeClass
     public void beforeClass() {
-        //System.setProperty("mobile_app", FileActions.getAbsolutePath(System.getProperty("testDataFolderPath") + "apk/", "DIG18180Fix.apk"));
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        AccountPage=new Account(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        AccountPage = new Account(driver);
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("BillPayUser.username");
         String password = users.getTestData("BillPayUser.password");
-        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
-        // LoginPage.acceptPermissions();
+        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
     }
+
     @Test
-    public void CheckAccountNameEmailBillingDetailsPagesForBillPay(){
-        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+    public void CheckThatImOnHomePage() {
+        Verifications.verifyElementExists(driver, HomePage.getCheckTheVodafoneLogo());
+    }
+
+    @Test(dependsOnMethods = "CheckThatImOnHomePage")
+    public void CheckAccountOverlay() {
         AccountPage.pressAccountTrayMenuOption();
-        Verifications.verifyElementExists(driver,AccountPage.getCheckAccountOverlay());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckAccountOverlay());
+    }
+
+    @Test(dependsOnMethods = "CheckAccountOverlay")
+    public void CheckAccountNameAndEmailOption() {
         AccountPage.pressAccountSettingOption();
         AccountPage.pressAccountNameAndEmailOption();
-        Verifications.verifyElementExists(driver,AccountPage.getCheckAccountNameAndEmailPageHeader());
-        Verifications.verifyElementExists(driver,AccountPage.getCheckAccountNameAndEmailPageContent());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckAccountNameAndEmailPageHeader());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckAccountNameAndEmailPageContent());
         AccountPage.fillEmailInputField();
-        Verifications.verifyElementAttribute(driver,AccountPage.getSaveButtonBecomesEnabled(),
-                "enabled","true","Save Button Becomes Enabled ");
+        Verifications.verifyElementAttribute(driver, AccountPage.getSaveButtonBecomesEnabled(),
+                "enabled", "true", "Save Button Becomes Enabled ");
+    }
+
+    @Test(dependsOnMethods = "CheckAccountNameAndEmailOption")
+    public void CheckBillingOption() {
         AccountPage.pressAccountHeaderBackChevron();
         AccountPage.pressBillingDetailsOption();
-        Verifications.verifyElementExists(driver,AccountPage.getCheckBillingDetailsPageHeader());
-        Verifications.verifyElementExists(driver,AccountPage.getCheckBillingDetailsBillingAddressSection());
-        Verifications.verifyElementExists(driver,AccountPage.getCheckBillingDetailsBillingPreferencesSection());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckBillingDetailsPageHeader());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckBillingDetailsBillingAddressSection());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckBillingDetailsBillingPreferencesSection());
+    }
+
+    @Test(dependsOnMethods = "CheckBillingOption")
+    public void CheckAddAddressManuallyAndSearchForYourAddressLinks() {
         AccountPage.pressEnterAddressManuallyLink();
-        Verifications.verifyElementExists(driver,AccountPage.getCheckBillingAddressSectionFieldsForManualAddress());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckBillingAddressSectionFieldsForManualAddress());
         AccountPage.pressSearchForYourAddressLink();
-        Verifications.verifyElementExists(driver,AccountPage.getCheckBillingDetailsBillingAddressSection());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckBillingDetailsBillingAddressSection());
+    }
+
+    @Test(dependsOnMethods = "CheckAddAddressManuallyAndSearchForYourAddressLinks")
+    public void CloseAndGoToHomePage() {
         AccountPage.pressBillingDetailsHeaderCloseButton();
-        Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+        Assertions.assertElementExists(driver, HomePage.getCheckTheVodafoneLogo());
     }
 }

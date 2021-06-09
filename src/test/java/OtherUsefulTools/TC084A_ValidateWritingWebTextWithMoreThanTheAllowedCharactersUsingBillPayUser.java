@@ -41,7 +41,7 @@ public class TC084A_ValidateWritingWebTextWithMoreThanTheAllowedCharactersUsingB
         }
         @Test(dependsOnMethods = {"checkOtherUsefulToolsSection"})
         public void pressSendWebtextOption() {
-            //HomePage.pressSendWebtextOption();
+            HomePage.pressSendWebTextOption();
             Assertions.assertTrue(OtherUsefulToolsPage.checkWebTextForm());
             Verifications.verifyTrue(OtherUsefulToolsPage.checkWebtextPageHeader());
             OtherUsefulToolsPage.fillInTheMessageWithMoreThanTheAllowedCharacters();

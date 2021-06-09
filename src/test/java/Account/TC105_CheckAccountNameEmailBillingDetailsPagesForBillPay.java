@@ -28,14 +28,14 @@ public class TC105_CheckAccountNameEmailBillingDetailsPagesForBillPay {
     }
 
     @Test
-    public void Login(){
+    public void Login() {
         users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("BillPayUser.username");
         String password = users.getTestData("BillPayUser.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
     }
 
-    @Test
+    @Test(dependsOnMethods = "Login")
     public void CheckAccountNameEmailBillingDetailsPagesForBillPay() {
         Verifications.verifyElementExists(driver, HomePage.getCheckTheVodafoneLogo());
         AccountPage.pressAccountTrayMenuOption();

@@ -25,54 +25,59 @@ public class TC209_PersonalDetailsManagePersonalInformationPageValidationForPAYG
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        AccountPage=new Account(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        AccountPage = new Account(driver);
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("PAYGUser.username");
         String password = users.getTestData("PAYGUser.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
         // LoginPage.acceptPermissions();
     }
+
     @Test
     public void CheckAccountView() {
         Verifications.verifyElementExists(driver, HomePage.getCheckTheVodafoneLogo());
         AccountPage.pressAccountTrayMenuOption();
-        Assertions.assertElementExists(driver,AccountPage.getCheckAccountOverlay());
+        Assertions.assertElementExists(driver, AccountPage.getCheckAccountOverlay());
     }
 
     @Test(dependsOnMethods = "CheckAccountView")
     public void CheckAccountSetting() {
         AccountPage.pressAccountSettingOption();
-        Assertions.assertElementExists(driver,AccountPage.getCheckAccountSettingsPageHeader());
+        Assertions.assertElementExists(driver, AccountPage.getCheckAccountSettingsPageHeader());
     }
-     @Test(dependsOnMethods = "CheckAccountSetting")
-     public void CheckPersonalDetailsSection() {
-         AccountPage.pressPersonalDetailsSection();
-         AccountPage.pressManagePersonalInformationSection();
-         Verifications.verifyElementExists(driver, AccountPage.getCheckManagePersonalInformationPageHeader());
-         Verifications.verifyElementExists(driver, AccountPage.getCheckManagePersonalInformationPageContent());
-         AccountPage.pressManagePersonalInformationEditButton();
-         Assertions.assertElementExists(driver,AccountPage.getCheckManagePersonalInformationEditContent());
-     }
+
+    @Test(dependsOnMethods = "CheckAccountSetting")
+    public void CheckPersonalDetailsSection() {
+        AccountPage.pressPersonalDetailsSection();
+        AccountPage.pressManagePersonalInformationSection();
+        Verifications.verifyElementExists(driver, AccountPage.getCheckManagePersonalInformationPageHeader());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckManagePersonalInformationPageContent());
+        AccountPage.pressManagePersonalInformationEditButton();
+        Assertions.assertElementExists(driver, AccountPage.getCheckManagePersonalInformationEditContent());
+    }
 
 
-      @Test(dependsOnMethods = "CheckPersonalDetailsSection")
-      public void CheckDownloadDataRequest() {
-          AccountPage.pressDownloadDataRequestForm();
-          Verifications.verifyElementExists(driver, AccountPage.getCheckSubjectAccessRequestFormPdfIsOpened());
-          AccountPage.pressPdfBackButton();
-      }
-       @Test(dependsOnMethods = "CheckDownloadDataRequest")
-       public void CheckDeletedDataRequest() {
-           AccountPage.pressDeletionRequestForm();
-           Assertions.assertTrue(AccountPage.CheckDeletionRequestFormExternalPage(), "Checking if external page is opened");
-           AccountPage.goBackToTheRequestInformationPage();
-       }
-      @Test(dependsOnMethods = "CheckDeletedDataRequest")
-        public void CheckMangePersonalInformationPage() {
+    @Test(dependsOnMethods = "CheckPersonalDetailsSection")
+    public void CheckDownloadDataRequest() {
+        AccountPage.pressDownloadDataRequestForm();
+        Verifications.verifyElementExists(driver, AccountPage.getCheckSubjectAccessRequestFormPdfIsOpened());
+        driver.navigate().back();
+        //AccountPage.pressPdfBackButton();
+    }
+
+    @Test(dependsOnMethods = "CheckDownloadDataRequest")
+    public void CheckDeletedDataRequest() {
+        AccountPage.pressDeletionRequestForm();
+        Assertions.assertTrue(AccountPage.CheckDeletionRequestFormExternalPage(), "Checking if external page is opened");
+        AccountPage.goBackToTheRequestInformationPage();
+    }
+
+    @Test(dependsOnMethods = "CheckDeletedDataRequest")
+    public void CheckMangePersonalInformationPage() {
         AccountPage.pressBackButtonForTheRequestInformationPage();
-        Verifications.verifyElementExists(driver,AccountPage.getCheckPersonalDetailsPageHeader());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckPersonalDetailsPageHeader());
         AccountPage.pressManagePersonalInformationSection();
         AccountPage.pressCloseButtonForManagePersonalInformationSection();
-        Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+        Assertions.assertElementExists(driver, HomePage.getCheckTheVodafoneLogo());
     }
 }

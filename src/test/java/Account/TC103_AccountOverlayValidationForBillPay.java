@@ -1,7 +1,6 @@
 package Account;
 
 import Pages.Account;
-import Pages.ChangePlan;
 import Pages.Home;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;

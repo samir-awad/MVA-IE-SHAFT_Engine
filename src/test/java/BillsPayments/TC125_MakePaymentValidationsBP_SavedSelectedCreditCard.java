@@ -1,5 +1,6 @@
 package BillsPayments;
 
+import FileReaders.jsonReader;
 import Pages.BillsPayments;
 import Pages.Home;
 import Pages.Login;
@@ -19,14 +20,11 @@ public class TC125_MakePaymentValidationsBP_SavedSelectedCreditCard {
     private BillsPayments BillsPaymentsPage;
     @BeforeClass
     public void beforeClass() {
-        System.setProperty("mobile_app", FileActions.getAbsolutePath(System.getProperty("testDataFolderPath") + "apk/", "DIG18180Fix.apk"));
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         BillsPaymentsPage=new BillsPayments(driver);
-       // LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
-        //This method will be used to login before every test case to login with
-        //With different users credentials must be changed
+        LoginPage.acceptTermsAndConditions().login(jsonReader.getUserName("SavedCC.username"),jsonReader.getPassword("SavedCC.password")).acceptPermissions();
     }
     @Test
     public void MakePaymentValidationsBP_SavedSelectedCreditCard(){

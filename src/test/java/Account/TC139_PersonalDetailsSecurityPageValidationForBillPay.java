@@ -25,23 +25,26 @@ public class TC139_PersonalDetailsSecurityPageValidationForBillPay {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        AccountPage=new Account(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        AccountPage = new Account(driver);
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("BillPayUser.username");
         String password = users.getTestData("BillPayUser.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();// LoginPage.acceptPermissions();
     }
+
     @Test
     public void CheckAccountView() {
         Verifications.verifyElementExists(driver, HomePage.getCheckTheVodafoneLogo());
         AccountPage.pressAccountTrayMenuOption();
-        Assertions.assertElementExists(driver,AccountPage.getCheckAccountOverlay());
+        Assertions.assertElementExists(driver, AccountPage.getCheckAccountOverlay());
     }
+
     @Test(dependsOnMethods = "CheckAccountView")
     public void CheckAccountSetting() {
         AccountPage.pressAccountSettingOption();
-        Assertions.assertElementExists(driver,AccountPage.getCheckAccountSettingsPageHeader());
+        Assertions.assertElementExists(driver, AccountPage.getCheckAccountSettingsPageHeader());
     }
+
     @Test(dependsOnMethods = "CheckAccountSetting")
     public void CheckSecuritySection() {
         AccountPage.pressPersonalDetailsSection();
@@ -52,23 +55,25 @@ public class TC139_PersonalDetailsSecurityPageValidationForBillPay {
         Verifications.verifyElementExists(driver, AccountPage.getCheckChangePasswordPageHeader());
         Verifications.verifyElementExists(driver, AccountPage.getCheckChangePasswordPageContent());
         AccountPage.pressChangePasswordCancelButton();
-        Assertions.assertElementExists(driver,AccountPage.getCheckSecurityPageHeader());
+        Assertions.assertElementExists(driver, AccountPage.getCheckSecurityPageHeader());
     }
+
     @Test(dependsOnMethods = "CheckSecuritySection")
     public void ValidateChangePinView() {
         AccountPage.pressSecurityEditPinButton();
         Verifications.verifyElementExists(driver, AccountPage.getCheckChangePinPageHeader());
         Verifications.verifyElementExists(driver, AccountPage.getCheckChangePinPageContent());
         AccountPage.pressChangePinCancelButton();
-        Assertions.assertElementExists(driver,AccountPage.getCheckSecurityPageHeader());
+        Assertions.assertElementExists(driver, AccountPage.getCheckSecurityPageHeader());
     }
+
     @Test(dependsOnMethods = "ValidateChangePinView")
     public void ValidateBackToDashBoard() {
         AccountPage.pressBackButtonForSecurityPage();
         Verifications.verifyElementExists(driver, AccountPage.getCheckPersonalDetailsPageHeader());
         AccountPage.pressSecuritySection();
         AccountPage.pressCloseButtonForSecurityPage();
-        Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+        Assertions.assertElementExists(driver, HomePage.getCheckTheVodafoneLogo());
     }
 
 }

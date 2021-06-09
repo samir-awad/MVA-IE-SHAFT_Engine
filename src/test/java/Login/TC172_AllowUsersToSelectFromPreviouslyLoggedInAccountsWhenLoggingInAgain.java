@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class TC172_AllowUsersToSelectFromPreviouslyLoggedInAccountsWhenLoggingInAgain{
+public class TC172_AllowUsersToSelectFromPreviouslyLoggedInAccountsWhenLoggingInAgain {
 
     private WebDriver driver;
     private Login LoginPage;
@@ -22,15 +22,16 @@ public class TC172_AllowUsersToSelectFromPreviouslyLoggedInAccountsWhenLoggingIn
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
     }
+
     @Test()
     public void Check_And_Accept_And_Continue_In_Terms_And_Conditions() {
-        Assertions.assertElementExists(driver,LoginPage.getTermsAndConditions_Header());
+        Assertions.assertElementExists(driver, LoginPage.getTermsAndConditions_Header());
         LoginPage.acceptTermsAndConditions();
     }
 
     @Test(dependsOnMethods = {"Check_And_Accept_And_Continue_In_Terms_And_Conditions"})
-    public void Check_That_Im_On_Registration_And_Login_Page(){
-        Assertions.assertElementExists(driver,LoginPage.getVodafone_Logo(),"I'm on Register And Login Page");
+    public void Check_That_Im_On_Registration_And_Login_Page() {
+        Assertions.assertElementExists(driver, LoginPage.getVodafone_Logo(), "I'm on Register And Login Page");
 
     }
 

@@ -6,6 +6,7 @@ import Pages.Home;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Assertions;
+import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -45,7 +46,7 @@ public class TC022_ValidateBillPayCustomer {
 
     @Test(dependsOnMethods = "CheckAmountDueTileIsDisplayed")
     public void CheckDirectDebitIsDisplayed() {
-        Assertions.assertElementExists(driver, HomePage.getDirectDebitTile());
+        Verifications.verifyElementExists(driver, HomePage.getDirectDebitTile());
     }
 
     @Test(dependsOnMethods = "CheckDirectDebitIsDisplayed")

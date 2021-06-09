@@ -25,22 +25,24 @@ public class TC174_CheckBiometricsOptionForBillPay {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        AccountPage=new Account(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        AccountPage = new Account(driver);
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("BillPayUser.username");
         String password = users.getTestData("BillPayUser.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();// LoginPage.acceptPermissions();
     }
+
     @Test
     public void CheckAccountView() {
         Verifications.verifyElementExists(driver, HomePage.getCheckTheVodafoneLogo());
         AccountPage.pressAccountTrayMenuOption();
-        Assertions.assertElementExists(driver,AccountPage.getCheckAccountOverlay());
+        Assertions.assertElementExists(driver, AccountPage.getCheckAccountOverlay());
     }
+
     @Test(dependsOnMethods = "CheckAccountView")
     public void CheckAccountSetting() {
         AccountPage.pressAccountSettingOption();
         Verifications.verifyElementExists(driver, AccountPage.getCheckAccountSettingsPageHeader());
-        Assertions.assertElementExists(driver,AccountPage.getCheckBiometricsOption());
+        Assertions.assertElementExists(driver, AccountPage.getCheckBiometricsOption());
     }
 }

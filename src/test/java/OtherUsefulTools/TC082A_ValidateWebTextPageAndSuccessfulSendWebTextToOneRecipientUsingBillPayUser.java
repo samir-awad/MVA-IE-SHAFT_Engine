@@ -45,6 +45,7 @@ public class TC082A_ValidateWebTextPageAndSuccessfulSendWebTextToOneRecipientUsi
     }
     @Test(dependsOnMethods = {"checkOtherUsefulToolsSection"})
     public void pressSendWebTextOption() {
+        ElementActions.performTouchAction(driver).swipeElementIntoView(HomePage.getSendWebText_button(), TouchActions.SwipeDirection.UP);
         HomePage.pressSendWebTextOption();
         Assertions.assertElementAttribute(driver,OtherUsefulToolsPage.getWebtextPageHeader_Text(),
                 "text","Webtext");

@@ -16,37 +16,56 @@ public class TC203_CheckAccountNamePageForPAYGUser {
     private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
-    private Account  AccountPage;
+    private Account AccountPage;
     private JSONFileManager users;
 
     @BeforeClass
     public void beforeClass() {
-        //System.setProperty("mobile_app", FileActions.getAbsolutePath(System.getProperty("testDataFolderPath") + "apk/", "DIG18180Fix.apk"));
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        AccountPage=new Account(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        AccountPage = new Account(driver);
+
+    }
+
+    @Test
+    public void Login() {
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("PAYGUser.username");
         String password = users.getTestData("PAYGUser.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
-        // LoginPage.acceptPermissions();
     }
-    @Test
-    public void CheckAccountNamePageForPAYGUser(){
-        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+
+    @Test(dependsOnMethods = "Login")
+    public void CheckThatImOnHomePage() {
+        Verifications.verifyElementExists(driver, HomePage.getCheckTheVodafoneLogo());
+    }
+
+    @Test(dependsOnMethods = "CheckThatImOnHomePage")
+    public void CheckAccountOverlayForPAYGUser() {
         AccountPage.pressAccountTrayMenuOption();
-        Verifications.verifyElementExists(driver,AccountPage.getCheckAccountOverlay());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckAccountOverlay());
+    }
+
+    @Test(dependsOnMethods = "CheckAccountOverlayForPAYGUser")
+    public void CheckAccountOptionPage() {
         AccountPage.pressAccountSettingOption();
-        AccountPage.pressAccountNameAndEmailOption();
-        Verifications.verifyElementExists(driver,AccountPage.getCheckAccountNameAndEmailPageHeader());
-        Verifications.verifyElementExists(driver,AccountPage.getCheckAccountNameAndEmailPageContent());
+        AccountPage.pressAccountNameOption();
+        Verifications.verifyElementExists(driver, AccountPage.getCheckAccountNamePageHeader());
+    }
+
+    @Test(dependsOnMethods = "CheckAccountOptionPage")
+    public void FillAccountNameField() {
         AccountPage.fillAccountNameField();
-        Verifications.verifyElementAttribute(driver,AccountPage.getSaveButtonBecomesEnabled(),
-                "enabled","true","Save Button Becomes Enabled ");
+        Verifications.verifyElementAttribute(driver, AccountPage.getSaveButtonBecomesEnabled(),
+                "enabled", "true", "Save Button Becomes Enabled ");
         AccountPage.pressAccountHeaderBackChevron();
-        AccountPage.pressAccountNameAndEmailOption();
+        AccountPage.pressAccountNameOption();
+    }
+
+    @Test(dependsOnMethods = "FillAccountNameField")
+    public void BackToDashboard() {
         AccountPage.pressAccountHeaderCloseButton();
-        Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
-        }
+        Assertions.assertElementExists(driver, HomePage.getCheckTheVodafoneLogo());
+    }
 }

@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class TC07_LoginWithBillPayLegacyCustomer{
+public class TC07_LoginWithBillPayLegacyCustomer {
 
     private WebDriver driver;
     private Login LoginPage;
@@ -24,18 +24,18 @@ public class TC07_LoginWithBillPayLegacyCustomer{
 
     @Test()
     public void Check_And_Accept_And_Continue_In_Terms_And_Conditions() {
-        Assertions.assertElementExists(driver,LoginPage.getTermsAndConditions_Header(), Assertions.AssertionType.POSITIVE);
+        Assertions.assertElementExists(driver, LoginPage.getTermsAndConditions_Header(), Assertions.AssertionType.POSITIVE);
         LoginPage.acceptTermsAndConditions();
     }
 
     @Test(dependsOnMethods = {"Check_And_Accept_And_Continue_In_Terms_And_Conditions"})
-    public void Check_Vodafone_Logo(){
-        Assertions.assertElementExists(driver,LoginPage.getVodafone_Logo(), Assertions.AssertionType.POSITIVE);
+    public void Check_Vodafone_Logo() {
+        Assertions.assertElementExists(driver, LoginPage.getVodafone_Logo(), Assertions.AssertionType.POSITIVE);
     }
 
     @Test()
-    public void LoginWithLegacyBillPayUser() throws IOException, ParseException {
+    public void LoginWithLegacyBillPayUser() {
         LoginPage.login(jsonReader.getUserName("LegacyBillPay.username"), jsonReader.getPassword("LegacyBillPay.password")); // need Legacy User for Bill Pay
-        Assertions.assertElementExists(driver,LoginPage.getLegacyOverlay_title(), Assertions.AssertionType.POSITIVE);
+        Assertions.assertElementExists(driver, LoginPage.getLegacyOverlay_title(), Assertions.AssertionType.POSITIVE);
     }
 }

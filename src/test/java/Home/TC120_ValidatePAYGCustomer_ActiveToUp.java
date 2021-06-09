@@ -1,5 +1,6 @@
 package Home;
 
+import FileReaders.jsonReader;
 import Pages.Home;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
@@ -17,13 +18,10 @@ public class TC120_ValidatePAYGCustomer_ActiveToUp {
 
     @BeforeClass
     public void beforeClass() {
-        //System.setProperty("mobile_app", FileActions.getAbsolutePath(System.getProperty("testDataFolderPath") + "apk/", "DIG18180Fix.apk"));
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        //LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
-        //This method will be used to login before every test case to login with
-        //With different users credentials must be changed
+        LoginPage.acceptTermsAndConditions().login(jsonReader.getUserName("PAYGVoucher.username"), jsonReader.getPassword("PAYGVoucher.password")).acceptPermissions();
     }
 
     @Test
@@ -31,37 +29,37 @@ public class TC120_ValidatePAYGCustomer_ActiveToUp {
         Assertions.assertElementExists(driver, HomePage.getCheckTheVodafoneLogo());
     }
 
-    @Test
+    @Test(dependsOnMethods = "CheckThatImOnHome")
     public void CheckActiveTopupIsDisplayed() {
         Assertions.assertElementExists(driver, HomePage.getActiveToUp());
     }
 
-    @Test
+    @Test(dependsOnMethods = "CheckActiveTopupIsDisplayed")
     public void CheckBalanceTileIsDisplayed() {
         Assertions.assertElementExists(driver, HomePage.getBalanceTitle());
     }
 
-    @Test
+    @Test(dependsOnMethods = "CheckBalanceTileIsDisplayed")
     public void CheckTopUpHistoryTileIsDisplayed() {
         Assertions.assertElementExists(driver, HomePage.getTopUpHistoryTile());
     }
 
-    @Test
+    @Test(dependsOnMethods = "CheckTopUpHistoryTileIsDisplayed")
     public void CheckDiscoverySection() {
         HomePage.checkDiscoverySection();
     }
 
-    @Test
+    @Test(dependsOnMethods = "CheckDiscoverySection")
     public void CheckEssentialsSection() {
         HomePage.checkEssentialsSection();
     }
 
-    @Test
+    @Test(dependsOnMethods = "CheckEssentialsSection")
     public void CheckOtherUsefulToolsSection() {
         HomePage.checkOtherUsefulToolsSection();
     }
 
-    @Test
+    @Test(dependsOnMethods = "CheckOtherUsefulToolsSection")
     public void CheckTopupInTrayMenu() {
         Assertions.assertElementExists(driver, HomePage.getPAYG_Tray());
     }

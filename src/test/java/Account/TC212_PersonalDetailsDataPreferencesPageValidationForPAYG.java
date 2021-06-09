@@ -25,44 +25,49 @@ public class TC212_PersonalDetailsDataPreferencesPageValidationForPAYG {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        AccountPage=new Account(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        AccountPage = new Account(driver);
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("PAYGUser.username");
         String password = users.getTestData("PAYGUser.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();// LoginPage.acceptPermissions();
     }
+
     @Test
     public void CheckAccountView() {
         Verifications.verifyElementExists(driver, HomePage.getCheckTheVodafoneLogo());
         AccountPage.pressAccountTrayMenuOption();
-        Assertions.assertElementExists(driver,AccountPage.getCheckAccountOverlay());
+        Assertions.assertElementExists(driver, AccountPage.getCheckAccountOverlay());
     }
+
     @Test(dependsOnMethods = "CheckAccountView")
     public void CheckAccountSetting() {
         AccountPage.pressAccountSettingOption();
-        Assertions.assertElementExists(driver,AccountPage.getCheckAccountSettingsPageHeader());
+        Assertions.assertElementExists(driver, AccountPage.getCheckAccountSettingsPageHeader());
     }
-     @Test(dependsOnMethods = "CheckAccountSetting")
-     public void CheckDataPreferencesSection() {
-         AccountPage.pressPersonalDetailsSection();
-         AccountPage.pressDataPreferencesSection();
-         Verifications.verifyElementExists(driver, AccountPage.getCheckDataPreferencesPageHeader());
-         Verifications.verifyElementExists(driver, AccountPage.getCheckDataPreferencesPageContent());
-         AccountPage.pressDataPreferencesEditButton();
-         Assertions.assertElementExists(driver,AccountPage.getCheckDataPreferencesEditContent());
-     }
-      @Test(dependsOnMethods = "CheckDataPreferencesSection")
-      public void ValidateTheDataPreferencesPage() {
-          AccountPage.pressDataPreferencesCancelButton();
-          Verifications.verifyElementExists(driver, AccountPage.getCheckDataPreferencesPageContent());
-          AccountPage.pressBackButtonForDataPreferences();
-          Assertions.assertElementExists(driver,AccountPage.getCheckPersonalDetailsPageHeader());
-      }
-       @Test(dependsOnMethods = "ValidateTheDataPreferencesPage")
-       public void ValidateBackToDashBoard() {
-           AccountPage.pressDataPreferencesSection();
-           AccountPage.pressCloseButtonForDataPreference();
-           Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
-       }
+
+    @Test(dependsOnMethods = "CheckAccountSetting")
+    public void CheckDataPreferencesSection() {
+        AccountPage.pressPersonalDetailsSection();
+        AccountPage.pressDataPreferencesSection();
+        Verifications.verifyElementExists(driver, AccountPage.getCheckDataPreferencesPageHeader());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckDataPreferencesPageContent());
+        AccountPage.pressDataPreferencesEditButton();
+        Assertions.assertElementExists(driver, AccountPage.getCheckDataPreferencesEditContent());
+    }
+
+    @Test(dependsOnMethods = "CheckDataPreferencesSection")
+    public void ValidateTheDataPreferencesPage() {
+        AccountPage.pressDataPreferencesCancelButton();
+        Verifications.verifyElementExists(driver, AccountPage.getCheckDataPreferencesPageContent());
+        AccountPage.pressBackButtonForDataPreferences();
+        Assertions.assertElementExists(driver, AccountPage.getCheckPersonalDetailsPageHeader());
+    }
+
+    @Test(dependsOnMethods = "ValidateTheDataPreferencesPage")
+    public void ValidateBackToDashBoard() {
+        AccountPage.pressDataPreferencesSection();
+        AccountPage.pressCloseButtonForDataPreference();
+        Assertions.assertElementExists(driver, HomePage.getCheckTheVodafoneLogo());
+    }
 
 }
