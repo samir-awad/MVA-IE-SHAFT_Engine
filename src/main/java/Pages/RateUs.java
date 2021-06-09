@@ -20,6 +20,9 @@ public class RateUs {
             CheckRateUsOverlay = new MobileBy.ByAccessibilityId("error_pop_up_title");
             NoInRateUsPage_Button = new MobileBy.ByAccessibilityId("id_error_pop_up_close_button");
         } else {
+            CheckRateUsOverlay = MobileBy.AccessibilityId("error_pop_up_title");
+            NoInRateUsPage_Button = MobileBy.AccessibilityId("No");
+            SorryToHearOverlayClose_Button = MobileBy.AccessibilityId("Close");
         }
     }
 
@@ -33,7 +36,7 @@ public class RateUs {
     }
 
     public void pressSorryToHearOverlayCloseButton() {
-        ElementActions.performTouchAction(driver).tap(NoInRateUsPage_Button);
+        ElementActions.performTouchAction(driver).tap(SorryToHearOverlayClose_Button);
     }
 
     public void PressNoInRateUsPage() {

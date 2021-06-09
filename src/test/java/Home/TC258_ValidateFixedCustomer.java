@@ -40,7 +40,6 @@ public class TC258_ValidateFixedCustomer {
 
     @Test(dependsOnMethods = "CheckLastBillTile")
     public void checkTvAddOnsTile() {
-        ElementActions.performTouchAction(driver).swipeElementIntoView(HomePage.getTvAddOnsTile(), TouchActions.SwipeDirection.DOWN);
         Assertions.assertElementExists(driver, HomePage.getTvAddOnsTile());
     }
 
@@ -52,7 +51,7 @@ public class TC258_ValidateFixedCustomer {
     @Test(dependsOnMethods = "CheckDiscoverySection")
     public void CheckEssentialsSection() {
         ElementActions.performTouchAction(driver).swipeElementIntoView(HomePage.getEssentials_ShowMore(), TouchActions.SwipeDirection.UP);
-        Assertions.assertElementExists(driver,HomePage.getEssentials_text());
+        Assertions.assertElementExists(driver, HomePage.getEssentials_text());
     }
 
     @Test(dependsOnMethods = "CheckEssentialsSection")
@@ -62,7 +61,7 @@ public class TC258_ValidateFixedCustomer {
 
     @Test(dependsOnMethods = "checkTrayMenuOptionsForBillPay")
     public void ChangeSelectedSubscription() {
-        ElementActions.performTouchAction(driver).swipeElementIntoView(HomePage.getChange_button(), TouchActions.SwipeDirection.UP);
+        ElementActions.performTouchAction(driver).swipeElementIntoView(HomePage.getChange_button(), TouchActions.SwipeDirection.DOWN);
         HomePage.pressSelectAccountAndSubscriptionComponent();
         HomePage.changeTheSelectedSubscription();
         HomePage.pressSelectAccountAndSubscriptionSelectButton();

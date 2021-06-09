@@ -96,7 +96,7 @@ public class Home {
             TopUpOverlayTitle_text = MobileBy.AccessibilityId("STundefinedMainTitle");
             TopUp_button = MobileBy.AccessibilityId("id_tray_menu_item_Top Up");
             TopUpHistory_button = MobileBy.AccessibilityId("id_dashboard_topup_history_title");
-            SendWebText_button = MobileBy.AccessibilityId("id_dashboard_tools_webtext_label");
+            SendWebText_button = MobileBy.AccessibilityId("id_dashboard_tools_webtext_clickable");
             DevicesAndSim_button = MobileBy.AccessibilityId("id_dashboard_tools_device_and_sim_clickable");
 
         } else {
@@ -116,22 +116,21 @@ public class Home {
             OffersPageHeader_button = MobileBy.AccessibilityId("id_dashboard_discover_card_image");
             Support_button = MobileBy.AccessibilityId("id_tray_menu_item_Support");
             SeeAllOffers_button = MobileBy.AccessibilityId("id_dashboard_discover_see_all_offers");
-            ClickNextBillTitle = MobileBy.AccessibilityId("id_dashboard_next_bill_title");
             AmountDueTile = MobileBy.AccessibilityId("id_dashboard_amount_due_clickable");
             DirectDebitTile = MobileBy.AccessibilityId("id_dashboard_direct_debit_clickable");
             OtherUsefulTools = MobileBy.AccessibilityId("id_dashboard_tools_title");
             ChangePlan_Button = MobileBy.AccessibilityId("d_dashboard_essentials_change_plan_clickable");
-            InactiveToUp = MobileBy.AccessibilityId("id_dashboard_my_usage_exception_noActiveTopUpOffer_text");
+            InactiveToUp = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"Vodafone X is inactive. Top up by €20.00 in one go to activate. Top up Detailed usage\"])[8]");
             BalanceTitle = MobileBy.AccessibilityId("id_dashboard_balance_clickable");
-            TopUpHistoryTile = MobileBy.AccessibilityId("id_dashboard_topup_history_title");
+            TopUpHistoryTile = MobileBy.AccessibilityId("id_dashboard_topup_history_clickable");
             PAYG_Tray = MobileBy.AccessibilityId("id_tray_menu_item_Top Up");
-            ActiveToUp = MobileBy.AccessibilityId("id_dashboard_my_usage_plan_name");
+            ActiveToUp = MobileBy.AccessibilityId("id_dashboard_my_usage_clickable");
             Change_button = MobileBy.xpath("//XCUIElementTypeStaticText[@name=\"id_dashboard_change_subscription\"]");
             SelectAccountAndSubscriptionTitle = MobileBy.AccessibilityId("id_dashboard_change_subscription_title");
             NewSubscription = MobileBy.AccessibilityId("id_dashboard_change_subscription_subscriptions");
             ChangeAccount = MobileBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.widget.Spinner");
-            AccountChanged = MobileBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.ListView/android.widget.CheckedTextView[1]");
-            Close_Button = MobileBy.xpath("//android.widget.ImageView[@content-desc=\"id_dashboard_change_subscription_close\"]");
+            AccountChanged = MobileBy.AccessibilityId("0871166641 id_dashboard_change_subscription");
+            Close_Button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"id_header_close_icon\"])[2]");
             Select_Button = MobileBy.AccessibilityId("Select");
             LastBileTile = MobileBy.AccessibilityId("id_dashboard_last_bill_clickable");
             TvAddOnsTile = MobileBy.AccessibilityId("id_dashboard_tv_addons_clickable");
@@ -144,6 +143,8 @@ public class Home {
             TopUpHistory_button = MobileBy.AccessibilityId("id_dashboard_topup_history_title");
             TakeQuickTour_Tile = MobileBy.AccessibilityId("id_dashboard_whats_new_clickable");
             Essentials_ShowMore = MobileBy.AccessibilityId("id_dashboard_essentials_see_more_less");
+            DevicesAndSim_button = MobileBy.AccessibilityId("id_dashboard_tools_device_and_sim_clickable");
+            SendWebText_button = MobileBy.AccessibilityId("id_dashboard_tools_webtext_clickable");
         }
     }
 

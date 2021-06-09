@@ -25,8 +25,8 @@ public class TC025_SelectAccountSubscriptionComponentValidationBillPayCustomer {
     }
 
     @Test
-    public void LoginWithBillPayUser(){
-        LoginPage.acceptTermsAndConditions().login(jsonReader.getUserName("BillPayUser.username"),jsonReader.getPassword("BillPayUser.password")).acceptPermissions();
+    public void LoginWithBillPayUser() {
+        LoginPage.acceptTermsAndConditions().login(jsonReader.getUserName("BillPayUser.username"), jsonReader.getPassword("BillPayUser.password")).acceptPermissions();
     }
 
     @Test(dependsOnMethods = "LoginWithBillPayUser")
@@ -38,7 +38,7 @@ public class TC025_SelectAccountSubscriptionComponentValidationBillPayCustomer {
     @Test(dependsOnMethods = "CheckThatImOnHomePageAndSelectAccountAndSubscriptionComponentContentAreDisplayed")
     public void checkSelectAccountAndSubscriptionComponentContent() {
         HomePage.pressSelectAccountAndSubscriptionComponent();
-        Assertions.assertElementExists(driver,HomePage.getSelectAccountAndSubscriptionTitle());
+        Assertions.assertElementExists(driver, HomePage.getSelectAccountAndSubscriptionTitle());
     }
 
     @Test(dependsOnMethods = "checkSelectAccountAndSubscriptionComponentContent")
@@ -48,17 +48,7 @@ public class TC025_SelectAccountSubscriptionComponentValidationBillPayCustomer {
 
     @Test(dependsOnMethods = "changeTheSelectedSubscription")
     public void checkAccountSuccessfullySelected() {
-        HomePage.changeTheSelectedAccount();
-        ElementActions.performTouchAction(driver).tap(HomePage.getSelect_Button());
-        //Verifications.verifyTrue(HomePage.checkAccountSuccessfullySelected());
-        HomePage.pressSelectAccountAndSubscriptionCloseButton();
-    }
-
-    @Test(dependsOnMethods = "checkAccountSuccessfullySelected")
-    public void check() {
-        HomePage.pressSelectAccountAndSubscriptionComponent();
-        HomePage.changeTheSelectedSubscription();
         HomePage.pressSelectAccountAndSubscriptionSelectButton();
+        Verifications.verifyTrue(HomePage.checkAccountSuccessfullySelected(), Verifications.VerificationType.NEGATIVE);
     }
-
 }

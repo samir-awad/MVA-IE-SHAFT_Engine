@@ -46,7 +46,7 @@ public class TC106_MyRecordsPagValidationForBillPay {
         Assertions.assertElementExists(driver, AccountPage.getCheckAccountOverlay());
     }
 
-    @Test(dependsOnMethods = "CheckThatImOnHomePage")
+    @Test(dependsOnMethods = "ValidateAccountOverlay")
     public void GoToMyRecordsAndValidateOrderArea() {
         AccountPage.pressMyRecordsOption();
         Verifications.verifyElementExists(driver, AccountPage.getCheckMyRecordsPageHeader());
@@ -54,27 +54,29 @@ public class TC106_MyRecordsPagValidationForBillPay {
         Assertions.assertElementExists(driver, AccountPage.getCheckOrdersArea());
     }
 
-    @Test(dependsOnMethods = "CheckThatImOnHomePage")
+    @Test(dependsOnMethods = "GoToMyRecordsAndValidateOrderArea")
     public void ValidateLetterTab() {
         AccountPage.pressLettersTabOption();
         Verifications.verifyElementExists(driver, AccountPage.getCheckThatExistsAtLeastOneLetter());
     }
-    @Test(dependsOnMethods = "CheckThatImOnHomePage")
+
+    @Test(dependsOnMethods = "ValidateLetterTab")
     public void ValidateFirstLetter() {
         AccountPage.pressFirstLetter();
         Assertions.assertElementExists(driver, AccountPage.getCheckFirstLetterAttachmentsLink());
     }
 
-    @Test(dependsOnMethods = "CheckThatImOnHomePage")
+    @Test(dependsOnMethods = "ValidateFirstLetter")
     public void OpenAttachmentInPDFViewer() {
         AccountPage.pressFirstLetterAttachmentsLink();
         AccountPage.chooseAppToOpenLetterWith();
         Verifications.verifyElementExists(driver, AccountPage.getCheckLetterIsOpenedAsPdfDocument());
     }
 
-    @Test(dependsOnMethods = "CheckThatImOnHomePage")
+    @Test(dependsOnMethods = "OpenAttachmentInPDFViewer")
     public void GoBackToMyRecordsPageAndCloseIt() {
-        AccountPage.goBackToMyRecordsPage();
+        driver.navigate().back();
+//        AccountPage.goBackToMyRecordsPage();
         AccountPage.pressMyRecordsHeaderCloseButton();
         Assertions.assertElementExists(driver, HomePage.getCheckTheVodafoneLogo());
     }

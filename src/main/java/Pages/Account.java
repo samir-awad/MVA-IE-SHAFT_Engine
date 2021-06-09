@@ -2,13 +2,14 @@ package Pages;
 
 import com.shaft.gui.element.ElementActions;
 import com.shaft.gui.element.TouchActions;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class Account {
 
-    private WebDriver driver;
+    private AppiumDriver driver;
     private By AccountTry_Button;
     private By AccountOverlay;
     private By AccountSettingOption;
@@ -101,11 +102,13 @@ public class Account {
     private By BackForSecurityPage_Button;
     private By CloseForSecurityPage_Button;
     private By BiometricsOption;
+    private By AccountOption_Button;
+    private By AccountPageHeader;
 
 
     public Account(WebDriver driver) {
 
-        this.driver = driver;
+        this.driver = (AppiumDriver) driver;
         if (System.getProperty("targetOperatingSystem").equals("Android")) {
             AccountTry_Button = MobileBy.AccessibilityId("id_tray_menu_item_icon_Account");
             AccountOverlay = MobileBy.AccessibilityId("STundefinedMainTitle");
@@ -116,7 +119,9 @@ public class Account {
             AppSettingsSection = MobileBy.AccessibilityId("id_app_settings_title");
             Close_Button = MobileBy.AccessibilityId("Close button");
             EmailOption_Button = By.xpath("(//android.widget.TextView[@content-desc=\"id_account_settings_item_title\"])[1]");
+            AccountOption_Button = MobileBy.xpath("(//android.widget.TextView[@content-desc=\"id_account_settings_item_title\"])[1]");
             EmailPageHeader = MobileBy.AccessibilityId("id_header_title_Account_name_&_email");
+            AccountPageHeader =MobileBy.AccessibilityId("id_header_title_Account_name");
             EmailInputField = MobileBy.AccessibilityId("id_account_and_email_email_input");
             SaveButtonBecomesEnabled = MobileBy.AccessibilityId("Button");
             HeaderBackChevron_Button = MobileBy.AccessibilityId("id_header_back_arrow");
@@ -210,7 +215,9 @@ public class Account {
             AppSettingsSection = MobileBy.AccessibilityId("App settings");
             Close_Button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"id_header_close_icon\"])[2]");
             EmailOption_Button = MobileBy.AccessibilityId("Account name & email");
+            AccountOption_Button = MobileBy.AccessibilityId("Account name");
             EmailPageHeader = MobileBy.AccessibilityId("id_header_title_Account_name_&_email");
+            AccountPageHeader =MobileBy.AccessibilityId("id_header_title_Account_name");
             EmailInputField = MobileBy.AccessibilityId("id_account_and_email_email_input");
             SaveButtonBecomesEnabled = MobileBy.AccessibilityId("Save");
             HeaderBackChevron_Button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"id_header_back_arrow\"])[2]");
@@ -221,25 +228,25 @@ public class Account {
             DetailsBillingPreferencesSection = MobileBy.AccessibilityId("Billing preferences");
             EnterAddressManuallyLink_Button = MobileBy.AccessibilityId("Or enter address manually");
             AddressSectionFieldsForManualAddress = MobileBy.AccessibilityId("id_billing_address_content_card_title");
-            SearchForYourAddressLink_Button = MobileBy.AccessibilityId("id_billing_address_address_mode_text");
+            SearchForYourAddressLink_Button = MobileBy.AccessibilityId("Or search for your address");
             AccountNameField = MobileBy.AccessibilityId("id_account_and_email_name_input");
-            AccountHeaderClose_Button = By.xpath("(//android.widget.ImageView[@content-desc=\"id_header_close_icon\"])[2]");
+            AccountHeaderClose_Button = By.xpath("(//XCUIElementTypeOther[@name=\"id_header_close_icon\"])[2]");
             MyRecordsOption_Button = MobileBy.AccessibilityId("My Records Documents & contracts");
             MyRecordsPageHeader = MobileBy.AccessibilityId("id_header_title_My_Records");
             AvailableTabOptions = By.xpath("//XCUIElementTypeOther[@name=\"My Records | Vodafone\"]/XCUIElementTypeOther[6]");
             OrdersArea = MobileBy.AccessibilityId("Bills");
             LettersTabOption = MobileBy.xpath("(//XCUIElementTypeButton[@name=\"Payments\"])[2]");
             ThatExistsAtLeastOneLetter = By.xpath("(//XCUIElementTypeStaticText[@name=\"Letter\"])[1]");
-            FirstLetterAttachmentsLink = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[7]/android.widget.Button");
+            FirstLetterAttachmentsLink = MobileBy.AccessibilityId("Download letter");
             //AppToOpenLetterWith = By.xpath("");
-            //  LetterIsOpenedAsPdfDocument = By.xpath("");
+            LetterIsOpenedAsPdfDocument = MobileBy.AccessibilityId("Reference");
             // BackToMyRecordsPage = By.xpath("");
             MyRecordsHeaderClose_Button = MobileBy.AccessibilityId("id_header_close_icon");
             OurPrivacyLink = MobileBy.AccessibilityId("id_account_overlay_our_privacy");
             OurPrivacyHeader = MobileBy.AccessibilityId("id_header_title_Our_Privacy");
             CloseInPrivacy_Button = MobileBy.AccessibilityId("id_header_close_icon");
-            AppPermissionsOption = By.xpath("(//android.widget.TextView[@content-desc=\"id_app_settings_item_title\"])[1]");
-            RateUsOption = By.xpath("(//android.widget.TextView[@content-desc=\"id_app_settings_item_title\"])[2]");
+            AppPermissionsOption = MobileBy.AccessibilityId("App permissions");
+            RateUsOption = MobileBy.AccessibilityId("Rate us");
             PersonalDetailsPageHeader = MobileBy.AccessibilityId("id_header_title_Personal_details");
             PersonalDetailsPageContent = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"Your details Name, date of birth, contact information and address\"])[2]\n");
             BackForPersonalDetails_Button = MobileBy.AccessibilityId("id_header_back_arrow");
@@ -252,48 +259,48 @@ public class Account {
             YourDetailsCancel_Button = MobileBy.AccessibilityId("Cancel");
             BackForDetailsPage_Button = MobileBy.iOSClassChain("**/XCUIElementTypeOther[`label == \"id_header_back_arrow\"`][2]");
             CloseForDetailsPage_Button = By.xpath("(//XCUIElementTypeOther[@name=\"id_header_close_icon\"])[2]");
-            ManagePersonalInformation_Section = MobileBy.AccessibilityId("id_personal_details_card_personal_information_title");
+            ManagePersonalInformation_Section = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"Manage personal information Manage information that Vodafone holds about you\"])[2]");
             ManagePersonalInformationPageHeader = MobileBy.AccessibilityId("id_header_title_Request_Information");
-            ManagePersonalInformationPageContent = MobileBy.AccessibilityId("id_personal_details_manage_personal_information_content_card_data_protection_your_rights_title");
-            ManagePersonalInformationEdit_Button = MobileBy.AccessibilityId("id_personal_details_manage_personal_information_button_data_protection_your_rights");
-            ManagePersonalInformationEditContent = MobileBy.AccessibilityId("id_personal_details_manage_personal_information_subject_access_request_title");
-            DownloadDataRequestForm_Button = MobileBy.AccessibilityId("id_personal_details_manage_personal_information_button_subject_access_request");
-            DeletionRequestForm_Button = MobileBy.AccessibilityId("id_personal_details_manage_personal_information_button_request_deletion");
-            BackForTheRequestInformationPage_Button = By.xpath("(//android.widget.ImageView[@content-desc=\"id_header_back_arrow\"])[2]");
-            CloseForManagePersonalInformationSection_Button = By.xpath("(//android.widget.ImageView[@content-desc=\"id_header_close_icon\"])[3]");
+            ManagePersonalInformationPageContent = MobileBy.AccessibilityId("Data protection: your rights");
+            ManagePersonalInformationEdit_Button = MobileBy.AccessibilityId("Manage my personal information");
+            ManagePersonalInformationEditContent = MobileBy.AccessibilityId("Subject Access Request (SAR)");
+            DownloadDataRequestForm_Button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"Download data request form\"])[2]");
+            DeletionRequestForm_Button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"Request deletion form\"])[2]");
+            BackForTheRequestInformationPage_Button = By.xpath("(//XCUIElementTypeOther[@name=\"id_header_back_arrow\"])[2]");
+            CloseForManagePersonalInformationSection_Button = By.xpath("(//XCUIElementTypeOther[@name=\"id_header_close_icon\"])[2]");
             SubjectAccessRequestFormPdfIsOpened = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.TextView");
             PdfBack_Button = MobileBy.AccessibilityId("Navigate up");
-            Chrome_driver = By.id("com.android.chrome:id/url_bar");
-            MarketingPreferences_Section = MobileBy.AccessibilityId("id_personal_details_card_marketing_preferences_title");
+            Chrome_driver = MobileBy.iOSClassChain("**/XCUIElementTypeOther[`label == \"Address\"`]");
+            MarketingPreferences_Section = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"Marketing preferences Manage how Vodafone contacts you\"])[2]");
             MarketingPreferencesPageHeader = MobileBy.AccessibilityId("id_header_title_Marketing_preferences");
-            MarketingPreferencesPageContent = MobileBy.AccessibilityId("id_personal_details_marketing_preferences_title");
-            MarketingPreferencesEdit_Button = MobileBy.AccessibilityId("id_personal_details_marketing_preferences_button_edit");
+            MarketingPreferencesPageContent = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"Marketing preferences\"])[2]");
+            MarketingPreferencesEdit_Button = MobileBy.AccessibilityId("Edit");
             MarketingPreferencesEditContent = MobileBy.AccessibilityId("id_personal_details_marketing_preferences_edit_description");
-            MarketingPreferencesCancel_Button = MobileBy.AccessibilityId("id_personal_details_marketing_preferences_edit_button_cancel");
-            BackForMarketingPreferencesPage_Button = By.xpath("(//android.widget.ImageView[@content-desc=\"id_header_back_arrow\"])[2]");
-            CloseForMarketingPreferencesPage_Button = By.xpath("(//android.widget.ImageView[@content-desc=\"id_header_close_icon\"])[3]");
-            DataPreferencesSection = MobileBy.AccessibilityId("id_personal_details_card_data_preferences_title");
+            MarketingPreferencesCancel_Button = MobileBy.AccessibilityId("Cancel");
+            BackForMarketingPreferencesPage_Button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"id_header_back_arrow\"])[2]");
+            CloseForMarketingPreferencesPage_Button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"id_header_close_icon\"])[2]");
+            DataPreferencesSection = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"Data preferences Manage how vodafone uses your data\"])[2]");
             DataPreferencesPageHeader = MobileBy.AccessibilityId("id_header_title_Data_preferences");
-            DataPreferencesPageContent = MobileBy.AccessibilityId("id_personal_details_data_preferences_title");
-            DataPreferencesEdit_Button = MobileBy.AccessibilityId("id_personal_details_data_preferences_edit_button");
-            DataPreferencesEditContent = MobileBy.AccessibilityId("id_personal_details_data_preferences_basic_permissions_title");
-            DataPreferencesCancel_Button = MobileBy.AccessibilityId("id_personal_details_data_preferences_cancel_button");
-            BackForDataPreferences_Button = By.xpath("(//android.widget.ImageView[@content-desc=\"id_header_back_arrow\"])[2]");
-            CloseForDataPreference_Button = By.xpath("(//android.widget.ImageView[@content-desc=\"id_header_close_icon\"])[3]");
-            SecuritySection = MobileBy.AccessibilityId("id_personal_details_card_security_title");
+            DataPreferencesPageContent = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"Data preferences\"])[2]");
+            DataPreferencesEdit_Button = MobileBy.AccessibilityId("Edit");
+            DataPreferencesEditContent = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"Data preferences\"])[2]");
+            DataPreferencesCancel_Button = MobileBy.AccessibilityId("Cancel");
+            BackForDataPreferences_Button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"id_header_back_arrow\"])[2]");
+            CloseForDataPreference_Button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"id_header_close_icon\"])[2]");
+            SecuritySection = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"Security Password and PIN\"])[2]");
             SecurityPageHeader = MobileBy.AccessibilityId("id_header_title_Security");
-            SecurityPageContent = MobileBy.AccessibilityId("id_personal_details_security_title");
-            SecurityEditPassword_Button = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.widget.ImageView");
+            SecurityPageContent = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"Security\"])[2]");
+            SecurityEditPassword_Button = MobileBy.AccessibilityId("Password ********");
             ChangePasswordPageHeader = MobileBy.AccessibilityId("id_header_title_Change_Password");
-            ChangePasswordPageContent = MobileBy.AccessibilityId("id_personal_details_security_change_password_title");
-            ChangePasswordCancel_Button = MobileBy.AccessibilityId("id_change_password_cancel_button");
-            SecurityEditPin_Button = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[5]/android.widget.ImageView");
+            ChangePasswordPageContent = MobileBy.AccessibilityId("Create a new password");
+            ChangePasswordCancel_Button = MobileBy.AccessibilityId("Cancel");
+            SecurityEditPin_Button = MobileBy.AccessibilityId("PIN ****");
             ChangePinPageHeader = MobileBy.AccessibilityId("id_header_title_Change_PIN");
-            ChangePinPageContent = MobileBy.AccessibilityId("id_personal_details_security_change_PIN_title");
-            ChangePinCancel_Button = MobileBy.AccessibilityId("id_change_pin_cancel_button");
-            BackForSecurityPage_Button = By.xpath("(//android.widget.ImageView[@content-desc=\"id_header_back_arrow\"])[2]");
-            CloseForSecurityPage_Button = By.xpath("(//android.widget.ImageView[@content-desc=\"id_header_close_icon\"])[3]");
-            //BiometricsOption = MobileBy.AccessibilityId("");
+            ChangePinPageContent = MobileBy.AccessibilityId("Change your PIN");
+            ChangePinCancel_Button = MobileBy.AccessibilityId("Cancel");
+            BackForSecurityPage_Button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"id_header_back_arrow\"])[2]");
+            CloseForSecurityPage_Button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"id_header_close_icon\"])[2]");
+            BiometricsOption = MobileBy.AccessibilityId("Use Touch ID with this login");
         }
 
 
@@ -475,7 +482,7 @@ public class Account {
     }
 
     public void goBackToTheRequestInformationPage() {
-        driver.navigate().back();
+        driver.activateApp("com.VodafoneIreland.MyVodafone");
     }
 
     public void pressManagePersonalInformationEditButton() {
@@ -560,6 +567,7 @@ public class Account {
     }
 
     public void pressRateUsOption() {
+        ElementActions.performTouchAction(driver).swipeElementIntoView(RateUsOption, TouchActions.SwipeDirection.UP);
         ElementActions.performTouchAction(driver).tap(RateUsOption);
     }
 
@@ -580,7 +588,10 @@ public class Account {
     }
 
     public void chooseAppToOpenLetterWith() {
-        ElementActions.performTouchAction(driver).tap(AppToOpenLetterWith);
+        if (System.getProperty("targetOperatingSystem").equals("Android")) {
+            ElementActions.performTouchAction(driver).tap(AppToOpenLetterWith);
+        }else{
+        }
     }
 
     public By getCheckThatExistsAtLeastOneLetter() {
@@ -631,8 +642,16 @@ public class Account {
         ElementActions.performTouchAction(driver).tap(EmailOption_Button);
     }
 
+    public void pressAccountNameOption() {
+        ElementActions.performTouchAction(driver).tap(AccountOption_Button);
+    }
+
     public By getCheckAccountNameAndEmailPageHeader() {
         return EmailPageHeader;
+    }
+
+    public By getCheckAccountNamePageHeader() {
+        return AccountPageHeader;
     }
 
     public By getCheckAccountNameAndEmailPageContent() {
@@ -672,6 +691,7 @@ public class Account {
     }
 
     public void pressAppPermissionsOption() {
+        ElementActions.performTouchAction(driver).swipeElementIntoView(AppPermissionsOption, TouchActions.SwipeDirection.UP);
         ElementActions.performTouchAction(driver).tap(AppPermissionsOption);
     }
 
@@ -692,6 +712,7 @@ public class Account {
     }
 
     public void pressSearchForYourAddressLink() {
+        ElementActions.performTouchAction(driver).swipeElementIntoView(SearchForYourAddressLink_Button, TouchActions.SwipeDirection.UP);
         ElementActions.performTouchAction(driver).tap(SearchForYourAddressLink_Button);
     }
 }

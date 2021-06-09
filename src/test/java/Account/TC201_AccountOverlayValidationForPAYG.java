@@ -26,18 +26,19 @@ public class TC201_AccountOverlayValidationForPAYG {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        AccountPage=new Account(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        AccountPage = new Account(driver);
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("PAYGUser.username");
         String password = users.getTestData("PAYGUser.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
         // LoginPage.acceptPermissions();
     }
+
     @Test
-    public void AccountOverlayValidationForPAYG(){
-        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+    public void AccountOverlayValidationForPAYG() {
+        Verifications.verifyElementExists(driver, HomePage.getCheckTheVodafoneLogo());
         AccountPage.pressAccountTrayMenuOption();
-        Assertions.assertElementExists(driver,AccountPage.getCheckAccountOverlay());
+        Assertions.assertElementExists(driver, AccountPage.getCheckAccountOverlay());
 
     }
 }

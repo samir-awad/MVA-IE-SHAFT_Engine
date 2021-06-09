@@ -24,36 +24,36 @@ public class TC03_CheckLoginRegisterAndResetPages {
 
     @Test()
     public void Step1_Accept_Terms_And_Conditions() {
-        Assertions.assertElementExists(driver,LoginPage.getTermsAndConditions_Header(), Assertions.AssertionType.POSITIVE);
+        Assertions.assertElementExists(driver, LoginPage.getTermsAndConditions_Header(), Assertions.AssertionType.POSITIVE);
         LoginPage.acceptTermsAndConditions();
     }
 
     @Test()
-    public void Step2_Check_That_Im_On_Login_And_Register_Page(){
-        Assertions.assertElementExists(driver,LoginPage.getVodafone_Logo(),"I'm On Login and Register Page");
+    public void Step2_Check_That_Im_On_Login_And_Register_Page() {
+        Assertions.assertElementExists(driver, LoginPage.getVodafone_Logo(), "I'm On Login and Register Page");
         LoginPage.PressReg_LoginButton();
     }
 
     @Test()
-    public void  Step3_Check_Login_Page(){
-        Verifications.verifyElementExists(driver,LoginPage.getLoginVf_Logo());
-        Verifications.verifyElementExists(driver,LoginPage.getLoginVf_title());
-        Verifications.verifyElementExists(driver,LoginPage.getPhoneOrEmail_TxtField());
-        Verifications.verifyElementExists(driver,LoginPage.getPassword_TxtField());
-        Verifications.verifyElementExists(driver,LoginPage.getNeedToRegister_link());
-        Verifications.verifyElementExists(driver,LoginPage.getForgotPWD_link());
-        Assertions.assertElementExists(driver,LoginPage.getLoginOurPrivacy_link());
+    public void Step3_Check_Login_Page() {
+        Verifications.verifyElementExists(driver, LoginPage.getLoginVf_Logo());
+        Verifications.verifyElementExists(driver, LoginPage.getLoginVf_title());
+        Verifications.verifyElementExists(driver, LoginPage.getPhoneOrEmail_TxtField());
+        Verifications.verifyElementExists(driver, LoginPage.getPassword_TxtField());
+        Verifications.verifyElementExists(driver, LoginPage.getNeedToRegister_link());
+        Verifications.verifyElementExists(driver, LoginPage.getForgotPWD_link());
+        Assertions.assertElementExists(driver, LoginPage.getLoginOurPrivacy_link());
     }
 
     @Test()
-    public void Step4_Check_Register_Page(){
+    public void Step4_Check_Register_Page() {
         ElementActions.performTouchAction(driver).tap(LoginPage.getNeedToRegister_link());
-        Verifications.verifyElementExists(driver,LoginPage.getReg_Register_Txt());
-        Verifications.verifyElementExists(driver,LoginPage.getReg_Register_Txt());
+        Verifications.verifyElementExists(driver, LoginPage.getReg_Register_Txt());
+        Verifications.verifyElementExists(driver, LoginPage.getReg_Register_Txt());
     }
 
     @Test()
-    public void Step5_Check_Reset_Your_Password_Page(){
+    public void Step5_Check_Reset_Your_Password_Page() {
         System.out.println("Step 5 : Check Reset Your Password Page");
     }
 

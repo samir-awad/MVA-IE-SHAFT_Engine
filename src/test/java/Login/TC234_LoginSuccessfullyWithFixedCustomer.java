@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class TC234_LoginSuccessfullyWithFixedCustomer{
+public class TC234_LoginSuccessfullyWithFixedCustomer {
 
     private WebDriver driver;
     private Login LoginPage;
@@ -24,18 +24,18 @@ public class TC234_LoginSuccessfullyWithFixedCustomer{
 
     @Test
     public void Step1_Accept_Terms_And_Conditions() {
-        Assertions.assertElementExists(driver,LoginPage.getTermsAndConditions_Header());
+        Assertions.assertElementExists(driver, LoginPage.getTermsAndConditions_Header());
         LoginPage.acceptTermsAndConditions();
     }
 
     @Test(dependsOnMethods = "Step1_Accept_Terms_And_Conditions")
-    public void Check_Vodafone_Logo(){
-        Assertions.assertElementExists(driver,LoginPage.getVodafone_Logo());
+    public void Check_Vodafone_Logo() {
+        Assertions.assertElementExists(driver, LoginPage.getVodafone_Logo());
     }
 
     @Test(dependsOnMethods = "Check_Vodafone_Logo")
     public void Step2_Login_With_Fixed_User() {
         LoginPage.login(jsonReader.getUserName("FixedUser.username"), jsonReader.getPassword("FixedUser.password"));
-        Assertions.assertElementExists(driver,LoginPage.getLetsGo_Button());
+        Assertions.assertElementExists(driver, LoginPage.getLetsGo_Button());
     }
 }

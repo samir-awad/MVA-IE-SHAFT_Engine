@@ -25,32 +25,33 @@ public class TC208_PersonalDetailsYourDetailsPageValidationForPAYG {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        AccountPage=new Account(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        AccountPage = new Account(driver);
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("PAYGUser.username");
         String password = users.getTestData("PAYGUser.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
         // LoginPage.acceptPermissions();
     }
+
     @Test
-    public void PersonalDetailsYourDetailsPageValidationForPAYG(){
-        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+    public void PersonalDetailsYourDetailsPageValidationForPAYG() {
+        Verifications.verifyElementExists(driver, HomePage.getCheckTheVodafoneLogo());
         AccountPage.pressAccountTrayMenuOption();
-        Verifications.verifyElementExists(driver,AccountPage.getCheckAccountOverlay());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckAccountOverlay());
         AccountPage.pressAccountSettingOption();
-        Verifications.verifyElementExists(driver,AccountPage.getCheckAccountSettingsPageHeader());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckAccountSettingsPageHeader());
         AccountPage.pressPersonalDetailsSection();
         AccountPage.pressYourDetailsSection();
-        Verifications.verifyElementExists(driver,AccountPage.getCheckYourDetailsPageHeader());
-        Verifications.verifyElementExists(driver,AccountPage.getCheckYourDetailsPageContent());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckYourDetailsPageHeader());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckYourDetailsPageContent());
         AccountPage.pressYourDetailsEditButton();
         AccountPage.pressYourDetailsCancelButton();
-        Verifications.verifyElementExists(driver,AccountPage.getCheckYourDetailsPageContent());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckYourDetailsPageContent());
         AccountPage.pressBackButtonForDetailsPage();
-        Verifications.verifyElementExists(driver,AccountPage.getCheckPersonalDetailsPageHeader());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckPersonalDetailsPageHeader());
         AccountPage.pressYourDetailsSection();
         AccountPage.pressCloseButtonForDetailsPage();
-        Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+        Assertions.assertElementExists(driver, HomePage.getCheckTheVodafoneLogo());
 
     }
 }

@@ -8,10 +8,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
+public class TC01_CheckTermsAndConditionsPage {
 
-public class TC01_CheckTermsAndConditionsPage{
-	
-	//TC001 - Check Terms & Conditions Page Android
+    //TC001 - Check Terms & Conditions Page Android
     //TC013 - Check Terms & Conditions page iOS
 
     private WebDriver driver;
@@ -24,23 +23,23 @@ public class TC01_CheckTermsAndConditionsPage{
     }
 
     @Test()
-    public void Check_Terms_And_Conditions_Header_Is_Displayed(){
-        Assertions.assertElementExists(driver,LoginPage.getTermsAndConditions_Header());
+    public void Check_Terms_And_Conditions_Header_Is_Displayed() {
+        Assertions.assertElementExists(driver, LoginPage.getTermsAndConditions_Header());
     }
 
     @Test()
-    public void Check_Terms_And_Conditions_Text_Is_Displayed(){
-        Assertions.assertElementExists(driver,LoginPage.getTermsAndConditions_Txt());
+    public void Check_Terms_And_Conditions_Text_Is_Displayed() {
+        Assertions.assertElementExists(driver, LoginPage.getTermsAndConditions_Txt());
     }
 
     @Test()
-    public void Check_Terms_And_Conditions_CheckBox_Is_Displayed(){
-        Assertions.assertElementExists(driver,LoginPage.getAcceptTerms_button());
+    public void Check_Terms_And_Conditions_CheckBox_Is_Displayed() {
+        Assertions.assertElementExists(driver, LoginPage.getAcceptTerms_button());
     }
 
     @Test
-    public void Check_Terms_And_Conditions_Continue_Button_Is_Displayed(){
-        Assertions.assertElementExists(driver,LoginPage.getContinue_button());
+    public void Check_Terms_And_Conditions_Continue_Button_Is_Displayed() {
+        Assertions.assertElementExists(driver, LoginPage.getContinue_button());
     }
 
 }

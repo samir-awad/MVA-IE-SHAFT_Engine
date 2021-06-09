@@ -26,25 +26,26 @@ public class TC202_AccountSettingsPageValidationForPAYG {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        AccountPage=new Account(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        AccountPage = new Account(driver);
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("PAYGUser.username");
         String password = users.getTestData("PAYGUser.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
         // LoginPage.acceptPermissions();
     }
+
     @Test
-    public void AccountSettingsPageValidationForPAYG(){
-        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+    public void AccountSettingsPageValidationForPAYG() {
+        Verifications.verifyElementExists(driver, HomePage.getCheckTheVodafoneLogo());
         AccountPage.pressAccountTrayMenuOption();
-        Verifications.verifyElementExists(driver,AccountPage.getCheckAccountOverlay());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckAccountOverlay());
         AccountPage.pressAccountSettingOption();
-        Verifications.verifyElementExists(driver,AccountPage.getCheckAccountSettingsPageHeader());
-        Verifications.verifyElementExists(driver,AccountPage.getCheckAccountSettingsSection());
-        Verifications.verifyElementExists(driver,AccountPage.getCheckPersonalDetailsSection());
-        Verifications.verifyElementExists(driver,AccountPage.getCheckAppSettingsSection());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckAccountSettingsPageHeader());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckAccountSettingsSection());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckPersonalDetailsSection());
+        Verifications.verifyElementExists(driver, AccountPage.getCheckAppSettingsSection());
         AccountPage.pressCloseButton();
-        Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+        Assertions.assertElementExists(driver, HomePage.getCheckTheVodafoneLogo());
 
 
     }

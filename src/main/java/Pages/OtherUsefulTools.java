@@ -1,23 +1,11 @@
 package Pages;
 
-import com.helger.commons.state.IEnabledIndicator;
-import com.mysql.cj.xdevapi.Schema;
 import com.shaft.gui.element.ElementActions;
-import com.shaft.gui.element.TouchActions;
 import com.shaft.validation.Assertions;
-import com.shaft.validation.Verifications;
-import groovy.util.ObservableSet;
 import io.appium.java_client.MobileBy;
-import jdk.jfr.Enabled;
-import net.bytebuddy.asm.Advice;
-import org.apache.xmlbeans.impl.xb.xsdschema.Element;
-import org.aspectj.apache.bcel.classfile.annotation.ElementValue;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.asserts.Assertion;
-
-import java.security.Key;
 
 public class OtherUsefulTools {
     private final WebDriver driver;
@@ -56,6 +44,7 @@ public class OtherUsefulTools {
     private By NACRequestCancelFlow_Button;
     private By InvalidIMEIMessage_Text;
     private By AccessContactsPermissionAllow_button;
+    private By MessageBody;
 
 
     public By getWebtextPageHeader_Text() {
@@ -69,41 +58,42 @@ public class OtherUsefulTools {
     public OtherUsefulTools(WebDriver driver) {
         this.driver = driver;
         if (System.getProperty("targetOperatingSystem").equals("Android")) {
-            WebtextPageHeader_Text = new MobileBy.ByAccessibilityId("id_dashboard_essentials_change_plan_label");
-            WebtextHeaderClose_Button = new MobileBy.ByAccessibilityId("id_header_close_icon");
-            Recipients_Text = new MobileBy.ByAccessibilityId("id_dashboard_essentials_mccm_upgrades_description_label");
-            WebTextInputMessage_Text = new MobileBy.ByAccessibilityId("id_webtext_input_message");
-            Send_Button = new MobileBy.ByAccessibilityId("id_webtext_button_send");
-            WebtextInternationalToast_Text = new MobileBy.ByAccessibilityId("id_webtext_international_title");
-            WebtextInternationalConfirm_Button = new MobileBy.ByAccessibilityId("id_webtext_international_confirm_button");
+            WebtextPageHeader_Text =  MobileBy.AccessibilityId("id_header_title_Webtext");
+            WebtextHeaderClose_Button =  MobileBy.AccessibilityId("id_header_close_icon");
+            Recipients_Text = MobileBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup[1]/android.view.ViewGroup[1]/android.widget.ScrollView/android.view.ViewGroup/android.widget.EditText");
+            WebTextInputMessage_Text =  MobileBy.AccessibilityId("id_webtext_input_message");
+            Send_Button = MobileBy.AccessibilityId("id_webtext_button_send");
+            WebtextInternationalToast_Text =  MobileBy.AccessibilityId("success_toaster_title");
+            WebtextInternationalConfirm_Button =  MobileBy.AccessibilityId("id_webtext_international_confirm_button");
             RemainingCharactersText = By.xpath("(//android.widget.TextView[@content-desc=\"id_webtext_message_text\"])[2]");
             Change_Button = By.xpath("(//android.widget.TextView[@content-desc=\"id_webtext_sending_options_title\"])[3]");
             SelectTimeOption_Button = By.xpath("\t(//android.widget.TextView[@content-desc=\"id_webtext_options_hours_item_text\"])[2]");
-            Select_Button = new MobileBy.ByAccessibilityId("id_webtext_options_select_button");
-            SetMessageSendTime_Title = new MobileBy.ByAccessibilityId("id_webtext_options_title");
+            Select_Button =  MobileBy.AccessibilityId("id_webtext_options_select_button");
+            SetMessageSendTime_Title =  MobileBy.AccessibilityId("id_webtext_options_title");
             ChangeDate_Spinner = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.widget.Spinner");
             SelectedNewDateSpinner_Item = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.ListView/android.widget.CheckedTextView[3]");
             SendMessageNow_Text = By.xpath("(//android.widget.TextView[@content-desc=\"id_webtext_sending_options_title\"])[2]");
-            NacRequestPageHeader_Text = new MobileBy.ByAccessibilityId("id_header_title_Request_NAC");
-            FewThingsFirst_Title = new MobileBy.ByAccessibilityId("id_nac_request_content_card_title");
-            FewThingsFirstContent1_Title = new MobileBy.ByAccessibilityId("id_dashboard_essentials_title");
-            FewThingsUnlockedDescription_Text = new MobileBy.ByAccessibilityId("id_a_few_things_unlocked_description");
-            FewThingsFirstContent2_Title = new MobileBy.ByAccessibilityId("id_a_few_things_elegible_title");
-            FewThingsElegibleDescriptionBillPay_Text = new MobileBy.ByAccessibilityId("id_a_few_things_elegible_description_bill_pay");
-            FewThingsElegibleRule0_Text = new MobileBy.ByAccessibilityId("id_a_few_things_elegible_rule0");
-            FewThingsElegibleBillPayRule0_Text = new MobileBy.ByAccessibilityId("id_a_few_things_elegible_bill_pay_rule0");
-            FewThingsElegibleBillPayRule1_Text = new MobileBy.ByAccessibilityId("id_a_few_things_elegible_bill_pay_rule1");
-            FewThingsElegibleBillPayRule2_Text = new MobileBy.ByAccessibilityId("id_a_few_things_elegible_bill_pay_rule2");
-            FewThingsFirstContent2_Link = new MobileBy.ByAccessibilityId("id_a_few_things_first_FAQs_bill_pay");
-            NacFewThingsFirstContinue_Button = new MobileBy.ByAccessibilityId("id_nac_request_start_flow_button");
-            RequestNAC_Title = new MobileBy.ByAccessibilityId("id_header_title_Request_NAC");
-            NACRequestContentCard_Title = new MobileBy.ByAccessibilityId("id_nac_request_content_card_title");
-            FewThingsFirstUnlocked_Title = new MobileBy.ByAccessibilityId("id_a_few_things_first_unlocked_title");
-            FewThingsFirstIMEI_Input = new MobileBy.ByAccessibilityId("id_a_few_things_first_imei_input");
-            NACRequest_Button = new MobileBy.ByAccessibilityId("id_nac_request_button");
-            NACRequestCancelFlow_Button = new MobileBy.ByAccessibilityId("id_nac_request_cancel_flow_button");
+            NacRequestPageHeader_Text =  MobileBy.AccessibilityId("id_header_title_Request_NAC");
+            FewThingsFirst_Title =  MobileBy.AccessibilityId("id_nac_request_content_card_title");
+            FewThingsFirstContent1_Title =  MobileBy.AccessibilityId("id_dashboard_essentials_title");
+            FewThingsUnlockedDescription_Text =  MobileBy.AccessibilityId("id_a_few_things_unlocked_description");
+            FewThingsFirstContent2_Title =  MobileBy.AccessibilityId("id_a_few_things_elegible_title");
+            FewThingsElegibleDescriptionBillPay_Text =  MobileBy.AccessibilityId("id_a_few_things_elegible_description_bill_pay");
+            FewThingsElegibleRule0_Text =  MobileBy.AccessibilityId("id_a_few_things_elegible_rule0");
+            FewThingsElegibleBillPayRule0_Text =  MobileBy.AccessibilityId("id_a_few_things_elegible_bill_pay_rule0");
+            FewThingsElegibleBillPayRule1_Text =  MobileBy.AccessibilityId("id_a_few_things_elegible_bill_pay_rule1");
+            FewThingsElegibleBillPayRule2_Text =  MobileBy.AccessibilityId("id_a_few_things_elegible_bill_pay_rule2");
+            FewThingsFirstContent2_Link =  MobileBy.AccessibilityId("id_a_few_things_first_FAQs_bill_pay");
+            NacFewThingsFirstContinue_Button =  MobileBy.AccessibilityId("id_nac_request_start_flow_button");
+            RequestNAC_Title =  MobileBy.AccessibilityId("id_header_title_Request_NAC");
+            NACRequestContentCard_Title =  MobileBy.AccessibilityId("id_nac_request_content_card_title");
+            FewThingsFirstUnlocked_Title =  MobileBy.AccessibilityId("id_a_few_things_first_unlocked_title");
+            FewThingsFirstIMEI_Input =  MobileBy.AccessibilityId("id_a_few_things_first_imei_input");
+            NACRequest_Button =  MobileBy.AccessibilityId("id_nac_request_button");
+            NACRequestCancelFlow_Button =  MobileBy.AccessibilityId("id_nac_request_cancel_flow_button");
             InvalidIMEIMessage_Text = By.xpath("hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.widget.TextView[2]");
             AccessContactsPermissionAllow_button = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.Button[1]");
+            MessageBody = MobileBy.AccessibilityId("id_webtext_input_message");
         } else {
         }
     }
@@ -137,20 +127,36 @@ public class OtherUsefulTools {
     }
 
     public void fillOutTheWebtextForm() {
-        ElementActions.type(driver, Recipients_Text, "0871700924");
-        ElementActions.type(driver, Recipients_Text, "Hello everyone :) ");
+        ElementActions.performTouchAction(driver).tap(Recipients_Text);
+        driver.findElement(Recipients_Text).sendKeys("0871700924 ");
+//        ElementActions.type(driver, Recipients_Text, "0871700924");
+        ElementActions.performTouchAction(driver).tap(MessageBody);
+        driver.findElement(MessageBody).sendKeys("Hello everyone");
+        ElementActions.performTouchAction(driver).hideNativeKeyboard();
+//        ElementActions.type(driver, MessageBody, "Hello everyone :) ");
 
     }
 
     public void fillOutTheWebtextFormWithMoreThanOneRecipient() {
-        ElementActions.type(driver, Recipients_Text, "0871700924 0879512912");
-        ElementActions.type(driver, Recipients_Text, "Hello everyone :) ");
+        ElementActions.performTouchAction(driver).tap(Recipients_Text);
+        driver.findElement(Recipients_Text).sendKeys("0871700924 0879512912");
+//        ElementActions.type(driver, Recipients_Text, "0871700924 0879512912");
+        ElementActions.performTouchAction(driver).tap(MessageBody);
+        driver.findElement(MessageBody).sendKeys("Hello everyone");
+        ElementActions.performTouchAction(driver).hideNativeKeyboard();
+//        ElementActions.type(driver, Recipients_Text, "Hello everyone :) ");
 
     }
 
     public void fillInTheMessageWithMoreThanTheAllowedCharacters() {
-        ElementActions.type(driver, Recipients_Text, "0871700924");
-        ElementActions.type(driver, Recipients_Text, "Disneyland Park, originally Disneyland, is the first of two theme parks built at the Disneyland Resort in Anaheim, California, which opened on July 17, 1955. It is the only theme park designed and built to completion under the direct supervision of Walt Disney. It was originally the only attraction on the property; its official name was changed to Disneyland Park to distinguish it from the expanding complex in the 1990s. It was the first Disney theme park. It has undergone expansions and major renovations.");
+        ElementActions.performTouchAction(driver).tap(Recipients_Text);
+        driver.findElement(Recipients_Text).sendKeys("0871700924");
+//        ElementActions.type(driver, Recipients_Text, "0871700924");
+        ElementActions.performTouchAction(driver).tap(MessageBody);
+        driver.findElement(MessageBody).sendKeys("Disneyland Park, originally Disneyland, is the first of two theme parks built at the Disneyland Resort in Anaheim, California, which opened on July 17, 1955. It is the only theme park designed and built to completion under the direct supervision of Walt Disney. It was originally the only attraction on the property; its official name was changed to Disneyland Park to distinguish it from the expanding complex in the 1990s. It was the first Disney theme park. It has undergone expansions and major renovations.");
+        ElementActions.performTouchAction(driver).hideNativeKeyboard();
+//        ElementActions.type(driver, Recipients_Text, "0871700924");
+//        ElementActions.type(driver, Recipients_Text, "Disneyland Park, originally Disneyland, is the first of two theme parks built at the Disneyland Resort in Anaheim, California, which opened on July 17, 1955. It is the only theme park designed and built to completion under the direct supervision of Walt Disney. It was originally the only attraction on the property; its official name was changed to Disneyland Park to distinguish it from the expanding complex in the 1990s. It was the first Disney theme park. It has undergone expansions and major renovations.");
 
     }
 

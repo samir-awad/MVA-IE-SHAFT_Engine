@@ -29,7 +29,7 @@ public class TC266_ChangeTopupOfferPageValidationsForPAYGUserWithActiveOffers {
     @Test
     public void Login() {
         LoginPage.acceptTermsAndConditions();
-        LoginPage.login(jsonReader.getUserName("PAYGWithTopUpOffer.username"), jsonReader.getUserName("PAYGWithTopUpOffer.password")).
+        LoginPage.login(jsonReader.getUserName("PAYGUserWithTopUp.username"), jsonReader.getUserName("PAYGUserWithTopUp.password")).
                 acceptPermissionsPAYGUser();
     }
 

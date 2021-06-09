@@ -51,10 +51,10 @@ public class ChangeTopUpOffer {
         } else {
             ChangeToUpOfferDashboard_button = MobileBy.AccessibilityId("id_dashboard_essentials_change_topup_offer_clickable");
             ChangeTopUpOfferHeader_text = MobileBy.AccessibilityId("id_header_title_Change_top_up_offer");
-            ChangeTopUpOfferClose_button = MobileBy.AccessibilityId("id_dashboard_essentials_change_topup_offer_details_close");
+            ChangeTopUpOfferClose_button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"id_header_close_icon\"])[2]");
             NoTopUpOffer_text = MobileBy.AccessibilityId("id_current_top_up_offer_title_no_offer");
-            FirstOfferComponent = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"You are not opted in to a top up offer.\"])[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]");
-            SecondOfferComponent = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"You are not opted in to a top up offer.\"])[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]");
+            FirstOfferComponent = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"Opt in\"])[1]");
+            SecondOfferComponent = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"View details\"])[1]");
             changeTopUpOfferDetails_title = MobileBy.AccessibilityId("id_dashboard_essentials_change_topup_offer_details_title");
             changeTopUpOfferDetails_OfferName = MobileBy.AccessibilityId("id_dashboard_essentials_change_topup_offer_details_offer_name");
             changeTopUpOfferDetailsOffer_MuchMore = MobileBy.AccessibilityId("id_dashboard_essentials_change_topup_offer_details_offer_much_more");
@@ -64,8 +64,8 @@ public class ChangeTopUpOffer {
             currentTopUpOffer_value = MobileBy.AccessibilityId("id_current_top_up_offer_value");
             ViewDetailsCurrentTopUpOffer_button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"View details\"])[1]");
             ViewDetailsNewTopUpOffer_button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"View details\"])[2]");
-            YourTopUpOffer_title = MobileBy.AccessibilityId("Your top up offer id_change_top_up_offer_close");
-            ChangeTopUpOfferOverlay_CloseButton = MobileBy.AccessibilityId("id_change_top_up_offer_close");
+            YourTopUpOffer_title = MobileBy.AccessibilityId("id_current_top_up_offer_title");
+            ChangeTopUpOfferOverlay_CloseButton = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"id_header_close_icon\"])[2]");
             OptIn_button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"Opt in\"])[1]");
 
         }

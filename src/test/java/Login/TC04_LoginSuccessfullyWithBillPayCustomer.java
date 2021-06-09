@@ -25,19 +25,19 @@ public class TC04_LoginSuccessfullyWithBillPayCustomer {
 
     @Test()
     public void Check_And_Accept_And_Continue_In_Terms_And_Conditions() {
-        Assertions.assertElementExists(driver,LoginPage.getTermsAndConditions_Header());
+        Assertions.assertElementExists(driver, LoginPage.getTermsAndConditions_Header());
         LoginPage.acceptTermsAndConditions();
     }
 
     @Test(dependsOnMethods = {"Check_And_Accept_And_Continue_In_Terms_And_Conditions"})
-    public void Check_That_Im_On_Registration_And_Login_Page(){
-        Assertions.assertElementExists(driver,LoginPage.getVodafone_Logo(),"I'm on Register And Login Page");
+    public void Check_That_Im_On_Registration_And_Login_Page() {
+        Assertions.assertElementExists(driver, LoginPage.getVodafone_Logo(), "I'm on Register And Login Page");
 
     }
 
     @Test(dependsOnMethods = {"Check_That_Im_On_Registration_And_Login_Page"})
-    public void LoginWithBillPayUser() throws IOException, ParseException{
+    public void LoginWithBillPayUser() throws IOException, ParseException {
         LoginPage.login(jsonReader.getUserName("BillPayUser.username"), jsonReader.getPassword("BillPayUser.password"));
-        Assertions.assertElementExists(driver,LoginPage.getLetsGo_Button());
+        Assertions.assertElementExists(driver, LoginPage.getLetsGo_Button());
     }
 }

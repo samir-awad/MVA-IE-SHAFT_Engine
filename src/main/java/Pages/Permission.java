@@ -21,6 +21,9 @@ public class Permission {
             AppPermissionsPageContent = new MobileBy.ByAccessibilityId("id_settings_permission_title_Location");
             AccountHeaderBackChevron = new MobileBy.ByAccessibilityId("id_header_back_arrow");
         } else {
+            AppPermissionsPageHeader = MobileBy.AccessibilityId("id_header_title_Permissions");
+            AppPermissionsPageContent = MobileBy.AccessibilityId("id_settings_permission_title_Location");
+            AccountHeaderBackChevron = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"id_header_back_arrow\"])[2]");
         }
     }
 

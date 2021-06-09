@@ -11,10 +11,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
+public class TC02_CheckLoginAndRegisterAndOurPrivacyPages {
 
-public class TC02_CheckLoginAndRegisterAndOurPrivacyPages{
-	
-	//TC002 - Check Login & Register and Our Privacy pages
+    //TC002 - Check Login & Register and Our Privacy pages
     //TC014 - Check Login & Register and Our Privacy pages
 
     private WebDriver driver;
@@ -26,41 +25,41 @@ public class TC02_CheckLoginAndRegisterAndOurPrivacyPages{
         LoginPage = new Login(driver);
     }
 
-	@Test()
-	public void Check_And_Accept_And_Continue_In_Terms_And_Conditions() {
-        Assertions.assertElementExists(driver,LoginPage.getTermsAndConditions_Header(),AssertionType.POSITIVE);
+    @Test()
+    public void Check_And_Accept_And_Continue_In_Terms_And_Conditions() {
+        Assertions.assertElementExists(driver, LoginPage.getTermsAndConditions_Header(), AssertionType.POSITIVE);
         LoginPage.acceptTermsAndConditions();
-	}
+    }
 
     @Test(dependsOnMethods = {"Check_And_Accept_And_Continue_In_Terms_And_Conditions"})
-	public void Check_Vodafone_Logo_And_Login_Text_And_Button(){
-        Assertions.assertElementExists(driver,LoginPage.getVodafone_Logo(),AssertionType.POSITIVE);
-        Assertions.assertElementExists(driver, LoginPage.getReg_Login_Button(),AssertionType.POSITIVE);
-        Assertions.assertElementExists(driver, LoginPage.getReg_Login_Txt(),AssertionType.POSITIVE);
+    public void Check_Vodafone_Logo_And_Login_Text_And_Button() {
+        Assertions.assertElementExists(driver, LoginPage.getVodafone_Logo(), AssertionType.POSITIVE);
+        Assertions.assertElementExists(driver, LoginPage.getReg_Login_Button(), AssertionType.POSITIVE);
+        Assertions.assertElementExists(driver, LoginPage.getReg_Login_Txt(), AssertionType.POSITIVE);
     }
 
     @Test(dependsOnMethods = {"Check_Vodafone_Logo_And_Login_Text_And_Button"})
-    public void check_Register_Text_And_Button(){
-        Assertions.assertElementExists(driver, LoginPage.getReg_Register_button(),AssertionType.POSITIVE);
-        Assertions.assertElementExists(driver, LoginPage.getReg_Register_Txt(),AssertionType.POSITIVE);
+    public void check_Register_Text_And_Button() {
+        Assertions.assertElementExists(driver, LoginPage.getReg_Register_button(), AssertionType.POSITIVE);
+        Assertions.assertElementExists(driver, LoginPage.getReg_Register_Txt(), AssertionType.POSITIVE);
     }
 
     @Test(dependsOnMethods = {"check_Register_Text_And_Button"})
-    public void check_Our_Privacy_Link(){
-        Assertions.assertElementExists(driver, LoginPage.getReg_OurPrivacy_Link(),AssertionType.POSITIVE);
+    public void check_Our_Privacy_Link() {
+        Assertions.assertElementExists(driver, LoginPage.getReg_OurPrivacy_Link(), AssertionType.POSITIVE);
         ElementActions.performTouchAction(driver).tap(LoginPage.getReg_OurPrivacy_Link());
     }
 
     @Test(dependsOnMethods = {"check_Our_Privacy_Link"})
-    public void check_Our_Privacy_WebView(){
-        Assertions.assertElementExists(driver, LoginPage.getOurPrivacy_title(),AssertionType.POSITIVE);
-        Assertions.assertElementExists(driver, LoginPage.getOurPrivacy_text(),AssertionType.POSITIVE);
+    public void check_Our_Privacy_WebView() {
+        Assertions.assertElementExists(driver, LoginPage.getOurPrivacy_title(), AssertionType.POSITIVE);
+        Assertions.assertElementExists(driver, LoginPage.getOurPrivacy_text(), AssertionType.POSITIVE);
     }
 
     @Test(dependsOnMethods = {"check_Our_Privacy_WebView"})
-    public void Click_Back_And_check_VodafoneLogo_Is_Displayed_And_Im_On_Login_And_Register_Page(){
+    public void Click_Back_And_check_VodafoneLogo_Is_Displayed_And_Im_On_Login_And_Register_Page() {
         LoginPage.PressBack();
-        Assertions.assertElementExists(driver,LoginPage.getVodafone_Logo(),AssertionType.POSITIVE,"I'm On Register And Login Page");
+        Assertions.assertElementExists(driver, LoginPage.getVodafone_Logo(), AssertionType.POSITIVE, "I'm On Register And Login Page");
     }
 
 }
