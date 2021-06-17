@@ -4,8 +4,9 @@ import FileReaders.jsonReader;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Assertions;
+import io.appium.java_client.MobileDriver;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -14,12 +15,12 @@ import java.io.IOException;
 public class TC04_LoginSuccessfullyWithBillPayCustomer {
 
 
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
     }
 
@@ -39,5 +40,10 @@ public class TC04_LoginSuccessfullyWithBillPayCustomer {
     public void LoginWithBillPayUser() throws IOException, ParseException {
         LoginPage.login(jsonReader.getUserName("BillPayUser.username"), jsonReader.getPassword("BillPayUser.password"));
         Assertions.assertElementExists(driver, LoginPage.getLetsGo_Button());
+    }
+
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
     }
 }

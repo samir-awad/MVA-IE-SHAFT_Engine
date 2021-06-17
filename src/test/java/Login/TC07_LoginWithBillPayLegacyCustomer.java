@@ -4,21 +4,19 @@ import FileReaders.jsonReader;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Assertions;
-import org.json.simple.parser.ParseException;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-
 public class TC07_LoginWithBillPayLegacyCustomer {
 
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
     }
 
@@ -37,5 +35,10 @@ public class TC07_LoginWithBillPayLegacyCustomer {
     public void LoginWithLegacyBillPayUser() {
         LoginPage.login(jsonReader.getUserName("LegacyBillPay.username"), jsonReader.getPassword("LegacyBillPay.password")); // need Legacy User for Bill Pay
         Assertions.assertElementExists(driver, LoginPage.getLegacyOverlay_title(), Assertions.AssertionType.POSITIVE);
+    }
+
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
     }
 }

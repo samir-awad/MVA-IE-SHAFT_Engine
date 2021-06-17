@@ -4,21 +4,19 @@ import FileReaders.jsonReader;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Assertions;
-import org.json.simple.parser.ParseException;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-
 public class TC234_LoginSuccessfullyWithFixedCustomer {
 
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
     }
 
@@ -37,5 +35,10 @@ public class TC234_LoginSuccessfullyWithFixedCustomer {
     public void Step2_Login_With_Fixed_User() {
         LoginPage.login(jsonReader.getUserName("FixedUser.username"), jsonReader.getPassword("FixedUser.password"));
         Assertions.assertElementExists(driver, LoginPage.getLetsGo_Button());
+    }
+
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
     }
 }

@@ -1,27 +1,27 @@
 package ChangePlan;
 
-import Pages.BillsPayments;
 import Pages.ChangePlan;
 import Pages.Home;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC253_ChangePlanPageValidationsBP {
 
 
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
     private Home HomePage;
     private ChangePlan ChangePlanPage;
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         ChangePlanPage = new ChangePlan(driver);
@@ -66,5 +66,10 @@ public class TC253_ChangePlanPageValidationsBP {
         ChangePlanPage.pressPlanDetailsOverlayCloseButton_2();
         ChangePlanPage.changeFromBillPayPlansToSimOnlyPlans();
         ChangePlanPage.pressCloseButton();
+    }
+
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
     }
 }

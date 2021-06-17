@@ -1,17 +1,18 @@
 package Directdebits;
 
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
-import com.shaft.gui.browser.BrowserFactory;
-import com.shaft.validation.Verifications;
 import Pages.BillsPayments;
 import Pages.Home;
 import Pages.Login;
 import Pages.Settings;
+import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.validation.Verifications;
+import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 public class TC291_PageValidationsForFixedUserWithNoPaymentMethodSetup {
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
     private Home HomePage;
     private BillsPayments BillsPaymentsPage;
@@ -19,7 +20,7 @@ public class TC291_PageValidationsForFixedUserWithNoPaymentMethodSetup {
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         BillsPaymentsPage = new BillsPayments(driver);
@@ -36,5 +37,10 @@ public class TC291_PageValidationsForFixedUserWithNoPaymentMethodSetup {
         BillsPaymentsPage.checkThatAccountOlderAndIbanAreNotFilled();
         BillsPaymentsPage.pressSavedCardsTab();
         BillsPaymentsPage.checkThatNoneOfTheCardsAreSavedAsRecurringPayment();
+    }
+
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
     }
 }

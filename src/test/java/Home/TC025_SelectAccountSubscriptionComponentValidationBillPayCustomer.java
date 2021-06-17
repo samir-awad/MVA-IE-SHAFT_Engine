@@ -4,22 +4,22 @@ import FileReaders.jsonReader;
 import Pages.Home;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
-import com.shaft.gui.element.ElementActions;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC025_SelectAccountSubscriptionComponentValidationBillPayCustomer {
 
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
     private Home HomePage;
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
     }
@@ -50,5 +50,10 @@ public class TC025_SelectAccountSubscriptionComponentValidationBillPayCustomer {
     public void checkAccountSuccessfullySelected() {
         HomePage.pressSelectAccountAndSubscriptionSelectButton();
         Verifications.verifyTrue(HomePage.checkAccountSuccessfullySelected(), Verifications.VerificationType.NEGATIVE);
+    }
+
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
     }
 }

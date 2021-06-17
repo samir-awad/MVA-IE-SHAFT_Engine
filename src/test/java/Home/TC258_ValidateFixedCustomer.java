@@ -7,8 +7,9 @@ import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.gui.element.ElementActions;
 import com.shaft.gui.element.TouchActions;
 import com.shaft.validation.Assertions;
+import io.appium.java_client.MobileDriver;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -16,13 +17,13 @@ import java.io.IOException;
 
 public class TC258_ValidateFixedCustomer {
 
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
     private Home HomePage;
 
     @BeforeClass
     public void beforeClass() throws IOException, ParseException {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         LoginPage.acceptTermsAndConditions().login(jsonReader.getUserName("FixedUser.username"), jsonReader.getPassword("FixedUser.password")).acceptPermissions();
@@ -65,5 +66,10 @@ public class TC258_ValidateFixedCustomer {
         HomePage.pressSelectAccountAndSubscriptionComponent();
         HomePage.changeTheSelectedSubscription();
         HomePage.pressSelectAccountAndSubscriptionSelectButton();
+    }
+
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
     }
 }

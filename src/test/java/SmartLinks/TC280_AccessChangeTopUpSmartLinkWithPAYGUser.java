@@ -1,15 +1,19 @@
 package SmartLinks;
 
-import Pages.*;
+import Pages.ChangeTopUpOffer;
+import Pages.Home;
+import Pages.Login;
+import Pages.SmartLinks;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC280_AccessChangeTopUpSmartLinkWithPAYGUser {
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
     private SmartLinks SmartLinksPage;
     private ChangeTopUpOffer ChangeTopUpOfferPage;
@@ -19,7 +23,7 @@ public class TC280_AccessChangeTopUpSmartLinkWithPAYGUser {
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         SmartLinksPage = new SmartLinks(driver);
         ChangeTopUpOfferPage = new ChangeTopUpOffer(driver);
@@ -52,6 +56,11 @@ public class TC280_AccessChangeTopUpSmartLinkWithPAYGUser {
         SmartLinksPage.accessSmartLink(changeTopUpOfferURL);
         Assertions.assertElementAttribute(driver, ChangeTopUpOfferPage.getChangeTopUpOfferHeader_text(),
                 "text", "Change top up offer");
+    }
+
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
     }
 
 }

@@ -6,12 +6,12 @@ import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.MobileDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC057_ValidateAddOnsOverlayBillPayUserWithMonthlyAddOns {
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
     private Home HomePage;
     private AddOns AddOnsPage;
@@ -19,7 +19,7 @@ public class TC057_ValidateAddOnsOverlayBillPayUserWithMonthlyAddOns {
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         AddOnsPage = new AddOns(driver);

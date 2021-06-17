@@ -6,12 +6,13 @@ import Pages.TopUp;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC158_ValidateMoreOptionsOverlayPAYGUser {
-    private WebDriver driver;
+    private MobileDriver driver;
     private JSONFileManager users;
     private Login LoginPage;
     private Home HomePage;
@@ -20,7 +21,7 @@ public class TC158_ValidateMoreOptionsOverlayPAYGUser {
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         TopUpPage = new TopUp(driver);
@@ -53,5 +54,10 @@ public class TC158_ValidateMoreOptionsOverlayPAYGUser {
     public void ValidateMoreOptionsOverlayCloseBtn() {
         TopUpPage.pressTopUpOverlayCloseButton();
         Assertions.assertElementExists(driver, HomePage.getVodafoneLogo());
+    }
+
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
     }
 }

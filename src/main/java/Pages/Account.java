@@ -3,7 +3,6 @@ package Pages;
 import com.shaft.gui.element.ElementActions;
 import com.shaft.gui.element.TouchActions;
 import com.shaft.validation.Assertions;
-import com.shaft.validation.Verifications;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
@@ -384,8 +383,8 @@ public class Account {
 
     public void pressChangePasswordCancelButton() {
         ElementActions.performTouchAction(driver).swipeElementIntoView(ChangePasswordCancel_Button, TouchActions.SwipeDirection.UP);
-       driver.findElement(ChangePasswordCancel_Button).click();
-       driver.findElement(BackForSecurityPage_Button).click();
+        driver.findElement(ChangePasswordCancel_Button).click();
+        driver.findElement(BackForSecurityPage_Button).click();
 
 //        ElementActions.performTouchAction(driver).tap(ChangePasswordCancel_Button);
 
@@ -729,12 +728,10 @@ public class Account {
     }
 
     public void BiometricCheck() {
-        if (getCheckBiometricsOption().equals(true)){
-            Assertions.assertElementExists(driver,BiometricsOption);
-        }
-        else
-        {
-            Assertions.assertElementExists(driver,FaceID);
+        if (getCheckBiometricsOption().equals(true)) {
+            Assertions.assertElementExists(driver, BiometricsOption);
+        } else {
+            Assertions.assertElementExists(driver, FaceID);
         }
     }
 }

@@ -4,16 +4,16 @@ import Pages.BillsPayments;
 import Pages.Home;
 import Pages.Login;
 import Pages.Settings;
-import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Verifications;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC289_PagevalidationsForFixedUserWithCreditCardAsRecurringPayment {
 
 
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
     private Home HomePage;
     private BillsPayments BillsPaymentsPage;
@@ -69,6 +69,11 @@ public class TC289_PagevalidationsForFixedUserWithCreditCardAsRecurringPayment {
         Verifications.verifyTrue(BillsPaymentsPage.checkCreditCardAsRecurringPaymentText());
         Verifications.verifyTrue(BillsPaymentsPage.checkTheTwoExistingTabs());
         BillsPaymentsPage.pressDirectDebitTab();
+    }
+
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
     }
 
 }

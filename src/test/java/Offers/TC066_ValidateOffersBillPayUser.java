@@ -4,14 +4,12 @@ package Offers;
 import Pages.Home;
 import Pages.Login;
 import Pages.Offers;
-import com.shaft.driver.DriverFactory;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
 import io.appium.java_client.AppiumDriver;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -80,7 +78,7 @@ public class TC066_ValidateOffersBillPayUser {
     }
 
     @AfterClass
-    public void CloseAllDrivers(){
+    public void CloseAllDrivers() {
         driver.quit();
     }
 

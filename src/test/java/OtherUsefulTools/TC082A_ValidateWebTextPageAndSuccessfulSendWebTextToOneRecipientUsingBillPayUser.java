@@ -9,12 +9,13 @@ import com.shaft.gui.element.TouchActions;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC082A_ValidateWebTextPageAndSuccessfulSendWebTextToOneRecipientUsingBillPayUser {
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
     private Home HomePage;
     private OtherUsefulTools OtherUsefulToolsPage;
@@ -22,7 +23,7 @@ public class TC082A_ValidateWebTextPageAndSuccessfulSendWebTextToOneRecipientUsi
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         OtherUsefulToolsPage = new OtherUsefulTools(driver);
@@ -81,4 +82,8 @@ public class TC082A_ValidateWebTextPageAndSuccessfulSendWebTextToOneRecipientUsi
         Assertions.assertElementExists(driver, OtherUsefulToolsPage.getWebtextInternationalToast());
     }
 
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
+    }
 }

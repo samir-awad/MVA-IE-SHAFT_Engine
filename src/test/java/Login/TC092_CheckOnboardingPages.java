@@ -5,8 +5,9 @@ import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.gui.element.ElementActions;
 import com.shaft.validation.Assertions;
+import io.appium.java_client.MobileDriver;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -14,12 +15,12 @@ import java.io.IOException;
 
 public class TC092_CheckOnboardingPages {
 
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
     }
 
@@ -46,5 +47,10 @@ public class TC092_CheckOnboardingPages {
     public void CheckYourPrivacyIsDisplayed() {
         Assertions.assertElementExists(driver, LoginPage.getPrivacyContinue_button());
         ElementActions.performTouchAction(driver).tap(LoginPage.getPrivacyContinue_button());
+    }
+
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
     }
 }

@@ -7,13 +7,14 @@ import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
 public class TC156_ValidateTopUpPageAndAccessVestaPAYGUser {
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
     private Home HomePage;
     private TopUp TopUpPage;
@@ -21,7 +22,7 @@ public class TC156_ValidateTopUpPageAndAccessVestaPAYGUser {
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         TopUpPage = new TopUp(driver);
@@ -82,5 +83,9 @@ public class TC156_ValidateTopUpPageAndAccessVestaPAYGUser {
         Assertions.assertElementExists(driver, TopUpPage.getCancel_button());
     }
 
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
+    }
 
 }

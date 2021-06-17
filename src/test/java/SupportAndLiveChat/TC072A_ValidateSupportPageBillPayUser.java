@@ -7,12 +7,13 @@ import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC072A_ValidateSupportPageBillPayUser {
-    private WebDriver driver;
+    private MobileDriver driver;
     private JSONFileManager users;
     private Login LoginPage;
     private Home HomePage;
@@ -20,15 +21,7 @@ public class TC072A_ValidateSupportPageBillPayUser {
 
     @BeforeClass
     public void beforeClass() {
-//        System.setProperty("executionAddress", "0.0.0.0:4723");
-//        System.setProperty("targetOperatingSystem", "iOS");
-//        System.setProperty("mobile_platformVersion", "13.5.1");
-//        System.setProperty("mobile_automationName", "XCUITest");
-//        System.setProperty("mobile_udid", "00008030-001C4D5C1E33802E");
-//        System.setProperty("mobile_bundleId", "com.VodafoneIreland.MyVodafone");
-//        System.setProperty("mobile_derivedDataPath","/Users/mva-ireland/Library/Developer/Xcode/DerivedData/WebDriverAgent-ciegwgvxzxdrqthilmrmczmqvrgu");
-//        System.setProperty("mobile_app",System.getProperty("user.dir")+"//App//98_AUTO.ipa");
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         SupportAndLiveChatPage = new SupportAndLiveChat(driver);
@@ -64,4 +57,8 @@ public class TC072A_ValidateSupportPageBillPayUser {
 
     }
 
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
+    }
 }

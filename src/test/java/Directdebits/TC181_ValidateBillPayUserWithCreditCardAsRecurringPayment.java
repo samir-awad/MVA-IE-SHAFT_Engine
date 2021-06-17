@@ -1,24 +1,23 @@
 package Directdebits;
 
-import FileReaders.jsonReader;
-import Pages.*;
+import Pages.BillsPayments;
+import Pages.Home;
+import Pages.Login;
+import Pages.Settings;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
-import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
 
 public class TC181_ValidateBillPayUserWithCreditCardAsRecurringPayment {
 
     //TC181 - Page validations for a Bill Pay user with Credit Card as recurring payment
     //TC175 - Page validations for a Bill Pay user with Credit Card as recurring payment
 
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
     private Home HomePage;
     private BillsPayments BillsPaymentsPage;
@@ -27,7 +26,7 @@ public class TC181_ValidateBillPayUserWithCreditCardAsRecurringPayment {
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         BillsPaymentsPage = new BillsPayments(driver);
@@ -76,6 +75,11 @@ public class TC181_ValidateBillPayUserWithCreditCardAsRecurringPayment {
     public void step6() {
         BillsPaymentsPage.pressDirectDebitTab();
         BillsPaymentsPage.checkThatAccountOlderAndIbanAreNotFilled();
+    }
+
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
     }
 }
 
