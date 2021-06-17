@@ -19,30 +19,30 @@ public class TC279_ConfirmAccessChangeTopUpSmartLinkWithBillPayWillRedirectUserT
     private JSONFileManager users;
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
-        HomePage= new Home(driver);
+        HomePage = new Home(driver);
         SmartLinksPage = new SmartLinks(driver);
-        links = new JSONFileManager(System.getProperty("testDataFolderPath")+"smartLinks.json");
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        links = new JSONFileManager(System.getProperty("testDataFolderPath") + "smartLinks.json");
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         LoginPage.acceptTermsAndConditions();
     }
 
     @Test
-    public void CheckAccessChangeTopUpSmartLinkBeforeLogin(){
-        String changeTopUpURL= links.getTestData("ChangeTopUp.link");
+    public void CheckAccessChangeTopUpSmartLinkBeforeLogin() {
+        String changeTopUpURL = links.getTestData("ChangeTopUp.link");
         SmartLinksPage.accessSmartLink(changeTopUpURL);
         String username = users.getTestData("BillPayUser.username");
         String password = users.getTestData("BillPayUser.password");
         LoginPage.login(username, password).acceptPermissions();
-        Assertions.assertElementMatches(driver,HomePage.getVodafoneLogo());
+        Assertions.assertElementMatches(driver, HomePage.getVodafoneLogo());
     }
 
-    @Test(dependsOnMethods ="CheckAccessChangeTopUpSmartLinkBeforeLogin")
-    public void CheckAccessChangeTopUpSmartLinkAfterLogin(){
-        String changeTopUpURL= links.getTestData("ChangeTopUp.link");
+    @Test(dependsOnMethods = "CheckAccessChangeTopUpSmartLinkBeforeLogin")
+    public void CheckAccessChangeTopUpSmartLinkAfterLogin() {
+        String changeTopUpURL = links.getTestData("ChangeTopUp.link");
         SmartLinksPage.accessSmartLink(changeTopUpURL);
-        Assertions.assertElementMatches(driver,HomePage.getVodafoneLogo());
+        Assertions.assertElementMatches(driver, HomePage.getVodafoneLogo());
     }
 }

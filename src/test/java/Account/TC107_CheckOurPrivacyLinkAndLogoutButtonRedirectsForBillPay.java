@@ -9,6 +9,7 @@ import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -23,7 +24,6 @@ public class TC107_CheckOurPrivacyLinkAndLogoutButtonRedirectsForBillPay {
 
     @BeforeClass
     public void beforeClass() {
-        //System.setProperty("mobile_app", FileActions.getAbsolutePath(System.getProperty("testDataFolderPath") + "apk/", "DIG18180Fix.apk"));
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
@@ -33,7 +33,6 @@ public class TC107_CheckOurPrivacyLinkAndLogoutButtonRedirectsForBillPay {
         String username = users.getTestData("BillPayUser.username");
         String password = users.getTestData("BillPayUser.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
-        // LoginPage.acceptPermissions();
     }
 
     @Test
@@ -55,5 +54,10 @@ public class TC107_CheckOurPrivacyLinkAndLogoutButtonRedirectsForBillPay {
         Verifications.verifyElementExists(driver, LogoutPage.getCheckLogoutOverlay());
         LogoutPage.pressLogoutYesButton();
         Assertions.assertElementExists(driver, LoginPage.getLoginVf_Logo());
+    }
+
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
     }
 }

@@ -21,40 +21,40 @@ public class TC272_AccessBillsSmartLinkWithFixedUser {
     private JSONFileManager users;
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
-        HomePage= new Home(driver);
-        SmartLinksPage= new SmartLinks(driver);
-        BillsPaymentsPage= new BillsPayments(driver);
-        links = new JSONFileManager(System.getProperty("testDataFolderPath")+"smartLinks.json");
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        HomePage = new Home(driver);
+        SmartLinksPage = new SmartLinks(driver);
+        BillsPaymentsPage = new BillsPayments(driver);
+        links = new JSONFileManager(System.getProperty("testDataFolderPath") + "smartLinks.json");
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         LoginPage.acceptTermsAndConditions();
     }
 
     @Test
-    public void CheckAccessBillSmartLinkBeforeLogin(){
-        String billLink= links.getTestData("Bill.link");
+    public void CheckAccessBillSmartLinkBeforeLogin() {
+        String billLink = links.getTestData("Bill.link");
         SmartLinksPage.accessSmartLink(billLink);
         String username = users.getTestData("FixedUser.username");
         String password = users.getTestData("FixedUser.password");
         LoginPage.login(username, password).acceptPermissions();
-        Assertions.assertElementAttribute(driver,BillsPaymentsPage.getBillsPaymentTitle(),
-                "text","Bills & Payments");
+        Assertions.assertElementAttribute(driver, BillsPaymentsPage.getBillsPaymentTitle(),
+                "text", "Bills & Payments");
     }
 
     @Test(dependsOnMethods = "CheckAccessBillSmartLinkBeforeLogin")
-    public void CheckBillCloseButton(){
+    public void CheckBillCloseButton() {
         BillsPaymentsPage.pressCloseButtonInBillsPaymentsView();
-        Assertions.assertElementMatches(driver,HomePage.getVodafoneLogo(),"Checking that you are on home page");
+        Assertions.assertElementMatches(driver, HomePage.getVodafoneLogo(), "Checking that you are on home page");
 
     }
 
-    @Test(dependsOnMethods ="CheckBillCloseButton")
-    public void CheckAccessBillSmartLinkAfterLogin(){
-        String billLink= links.getTestData("Bill.link");
+    @Test(dependsOnMethods = "CheckBillCloseButton")
+    public void CheckAccessBillSmartLinkAfterLogin() {
+        String billLink = links.getTestData("Bill.link");
         SmartLinksPage.accessSmartLink(billLink);
-        Assertions.assertElementAttribute(driver,BillsPaymentsPage.getBillsPaymentTitle(),
-                "text","Bills & Payments");
+        Assertions.assertElementAttribute(driver, BillsPaymentsPage.getBillsPaymentTitle(),
+                "text", "Bills & Payments");
     }
 }

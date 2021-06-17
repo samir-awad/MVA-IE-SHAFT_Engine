@@ -25,7 +25,6 @@ public class TC162_SubmitInvalidVoucherNumberPAYGUser {
 
     @BeforeClass
     public void beforeClass() {
-        System.setProperty("mobile_app",System.getProperty("user.dir")+"//App//144_AUTO.apk");
         driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);

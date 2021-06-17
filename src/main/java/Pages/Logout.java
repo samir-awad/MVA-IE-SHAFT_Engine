@@ -8,10 +8,10 @@ import org.openqa.selenium.WebDriver;
 public class Logout {
 
     private WebDriver driver;
-    private By Logout_Button;
-    private By LogoutOverlay;
-    private By LogoutNo_Button;
-    private By LogoutYes_Button;
+    private static By Logout_Button;
+    private static By LogoutOverlay;
+    private static By LogoutNo_Button;
+    private static By LogoutYes_Button;
     private Home HomePage;
 
 

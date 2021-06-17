@@ -9,38 +9,39 @@ import org.openqa.selenium.WebDriver;
 
 public class TopUp {
     private final MobileDriver driver;
-    private By TopUpOverlayClose_button;
-    private By TopUpOverlay_button;
-    private By TopUpHeader_text;
-    private By TopUpHeaderClose_button;
-    private By ChooseANumber_text;
-    private By ChooseATopUpAmount_text;
-    private By ChooseAPaymentMethod_text;
-    private By ChangePaymentMethod_button;
-    private By Cancel_button; //general locator in Top up page
-    private By PaymentCard_text;
-    private By AddPaymentCard_button;
-    private By Chrome_driver;
-    private By CardType_text;
-    private By Next_button; //general locator in Top up page
-    private By ConfirmYourTopUpDetails;
-    private By MoreOptionsOverlay_button;
-    private By TopUpOverlayHeader_text;
-    private By MoreOptionsOverlayBack_button;
-    private By SetAnAutomaticTopUp_button;
-    private By AutoTopUpPageHeader_text;
-    private By AutoTopUpPageHeaderBack_button;
-    private By AutoTopUpPageMyNumber_text;
-    private By CheckYourTopUpHistory_button;
-    private By SelectAccount_text;
-    private By Filter_text;
-    private By TopUpWithAVoucher_button;
-    private By ChooseTheNumber_text;
-    private By TopUpAnotherNumber_button;
-    private By InsertPhoneNumber_editbox;
-    private By InsertVoucherCode_editbox;
-    private By Submit_button;
-    private By VoucherTopUpHeader_text;
+    private static By TopUpOverlayClose_button;
+    private static By TopUpOverlay_button;
+    private static By TopUpHeader_text;
+    private static By TopUpHeaderClose_button;
+    private static By ChooseANumber_text;
+    private static By ChooseATopUpAmount_text;
+    private static By ChooseAPaymentMethod_text;
+    private static By ChangePaymentMethod_button;
+    private static By Cancel_button; //general locator in Top up page
+    private static By PaymentCard_text;
+    private static By AddPaymentCard_button;
+    private static By Chrome_driver;
+    private static By CardType_text;
+    private static By Next_button; //general locator in Top up page
+    private static By ConfirmYourTopUpDetails;
+    private static By MoreOptionsOverlay_button;
+    private static By TopUpOverlayHeader_text;
+    private static By MoreOptionsOverlayBack_button;
+    private static By SetAnAutomaticTopUp_button;
+    private static By AutoTopUpPageHeader_text;
+    private static By AutoTopUpPageHeaderBack_button;
+    private static By AutoTopUpPageMyNumber_text;
+    private static By CheckYourTopUpHistory_button;
+    private static By SelectAccount_text;
+    private static By Filter_text;
+    private static By TopUpWithAVoucher_button;
+    private static By ChooseTheNumber_text;
+    private static By TopUpAnotherNumber_button;
+    private static By InsertPhoneNumber_editbox;
+    private static By InsertVoucherCode_editbox;
+    private static By Submit_button;
+    private static By VoucherTopUpHeader_text;
+    private static By EditView;
 
     //Getters
     public By getTopUpHeader_text() {
@@ -177,14 +178,14 @@ public class TopUp {
         if (System.getProperty("targetOperatingSystem").equals("Android")) {
 
             TopUpOverlayClose_button = new MobileBy.ByAccessibilityId("STundefinedCloseBtn");
-            TopUpOverlay_button = By.xpath("(//android.widget.Button[@content-desc=\"id_top_up_button\"])[1]");
+            TopUpOverlay_button = MobileBy.xpath("(//android.widget.Button[@content-desc=\"id_top_up_button\"])[1]");
             TopUpHeader_text = new MobileBy.ByAccessibilityId("id_header_title_Top_up");
             ChooseANumber_text = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.widget.ListView[1]/android.view.View[1]");
             ChooseATopUpAmount_text = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.widget.ListView[2]/android.view.View[1]");
             ChooseAPaymentMethod_text = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.widget.ListView[3]/android.view.View[1]");
             ChangePaymentMethod_button = By.xpath("(//android.view.View[@content-desc=\"Change\"])[3]");
             PaymentCard_text = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.widget.ListView/android.view.View[1]");
-            Cancel_button = new MobileBy.ByAccessibilityId("Cancel");
+            Cancel_button = MobileBy.AccessibilityId("Cancel");
             AddPaymentCard_button = new MobileBy.ByAccessibilityId("Add payment card");
             Chrome_driver = By.id("com.android.chrome:id/url_bar");
             CardType_text = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout[2]/android.webkit.WebView/android.view.View/android.view.View/android.view.View[2]/android.view.View");
@@ -207,6 +208,7 @@ public class TopUp {
             TopUpAnotherNumber_button = MobileBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[1]");
             InsertPhoneNumber_editbox = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[5]/android.view.View[8]/android.view.View[3]/android.widget.EditText");
             InsertVoucherCode_editbox = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[5]/android.view.View[9]/android.view.View/android.widget.EditText");
+            EditView = MobileBy.AccessibilityId("AddEditPaymentDevice");
 
         } else {
 
@@ -248,19 +250,23 @@ public class TopUp {
     }
 
     public void pressTopUpOverlayCloseButton() {
-        ElementActions.performTouchAction(driver).tap(TopUpOverlayClose_button);
+        driver.findElement(TopUpOverlayClose_button).click();
+//        ElementActions.performTouchAction(driver).tap(TopUpOverlayClose_button);
     }
 
     public void pressTopUpOverlayTopUpButton() {
+//        driver.findElement(TopUpOverlay_button).click();
         ElementActions.performTouchAction(driver).tap(TopUpOverlay_button);
     }
 
     public void pressChangePaymentMethodButton() {
-        ElementActions.performTouchAction(driver).tap(ChangePaymentMethod_button);
+        driver.findElement(ChangePaymentMethod_button).click();
+//        ElementActions.performTouchAction(driver).tap(ChangePaymentMethod_button);
     }
 
     public void pressAddPaymentCardButton() {
-        ElementActions.performTouchAction(driver).tap(AddPaymentCard_button);
+        driver.findElement(AddPaymentCard_button).click();
+//        ElementActions.performTouchAction(driver).tap(AddPaymentCard_button);
     }
 
     public boolean isVestaWebpageOpened() {
@@ -268,19 +274,23 @@ public class TopUp {
     }
 
     public void scrollDownToCancelBtn() {
-        ElementActions.performTouchAction(driver).swipeElementIntoView(Cancel_button, TouchActions.SwipeDirection.DOWN);
+//        ElementActions.waitForElementToBePresent(driver,EditView,10,true);
+        ElementActions.performTouchAction(driver).swipeElementIntoView(Cancel_button, TouchActions.SwipeDirection.UP);
     }
 
     public void pressCancelBtn() {
-        ElementActions.performTouchAction(driver).swipeElementIntoView(Cancel_button, TouchActions.SwipeDirection.DOWN);
-        ElementActions.performTouchAction(driver).tap(Cancel_button);
+//        ElementActions.performTouchAction(driver).swipeElementIntoView(Cancel_button, TouchActions.SwipeDirection.UP);
+        driver.findElement(Cancel_button).click();
+//        ElementActions.performTouchAction(driver).tap(Cancel_button);
     }
 
     public void pressCloseBtn() {
-        ElementActions.performTouchAction(driver).tap(TopUpHeaderClose_button);
+        driver.findElement(TopUpHeaderClose_button).click();
+//        ElementActions.performTouchAction(driver).tap(TopUpHeaderClose_button);
     }
 
     public void pressNextBtn() {
+//        driver.findElement(Next_button).click();
         ElementActions.performTouchAction(driver).tap(Next_button);
     }
 

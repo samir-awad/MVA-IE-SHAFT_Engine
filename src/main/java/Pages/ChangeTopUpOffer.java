@@ -7,24 +7,24 @@ import org.openqa.selenium.WebDriver;
 
 public class ChangeTopUpOffer {
     private final WebDriver driver;
-    private By ChangeTopUpOfferHeader_text;
-    private By ChangeTopUpOfferClose_button;
-    private By ChangeToUpOfferDashboard_button;
-    private By changeTopUpOfferDetails_title;
-    private By changeTopUpOfferDetails_OfferName;
-    private By changeTopUpOfferDetailsOffer_MuchMore;
-    private By currentTopUpOffer_title;
-    private By currentTopUpOffer_name;
-    private By currentTopUpOffer_value;
-    private By ViewDetailsCurrentTopUpOffer_button;
-    private By YourTopUpOffer_title;
-    private By ChangeTopUpOfferOverlay_CloseButton;
-    private By ChangeTopUpOffer_button;
-    private By NoTopUpOffer_text;
-    private By FirstOfferComponent;
-    private By SecondOfferComponent;
-    private By ViewDetailsNewTopUpOffer_button;
-    private By OptIn_button;
+    private static By ChangeTopUpOfferHeader_text;
+    private static By ChangeTopUpOfferClose_button;
+    private static By ChangeToUpOfferDashboard_button;
+    private static By changeTopUpOfferDetails_title;
+    private static By changeTopUpOfferDetails_OfferName;
+    private static By changeTopUpOfferDetailsOffer_MuchMore;
+    private static By currentTopUpOffer_title;
+    private static By currentTopUpOffer_name;
+    private static By currentTopUpOffer_value;
+    private static By ViewDetailsCurrentTopUpOffer_button;
+    private static By YourTopUpOffer_title;
+    private static By ChangeTopUpOfferOverlay_CloseButton;
+    private static By ChangeTopUpOffer_button;
+    private static By NoTopUpOffer_text;
+    private static By FirstOfferComponent;
+    private static By SecondOfferComponent;
+    private static By ViewDetailsNewTopUpOffer_button;
+    private static By OptIn_button;
 
 
     public ChangeTopUpOffer(WebDriver driver) {

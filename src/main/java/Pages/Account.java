@@ -2,6 +2,8 @@ package Pages;
 
 import com.shaft.gui.element.ElementActions;
 import com.shaft.gui.element.TouchActions;
+import com.shaft.validation.Assertions;
+import com.shaft.validation.Verifications;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
@@ -10,100 +12,101 @@ import org.openqa.selenium.WebDriver;
 public class Account {
 
     private AppiumDriver driver;
-    private By AccountTry_Button;
-    private By AccountOverlay;
-    private By AccountSettingOption;
-    private By AccountSettingsPageHeader;
-    private By AccountSettingsSection;
-    private By PersonalDetailsSection;
-    private By AppSettingsSection;
-    private By Close_Button;
-    private By EmailOption_Button;
-    private By EmailPageHeader;
-    private By EmailInputField;
-    private By SaveButtonBecomesEnabled;
-    private By HeaderBackChevron_Button;
-    private By BillingDetailsOption;
-    private By BillingDetailsPageHeader;
-    private By DetailsPageContent;
-    private By DetailsHeaderClose_Button;
-    private By DetailsBillingPreferencesSection;
-    private By EnterAddressManuallyLink_Button;
-    private By AddressSectionFieldsForManualAddress;
-    private By SearchForYourAddressLink_Button;
-    private By AccountNameField;
-    private By AccountHeaderClose_Button;
-    private By MyRecordsOption_Button;
-    private By MyRecordsPageHeader;
-    private By AvailableTabOptions;
-    private By OrdersArea;
-    private By LettersTabOption;
-    private By ThatExistsAtLeastOneLetter;
-    private By FirstLetterAttachmentsLink;
-    private By AppToOpenLetterWith;
-    private By LetterIsOpenedAsPdfDocument;
-    private By BackToMyRecordsPage;
-    private By MyRecordsHeaderClose_Button;
-    private By OurPrivacyLink;
-    private By OurPrivacyHeader;
-    private By CloseInPrivacy_Button;
-    private By AppPermissionsOption;
-    private By RateUsOption;
-    private By PersonalDetailsPageHeader;
-    private By PersonalDetailsPageContent;
-    private By BackForPersonalDetails_Button;
-    private By CloseForPersonalDetails_Button;
-    private By YourDetailsSection;
-    private By YourDetailsPageHeader;
-    private By YourDetailsPageContent;
-    private By YourDetailsEdit_Button;
-    private By YourDetailsCancel_Button;
-    private By BackForDetailsPage_Button;
-    private By CloseForDetailsPage_Button;
-    private By ManagePersonalInformation_Section;
-    private By ManagePersonalInformationPageHeader;
-    private By ManagePersonalInformationPageContent;
-    private By ManagePersonalInformationEdit_Button;
-    private By ManagePersonalInformationEditContent;
-    private By DownloadDataRequestForm_Button;
-    private By DeletionRequestForm_Button;
-    private By BackForTheRequestInformationPage_Button;
-    private By CloseForManagePersonalInformationSection_Button;
-    private By SubjectAccessRequestFormPdfIsOpened;
-    private By PdfBack_Button;
-    private By Chrome_driver;
-    private By MarketingPreferences_Section;
-    private By MarketingPreferencesPageHeader;
-    private By MarketingPreferencesPageContent;
-    private By MarketingPreferencesEdit_Button;
-    private By MarketingPreferencesEditContent;
-    private By MarketingPreferencesCancel_Button;
-    private By BackForMarketingPreferencesPage_Button;
-    private By CloseForMarketingPreferencesPage_Button;
-    private By DataPreferencesSection;
-    private By DataPreferencesPageHeader;
-    private By DataPreferencesPageContent;
-    private By DataPreferencesEdit_Button;
-    private By DataPreferencesEditContent;
-    private By DataPreferencesCancel_Button;
-    private By BackForDataPreferences_Button;
-    private By CloseForDataPreference_Button;
-    private By SecuritySection;
-    private By SecurityPageHeader;
-    private By SecurityPageContent;
-    private By SecurityEditPassword_Button;
-    private By ChangePasswordPageHeader;
-    private By ChangePasswordPageContent;
-    private By ChangePasswordCancel_Button;
-    private By SecurityEditPin_Button;
-    private By ChangePinPageHeader;
-    private By ChangePinPageContent;
-    private By ChangePinCancel_Button;
-    private By BackForSecurityPage_Button;
-    private By CloseForSecurityPage_Button;
-    private By BiometricsOption;
-    private By AccountOption_Button;
-    private By AccountPageHeader;
+    private static By AccountTry_Button;
+    private static By AccountOverlay;
+    private static By AccountSettingOption;
+    private static By AccountSettingsPageHeader;
+    private static By AccountSettingsSection;
+    private static By PersonalDetailsSection;
+    private static By AppSettingsSection;
+    private static By Close_Button;
+    private static By EmailOption_Button;
+    private static By EmailPageHeader;
+    private static By EmailInputField;
+    private static By SaveButtonBecomesEnabled;
+    private static By HeaderBackChevron_Button;
+    private static By BillingDetailsOption;
+    private static By BillingDetailsPageHeader;
+    private static By DetailsPageContent;
+    private static By DetailsHeaderClose_Button;
+    private static By DetailsBillingPreferencesSection;
+    private static By EnterAddressManuallyLink_Button;
+    private static By AddressSectionFieldsForManualAddress;
+    private static By SearchForYourAddressLink_Button;
+    private static By AccountNameField;
+    private static By AccountHeaderClose_Button;
+    private static By MyRecordsOption_Button;
+    private static By MyRecordsPageHeader;
+    private static By AvailableTabOptions;
+    private static By OrdersArea;
+    private static By LettersTabOption;
+    private static By ThatExistsAtLeastOneLetter;
+    private static By FirstLetterAttachmentsLink;
+    private static By AppToOpenLetterWith;
+    private static By LetterIsOpenedAsPdfDocument;
+    private static By BackToMyRecordsPage;
+    private static By MyRecordsHeaderClose_Button;
+    private static By OurPrivacyLink;
+    private static By OurPrivacyHeader;
+    private static By CloseInPrivacy_Button;
+    private static By AppPermissionsOption;
+    private static By RateUsOption;
+    private static By PersonalDetailsPageHeader;
+    private static By PersonalDetailsPageContent;
+    private static By BackForPersonalDetails_Button;
+    private static By CloseForPersonalDetails_Button;
+    private static By YourDetailsSection;
+    private static By YourDetailsPageHeader;
+    private static By YourDetailsPageContent;
+    private static By YourDetailsEdit_Button;
+    private static By YourDetailsCancel_Button;
+    private static By BackForDetailsPage_Button;
+    private static By CloseForDetailsPage_Button;
+    private static By ManagePersonalInformation_Section;
+    private static By ManagePersonalInformationPageHeader;
+    private static By ManagePersonalInformationPageContent;
+    private static By ManagePersonalInformationEdit_Button;
+    private static By ManagePersonalInformationEditContent;
+    private static By DownloadDataRequestForm_Button;
+    private static By DeletionRequestForm_Button;
+    private static By BackForTheRequestInformationPage_Button;
+    private static By CloseForManagePersonalInformationSection_Button;
+    private static By SubjectAccessRequestFormPdfIsOpened;
+    private static By PdfBack_Button;
+    private static By Chrome_driver;
+    private static By MarketingPreferences_Section;
+    private static By MarketingPreferencesPageHeader;
+    private static By MarketingPreferencesPageContent;
+    private static By MarketingPreferencesEdit_Button;
+    private static By MarketingPreferencesEditContent;
+    private static By MarketingPreferencesCancel_Button;
+    private static By BackForMarketingPreferencesPage_Button;
+    private static By CloseForMarketingPreferencesPage_Button;
+    private static By DataPreferencesSection;
+    private static By DataPreferencesPageHeader;
+    private static By DataPreferencesPageContent;
+    private static By DataPreferencesEdit_Button;
+    private static By DataPreferencesEditContent;
+    private static By DataPreferencesCancel_Button;
+    private static By BackForDataPreferences_Button;
+    private static By CloseForDataPreference_Button;
+    private static By SecuritySection;
+    private static By SecurityPageHeader;
+    private static By SecurityPageContent;
+    private static By SecurityEditPassword_Button;
+    private static By ChangePasswordPageHeader;
+    private static By ChangePasswordPageContent;
+    private static By ChangePasswordCancel_Button;
+    private static By SecurityEditPin_Button;
+    private static By ChangePinPageHeader;
+    private static By ChangePinPageContent;
+    private static By ChangePinCancel_Button;
+    private static By BackForSecurityPage_Button;
+    private static By CloseForSecurityPage_Button;
+    private static By BiometricsOption;
+    private static By AccountOption_Button;
+    private static By AccountPageHeader;
+    private static By FaceID;
 
 
     public Account(WebDriver driver) {
@@ -121,7 +124,7 @@ public class Account {
             EmailOption_Button = By.xpath("(//android.widget.TextView[@content-desc=\"id_account_settings_item_title\"])[1]");
             AccountOption_Button = MobileBy.xpath("(//android.widget.TextView[@content-desc=\"id_account_settings_item_title\"])[1]");
             EmailPageHeader = MobileBy.AccessibilityId("id_header_title_Account_name_&_email");
-            AccountPageHeader =MobileBy.AccessibilityId("id_header_title_Account_name");
+            AccountPageHeader = MobileBy.AccessibilityId("id_header_title_Account_name");
             EmailInputField = MobileBy.AccessibilityId("id_account_and_email_email_input");
             SaveButtonBecomesEnabled = MobileBy.AccessibilityId("Button");
             HeaderBackChevron_Button = MobileBy.AccessibilityId("id_header_back_arrow");
@@ -217,7 +220,7 @@ public class Account {
             EmailOption_Button = MobileBy.AccessibilityId("Account name & email");
             AccountOption_Button = MobileBy.AccessibilityId("Account name");
             EmailPageHeader = MobileBy.AccessibilityId("id_header_title_Account_name_&_email");
-            AccountPageHeader =MobileBy.AccessibilityId("id_header_title_Account_name");
+            AccountPageHeader = MobileBy.AccessibilityId("id_header_title_Account_name");
             EmailInputField = MobileBy.AccessibilityId("id_account_and_email_email_input");
             SaveButtonBecomesEnabled = MobileBy.AccessibilityId("Save");
             HeaderBackChevron_Button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"id_header_back_arrow\"])[2]");
@@ -301,6 +304,7 @@ public class Account {
             BackForSecurityPage_Button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"id_header_back_arrow\"])[2]");
             CloseForSecurityPage_Button = MobileBy.xpath("(//XCUIElementTypeOther[@name=\"id_header_close_icon\"])[2]");
             BiometricsOption = MobileBy.AccessibilityId("Use Touch ID with this login");
+            FaceID = MobileBy.AccessibilityId("Use Face ID with this login");
         }
 
 
@@ -380,7 +384,11 @@ public class Account {
 
     public void pressChangePasswordCancelButton() {
         ElementActions.performTouchAction(driver).swipeElementIntoView(ChangePasswordCancel_Button, TouchActions.SwipeDirection.UP);
-        ElementActions.performTouchAction(driver).tap(ChangePasswordCancel_Button);
+       driver.findElement(ChangePasswordCancel_Button).click();
+       driver.findElement(BackForSecurityPage_Button).click();
+
+//        ElementActions.performTouchAction(driver).tap(ChangePasswordCancel_Button);
+
     }
 
     public void pressSecurityEditPinButton() {
@@ -590,7 +598,7 @@ public class Account {
     public void chooseAppToOpenLetterWith() {
         if (System.getProperty("targetOperatingSystem").equals("Android")) {
             ElementActions.performTouchAction(driver).tap(AppToOpenLetterWith);
-        }else{
+        } else {
         }
     }
 
@@ -714,6 +722,20 @@ public class Account {
     public void pressSearchForYourAddressLink() {
         ElementActions.performTouchAction(driver).swipeElementIntoView(SearchForYourAddressLink_Button, TouchActions.SwipeDirection.UP);
         ElementActions.performTouchAction(driver).tap(SearchForYourAddressLink_Button);
+    }
+
+    public static By getFaceID() {
+        return FaceID;
+    }
+
+    public void BiometricCheck() {
+        if (getCheckBiometricsOption().equals(true)){
+            Assertions.assertElementExists(driver,BiometricsOption);
+        }
+        else
+        {
+            Assertions.assertElementExists(driver,FaceID);
+        }
     }
 }
 

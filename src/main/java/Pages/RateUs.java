@@ -7,9 +7,9 @@ import org.openqa.selenium.WebDriver;
 
 public class RateUs {
     private WebDriver driver;
-    private By CheckRateUsOverlay;
-    private By NoInRateUsPage_Button;
-    private By SorryToHearOverlayClose_Button;
+    private static By CheckRateUsOverlay;
+    private static By NoInRateUsPage_Button;
+    private static By SorryToHearOverlayClose_Button;
 
 
     public RateUs(WebDriver driver) {

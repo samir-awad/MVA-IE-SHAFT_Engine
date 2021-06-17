@@ -8,19 +8,19 @@ import org.openqa.selenium.WebDriver;
 public class ChangePlan {
 
     private WebDriver driver;
-    private By PlanTitle;
-    private By ChangePlan_Button;
-    private By YourPlanClose_Button;
-    private By ChangePlanTitle;
-    private By ChangePlanClose_Button;
-    private By ViewCurrentPlanDetails;
-    private By SelectPlan_Button;
-    private By ViewDetails_Button;
-    private By SimOnlyTab;
-    private By CloseCurrentPlanDetails;
-    private By AvailablePlanDetails;
-    private By PlanDetailsClose_Button;
-    private By PlanDetailsTitle;
+    private static By PlanTitle;
+    private static By ChangePlan_Button;
+    private static By YourPlanClose_Button;
+    private static By ChangePlanTitle;
+    private static By ChangePlanClose_Button;
+    private static By ViewCurrentPlanDetails;
+    private static By SelectPlan_Button;
+    private static By ViewDetails_Button;
+    private static By SimOnlyTab;
+    private static By CloseCurrentPlanDetails;
+    private static By AvailablePlanDetails;
+    private static By PlanDetailsClose_Button;
+    private static By PlanDetailsTitle;
 
 
     public ChangePlan(WebDriver driver) {

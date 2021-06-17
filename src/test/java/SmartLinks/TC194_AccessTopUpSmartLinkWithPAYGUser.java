@@ -17,32 +17,32 @@ public class TC194_AccessTopUpSmartLinkWithPAYGUser {
     private JSONFileManager users;
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         SmartLinksPage = new SmartLinks(driver);
-        TopUpPage= new TopUp(driver);
-        links = new JSONFileManager(System.getProperty("testDataFolderPath")+"smartLinks.json");
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        TopUpPage = new TopUp(driver);
+        links = new JSONFileManager(System.getProperty("testDataFolderPath") + "smartLinks.json");
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         LoginPage.acceptTermsAndConditions();
     }
 
     @Test
-    public void CheckAccessTopUpSmartLinkBeforeLogin(){
-        String topUpURL= links.getTestData("TopUp.link");
+    public void CheckAccessTopUpSmartLinkBeforeLogin() {
+        String topUpURL = links.getTestData("TopUp.link");
         SmartLinksPage.accessSmartLink(topUpURL);
         String username = users.getTestData("PAYGUser.username");
         String password = users.getTestData("PAYGUser.password");
         LoginPage.login(username, password).acceptPermissionsPAYGUser();
-        Assertions.assertElementAttribute(driver,TopUpPage.getTopUpOverlayHeader_text(),
-                "text","Top Up");
+        Assertions.assertElementAttribute(driver, TopUpPage.getTopUpOverlayHeader_text(),
+                "text", "Top Up");
     }
 
-    @Test(dependsOnMethods ="CheckAccessTopUpSmartLinkBeforeLogin")
-    public void CheckAccessTopUpSmartLinkAfterLogin(){
-        String topUpURL= links.getTestData("TopUp.link");
+    @Test(dependsOnMethods = "CheckAccessTopUpSmartLinkBeforeLogin")
+    public void CheckAccessTopUpSmartLinkAfterLogin() {
+        String topUpURL = links.getTestData("TopUp.link");
         SmartLinksPage.accessSmartLink(topUpURL);
-        Assertions.assertElementAttribute(driver,TopUpPage.getTopUpOverlayHeader_text(),
-                "text","Top Up");
+        Assertions.assertElementAttribute(driver, TopUpPage.getTopUpOverlayHeader_text(),
+                "text", "Top Up");
     }
 }

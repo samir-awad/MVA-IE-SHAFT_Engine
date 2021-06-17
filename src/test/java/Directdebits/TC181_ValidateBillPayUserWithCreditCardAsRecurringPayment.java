@@ -32,7 +32,7 @@ public class TC181_ValidateBillPayUserWithCreditCardAsRecurringPayment {
         HomePage = new Home(driver);
         BillsPaymentsPage = new BillsPayments(driver);
         SettingsPage = new Settings(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("TC181_BillPayCredentialsUser_DirectDebit.username");
         String password = users.getTestData("TC181_BillPayCredentialsUser_DirectDebit.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
@@ -59,7 +59,7 @@ public class TC181_ValidateBillPayUserWithCreditCardAsRecurringPayment {
     @Test
     public void step4() {
         BillsPaymentsPage.pressCloseButtonInBillsPaymentsView();
-        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+        Verifications.verifyElementExists(driver, HomePage.getCheckTheVodafoneLogo());
         HomePage.pressAccountTrayMenuOption();
         HomePage.pressAccountSettingOption();
     }

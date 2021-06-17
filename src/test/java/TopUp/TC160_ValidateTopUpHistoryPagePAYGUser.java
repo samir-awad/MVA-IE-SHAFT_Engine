@@ -21,7 +21,6 @@ public class TC160_ValidateTopUpHistoryPagePAYGUser {
 
     @BeforeClass
     public void beforeClass() {
-        System.setProperty("mobile_app",System.getProperty("user.dir")+"//App//144_AUTO.apk");
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
@@ -34,7 +33,7 @@ public class TC160_ValidateTopUpHistoryPagePAYGUser {
 
     @Test
     public void CheckVodafoneLogoAndWelcomeGesture() {
-        Assertions.assertElementExists(driver,HomePage.getVodafoneLogo());
+        Assertions.assertElementExists(driver, HomePage.getVodafoneLogo());
     }
 
     //This step App sometimes is stop working
@@ -55,7 +54,7 @@ public class TC160_ValidateTopUpHistoryPagePAYGUser {
     @Test(dependsOnMethods = "CheckTopUpHistoryPage")
     public void ValidateTopUpHistoryPageCloseBtn() {
         TopUpPage.pressCloseBtn();
-        Assertions.assertElementExists(driver,HomePage.getVodafoneLogo());
+        Assertions.assertElementExists(driver, HomePage.getVodafoneLogo());
     }
 
     @Test(dependsOnMethods = "ValidateTopUpHistoryPageCloseBtn")

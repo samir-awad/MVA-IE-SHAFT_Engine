@@ -8,6 +8,7 @@ import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -21,7 +22,6 @@ public class TC213_PersonalDetailsSecurityPageValidationForPAYG {
 
     @BeforeClass
     public void beforeClass() {
-        //System.setProperty("mobile_app", FileActions.getAbsolutePath(System.getProperty("testDataFolderPath") + "apk/", "DIG18180Fix.apk"));
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
@@ -29,7 +29,7 @@ public class TC213_PersonalDetailsSecurityPageValidationForPAYG {
         users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("PAYGUser.username");
         String password = users.getTestData("PAYGUser.password");
-        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();// LoginPage.acceptPermissions();
+        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
     }
 
     @Test
@@ -74,6 +74,11 @@ public class TC213_PersonalDetailsSecurityPageValidationForPAYG {
         AccountPage.pressSecuritySection();
         AccountPage.pressCloseButtonForSecurityPage();
         Assertions.assertElementExists(driver, HomePage.getCheckTheVodafoneLogo());
+    }
+
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
     }
 
 }

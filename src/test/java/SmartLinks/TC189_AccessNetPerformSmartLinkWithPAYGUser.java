@@ -23,39 +23,40 @@ public class TC189_AccessNetPerformSmartLinkWithPAYGUser {
     private JSONFileManager users;
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
-        HomePage= new Home(driver);
-        SmartLinksPage= new SmartLinks(driver);
-        SpeedCheckerPage=new SpeedChecker(driver);
-        links = new JSONFileManager(System.getProperty("testDataFolderPath")+"smartLinks.json");
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        HomePage = new Home(driver);
+        SmartLinksPage = new SmartLinks(driver);
+        SpeedCheckerPage = new SpeedChecker(driver);
+        links = new JSONFileManager(System.getProperty("testDataFolderPath") + "smartLinks.json");
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         LoginPage.acceptTermsAndConditions();
     }
 
     @Test
-    public void CheckAccessNetPerformSmartLinkBeforeLogin(){
-        String netPerformLink= links.getTestData("NetPerform.link");
+    public void CheckAccessNetPerformSmartLinkBeforeLogin() {
+        String netPerformLink = links.getTestData("NetPerform.link");
         SmartLinksPage.accessSmartLink(netPerformLink);
         String username = users.getTestData("PAYGUser.username");
         String password = users.getTestData("PAYGUser.password");
         LoginPage.login(username, password).acceptPermissionsPAYGUser();
         SpeedCheckerPage.pressOkGrantPermissionButton();
-        Assertions.assertElementMatches(driver,SpeedCheckerPage.getSpeedCheckerHeader_text(),
-                "text","Speed checker","Checking speed header");
+        Assertions.assertElementMatches(driver, SpeedCheckerPage.getSpeedCheckerHeader_text(),
+                "text", "Speed checker", "Checking speed header");
     }
 
     @Test(dependsOnMethods = "CheckAccessNetPerformSmartLinkBeforeLogin")
-    public void CheckNetPerformCloseButton(){
+    public void CheckNetPerformCloseButton() {
         SpeedCheckerPage.pressSpeedCheckerHeaderCloseButton();
-        Assertions.assertElementMatches(driver,HomePage.getVodafoneLogo());
+        Assertions.assertElementMatches(driver, HomePage.getVodafoneLogo());
     }
 
-    @Test(dependsOnMethods ="CheckNetPerformCloseButton")
-    public void CheckAccessNetPerformSmartLinkAfterLogin(){
-        String netPerformLink= links.getTestData("NetPerform.link");
+    @Test(dependsOnMethods = "CheckNetPerformCloseButton")
+    public void CheckAccessNetPerformSmartLinkAfterLogin() {
+        String netPerformLink = links.getTestData("NetPerform.link");
         SmartLinksPage.accessSmartLink(netPerformLink);
-        Assertions.assertElementAttribute(driver,SpeedCheckerPage.getSpeedCheckerHeader_text(),
-                "text","Speed checker","Checking speed header");    }
+        Assertions.assertElementAttribute(driver, SpeedCheckerPage.getSpeedCheckerHeader_text(),
+                "text", "Speed checker", "Checking speed header");
+    }
 }

@@ -23,39 +23,39 @@ public class TC192_AccessPersonalDetailsSmartLinkWithPAYGUser {
 
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
-        HomePage= new Home(driver);
+        HomePage = new Home(driver);
         smartLinksPage = new SmartLinks(driver);
-        AccountPage= new Account(driver);
-        links = new JSONFileManager(System.getProperty("testDataFolderPath")+"smartLinks.json");
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        AccountPage = new Account(driver);
+        links = new JSONFileManager(System.getProperty("testDataFolderPath") + "smartLinks.json");
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         LoginPage.acceptTermsAndConditions();
     }
 
     @Test
-    public void CheckAccessPersonalDetailsSmartLinkBeforeLogin(){
-        String personalDetailsURL= links.getTestData("PersonalDetails.link");
+    public void CheckAccessPersonalDetailsSmartLinkBeforeLogin() {
+        String personalDetailsURL = links.getTestData("PersonalDetails.link");
         smartLinksPage.accessSmartLink(personalDetailsURL);
         String username = users.getTestData("PAYGUser.username");
         String password = users.getTestData("PAYGUser.password");
         LoginPage.login(username, password).acceptPermissionsPAYGUser();
-        Assertions.assertElementAttribute(driver,AccountPage.getCheckPersonalDetailsPageHeader(),
-                "text","Personal details");
+        Assertions.assertElementAttribute(driver, AccountPage.getCheckPersonalDetailsPageHeader(),
+                "text", "Personal details");
     }
 
     @Test(dependsOnMethods = "CheckAccessPersonalDetailsSmartLinkBeforeLogin")
-    public void CheckPersonalDetailsCloseButton(){
+    public void CheckPersonalDetailsCloseButton() {
         AccountPage.pressCloseButtonForPersonalDetails();
-        Assertions.assertElementMatches(driver,HomePage.getVodafoneLogo());
+        Assertions.assertElementMatches(driver, HomePage.getVodafoneLogo());
     }
 
-    @Test(dependsOnMethods ="CheckPersonalDetailsCloseButton")
-    public void CheckAccessPersonalDetailsSmartLinkAfterLogin(){
-        String personalDetailsURL= links.getTestData("PersonalDetails.link");
+    @Test(dependsOnMethods = "CheckPersonalDetailsCloseButton")
+    public void CheckAccessPersonalDetailsSmartLinkAfterLogin() {
+        String personalDetailsURL = links.getTestData("PersonalDetails.link");
         smartLinksPage.accessSmartLink(personalDetailsURL);
-        Assertions.assertElementAttribute(driver,AccountPage.getCheckPersonalDetailsPageHeader(),
-                "text","Personal details");
+        Assertions.assertElementAttribute(driver, AccountPage.getCheckPersonalDetailsPageHeader(),
+                "text", "Personal details");
     }
 }

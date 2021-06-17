@@ -27,7 +27,7 @@ public class TC184_ValidateRedirectingToVestaPageAfterClickingOnAddNewCardButton
         HomePage = new Home(driver);
         BillsPaymentsPage = new BillsPayments(driver);
         SettingsPage = new Settings(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("TC183_BillPayCredentialsUser_DirectDebit.username");
         String password = users.getTestData("TC183_BillPayCredentialsUser_DirectDebit.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();

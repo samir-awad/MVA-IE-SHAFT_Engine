@@ -8,13 +8,13 @@ import org.openqa.selenium.WebDriver;
 
 public class SpeedChecker {
     private final WebDriver driver;
-    private By SpeedCheckerHeader_text;
-    private By SpeedCheckerClose_button;
-    private By GrantPermission_button;
-    private By OnlyThisTime_button;
-    private By PleaseProceed_button;
-    private By NoThanks_button;
-    private By Allow_button;
+    private static By SpeedCheckerHeader_text;
+    private static By SpeedCheckerClose_button;
+    private static By GrantPermission_button;
+    private static By OnlyThisTime_button;
+    private static By PleaseProceed_button;
+    private static By NoThanks_button;
+    private static By Allow_button;
 
     public By getSpeedCheckerHeader_text() {
         return SpeedCheckerHeader_text;

@@ -12,41 +12,42 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC085A_ValidateWebTextWithOnlyTheRecipientAndCheckThatSendButtonStillDisabledUsingBillPayUser {
-        private WebDriver driver;
-        private Login LoginPage;
-        private Home HomePage;
-        private OtherUsefulTools OtherUsefulToolsPage;
-        private JSONFileManager users;
+    private WebDriver driver;
+    private Login LoginPage;
+    private Home HomePage;
+    private OtherUsefulTools OtherUsefulToolsPage;
+    private JSONFileManager users;
 
-        @BeforeClass
-        public void beforeClass(){
-            driver = BrowserFactory.getBrowser();
-            LoginPage = new Login(driver);
-            HomePage = new Home(driver);
-            OtherUsefulToolsPage = new OtherUsefulTools(driver);
-            users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
-            String username = users.getTestData("BillPayUserWithWebText.username");
-            String password = users.getTestData("BillPayUserWithWebText.password");
-            LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
-        }
+    @BeforeClass
+    public void beforeClass() {
+        driver = BrowserFactory.getBrowser();
+        LoginPage = new Login(driver);
+        HomePage = new Home(driver);
+        OtherUsefulToolsPage = new OtherUsefulTools(driver);
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
+        String username = users.getTestData("BillPayUserWithWebText.username");
+        String password = users.getTestData("BillPayUserWithWebText.password");
+        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
+    }
 
-        @Test
-        public void checkTheVodafoneLogo() {
-       	 Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
-        }
+    @Test
+    public void checkTheVodafoneLogo() {
+        Assertions.assertElementExists(driver, HomePage.getCheckTheVodafoneLogo());
+    }
 
-        @Test (dependsOnMethods = {"checkTheVodafoneLogo"})
-        public void checkOtherUsefulToolsSection() {
-            HomePage.checkOtherUsefulToolsSection();
-        }
-        @Test(dependsOnMethods = {"checkOtherUsefulToolsSection"})
-        public void pressSendWebtextOption() {
-            //HomePage.pressSendWebtextOption();
-            Assertions.assertTrue(OtherUsefulToolsPage.checkWebTextForm());
-            Verifications.verifyTrue(OtherUsefulToolsPage.checkWebtextPageHeader());
-            OtherUsefulToolsPage.fillInRecipient();
-            OtherUsefulToolsPage.checkSendButtonStillDisabled();
-        }
+    @Test(dependsOnMethods = {"checkTheVodafoneLogo"})
+    public void checkOtherUsefulToolsSection() {
+        HomePage.checkOtherUsefulToolsSection();
+    }
+
+    @Test(dependsOnMethods = {"checkOtherUsefulToolsSection"})
+    public void pressSendWebtextOption() {
+        //HomePage.pressSendWebtextOption();
+        Assertions.assertTrue(OtherUsefulToolsPage.checkWebTextForm());
+        Verifications.verifyTrue(OtherUsefulToolsPage.checkWebtextPageHeader());
+        OtherUsefulToolsPage.fillInRecipient();
+        OtherUsefulToolsPage.checkSendButtonStillDisabled();
+    }
 
 
 }

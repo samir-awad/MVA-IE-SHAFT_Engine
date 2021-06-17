@@ -26,8 +26,9 @@ public class TC265_ChangeTopupOfferPageValidationsForPAYGUserWithoutActiveOffers
         ChangeTopUpOfferPage = new ChangeTopUpOffer(driver);
 
     }
+
     @Test
-    public void Login(){
+    public void Login() {
         LoginPage.acceptTermsAndConditions().login(jsonReader.getUserName("PAYGWithoutTopUpOffer.username"), jsonReader.getUserName("PAYGWithoutTopUpOffer.password")).acceptPermissionsPAYGUser();
     }
 

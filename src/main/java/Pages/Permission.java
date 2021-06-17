@@ -9,9 +9,9 @@ import org.openqa.selenium.WebDriver;
 public class Permission {
 
     private WebDriver driver;
-    private By AppPermissionsPageHeader;
-    private By AppPermissionsPageContent;
-    private By AccountHeaderBackChevron;
+    private static By AppPermissionsPageHeader;
+    private static By AppPermissionsPageContent;
+    private static By AccountHeaderBackChevron;
 
     public Permission(WebDriver driver) {
 

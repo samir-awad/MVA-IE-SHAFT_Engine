@@ -21,7 +21,7 @@ public class TC082A_ValidateWebTextPageAndSuccessfulSendWebTextToOneRecipientUsi
     private JSONFileManager users;
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
@@ -34,50 +34,51 @@ public class TC082A_ValidateWebTextPageAndSuccessfulSendWebTextToOneRecipientUsi
 
     @Test
     public void checkTheVodafoneLogo() {
-        Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+        Assertions.assertElementExists(driver, HomePage.getCheckTheVodafoneLogo());
     }
 
-    @Test (dependsOnMethods = {"checkTheVodafoneLogo"})
+    @Test(dependsOnMethods = {"checkTheVodafoneLogo"})
     public void checkOtherUsefulToolsSection() {
         HomePage.swipeToOtherUsefulTools();
-        Assertions.assertElementAttribute(driver,HomePage.getOtherUsefulTools_text(),
-                "text","Other useful tools");
+        Assertions.assertElementAttribute(driver, HomePage.getOtherUsefulTools_text(),
+                "text", "Other useful tools");
     }
+
     @Test(dependsOnMethods = {"checkOtherUsefulToolsSection"})
     public void pressSendWebTextOption() {
         ElementActions.performTouchAction(driver).swipeElementIntoView(HomePage.getSendWebText_button(), TouchActions.SwipeDirection.UP);
         HomePage.pressSendWebTextOption();
-        Assertions.assertElementAttribute(driver,OtherUsefulToolsPage.getWebtextPageHeader_Text(),
-                "text","Webtext");
+        Assertions.assertElementAttribute(driver, OtherUsefulToolsPage.getWebtextPageHeader_Text(),
+                "text", "Webtext");
     }
 
     @Test(dependsOnMethods = "pressSendWebTextOption")
-    public void checkWebTextCloseButton(){
+    public void checkWebTextCloseButton() {
         OtherUsefulToolsPage.acceptAccessYourContactsPermissions();
         OtherUsefulToolsPage.pressWebTextHeaderCloseButton();
-        Assertions.assertElementAttribute(driver,HomePage.getOtherUsefulTools_text(),
-                "text","Other useful tools");
+        Assertions.assertElementAttribute(driver, HomePage.getOtherUsefulTools_text(),
+                "text", "Other useful tools");
     }
 
     @Test(dependsOnMethods = "checkWebTextCloseButton")
-    public void checkWebTextForm(){
+    public void checkWebTextForm() {
         HomePage.pressSendWebTextOption();
-        Verifications.verifyElementAttribute(driver,OtherUsefulToolsPage.getWebtextPageHeader_Text(),
-                "text","Webtext");
-        Verifications.verifyElementExists(driver,OtherUsefulToolsPage.getRecipients_Text());
-        Verifications.verifyElementExists(driver,OtherUsefulToolsPage.getWebTextInputMessage_Text());
-        Verifications.verifyElementExists(driver,OtherUsefulToolsPage.getSend_Button());
+        Verifications.verifyElementAttribute(driver, OtherUsefulToolsPage.getWebtextPageHeader_Text(),
+                "text", "Webtext");
+        Verifications.verifyElementExists(driver, OtherUsefulToolsPage.getRecipients_Text());
+        Verifications.verifyElementExists(driver, OtherUsefulToolsPage.getWebTextInputMessage_Text());
+        Verifications.verifyElementExists(driver, OtherUsefulToolsPage.getSend_Button());
     }
 
     @Test(dependsOnMethods = "checkWebTextForm")
-    public void fillOutWebTextForm(){
-         OtherUsefulToolsPage.fillOutTheWebtextForm();
-         OtherUsefulToolsPage.pressSendButton();
+    public void fillOutWebTextForm() {
+        OtherUsefulToolsPage.fillOutTheWebtextForm();
+        OtherUsefulToolsPage.pressSendButton();
     }
 
     @Test(dependsOnMethods = {"fillOutWebTextForm"})
-    public void WebTextInternationalVerificationOverlay(){
-        Assertions.assertElementExists(driver,OtherUsefulToolsPage.getWebtextInternationalToast());
+    public void WebTextInternationalVerificationOverlay() {
+        Assertions.assertElementExists(driver, OtherUsefulToolsPage.getWebtextInternationalToast());
     }
 
 }
