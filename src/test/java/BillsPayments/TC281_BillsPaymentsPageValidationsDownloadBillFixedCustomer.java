@@ -7,6 +7,7 @@ import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Verifications;
 import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -35,7 +36,10 @@ public class TC281_BillsPaymentsPageValidationsDownloadBillFixedCustomer {
         HomePage.pressBillsPaymentsTrayMenuOption();
         Verifications.verifyTrue(BillsPaymentsPage.checkBillsPaymentsHeader());
         BillsPaymentsPage.pressDownloadBillButton();
-
     }
 
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
+    }
 }

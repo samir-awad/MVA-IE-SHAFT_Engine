@@ -7,6 +7,7 @@ import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -46,4 +47,8 @@ public class TC168_ValidateAddOnsOverlayPAYGUserWithMonthlyAddOns {
         Assertions.assertElementAttribute(driver, HomePage.getEssentials_text(), "text", "Essentials");
     }
 
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
+    }
 }

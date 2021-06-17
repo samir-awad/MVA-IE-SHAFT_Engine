@@ -7,6 +7,7 @@ import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Verifications;
 import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -39,4 +40,8 @@ public class TC122_BillsPaymentsValidationBP {
 
     }
 
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
+    }
 }
