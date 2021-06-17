@@ -3,18 +3,19 @@ package Account;
 import Pages.Account;
 import Pages.Home;
 import Pages.Login;
+import io.appium.java_client.MobileDriver;
+
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC138_PersonalDetailsDataPreferencesPageValidationForBillPay {
 
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
     private Home HomePage;
     private Account AccountPage;
@@ -23,7 +24,7 @@ public class TC138_PersonalDetailsDataPreferencesPageValidationForBillPay {
     @BeforeClass
     public void beforeClass() {
         //System.setProperty("mobile_app", FileActions.getAbsolutePath(System.getProperty("testDataFolderPath") + "apk/", "DIG18180Fix.apk"));
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         AccountPage = new Account(driver);

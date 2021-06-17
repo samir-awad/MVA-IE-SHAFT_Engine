@@ -3,7 +3,8 @@ package Login;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Assertions;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -13,12 +14,12 @@ public class TC01_CheckTermsAndConditionsPage {
     //TC001 - Check Terms & Conditions Page Android
     //TC013 - Check Terms & Conditions page iOS
 
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
     }
 
@@ -42,4 +43,8 @@ public class TC01_CheckTermsAndConditionsPage {
         Assertions.assertElementExists(driver, LoginPage.getContinue_button());
     }
 
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
+    }
 }

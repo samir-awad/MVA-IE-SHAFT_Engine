@@ -5,20 +5,20 @@ import Pages.Home;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Assertions;
-import com.shaft.validation.Verifications;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC120_ValidatePAYGCustomer_ActiveToUp {
 
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
     private Home HomePage;
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         LoginPage.acceptTermsAndConditions().login(jsonReader.getUserName("PAYGVoucher.username"), jsonReader.getPassword("PAYGVoucher.password")).acceptPermissions();
@@ -62,5 +62,10 @@ public class TC120_ValidatePAYGCustomer_ActiveToUp {
     @Test(dependsOnMethods = "CheckOtherUsefulToolsSection")
     public void CheckTopupInTrayMenu() {
         Assertions.assertElementExists(driver, HomePage.getPAYG_Tray());
+    }
+
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
     }
 }

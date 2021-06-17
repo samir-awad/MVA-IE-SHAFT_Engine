@@ -4,13 +4,11 @@ import Pages.Home;
 import Pages.Login;
 import Pages.TopUp;
 import com.shaft.gui.browser.BrowserFactory;
-import com.shaft.gui.element.ElementActions;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
-import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileDriver;
-import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -74,6 +72,11 @@ public class TC162_SubmitInvalidVoucherNumberPAYGUser {
         TopUpPage.pressCloseBtn();
         Verifications.verifyElementExists(driver, HomePage.getBalanceTitle());
         Assertions.assertElementExists(driver, HomePage.getVodafoneLogo());
+    }
+
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
     }
 
 }

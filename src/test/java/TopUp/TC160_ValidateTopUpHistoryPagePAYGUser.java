@@ -7,12 +7,13 @@ import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC160_ValidateTopUpHistoryPagePAYGUser {
-    private WebDriver driver;
+    private MobileDriver driver;
     private JSONFileManager users;
     private Login LoginPage;
     private Home HomePage;
@@ -21,7 +22,7 @@ public class TC160_ValidateTopUpHistoryPagePAYGUser {
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         TopUpPage = new TopUp(driver);
@@ -70,5 +71,9 @@ public class TC160_ValidateTopUpHistoryPagePAYGUser {
                 "Checking Top Up History Page Content");*/
     }
 
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
+    }
 
 }

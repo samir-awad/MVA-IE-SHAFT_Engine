@@ -4,15 +4,12 @@ import FileReaders.jsonReader;
 import Pages.Home;
 import Pages.Login;
 import Pages.Offers;
-import com.shaft.driver.DriverFactory;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.gui.element.ElementActions;
 import com.shaft.gui.element.TouchActions;
 import com.shaft.validation.Assertions;
 import io.appium.java_client.MobileDriver;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -31,8 +28,12 @@ public class TC237_ValidateOffersPAYGUser {
     }
 
     @Test
-    public void CheckDiscoverySection() {
+    public void Login() {
         LoginPage.acceptTermsAndConditions().login(jsonReader.getUserName("PAYGUser.username"), jsonReader.getPassword("PAYGUser.password")).acceptPermissionsPAYGUser();
+    }
+
+    @Test(dependsOnMethods = "Login")
+    public void CheckDiscoverySection() {
         HomePage.checkDiscoverySection();
     }
 
@@ -84,8 +85,9 @@ public class TC237_ValidateOffersPAYGUser {
         OffersPage.goBackToAppFromExternalPage();
         Assertions.assertElementExists(driver, OffersPage.getOffersHeader_text());
     }
+
     @AfterClass
-    public void CloseAllDrivers(){
+    public void CloseAllDrivers() {
         driver.quit();
     }
 }

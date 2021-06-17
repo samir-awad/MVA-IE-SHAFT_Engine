@@ -2,7 +2,6 @@ package Pages;
 
 import com.shaft.gui.element.ElementActions;
 import io.appium.java_client.MobileBy;
-import io.cucumber.java.an.E;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

@@ -6,19 +6,20 @@ import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.gui.element.ElementActions;
 import com.shaft.validation.Assertions;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC031_VerifySkipTutorialButtonsBillPayCustomer {
 
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
     private Home HomePage;
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
     }
@@ -34,5 +35,10 @@ public class TC031_VerifySkipTutorialButtonsBillPayCustomer {
         ElementActions.performTouchAction(driver).tap(HomePage.getTakeQuickTour_Tile());
         Assertions.assertElementExists(driver, LoginPage.getSkip_button());
         ElementActions.performTouchAction(driver).tap(LoginPage.getSkip_button());
+    }
+
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
     }
 }

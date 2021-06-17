@@ -5,8 +5,8 @@ import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.gui.element.ElementActions;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Assertions.AssertionType;
-
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -16,12 +16,12 @@ public class TC02_CheckLoginAndRegisterAndOurPrivacyPages {
     //TC002 - Check Login & Register and Our Privacy pages
     //TC014 - Check Login & Register and Our Privacy pages
 
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
     }
 
@@ -62,4 +62,8 @@ public class TC02_CheckLoginAndRegisterAndOurPrivacyPages {
         Assertions.assertElementExists(driver, LoginPage.getVodafone_Logo(), AssertionType.POSITIVE, "I'm On Register And Login Page");
     }
 
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
+    }
 }

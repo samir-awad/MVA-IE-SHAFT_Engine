@@ -3,7 +3,6 @@ package Pages;
 import com.shaft.gui.element.ElementActions;
 import com.shaft.gui.element.TouchActions;
 import com.shaft.validation.Assertions;
-import com.shaft.validation.Verifications;
 import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

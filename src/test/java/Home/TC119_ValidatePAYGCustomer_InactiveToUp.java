@@ -5,19 +5,20 @@ import Pages.Home;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Assertions;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC119_ValidatePAYGCustomer_InactiveToUp {
 
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
     private Home HomePage;
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         LoginPage.acceptTermsAndConditions().login(jsonReader.getUserName("PAYGUserWithoutAddOns.username"), jsonReader.getPassword("PAYGUserWithoutAddOns.password")).acceptPermissions();
@@ -33,6 +34,11 @@ public class TC119_ValidatePAYGCustomer_InactiveToUp {
         HomePage.checkEssentialsSection();
         HomePage.checkOtherUsefulToolsSection();
         Assertions.assertElementExists(driver, HomePage.getPAYG_Tray());
+    }
+
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
     }
 
 //    @Test(dependsOnMethods = "CheckImOnHome")

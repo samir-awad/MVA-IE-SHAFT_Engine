@@ -7,13 +7,13 @@ import Pages.SmartLinks;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.MobileDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC095_AccessOffersSmartLinkWithBillPayUser {
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
     private SmartLinks smartLinksPage;
     private Offers OffersPage;
@@ -23,7 +23,7 @@ public class TC095_AccessOffersSmartLinkWithBillPayUser {
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         smartLinksPage = new SmartLinks(driver);
         LoginPage = new Login(driver);
         OffersPage = new Offers(driver);
@@ -56,6 +56,11 @@ public class TC095_AccessOffersSmartLinkWithBillPayUser {
         smartLinksPage.accessSmartLink(OffersURL);
         Assertions.assertElementAttribute(driver, OffersPage.getOffersHeader_text(),
                 "text", "Offers", "Checking offers header");
+    }
+
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
     }
 
 }

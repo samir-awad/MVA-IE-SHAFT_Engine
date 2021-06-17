@@ -7,13 +7,14 @@ import Pages.Login;
 import Pages.Logout;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Assertions;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC024_CheckThatTheTutorialTileBecomesUnavailableAfter5loginWithBillPay {
 
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
     private Home HomePage;
     private Logout LogoutPage;
@@ -21,7 +22,7 @@ public class TC024_CheckThatTheTutorialTileBecomesUnavailableAfter5loginWithBill
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         LogoutPage = new Logout(driver);
         HomePage = new Home(driver);
@@ -77,5 +78,10 @@ public class TC024_CheckThatTheTutorialTileBecomesUnavailableAfter5loginWithBill
     public void CheckThatTheTutorialTileBecomesUnavailableAfter5login() {
         LoginPage.EnterPasswordAndLogin(jsonReader.getPassword("BillPayUser.password"));
         Assertions.assertElementExists(driver, HomePage.getTakeQuickTour_Tile(), Assertions.AssertionType.NEGATIVE);
+    }
+
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
     }
 }

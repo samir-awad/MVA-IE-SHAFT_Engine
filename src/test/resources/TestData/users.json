@@ -1,104 +1,89 @@
 {
-	"IE": {
-		"username": "0876119395",
-		"password": "Mountainview01!"
-	},
-	"Invalid User": {
-		"username": "0976119395",
-		"password": "Mountainview01!"
-	},
-
-	"LegacyBillPay": {
-		"username": "0852080398",
-		"password": "Welcome2!"
-	},
-
-	"PAYGUserTopup": {
-		"username": "73723907"
-	},
-
-	"SavedCC": {
-		"username": "0877092836",
-		"password": "Mountainview01!"
-	},
-
-	"FixedUser": {
-		"username": "thomascosgrave@gmail.com",
-		"password": "Aa123456!"
-	},
-
-	"LegacyPAYG": {
-		"username": "0879692425",
-		"password": "Mountainview01!"
-	},
-
-	"PAYGUser": {
-		"username": "0873723907",
-		"password": "Mountainview01!"
-	},
-	"PAYGUserWithoutAddOns": {
-		"username": "0873312554",
-		"password": "Mountainview01!"
-	}
-	,
-
-	"PAYGVoucher": {
-		"username": "0873723907",
-		"password": "Mountainview01!"
-	},
-
-	"WrongPassword": {
-		"username": "0879512912",
-		"password": "Mountainview01"
-	},
-
-	"WrongUsername": {
-		"username": "s@g",
-		"password": "Mountainview01"
-	},
-
-	"PAYGWithoutTopUpOffer": {
-		"username": "0871711384",
-		"password": "Aa123456!"
-	},
-
-	"BillPayUser": {
-		"username": "0871700924",
-		"password": "Dublin123$"
-	},
-	"BillPayUserWithoutAddOns": {
-		"username": "0876119395",
-		"password": "Mountainview01!"
-	},
-
-	"PAYGUserWithTopUp": {
-		"username": "0873711899",
-		"password": "Mountainview01!"
-	},
-
-	"BillPayUserWithWebText": {
-		"username":"0876352242",
-		"password": "Mountainview01!"
-	},
-	"OutOfContractBillPayUser": {
-		"username":"0879512912",
-		"password": "Mountainview01!"
-	},
-	"IMEI-EligibleAccountBillPayUser": {
-		"username":"0876641829",
-		"password": "Aa123456!"
-	},
-	"TC181_BillPayCredentialsUser_DirectDebit": {
-		"username":"0877092836",
-		"password": "Mountainview01!"
-	},
-	"TC182_BillPayCredentialsUser_DirectDebit": {
-		"username":"0871700924",
-		"password": "Dublin123$"
-	},
-
-	"TC183_BillPayCredentialsUser_DirectDebit": {
-		"username":"0870983454",
-		"password": "Aa123456!"
-	}
+  "IE": {
+    "username": "0876119395",
+    "password": "Mountainview01!"
+  },
+  "Invalid User": {
+    "username": "0976119395",
+    "password": "Mountainview01!"
+  },
+  "LegacyBillPay": {
+    "username": "0852080398",
+    "password": "Welcome2!"
+  },
+  "PAYGUserTopup": {
+    "username": "73723907"
+  },
+  "SavedCC": {
+    "username": "0877092836",
+    "password": "Mountainview01!"
+  },
+  "FixedUser": {
+    "username": "thomascosgrave@gmail.com",
+    "password": "Aa123456!"
+  },
+  "LegacyPAYG": {
+    "username": "0879692425",
+    "password": "Mountainview01!"
+  },
+  "PAYGUser": {
+    "username": "0873723907",
+    "password": "Mountainview01!"
+  },
+  "PAYGUserWithoutAddOns": {
+    "username": "0873312554",
+    "password": "Mountainview01!"
+  },
+  "PAYGVoucher": {
+    "username": "0873723907",
+    "password": "Mountainview01!"
+  },
+  "WrongPassword": {
+    "username": "0879512912",
+    "password": "Mountainview01"
+  },
+  "WrongUsername": {
+    "username": "s@g",
+    "password": "Mountainview01"
+  },
+  "PAYGWithoutTopUpOffer": {
+    "username": "0871711384",
+    "password": "Aa123456!"
+  },
+  "BillPayUser": {
+    "username": "0871700924",
+    "password": "Dublin123$"
+  },
+  "BillPayUserWithoutAddOns": {
+    "username": "0876119395",
+    "password": "Mountainview01!"
+  },
+  "PAYGUserWithTopUp": {
+    "username": "0873711899",
+    "password": "Mountainview01!"
+  },
+  "BillPayUserWithWebText": {
+    "username": "0876352242",
+    "password": "Mountainview01!"
+  },
+  "OutOfContractBillPayUser": {
+    "username": "0879512912",
+    "password": "Mountainview01!"
+  },
+  "IMEI-EligibleAccountBillPayUser": {
+    "username": "0876641829",
+    "password": "Aa123456!"
+  },
+  "TC181_BillPayCredentialsUser_DirectDebit": {
+    "username": "0877092836",
+    "password": "Mountainview01!"
+  },
+  "TC182_BillPayCredentialsUser_DirectDebit": {
+    "username": "0871700924",
+    "password": "Dublin123$"
+  },
+  "TC183_BillPayCredentialsUser_DirectDebit": {
+    "username": "0870983454",
+    "password": "Aa123456!"
+  }
 }

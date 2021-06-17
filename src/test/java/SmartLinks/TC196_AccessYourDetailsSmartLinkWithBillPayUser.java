@@ -7,12 +7,13 @@ import Pages.SmartLinks;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC196_AccessYourDetailsSmartLinkWithBillPayUser {
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
     private Home HomePage;
     private SmartLinks SmartLinksPage;
@@ -22,7 +23,7 @@ public class TC196_AccessYourDetailsSmartLinkWithBillPayUser {
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         SmartLinksPage = new SmartLinks(driver);
@@ -56,6 +57,11 @@ public class TC196_AccessYourDetailsSmartLinkWithBillPayUser {
         SmartLinksPage.accessSmartLink(yourDetailsURL);
         Assertions.assertElementAttribute(driver, AccountPage.getCheckYourDetailsPageHeader(),
                 "text", "Your details");
+    }
+
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
     }
 
 }

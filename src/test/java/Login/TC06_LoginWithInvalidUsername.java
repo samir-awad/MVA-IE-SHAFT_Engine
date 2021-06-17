@@ -5,22 +5,20 @@ import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.gui.element.ElementActions;
 import com.shaft.validation.Assertions;
-import org.json.simple.parser.ParseException;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
-import java.io.IOException;
 
 public class TC06_LoginWithInvalidUsername {
 
 
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
     }
 
@@ -38,5 +36,9 @@ public class TC06_LoginWithInvalidUsername {
         Assertions.assertElementExists(driver, LoginPage.getLogin_Inline_Error(), Assertions.AssertionType.POSITIVE);
     }
 
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
+    }
 
 }

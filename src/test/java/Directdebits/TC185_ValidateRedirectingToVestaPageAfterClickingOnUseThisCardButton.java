@@ -8,13 +8,14 @@ import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.gui.element.ElementActions;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Verifications;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC185_ValidateRedirectingToVestaPageAfterClickingOnUseThisCardButton {
 
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
     private Home HomePage;
     private BillsPayments BillsPaymentsPage;
@@ -23,7 +24,7 @@ public class TC185_ValidateRedirectingToVestaPageAfterClickingOnUseThisCardButto
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         BillsPaymentsPage = new BillsPayments(driver);
@@ -75,6 +76,11 @@ public class TC185_ValidateRedirectingToVestaPageAfterClickingOnUseThisCardButto
         BillsPaymentsPage.checkSavedCardsTabContent();
         BillsPaymentsPage.checkUseThisCardButton();
         BillsPaymentsPage.pressChangeYourCardOverlayContinueButton();
+    }
+
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
     }
 }
 

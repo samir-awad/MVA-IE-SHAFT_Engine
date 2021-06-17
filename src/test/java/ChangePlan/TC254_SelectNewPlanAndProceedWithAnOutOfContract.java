@@ -5,21 +5,21 @@ import Pages.Home;
 import Pages.Login;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Verifications;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC254_SelectNewPlanAndProceedWithAnOutOfContract {
 
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
     private Home HomePage;
     private ChangePlan ChangePlanPage;
 
     @BeforeClass
     public void beforeClass() {
-        //System.setProperty("mobile_app", FileActions.getAbsolutePath(System.getProperty("testDataFolderPath") + "apk/", "DIG18180Fix.apk"));
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         ChangePlanPage = new ChangePlan(driver);
@@ -56,5 +56,10 @@ public class TC254_SelectNewPlanAndProceedWithAnOutOfContract {
         ChangePlanPage.pressPlanDetailsOverlayCloseButton_2();
         // need to complete it
 
+    }
+
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
     }
 }

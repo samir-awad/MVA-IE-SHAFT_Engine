@@ -8,19 +8,20 @@ import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.gui.element.ElementActions;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC265_ChangeTopupOfferPageValidationsForPAYGUserWithoutActiveOffers {
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
     private Home HomePage;
     private ChangeTopUpOffer ChangeTopUpOfferPage;
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         ChangeTopUpOfferPage = new ChangeTopUpOffer(driver);
@@ -53,5 +54,10 @@ public class TC265_ChangeTopupOfferPageValidationsForPAYGUserWithoutActiveOffers
     public void checkAvailableOffersComponent() {
         Verifications.verifyElementExists(driver, ChangeTopUpOfferPage.getFirstOfferComponent());
         Assertions.assertElementExists(driver, ChangeTopUpOfferPage.getSecondOfferComponent());
+    }
+
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
     }
 }

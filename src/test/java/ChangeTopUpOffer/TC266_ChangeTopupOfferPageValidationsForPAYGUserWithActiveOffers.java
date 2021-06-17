@@ -8,19 +8,21 @@ import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.gui.element.ElementActions;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
+import io.appium.java_client.MobileDriver;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC266_ChangeTopupOfferPageValidationsForPAYGUserWithActiveOffers {
-    public WebDriver driver;
+    public MobileDriver driver;
     public Login LoginPage;
     public Home HomePage;
     public ChangeTopUpOffer ChangeTopUpOfferPage;
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         ChangeTopUpOfferPage = new ChangeTopUpOffer(driver);
@@ -85,5 +87,9 @@ public class TC266_ChangeTopupOfferPageValidationsForPAYGUserWithActiveOffers {
         ElementActions.performTouchAction(driver).tap(ChangeTopUpOfferPage.getOptIn_button());
     }
 
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
+    }
 
 }

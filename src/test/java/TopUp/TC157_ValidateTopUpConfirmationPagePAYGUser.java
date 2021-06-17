@@ -7,15 +7,13 @@ import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
-import org.json.simple.parser.ParseException;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-
 public class TC157_ValidateTopUpConfirmationPagePAYGUser {
-    private WebDriver driver;
+    private MobileDriver driver;
     private JSONFileManager users;
     private Login LoginPage;
     private Home HomePage;
@@ -23,7 +21,7 @@ public class TC157_ValidateTopUpConfirmationPagePAYGUser {
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         TopUpPage = new TopUp(driver);
@@ -60,5 +58,9 @@ public class TC157_ValidateTopUpConfirmationPagePAYGUser {
         Assertions.assertElementExists(driver, HomePage.getVodafoneLogo());
     }
 
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
+    }
 
 }
