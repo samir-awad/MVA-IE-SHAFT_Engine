@@ -17,20 +17,22 @@ public class TC281_BillsPaymentsPageValidationsDownloadBillFixedCustomer {
     private Login LoginPage;
     private Home HomePage;
     private BillsPayments BillsPaymentsPage;
+
     @BeforeClass
     public void beforeClass() {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        BillsPaymentsPage=new BillsPayments(driver);
-        LoginPage.acceptTermsAndConditions().login(jsonReader.getUserName("FixedUser.username"),jsonReader.getPassword("FixedUser.password")).acceptPermissions();
+        BillsPaymentsPage = new BillsPayments(driver);
+        LoginPage.acceptTermsAndConditions().login(jsonReader.getUserName("FixedUser.username"), jsonReader.getPassword("FixedUser.password")).acceptPermissions();
     }
+
     @Test
-    public void BillsPaymentsPageValidationsDownloadBillFixedCustomer(){
+    public void BillsPaymentsPageValidationsDownloadBillFixedCustomer() {
         HomePage.pressNextBillTile();
         BillsPaymentsPage.checkBillsPaymentsHeader();
         BillsPaymentsPage.pressCloseButtonInBillsPaymentsView();
-        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+        Verifications.verifyElementExists(driver, HomePage.getCheckTheVodafoneLogo());
         HomePage.pressBillsPaymentsTrayMenuOption();
         Verifications.verifyTrue(BillsPaymentsPage.checkBillsPaymentsHeader());
         BillsPaymentsPage.pressDownloadBillButton();

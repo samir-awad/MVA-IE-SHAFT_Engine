@@ -20,7 +20,7 @@ public class TC073A_ValidateLiveChatBillPayUser {
     private SupportAndLiveChat SupportAndLiveChatPage;
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
 //        System.setProperty("executionAddress", "0.0.0.0:4723");
 //        System.setProperty("targetOperatingSystem", "iOS");
 //        System.setProperty("mobile_platformVersion", "13.5.1");
@@ -32,45 +32,45 @@ public class TC073A_ValidateLiveChatBillPayUser {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        SupportAndLiveChatPage=new SupportAndLiveChat(driver);
-        SupportAndLiveChatPage=new SupportAndLiveChat(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        SupportAndLiveChatPage = new SupportAndLiveChat(driver);
+        SupportAndLiveChatPage = new SupportAndLiveChat(driver);
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("BillPayUser.username");
         String password = users.getTestData("BillPayUser.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
     }
 
     @Test
-    public void CheckSupportSection(){
+    public void CheckSupportSection() {
         Assertions.assertTrue(HomePage.checkSupportSection());
     }
 
     @Test(dependsOnMethods = "CheckSupportSection")
-    public void CheckSupportHeader(){
+    public void CheckSupportHeader() {
         HomePage.pressSupportTitle();
-        Assertions.assertElementAttribute(driver,SupportAndLiveChatPage.getSupportHeader_text(),
-                "text","Support");
+        Assertions.assertElementAttribute(driver, SupportAndLiveChatPage.getSupportHeader_text(),
+                "text", "Support");
     }
 
     @Test(dependsOnMethods = "CheckSupportHeader")
-    public void CheckLiveChatComponent(){
+    public void CheckLiveChatComponent() {
         //SupportAndLiveChatPage.minimizeLiveChat();
-        ElementActions.isElementDisplayed(driver,SupportAndLiveChatPage.getChatNow_button());
-        Assertions.assertElementExists(driver,SupportAndLiveChatPage.getChatNow_button()); //ChatNow button can't be located
+        ElementActions.isElementDisplayed(driver, SupportAndLiveChatPage.getChatNow_button());
+        Assertions.assertElementExists(driver, SupportAndLiveChatPage.getChatNow_button()); //ChatNow button can't be located
     }
 
     @Test(dependsOnMethods = "CheckLiveChatComponent")
-    public void ValidateLiveChatComponent(){
-    SupportAndLiveChatPage.pressChatNowButton();
-        Verifications.verifyElementAttribute(driver,SupportAndLiveChatPage.getSupportHeader_text(),
-                "text","Support");
-        Assertions.assertElementExists(driver,SupportAndLiveChatPage.getChatNow_button(),//ChatNow button can't be located
-                Assertions.AssertionType.NEGATIVE,"check Live Chat Component Is No Longer Displayed");
+    public void ValidateLiveChatComponent() {
+        SupportAndLiveChatPage.pressChatNowButton();
+        Verifications.verifyElementAttribute(driver, SupportAndLiveChatPage.getSupportHeader_text(),
+                "text", "Support");
+        Assertions.assertElementExists(driver, SupportAndLiveChatPage.getChatNow_button(),//ChatNow button can't be located
+                Assertions.AssertionType.NEGATIVE, "check Live Chat Component Is No Longer Displayed");
     }
 
     @Test(dependsOnMethods = "ValidateLiveChatComponent")
-    public void checkAndFillLiveChatForm(){
-    SupportAndLiveChatPage.fillLiveChatFormAndPressStartChat();
+    public void checkAndFillLiveChatForm() {
+        SupportAndLiveChatPage.fillLiveChatFormAndPressStartChat();
     }
 
 

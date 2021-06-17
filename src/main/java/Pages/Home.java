@@ -3,55 +3,56 @@ package Pages;
 import com.shaft.gui.element.ElementActions;
 import com.shaft.gui.element.TouchActions;
 import com.shaft.validation.Assertions;
+import com.shaft.validation.Verifications;
 import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class Home {
     private final WebDriver driver;
-    private By Discover_text;
-    private By OffersPageHeader_button; //The image above see all offers link
-    private By Support_button;
-    private By BuyAndManageAddOns_button;
-    private By VodafoneLogo;
-    private By BillTile;
-    private By ClickNextBillTitle;
-    private By Essentials_text;
-    private By BillAndPayment;
-    private By ShowMore_button;
-    private By OtherUsefulTools_text;
-    private By UnlockYourDevice_text;
-    private By SeeAllOffers_button;
-    private By AmountDueTile;
-    private By DirectDebitTile;
-    private By OtherUsefulTools;
-    private By ChangePlan_Button;
-    private By InactiveToUp;
-    private By BalanceTitle;
-    private By TopUpHistoryTile;
-    private By PAYG_Tray;
-    private By ActiveToUp;
-    private By Change_button;
-    private By SelectAccountAndSubscriptionTitle;
-    private By NewSubscription;
-    private By ChangeAccount;
-    private By AccountChanged;
-    private By Close_Button;
-    private By Select_Button;
-    private By LastBileTile;
-    private By TvAddOnsTile;
-    private By EssentialsSectionFixed_WithTV;
-    private By SupportTrayMenuPAYG;
-    private By AccountOverlaySetting_text;
-    private By Account;
-    private By TopUpOverlayTitle_text;
-    private By TopUp_button;
-    private By TopUpHistory_button;
-    private By BuyAndManageAddOns_text;
-    private By TakeQuickTour_Tile;
-    private By SendWebText_button;
-    private By Essentials_ShowMore;
-    private By DevicesAndSim_button;
+    private static By Discover_text;
+    private static By OffersPageHeader_button; //The image above see all offers link
+    private static By Support_button;
+    private static By BuyAndManageAddOns_button;
+    private static By VodafoneLogo;
+    private static By BillTile;
+    private static By ClickNextBillTitle;
+    private static By Essentials_text;
+    private static By BillAndPayment;
+    private static By ShowMore_button;
+    private static By OtherUsefulTools_text;
+    private static By UnlockYourDevice_text;
+    private static By SeeAllOffers_button;
+    private static By AmountDueTile;
+    private static By DirectDebitTile;
+    private static By OtherUsefulTools;
+    private static By ChangePlan_Button;
+    private static By InactiveToUp;
+    private static By BalanceTitle;
+    private static By TopUpHistoryTile;
+    private static By PAYG_Tray;
+    private static By ActiveToUp;
+    private static By Change_button;
+    private static By SelectAccountAndSubscriptionTitle;
+    private static By NewSubscription;
+    private static By ChangeAccount;
+    private static By AccountChanged;
+    private static By Close_Button;
+    private static By Select_Button;
+    private static By LastBileTile;
+    private static By TvAddOnsTile;
+    private static By EssentialsSectionFixed_WithTV;
+    private static By SupportTrayMenuPAYG;
+    private static By AccountOverlaySetting_text;
+    private static By Account;
+    private static By TopUpOverlayTitle_text;
+    private static By TopUp_button;
+    private static By TopUpHistory_button;
+    private static By BuyAndManageAddOns_text;
+    private static By TakeQuickTour_Tile;
+    private static By SendWebText_button;
+    private static By Essentials_ShowMore;
+    private static By DevicesAndSim_button;
 
     public Home(WebDriver driver) {
         this.driver = driver;
@@ -76,7 +77,7 @@ public class Home {
             OtherUsefulTools = MobileBy.AccessibilityId("id_dashboard_tools_title");
             ChangePlan_Button = MobileBy.AccessibilityId("d_dashboard_essentials_change_plan_clickable");
             InactiveToUp = MobileBy.AccessibilityId("id_dashboard_my_usage_exception_noActiveTopUpOffer_text");
-            BalanceTitle = MobileBy.AccessibilityId("id_dashboard_balance_title");
+            BalanceTitle = MobileBy.xpath("//android.widget.Button[@content-desc=\"id_dashboard_balance_button\"]/android.widget.TextView\n");
             TopUpHistoryTile = MobileBy.AccessibilityId("id_dashboard_topup_history_title");
             PAYG_Tray = MobileBy.AccessibilityId("id_tray_menu_item_Top Up");
             ActiveToUp = MobileBy.AccessibilityId("id_dashboard_my_usage_plan_name");
@@ -452,11 +453,14 @@ public class Home {
     }
 
     public void pressBalanceTitle() {
-        ElementActions.performTouchAction(driver).tap(BalanceTitle);
+//        driver.findElement(BalanceTitle).click();
+        ElementActions.click(driver, BalanceTitle);
+//        ElementActions.performTouchAction(driver).tap(BalanceTitle);
     }
 
     public void pressTopUpTrayMenu() {
-        ElementActions.performTouchAction(driver).tap(TopUp_button);
+        driver.findElement(TopUp_button).click();
+//        ElementActions.performTouchAction(driver).tap(TopUp_button);
     }
 
     public void pressTopUpHistoryTitle() {

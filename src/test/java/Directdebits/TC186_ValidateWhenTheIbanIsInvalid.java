@@ -27,7 +27,7 @@ public class TC186_ValidateWhenTheIbanIsInvalid {
         HomePage = new Home(driver);
         BillsPaymentsPage = new BillsPayments(driver);
         SettingsPage = new Settings(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("IMEI-EligibleAccountBillPayUser.username");
         String password = users.getTestData("IMEI-EligibleAccountBillPayUser.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();

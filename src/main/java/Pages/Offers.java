@@ -10,16 +10,16 @@ public class Offers {
 
     private final MobileDriver driver;
     //Bill Pay
-    private By OffersHeader_text;
-    private By OffersHeaderClose_button;
-    private By FindOutMore_button;
-    private By SwipeLeft_button;
-    private By Chrome_driver;
-    private By FirstInternalOffer_image;
-    private By InternalOfferBack_button;
+    private static By OffersHeader_text;
+    private static By OffersHeaderClose_button;
+    private static By FindOutMore_button;
+    private static By SwipeLeft_button;
+    private static By Chrome_driver;
+    private static By FirstInternalOffer_image;
+    private static By InternalOfferBack_button;
 
     //PAYG offers page
-    private By FirstOfferTitle_button;
+    private static By FirstOfferTitle_button;
 
     public By getOffersHeaderClose_button() {
         return OffersHeaderClose_button;
@@ -41,7 +41,7 @@ public class Offers {
         return InternalOfferBack_button;
     }
 
-    private By FirstOfferContinue_button;
+    private static By FirstOfferContinue_button;
 
     //Getters
     public By getOffersHeader_text() {

@@ -9,6 +9,7 @@ import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -52,5 +53,10 @@ public class TC104_AccountSettingsPageValidationForBillPay {
         Verifications.verifyElementExists(driver, AccountPage.getCheckAppSettingsSection());
         AccountPage.pressCloseButton();
         Assertions.assertElementExists(driver, HomePage.getCheckTheVodafoneLogo());
+    }
+
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
     }
 }

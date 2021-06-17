@@ -19,7 +19,7 @@ public class TC239_ValidateSupportPageFixedUser {
     private SupportAndLiveChat SupportAndLiveChatPage;
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
 //        System.setProperty("executionAddress", "0.0.0.0:4723");
 //        System.setProperty("targetOperatingSystem", "iOS");
 //        System.setProperty("mobile_platformVersion", "13.5.1");
@@ -31,32 +31,32 @@ public class TC239_ValidateSupportPageFixedUser {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        SupportAndLiveChatPage=new SupportAndLiveChat(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        SupportAndLiveChatPage = new SupportAndLiveChat(driver);
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("FixedUser.username");
         String password = users.getTestData("FixedUser.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
     }
 
     @Test
-    public void CheckSupportSection(){
-        Assertions.assertElementAttribute(driver,HomePage.getSupportTrayMenuPAYG(),
-                "text","Support");
+    public void CheckSupportSection() {
+        Assertions.assertElementAttribute(driver, HomePage.getSupportTrayMenuPAYG(),
+                "text", "Support");
     }
 
     @Test(dependsOnMethods = "CheckSupportSection")
-    public void CheckSupportHeader(){
+    public void CheckSupportHeader() {
         HomePage.pressSupportTrayView();
-        Assertions.assertElementAttribute(driver,SupportAndLiveChatPage.getSupportHeader_text(),
-                "text","Support");
+        Assertions.assertElementAttribute(driver, SupportAndLiveChatPage.getSupportHeader_text(),
+                "text", "Support");
     }
 
     @Test(dependsOnMethods = "CheckSupportHeader")
-    public void CheckSupportCloseBtn(){
+    public void CheckSupportCloseBtn() {
         SupportAndLiveChatPage.pressSupportHeaderCloseButton();
-        Assertions.assertElementAttribute(driver,HomePage.getSupportTrayMenuPAYG(),
-                "text","Support");
-        }
+        Assertions.assertElementAttribute(driver, HomePage.getSupportTrayMenuPAYG(),
+                "text", "Support");
+    }
 
     @Test(dependsOnMethods = "CheckSupportCloseBtn")
     public void CheckSupportPageTitleAndSubTitle() {

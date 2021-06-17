@@ -21,39 +21,39 @@ public class TC195_AccessAutoTopUpSmartLinkWithPAYGUser {
     private JSONFileManager users;
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         SmartLinksPage = new SmartLinks(driver);
-        TopUpPage= new TopUp(driver);
-        HomePage= new Home(driver);
-        links = new JSONFileManager(System.getProperty("testDataFolderPath")+"smartLinks.json");
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        TopUpPage = new TopUp(driver);
+        HomePage = new Home(driver);
+        links = new JSONFileManager(System.getProperty("testDataFolderPath") + "smartLinks.json");
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         LoginPage.acceptTermsAndConditions();
     }
 
     @Test
-    public void CheckAccessAutoTopUpSmartLinkBeforeLogin(){
-        String autoTopUpURL= links.getTestData("AutoTopUp.link");
+    public void CheckAccessAutoTopUpSmartLinkBeforeLogin() {
+        String autoTopUpURL = links.getTestData("AutoTopUp.link");
         SmartLinksPage.accessSmartLink(autoTopUpURL);
         String username = users.getTestData("PAYGUser.username");
         String password = users.getTestData("PAYGUser.password");
         LoginPage.login(username, password).acceptPermissionsPAYGUser();
-        Assertions.assertElementAttribute(driver,TopUpPage.getAutoTopUpPageHeader_text(),
-                "text","Auto top up");
+        Assertions.assertElementAttribute(driver, TopUpPage.getAutoTopUpPageHeader_text(),
+                "text", "Auto top up");
     }
 
     @Test(dependsOnMethods = "CheckAccessAutoTopUpSmartLinkBeforeLogin")
-    public void CheckAutoTopUpCloseButton(){
+    public void CheckAutoTopUpCloseButton() {
         TopUpPage.pressCancelBtn();
-        Assertions.assertElementMatches(driver,HomePage.getVodafoneLogo());
+        Assertions.assertElementMatches(driver, HomePage.getVodafoneLogo());
     }
 
-    @Test(dependsOnMethods ="CheckAutoTopUpCloseButton")
-    public void CheckAccessAutoTopUpSmartLinkAfterLogin(){
-        String autoTopUpURL= links.getTestData("AutoTopUp.link");
+    @Test(dependsOnMethods = "CheckAutoTopUpCloseButton")
+    public void CheckAccessAutoTopUpSmartLinkAfterLogin() {
+        String autoTopUpURL = links.getTestData("AutoTopUp.link");
         SmartLinksPage.accessSmartLink(autoTopUpURL);
-        Assertions.assertElementAttribute(driver,TopUpPage.getAutoTopUpPageHeader_text(),
-                "text","Auto top up");
+        Assertions.assertElementAttribute(driver, TopUpPage.getAutoTopUpPageHeader_text(),
+                "text", "Auto top up");
     }
 }

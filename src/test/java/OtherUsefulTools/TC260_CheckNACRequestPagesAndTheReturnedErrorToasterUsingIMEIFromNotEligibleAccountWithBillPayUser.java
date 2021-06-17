@@ -13,58 +13,60 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC260_CheckNACRequestPagesAndTheReturnedErrorToasterUsingIMEIFromNotEligibleAccountWithBillPayUser {
-        private WebDriver driver;
-        private Login LoginPage;
-        private Home HomePage;
-        private OtherUsefulTools OtherUsefulToolsPage;
-        private JSONFileManager users;
+    private WebDriver driver;
+    private Login LoginPage;
+    private Home HomePage;
+    private OtherUsefulTools OtherUsefulToolsPage;
+    private JSONFileManager users;
 
-        @BeforeClass
-        public void beforeClass(){
-            driver = BrowserFactory.getBrowser();
-            LoginPage = new Login(driver);
-            HomePage = new Home(driver);
-            OtherUsefulToolsPage = new OtherUsefulTools(driver);
-            users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
-            String username = users.getTestData("TC183_BillPayCredentialsUser_DirectDebit.username");
-            String password = users.getTestData("TC183_BillPayCredentialsUser_DirectDebit.password");
-            LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
-        }
+    @BeforeClass
+    public void beforeClass() {
+        driver = BrowserFactory.getBrowser();
+        LoginPage = new Login(driver);
+        HomePage = new Home(driver);
+        OtherUsefulToolsPage = new OtherUsefulTools(driver);
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
+        String username = users.getTestData("TC183_BillPayCredentialsUser_DirectDebit.username");
+        String password = users.getTestData("TC183_BillPayCredentialsUser_DirectDebit.password");
+        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
+    }
 
-        @Test
-        public void checkTheVodafoneLogo() {
-       	 Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
-        }
+    @Test
+    public void checkTheVodafoneLogo() {
+        Assertions.assertElementExists(driver, HomePage.getCheckTheVodafoneLogo());
+    }
 
-        @Test (dependsOnMethods = {"checkTheVodafoneLogo"})
-        public void checkOtherUsefulToolsSection() {
-            HomePage.checkOtherUsefulToolsSection();
-            ElementActions.performTouchAction(driver).tap(HomePage.getDevicesAndSim_button());
-        }
+    @Test(dependsOnMethods = {"checkTheVodafoneLogo"})
+    public void checkOtherUsefulToolsSection() {
+        HomePage.checkOtherUsefulToolsSection();
+        ElementActions.performTouchAction(driver).tap(HomePage.getDevicesAndSim_button());
+    }
 
-        @Test(dependsOnMethods = {"checkOtherUsefulToolsSection"})
-        public void pressNacRequestOption() {
-            HomePage.pressNacRequestOption();
-            OtherUsefulToolsPage.checkNacFewThingsFirstPageContent();
+    @Test(dependsOnMethods = {"checkOtherUsefulToolsSection"})
+    public void pressNacRequestOption() {
+        HomePage.pressNacRequestOption();
+        OtherUsefulToolsPage.checkNacFewThingsFirstPageContent();
 
-        }
+    }
 
-        @Test(dependsOnMethods = {"pressNacRequestOption"})
-        public void pressNacFewThingsFirstContinueButton() {
-            OtherUsefulToolsPage.pressNacFewThingsFirstContinueButton();
-            OtherUsefulToolsPage.checkNacRequestWithDevicePageContent();
-        }
-        @Test(dependsOnMethods = {"pressNacFewThingsFirstContinueButton"})
-        public void checkErrorMessageAndThatNacRequestContinueButtonStillDisabled() {
-            OtherUsefulToolsPage.addAnInvalidImei();
-            OtherUsefulToolsPage.checkErrorMessageAndThatNacRequestContinueButtonStillDisabled();
+    @Test(dependsOnMethods = {"pressNacRequestOption"})
+    public void pressNacFewThingsFirstContinueButton() {
+        OtherUsefulToolsPage.pressNacFewThingsFirstContinueButton();
+        OtherUsefulToolsPage.checkNacRequestWithDevicePageContent();
+    }
 
-        }
-        @Test(dependsOnMethods = {"checkErrorMessageAndThatNacRequestContinueButtonStillDisabled"})
-        public void checkGenericErrorToasterAndErrorTextIsReturned() {
-            OtherUsefulToolsPage.clearTheNACRequestInput();
-            OtherUsefulToolsPage.addAValidImeiButNotExistingInTheSystem();
-            OtherUsefulToolsPage.checkErrorMessageAndThatNacRequestContinueButtonStillDisabled();
+    @Test(dependsOnMethods = {"pressNacFewThingsFirstContinueButton"})
+    public void checkErrorMessageAndThatNacRequestContinueButtonStillDisabled() {
+        OtherUsefulToolsPage.addAnInvalidImei();
+        OtherUsefulToolsPage.checkErrorMessageAndThatNacRequestContinueButtonStillDisabled();
+
+    }
+
+    @Test(dependsOnMethods = {"checkErrorMessageAndThatNacRequestContinueButtonStillDisabled"})
+    public void checkGenericErrorToasterAndErrorTextIsReturned() {
+        OtherUsefulToolsPage.clearTheNACRequestInput();
+        OtherUsefulToolsPage.addAValidImeiButNotExistingInTheSystem();
+        OtherUsefulToolsPage.checkErrorMessageAndThatNacRequestContinueButtonStillDisabled();
 
     }
 

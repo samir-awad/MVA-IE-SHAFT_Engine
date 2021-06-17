@@ -19,31 +19,31 @@ public class TC276_ConfirmAccessTopUpSmartLinkWithFixedWillRedirectUserToTheDash
     private JSONFileManager users;
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
-        HomePage= new Home(driver);
+        HomePage = new Home(driver);
         SmartLinksPage = new SmartLinks(driver);
-        links = new JSONFileManager(System.getProperty("testDataFolderPath")+"smartLinks.json");
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        links = new JSONFileManager(System.getProperty("testDataFolderPath") + "smartLinks.json");
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         LoginPage.acceptTermsAndConditions();
     }
 
     @Test
-    public void CheckAccessTopUpSmartLinkBeforeLogin(){
-        String topUpURL= links.getTestData("TopUp.link");
+    public void CheckAccessTopUpSmartLinkBeforeLogin() {
+        String topUpURL = links.getTestData("TopUp.link");
         SmartLinksPage.accessSmartLink(topUpURL);
         String username = users.getTestData("FixedUser.username");
         String password = users.getTestData("FixedUser.password");
         LoginPage.login(username, password).acceptPermissions();
-        Assertions.assertElementMatches(driver,HomePage.getVodafoneLogo());
+        Assertions.assertElementMatches(driver, HomePage.getVodafoneLogo());
     }
 
-    @Test(dependsOnMethods ="CheckAccessTopUpSmartLinkBeforeLogin")
-    public void CheckAccessTopUpSmartLinkAfterLogin(){
-        String topUpURL= links.getTestData("TopUp.link");
+    @Test(dependsOnMethods = "CheckAccessTopUpSmartLinkBeforeLogin")
+    public void CheckAccessTopUpSmartLinkAfterLogin() {
+        String topUpURL = links.getTestData("TopUp.link");
         SmartLinksPage.accessSmartLink(topUpURL);
-        Assertions.assertElementMatches(driver,HomePage.getVodafoneLogo());
+        Assertions.assertElementMatches(driver, HomePage.getVodafoneLogo());
     }
 
 }

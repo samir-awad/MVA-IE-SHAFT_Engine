@@ -20,6 +20,7 @@ public class TC185_ValidateRedirectingToVestaPageAfterClickingOnUseThisCardButto
     private BillsPayments BillsPaymentsPage;
     private Settings SettingsPage;
     private JSONFileManager users;
+
     @BeforeClass
     public void beforeClass() {
         driver = BrowserFactory.getBrowser();
@@ -27,7 +28,7 @@ public class TC185_ValidateRedirectingToVestaPageAfterClickingOnUseThisCardButto
         HomePage = new Home(driver);
         BillsPaymentsPage = new BillsPayments(driver);
         SettingsPage = new Settings(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("TC181_BillPayCredentialsUser_DirectDebit.username");
         String password = users.getTestData("TC181_BillPayCredentialsUser_DirectDebit.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();

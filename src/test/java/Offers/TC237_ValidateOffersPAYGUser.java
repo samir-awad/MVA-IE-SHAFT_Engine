@@ -4,23 +4,27 @@ import FileReaders.jsonReader;
 import Pages.Home;
 import Pages.Login;
 import Pages.Offers;
+import com.shaft.driver.DriverFactory;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.gui.element.ElementActions;
 import com.shaft.gui.element.TouchActions;
 import com.shaft.validation.Assertions;
+import io.appium.java_client.MobileDriver;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC237_ValidateOffersPAYGUser {
-    private WebDriver driver;
+    private MobileDriver driver;
     private Login LoginPage;
     private Home HomePage;
     private Offers OffersPage;
 
     @BeforeClass
     public void beforeClass() {
-        driver = BrowserFactory.getBrowser();
+        driver = (MobileDriver) BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         OffersPage = new Offers(driver);
@@ -79,5 +83,9 @@ public class TC237_ValidateOffersPAYGUser {
     public void CheckGoBackToAppFromExternalPage() {
         OffersPage.goBackToAppFromExternalPage();
         Assertions.assertElementExists(driver, OffersPage.getOffersHeader_text());
+    }
+    @AfterClass
+    public void CloseAllDrivers(){
+        driver.quit();
     }
 }

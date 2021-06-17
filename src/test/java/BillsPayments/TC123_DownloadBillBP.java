@@ -16,18 +16,20 @@ public class TC123_DownloadBillBP {
     private Login LoginPage;
     private Home HomePage;
     private BillsPayments BillsPaymentsPage;
+
     @BeforeClass
     public void beforeClass() {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        BillsPaymentsPage=new BillsPayments(driver);
-        LoginPage.acceptTermsAndConditions().login(jsonReader.getUserName("BillPayUser.username"),jsonReader.getPassword("BillPayUser.password")).acceptPermissions();
+        BillsPaymentsPage = new BillsPayments(driver);
+        LoginPage.acceptTermsAndConditions().login(jsonReader.getUserName("BillPayUser.username"), jsonReader.getPassword("BillPayUser.password")).acceptPermissions();
     }
-    @Test
-    public void DownloadABillFoBillPayUser(){
 
-        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+    @Test
+    public void DownloadABillFoBillPayUser() {
+
+        Verifications.verifyElementExists(driver, HomePage.getCheckTheVodafoneLogo());
         HomePage.pressBillsPaymentsTrayMenuOption();
         BillsPaymentsPage.pressDownloadBillButton();
 

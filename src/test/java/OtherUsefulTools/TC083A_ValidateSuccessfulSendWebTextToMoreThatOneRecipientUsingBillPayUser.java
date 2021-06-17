@@ -19,12 +19,12 @@ public class TC083A_ValidateSuccessfulSendWebTextToMoreThatOneRecipientUsingBill
     private JSONFileManager users;
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         OtherUsefulToolsPage = new OtherUsefulTools(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("BillPayUserWithWebText.username");
         String password = users.getTestData("BillPayUserWithWebText.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
@@ -32,13 +32,14 @@ public class TC083A_ValidateSuccessfulSendWebTextToMoreThatOneRecipientUsingBill
 
     @Test
     public void checkTheVodafoneLogo() {
-    	 Assertions.assertElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+        Assertions.assertElementExists(driver, HomePage.getCheckTheVodafoneLogo());
     }
 
-    @Test (dependsOnMethods = {"checkTheVodafoneLogo"})
+    @Test(dependsOnMethods = {"checkTheVodafoneLogo"})
     public void checkOtherUsefulToolsSection() {
         HomePage.checkOtherUsefulToolsSection();
     }
+
     @Test(dependsOnMethods = {"checkOtherUsefulToolsSection"})
     public void pressSendWebtextOption() {
         HomePage.pressSendWebTextOption();

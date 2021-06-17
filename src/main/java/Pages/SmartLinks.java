@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 public class SmartLinks {
     private final MobileDriver driver;
 
-    private By Go_button;
+    private static By Go_button;
 
 
     public SmartLinks(WebDriver driver) {

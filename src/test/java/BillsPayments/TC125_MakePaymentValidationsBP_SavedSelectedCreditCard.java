@@ -18,17 +18,19 @@ public class TC125_MakePaymentValidationsBP_SavedSelectedCreditCard {
     private Login LoginPage;
     private Home HomePage;
     private BillsPayments BillsPaymentsPage;
+
     @BeforeClass
     public void beforeClass() {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
-        BillsPaymentsPage=new BillsPayments(driver);
-        LoginPage.acceptTermsAndConditions().login(jsonReader.getUserName("SavedCC.username"),jsonReader.getPassword("SavedCC.password")).acceptPermissions();
+        BillsPaymentsPage = new BillsPayments(driver);
+        LoginPage.acceptTermsAndConditions().login(jsonReader.getUserName("SavedCC.username"), jsonReader.getPassword("SavedCC.password")).acceptPermissions();
     }
+
     @Test
-    public void MakePaymentValidationsBP_SavedSelectedCreditCard(){
-        Verifications.verifyElementExists(driver,HomePage.getCheckTheVodafoneLogo());
+    public void MakePaymentValidationsBP_SavedSelectedCreditCard() {
+        Verifications.verifyElementExists(driver, HomePage.getCheckTheVodafoneLogo());
         HomePage.pressBillsPaymentsTrayMenuOption();
         BillsPaymentsPage.pressMakeAPaymentButton();
         Verifications.verifyTrue(BillsPaymentsPage.checkMakeAPaymentOverlayHeader());
@@ -36,7 +38,7 @@ public class TC125_MakePaymentValidationsBP_SavedSelectedCreditCard {
         Verifications.verifyTrue(BillsPaymentsPage.checkMakeAPaymentOverlayAmountField());
         Verifications.verifyTrue(BillsPaymentsPage.checkMakeAPaymentOverlayPaymentMethod());
         BillsPaymentsPage.pressMakePaymentButton();
-        Assertions.assertElementAttribute(driver,BillsPaymentsPage.getVestaField(),"text","Name on Card");
+        Assertions.assertElementAttribute(driver, BillsPaymentsPage.getVestaField(), "text", "Name on Card");
 
     }
 

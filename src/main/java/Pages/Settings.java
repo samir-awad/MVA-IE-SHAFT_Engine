@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 public class Settings {
 
     private WebDriver driver;
-    private By PaymentMethodSetting_Button;
+    private static By PaymentMethodSetting_Button;
 
     public Settings(WebDriver driver) {
         this.driver = driver;

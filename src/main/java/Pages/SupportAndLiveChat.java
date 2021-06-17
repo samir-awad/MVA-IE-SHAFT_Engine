@@ -8,31 +8,31 @@ import org.openqa.selenium.WebDriver;
 public class SupportAndLiveChat {
 
     private final WebDriver driver;
-    private By SupportHeader_text;
-    private By SupportHeaderClose_button;
-    private By MinimizeLiveChat_button;
-    private By Support_title;
-    private By Support_Subtitle;
+    private static By SupportHeader_text;
+    private static By SupportHeaderClose_button;
+    private static By MinimizeLiveChat_button;
+    private static By Support_title;
+    private static By Support_Subtitle;
 
     //Bill Pay
-    private By FirstSupportTitle_textBP;
-    private By SecondSupportTitle_textBP;
-    private By SupportListFirstItem_textBP;
+    private static By FirstSupportTitle_textBP;
+    private static By SecondSupportTitle_textBP;
+    private static By SupportListFirstItem_textBP;
 
     //PAYG
-    private By FirstSupportTitle_textPAYG;
-    private By SecondSupportTitle_textPAYG;
-    private By SupportListFirstItem_textPAYG;
+    private static By FirstSupportTitle_textPAYG;
+    private static By SecondSupportTitle_textPAYG;
+    private static By SupportListFirstItem_textPAYG;
 
     //Fixed
-    private By FirstSupportTitle_textFixed;
-    private By SupportListFirstItem_textFixed;
+    private static By FirstSupportTitle_textFixed;
+    private static By SupportListFirstItem_textFixed;
 
 
-    private By ChatNow_button;
-    private By LiveChatFormFullName_inputText;
-    private By LiveChatFormQuestions_inputText;
-    private By LiveChatFormStartChat_button;
+    private static By ChatNow_button;
+    private static By LiveChatFormFullName_inputText;
+    private static By LiveChatFormQuestions_inputText;
+    private static By LiveChatFormStartChat_button;
 
 
     public By getFirstSupportTitle_textBP() {

@@ -35,7 +35,8 @@ public class TC121_CurrentSpendValidationBP {
         HomePage.pressNextBillTile();
         Verifications.verifyTrue(BillsPaymentsPage.checkCurrentSpendOverlay());
         BillsPaymentsPage.pressViewBillsAndPaymentsButton();
-        Assertions.assertTrue(BillsPaymentsPage.checkBillsPaymentsHeader());
+        Assertions.assertTrue(BillsPaymentsPage.
+                checkBillsPaymentsHeader());
 
     }
 

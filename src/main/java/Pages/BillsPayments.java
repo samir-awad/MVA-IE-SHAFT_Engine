@@ -9,46 +9,46 @@ import org.openqa.selenium.WebDriver;
 public class BillsPayments {
 
     private WebDriver driver;
-    private By CurrentSpendLastBillTitle;
-    private By Bills_Payments_Button;
-    private By BillsPaymentTitle;
-    private By CloseBTN;
-    private By Download_Button;
-    private By MakePayment_Button;
-    private By MakeAdvancePayment_button;
-    private By MakeAPaymentHeader;
-    private By PaymentFirstBill;
-    private By PaymentAmountField;
-    private By PaymentMethod;
-    private By Edit_Button;
-    private By Payment_Button;
-    private By VisaData;
-    private By UseSelectedCard_Button;
-    private By VestaField;
-    private By NewCardAndSaveItForLater_Button;
-    private By NewCardWithoutSaving_Button;
-    private By AccountSettings_Text;
-    private By PaymentMethod_Text;
-    private By CreditCardAsRecurringPayment0_Title;
-    private By CreditCardAsRecurringPaymentSub_Title;
-    private By CreditCardAsRecurringPaymentSaved_Tab;
-    private By CreditCardAsRecurringPaymentDirectDebit_Tab;
-    private By AccountHolder_Text;
-    private By Iban_Text;
-    private By NoneSavedCards_Text;
-    private By NoPaymentMethod_Text;
-    private By AddNewCard_Button;
-    private By AddNewCard_Overlay;
-    private By AddNewCardOverlayClose_Button;
-    private By AddNewCardOverlayNo_Button;
-    private By AddNewCardOverlayContinue_Button;
-    private By UseThisCard_Button;
-    private By UseThisCardOverlay_Text;
-    private By ChangeYourCardOverlayClose_Button;
-    private By ChangeYourCardOverlayNo_Button;
-    private By ChangeYourCardOverlayContinue_Button;
-    private By CheckSavedCardContent0_Text;
-    private By CheckSavedCardContent1_Text;
+    private static By CurrentSpendLastBillTitle;
+    private static By Bills_Payments_Button;
+    private static By BillsPaymentTitle;
+    private static By CloseBTN;
+    private static By Download_Button;
+    private static By MakePayment_Button;
+    private static By MakeAdvancePayment_button;
+    private static By MakeAPaymentHeader;
+    private static By PaymentFirstBill;
+    private static By PaymentAmountField;
+    private static By PaymentMethod;
+    private static By Edit_Button;
+    private static By Payment_Button;
+    private static By VisaData;
+    private static By UseSelectedCard_Button;
+    private static By VestaField;
+    private static By NewCardAndSaveItForLater_Button;
+    private static By NewCardWithoutSaving_Button;
+    private static By AccountSettings_Text;
+    private static By PaymentMethod_Text;
+    private static By CreditCardAsRecurringPayment0_Title;
+    private static By CreditCardAsRecurringPaymentSub_Title;
+    private static By CreditCardAsRecurringPaymentSaved_Tab;
+    private static By CreditCardAsRecurringPaymentDirectDebit_Tab;
+    private static By AccountHolder_Text;
+    private static By Iban_Text;
+    private static By NoneSavedCards_Text;
+    private static By NoPaymentMethod_Text;
+    private static By AddNewCard_Button;
+    private static By AddNewCard_Overlay;
+    private static By AddNewCardOverlayClose_Button;
+    private static By AddNewCardOverlayNo_Button;
+    private static By AddNewCardOverlayContinue_Button;
+    private static By UseThisCard_Button;
+    private static By UseThisCardOverlay_Text;
+    private static By ChangeYourCardOverlayClose_Button;
+    private static By ChangeYourCardOverlayNo_Button;
+    private static By ChangeYourCardOverlayContinue_Button;
+    private static By CheckSavedCardContent0_Text;
+    private static By CheckSavedCardContent1_Text;
 
     public By getCurrentSpendLastBillTitle() {
         return CurrentSpendLastBillTitle;
@@ -206,7 +206,7 @@ public class BillsPayments {
         return InvalidIbanOverlay_Title;
     }
 
-    private By InvalidIbanOverlay_Title;
+    private static By InvalidIbanOverlay_Title;
 
     public By getBillsPaymentTitle() {
         return BillsPaymentTitle;

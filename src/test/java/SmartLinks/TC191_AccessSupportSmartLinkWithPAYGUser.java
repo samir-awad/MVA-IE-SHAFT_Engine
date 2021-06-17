@@ -21,40 +21,40 @@ public class TC191_AccessSupportSmartLinkWithPAYGUser {
     private JSONFileManager users;
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
         driver = BrowserFactory.getBrowser();
         LoginPage = new Login(driver);
-        HomePage= new Home(driver);
-        SupportAndLiveChatPage=new SupportAndLiveChat(driver);
+        HomePage = new Home(driver);
+        SupportAndLiveChatPage = new SupportAndLiveChat(driver);
         smartLinksPage = new SmartLinks(driver);
-        links = new JSONFileManager(System.getProperty("testDataFolderPath")+"smartLinks.json");
-        users = new JSONFileManager(System.getProperty("testDataFolderPath")+"users.json");
+        links = new JSONFileManager(System.getProperty("testDataFolderPath") + "smartLinks.json");
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         LoginPage.acceptTermsAndConditions();
     }
 
     @Test
-    public void CheckAccessSupportSmartLinkBeforeLogin(){
-        String supportURL= links.getTestData("Support.link");
+    public void CheckAccessSupportSmartLinkBeforeLogin() {
+        String supportURL = links.getTestData("Support.link");
         smartLinksPage.accessSmartLink(supportURL);
         String username = users.getTestData("PAYGUser.username");
         String password = users.getTestData("PAYGUser.password");
         LoginPage.login(username, password).acceptPermissionsPAYGUser();
-        Assertions.assertElementAttribute(driver,SupportAndLiveChatPage.getSupportHeader_text(),
-                "text","Support");
+        Assertions.assertElementAttribute(driver, SupportAndLiveChatPage.getSupportHeader_text(),
+                "text", "Support");
     }
 
     @Test(dependsOnMethods = "CheckAccessSupportSmartLinkBeforeLogin")
-    public void CheckSupportHeaderCloseButton(){
+    public void CheckSupportHeaderCloseButton() {
         SupportAndLiveChatPage.pressSupportHeaderCloseButton();
-        Assertions.assertElementMatches(driver,HomePage.getVodafoneLogo());
+        Assertions.assertElementMatches(driver, HomePage.getVodafoneLogo());
     }
 
-    @Test(dependsOnMethods ="CheckSupportHeaderCloseButton")
-    public void CheckAccessSupportSmartLinkAfterLogin(){
-        String supportURL= links.getTestData("Support.link");
+    @Test(dependsOnMethods = "CheckSupportHeaderCloseButton")
+    public void CheckAccessSupportSmartLinkAfterLogin() {
+        String supportURL = links.getTestData("Support.link");
         smartLinksPage.accessSmartLink(supportURL);
-        Assertions.assertElementAttribute(driver,SupportAndLiveChatPage.getSupportHeader_text(),
-                "text","Support");
+        Assertions.assertElementAttribute(driver, SupportAndLiveChatPage.getSupportHeader_text(),
+                "text", "Support");
     }
 
 }

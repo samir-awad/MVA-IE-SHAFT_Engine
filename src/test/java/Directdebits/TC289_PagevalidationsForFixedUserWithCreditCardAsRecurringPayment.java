@@ -54,7 +54,7 @@ public class TC289_PagevalidationsForFixedUserWithCreditCardAsRecurringPayment {
     @Test
     public void step5() {
         BillsPaymentsPage.pressCloseButtonInBillsPaymentsView();
-        Verifications.verifyElementExists(driver,HomePage.getVodafoneLogo());
+        Verifications.verifyElementExists(driver, HomePage.getVodafoneLogo());
     }
 
     @Test

@@ -14,7 +14,6 @@ import org.testng.annotations.Test;
 public class TC253_ChangePlanPageValidationsBP {
 
 
-
     private WebDriver driver;
     private Login LoginPage;
     private Home HomePage;
