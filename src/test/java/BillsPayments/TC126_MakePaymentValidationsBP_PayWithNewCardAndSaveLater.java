@@ -7,6 +7,7 @@ import com.shaft.cli.FileActions;
 import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Verifications;
 import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -39,10 +40,11 @@ public class TC126_MakePaymentValidationsBP_PayWithNewCardAndSaveLater {
         Verifications.verifyTrue(BillsPaymentsPage.checkMakeAPaymentOverlayAmountField());
         Verifications.verifyTrue(BillsPaymentsPage.checkMakeAPaymentOverlayPaymentMethod());
         BillsPaymentsPage.pressPaymentMethodEditButton();
-
         BillsPaymentsPage.pressPayWithNewCardAndSaveItForLaterButton();
-
-
     }
 
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
+    }
 }

@@ -8,6 +8,7 @@ import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
 import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -41,4 +42,8 @@ public class TC125_MakePaymentValidationsBP_SavedSelectedCreditCard {
 
     }
 
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
+    }
 }

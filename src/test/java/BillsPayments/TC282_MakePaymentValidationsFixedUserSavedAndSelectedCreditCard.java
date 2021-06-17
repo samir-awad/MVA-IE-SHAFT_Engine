@@ -8,6 +8,7 @@ import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
 import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -37,12 +38,13 @@ public class TC282_MakePaymentValidationsFixedUserSavedAndSelectedCreditCard {
         BillsPaymentsPage.pressMakeAPaymentButton();
         BillsPaymentsPage.checkMakeAPaymentOverlayHeader();
         BillsPaymentsPage.checkMakeAPaymentOverlayAmountField();
-
         BillsPaymentsPage.checkMakeAPaymentOverlayPaymentMethod();
         BillsPaymentsPage.pressMakePaymentButton();
         Assertions.assertElementAttribute(driver, BillsPaymentsPage.getVestaField(), "text", "Name on Card");
-
-
     }
 
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
+    }
 }

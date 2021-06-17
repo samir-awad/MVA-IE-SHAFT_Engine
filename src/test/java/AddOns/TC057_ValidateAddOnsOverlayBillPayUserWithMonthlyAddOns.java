@@ -7,6 +7,7 @@ import com.shaft.gui.browser.BrowserFactory;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -44,6 +45,11 @@ public class TC057_ValidateAddOnsOverlayBillPayUserWithMonthlyAddOns {
     public void ValidateAddOnsOverlayCloseButton() {
         AddOnsPage.closeAddOnsOverlay();
         Assertions.assertElementExists(driver, HomePage.getEssentials_text());
+    }
+
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
     }
 
 }

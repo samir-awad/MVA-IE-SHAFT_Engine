@@ -8,6 +8,7 @@ import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
 import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -48,4 +49,8 @@ public class TC247_ValidateAddOnsPageBillPayUserWithoutMonthlyAddOns {
                 Assertions.AssertionType.NEGATIVE, "Check That Manage AddOns Button Is Not Displayed");
     }
 
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
+    }
 }

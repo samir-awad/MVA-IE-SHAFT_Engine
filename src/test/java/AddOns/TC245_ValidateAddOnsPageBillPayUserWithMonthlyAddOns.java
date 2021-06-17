@@ -8,6 +8,7 @@ import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import com.shaft.validation.Verifications;
 import io.appium.java_client.MobileDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -114,5 +115,8 @@ public class TC245_ValidateAddOnsPageBillPayUserWithMonthlyAddOns {
         Assertions.assertElementExists(driver, HomePage.getEssentials_text()); //change to buy and manage add ons
     }
 
-
+    @AfterClass
+    public void CloseAllDrivers() {
+        driver.quit();
+    }
 }
