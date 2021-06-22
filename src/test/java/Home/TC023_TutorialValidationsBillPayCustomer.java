@@ -26,12 +26,11 @@ public class TC023_TutorialValidationsBillPayCustomer {
 
     @Test
     public void AcceptTermsAndConditionsAndLogin() {
-        LoginPage.acceptTermsAndConditions().login(jsonReader.getUserName("BillPayUser.username"), jsonReader.getPassword("BillPayUser.password"));
+        LoginPage.acceptTermsAndConditions().login(jsonReader.getUserName("BillPayUser.username"), jsonReader.getPassword("BillPayUser.password")).acceptPermissions();
     }
 
     @Test(dependsOnMethods = "AcceptTermsAndConditionsAndLogin")
     public void AcceptPermissionsAndGoToTutorialFromHome() {
-        LoginPage.acceptPermissions();
         Assertions.assertElementExists(driver, HomePage.getTakeQuickTour_Tile());
         ElementActions.performTouchAction(driver).tap(HomePage.getTakeQuickTour_Tile());
         Assertions.assertElementExists(driver, LoginPage.getSkip_button());

@@ -4,6 +4,7 @@ import Pages.Home;
 import Pages.Login;
 import Pages.TopUp;
 import com.shaft.gui.browser.BrowserFactory;
+import com.shaft.gui.element.ElementActions;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Assertions;
 import io.appium.java_client.MobileDriver;
@@ -26,13 +27,17 @@ public class TC161_ValidateTopUpWithVoucherPAYGUser {
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         TopUpPage = new TopUp(driver);
+    }
+
+    @Test
+    public void Login() {
         users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("PAYGVoucher.username");
         String password = users.getTestData("PAYGVoucher.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
     }
 
-    @Test
+    @Test(dependsOnMethods = "Login")
     public void CheckVodafoneLogoAndWelcomeGesture() {
         Assertions.assertElementExists(driver, HomePage.getVodafoneLogo());
     }

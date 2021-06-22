@@ -25,13 +25,17 @@ public class TC245_ValidateAddOnsPageBillPayUserWithMonthlyAddOns {
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         AddOnsPage = new AddOns(driver);
+    }
+
+    @Test
+    public void Login() {
         users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         String username = users.getTestData("BillPayUser.username");
         String password = users.getTestData("BillPayUser.password");
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
     }
 
-    @Test
+    @Test(dependsOnMethods = "Login")
     public void CheckEssentialsSection() {
         HomePage.checkEssentialsSection();
     }
@@ -40,24 +44,13 @@ public class TC245_ValidateAddOnsPageBillPayUserWithMonthlyAddOns {
     public void ValidateAddOnsPageFirstTab() {
         HomePage.opedAddOnsOverlay();
         AddOnsPage.openAddOnsPage();
-
-        Verifications.verifyElementAttribute(driver, AddOnsPage.getAddOnsHeader_text(),
-                "text", "Buy add ons");
-
+        Verifications.verifyElementExists(driver, AddOnsPage.getAddOnsHeader_text());
         Verifications.verifyTrue(AddOnsPage.checkBuyAddOnsFirstTab(), "Checking One Off tab");
-
         Verifications.verifyTrue(AddOnsPage.checkBuyAddOnsSecondTab(), "Checking recurring tab");
-
         Verifications.verifyTrue(AddOnsPage.checkOneOffListFirstItem(), "Checking first list item in one off tab");
-
-        Verifications.verifyElementAttribute(driver, AddOnsPage.getOneOff_tab(),
-                "text", "One off");
-
+        Verifications.verifyElementExists(driver, AddOnsPage.getOneOff_tab());
         Verifications.verifyTrue(AddOnsPage.checkAddOnsContinueBtn(), "Checking continue button");
-
         Assertions.assertTrue(AddOnsPage.checkManageAddOnsBtn(), "Checking Manage add ons button");
-
-
     }
 
     @Test(dependsOnMethods = "ValidateAddOnsPageFirstTab")
