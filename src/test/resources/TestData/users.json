@@ -3,6 +3,10 @@
     "username": "0876119395",
     "password": "Mountainview01!"
   },
+  "PAYGTopUpHistory": {
+    "username": "0877373142",
+    "password": "Aa123456!"
+  },
   "Invalid User": {
     "username": "0976119395",
     "password": "Mountainview01!"
@@ -21,6 +25,10 @@
   "FixedUser": {
     "username": "thomascosgrave@gmail.com",
     "password": "Aa123456!"
+  },
+  "FixedUserWithSavedCC": {
+    "username": "cathryn.hayde@vodafone.com",
+    "password": "Mountainview01!"
   },
   "LegacyPAYG": {
     "username": "0879692425",

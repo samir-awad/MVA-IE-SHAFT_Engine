@@ -29,7 +29,7 @@ public class TC05_LoginWithWrongPassword {
 
     @Test()
     public void Login_With_Invalid_Password_FirstTime() {
-        LoginPage.login(jsonReader.getUserName("Wrong Password.username"), jsonReader.getPassword("Wrong Password.password"));
+        LoginPage.login(jsonReader.getUserName("WrongPassword.username"), jsonReader.getPassword("WrongPassword.password"));
         Assertions.assertElementExists(driver, LoginPage.getInvalid_UserName_PWD_title());
     }
 

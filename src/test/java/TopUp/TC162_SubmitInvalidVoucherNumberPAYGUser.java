@@ -13,7 +13,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TC162_SubmitInvalidVoucherNumberPAYGUser {
-
     private MobileDriver driver;
     private JSONFileManager users;
     private JSONFileManager vouchers;
@@ -27,6 +26,10 @@ public class TC162_SubmitInvalidVoucherNumberPAYGUser {
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         TopUpPage = new TopUp(driver);
+    }
+
+    @Test
+    public void Login() {
         users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
         vouchers = new JSONFileManager(System.getProperty("testDataFolderPath") + "vouchers.json");
         String username = users.getTestData("PAYGUserWithTopUp.username");
@@ -34,7 +37,7 @@ public class TC162_SubmitInvalidVoucherNumberPAYGUser {
         LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
     }
 
-    @Test
+    @Test(dependsOnMethods = "Login")
     public void CheckVodafoneLogoAndWelcomeGesture() {
         Assertions.assertElementExists(driver, HomePage.getVodafoneLogo());
     }
@@ -53,19 +56,6 @@ public class TC162_SubmitInvalidVoucherNumberPAYGUser {
         String invalidVoucher = vouchers.getTestData("InvalidVoucherPAYGUser.voucher");
         TopUpPage.submitInvalidVoucher(phoneNumber, invalidVoucher);
     }
-
-//    @Test
-//    public void submitInvalidVoucher(String phoneNumber, String Voucher) {
-//        ElementActions.isElementClickable(driver,TopUpPage.getTopUpAnotherNumber_button());
-//        ElementActions.performTouchAction(driver).tap(TopUpPage.getTopUpAnotherNumber_button());
-//        driver.findElement(TopUpPage.getInsertPhoneNumber_editbox()).clear();
-//        driver.findElement(TopUpPage.getInsertPhoneNumber_editbox()).sendKeys(phoneNumber);
-//        driver.hideKeyboard();
-//        driver.findElement(TopUpPage.getInsertVoucherCode_editbox()).clear();
-//        driver.findElement(TopUpPage.getInsertVoucherCode_editbox()).sendKeys(Voucher);
-//        driver.hideKeyboard();
-//        ElementActions.performTouchAction(driver).tap(TopUpPage.getSubmit_button());
-//    }
 
     @Test(dependsOnMethods = "GetInvalidVoucher")
     public void ValidateCloseButton() {

@@ -1,5 +1,6 @@
 package Directdebits;
 
+import FileReaders.jsonReader;
 import Pages.BillsPayments;
 import Pages.Home;
 import Pages.Login;
@@ -25,7 +26,7 @@ public class TC291_PageValidationsForFixedUserWithNoPaymentMethodSetup {
         HomePage = new Home(driver);
         BillsPaymentsPage = new BillsPayments(driver);
         SettingsPage = new Settings(driver);
-        // LoginPage.acceptTermsAndConditions().login().acceptPermissions();//fluent design
+        LoginPage.acceptTermsAndConditions().login(jsonReader.getUserName(""), jsonReader.getPassword("")).acceptPermissions();
     }
 
     @Test

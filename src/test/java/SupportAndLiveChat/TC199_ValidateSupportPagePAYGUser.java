@@ -47,8 +47,8 @@ public class TC199_ValidateSupportPagePAYGUser {
     @Test(dependsOnMethods = "CheckSupportHeader")
     public void CheckSupportCloseBtn() {
         SupportAndLiveChatPage.pressSupportHeaderCloseButton();
-        Assertions.assertElementAttribute(driver, HomePage.getSupportTrayMenuPAYG(),
-                "text", "Support");
+//        Assertions.assertElementAttribute(driver, HomePage.getSupportTrayMenuPAYG(),
+//                "text", "Support");
     }
 
     @Test(dependsOnMethods = "CheckSupportCloseBtn")

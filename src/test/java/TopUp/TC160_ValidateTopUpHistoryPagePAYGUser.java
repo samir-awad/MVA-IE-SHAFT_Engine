@@ -26,13 +26,17 @@ public class TC160_ValidateTopUpHistoryPagePAYGUser {
         LoginPage = new Login(driver);
         HomePage = new Home(driver);
         TopUpPage = new TopUp(driver);
-        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
-        String username = users.getTestData("PAYGUserWithTopUp.username");
-        String password = users.getTestData("PAYGUserWithTopUp.password");
-        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
     }
 
     @Test
+    public void Login() {
+        users = new JSONFileManager(System.getProperty("testDataFolderPath") + "users.json");
+        String username = users.getTestData("PAYGTopUpHistory.username");
+        String password = users.getTestData("PAYGTopUpHistory.password");
+        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissionsPAYGUser();
+    }
+
+    @Test(dependsOnMethods = "Login")
     public void CheckVodafoneLogoAndWelcomeGesture() {
         Assertions.assertElementExists(driver, HomePage.getVodafoneLogo());
     }
@@ -45,11 +49,6 @@ public class TC160_ValidateTopUpHistoryPagePAYGUser {
         TopUpPage.pressMoreOptionsOverlayTopUpHistoryOption();
         Verifications.verifyElementAttribute(driver, TopUpPage.getTopUpHeader_text(),
                 "text", "Top up", "checking Top Up History Page Header");
-        //The following assertion is not working as all locators of the page are failing
-        /*Assertions.assertElementAttribute(driver,TopUpPage.getFilter_text(),
-                "text","Toggle 0 Filters",
-                Assertions.AssertionComparisonType.CONTAINS, Assertions.AssertionType.POSITIVE,
-                "Checking Top Up History Page Content");*/
     }
 
     @Test(dependsOnMethods = "CheckTopUpHistoryPage")
@@ -61,14 +60,7 @@ public class TC160_ValidateTopUpHistoryPagePAYGUser {
     @Test(dependsOnMethods = "ValidateTopUpHistoryPageCloseBtn")
     public void ValidateTopUpHistoryBtn() {
         HomePage.pressTopUpHistoryTitle();
-        Verifications.verifyElementAttribute(driver, TopUpPage.getTopUpHeader_text(),
-                "text", "Top up", "checking Auto Top Up Page Header");
-
-        //The following assertion is not working as all locators of the page are failing
-        /*Assertions.assertElementAttribute(driver,TopUpPage.getFilter_text(),
-                "text","Toggle 0 Filters",
-                Assertions.AssertionComparisonType.CONTAINS, Assertions.AssertionType.POSITIVE,
-                "Checking Top Up History Page Content");*/
+        Verifications.verifyElementExists(driver, TopUpPage.getTopUpHeader_text());
     }
 
     @AfterClass
