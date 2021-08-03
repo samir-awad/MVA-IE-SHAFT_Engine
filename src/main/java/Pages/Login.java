@@ -72,7 +72,6 @@ public class Login {
     public Login(WebDriver driver) {
         this.driver = (AppiumDriver) driver;
         if (System.getProperty("targetOperatingSystem").equals("Android")) {
-
             termsAndConditions_Header = MobileBy.AccessibilityId("id_accordion_description_title");
             termsAndConditions_Txt = MobileBy.xpath("(//android.widget.TextView[@content-desc=\"id_tc_content_item\"])[2]");
             AcceptTerms_button = MobileBy.AccessibilityId("id_TC_switch_accept_terms");
@@ -194,7 +193,7 @@ public class Login {
     }
 
     public Login login(String username, String password) {
-        ElementActions.performTouchAction(driver).tap(Reg_Login_Button);
+        //ElementActions.performTouchAction(driver).tap(Reg_Login_Button);
         ElementActions.type(driver, PhoneOrEmail_TxtField, username);
         ElementActions.type(driver, Password_TxtField, password);
         ElementActions.performTouchAction(driver).tap(Login_button);
