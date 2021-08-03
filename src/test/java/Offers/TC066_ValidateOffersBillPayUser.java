@@ -31,7 +31,7 @@ public class TC066_ValidateOffersBillPayUser {
         OffersPage = new Offers(driver);
         String username = users.getTestData("BillPayUserWithoutAddOns.username");
         String password = users.getTestData("BillPayUserWithoutAddOns.password");
-        LoginPage.acceptTermsAndConditions().login(username, password).acceptPermissions();
+        LoginPage.login(username, password).acceptPermissions();
     }
 
     @Test
