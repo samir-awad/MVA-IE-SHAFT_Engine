@@ -35,7 +35,7 @@ public class TC117_LoginSuccessfullyWithPAYGCustomer {
 
     @Test(dependsOnMethods = {"Check_That_Im_On_Registration_And_Login_Page"})
     public void LoginWithPAYGCustomer() {
-        LoginPage.login(jsonReader.getUserName("PAYGUser.username"), jsonReader.getPassword("PAYGUser.password"));
+        LoginPage.login(jsonReader.getUserName("PAYGWithoutTopUpOffer.username"), jsonReader.getPassword("PAYGWithoutTopUpOffer.password"));
         Assertions.assertElementExists(driver, LoginPage.getLetsGo_Button());
     }
 

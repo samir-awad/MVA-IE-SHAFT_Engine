@@ -33,6 +33,7 @@ public class TC234_LoginSuccessfullyWithFixedCustomer {
 
     @Test(dependsOnMethods = "Check_Vodafone_Logo")
     public void Step2_Login_With_Fixed_User() {
+
         LoginPage.login(jsonReader.getUserName("FixedUser.username"), jsonReader.getPassword("FixedUser.password"));
         Assertions.assertElementExists(driver, LoginPage.getLetsGo_Button());
     }

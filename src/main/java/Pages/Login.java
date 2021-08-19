@@ -79,11 +79,12 @@ public class Login {
             Vodafone_Logo = MobileBy.AccessibilityId("id_login_and_register_logo");
             Reg_Login_Txt = MobileBy.AccessibilityId("id_login_and_register_login_text");
             Reg_Login_Button = MobileBy.AccessibilityId("signup_signin_login_btn");
-            Reg_Register_Txt = MobileBy.AccessibilityId("id_login_and_register_register_text");
+            Reg_Register_Txt = MobileBy.AccessibilityId("id_registration_title");
             Reg_Register_button = MobileBy.AccessibilityId("signup_signin_signup_btn");
             Reg_OurPrivacy_Link = MobileBy.AccessibilityId("tv_our_privacy");
+            NeedToRegister_link=MobileBy.AccessibilityId("id_login_textview_needtoregister");
             OurPrivacy_title = MobileBy.AccessibilityId("id_header_title_Our_Privacy");
-            OurPrivacy_text = MobileBy.AccessibilityId("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]");
+            OurPrivacy_text = MobileBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]");
             Registration_Title = MobileBy.AccessibilityId("signup_signin_signup_btn");
             Registration_UserName = MobileBy.AccessibilityId("id_registration_edittext_username");
             Registration_SendToken = MobileBy.AccessibilityId("id_registration_button_sendtoken");
@@ -109,8 +110,8 @@ public class Login {
             LegacyCancel_button = MobileBy.AccessibilityId("Cancel");
             Invalid_UserName_PWD_title = MobileBy.AccessibilityId("error_pop_up_title");
             Invalid_UserName_PWD_text = MobileBy.AccessibilityId("id_error_pop_up_message");
-            Invalid_UserName_PWD_Ok_button = MobileBy.AccessibilityId("Ok");
-            Invalid_UserName_PWD_UpdatePWD_button = MobileBy.AccessibilityId("Update Password");
+            Invalid_UserName_PWD_Ok_button = MobileBy.AccessibilityId("id_error_pop_up_close_button");
+            Invalid_UserName_PWD_UpdatePWD_button = MobileBy.AccessibilityId("id_error_pop_up_main_button");
             LetsGo_Button = MobileBy.xpath("//android.widget.TextView[@content-desc=\"OBstartButton\"]");
             PrivacyContinue_button = MobileBy.AccessibilityId("id_privacy_policy_continue_button");
             PersonalPreferencesContinue_button = MobileBy.AccessibilityId("id_onboarding_personal_preferences_continue_button");
@@ -123,7 +124,9 @@ public class Login {
             Tutorials_button = MobileBy.AccessibilityId("id_tutorials_tour_button");
             GoToMyVodafone_button = MobileBy.AccessibilityId("id_tutorials_dismiss_button");
             NotNow_Button = MobileBy.AccessibilityId("id_biometric_login_no_button");
-
+            ForgotPWD_link = MobileBy.AccessibilityId("id_login_textview_forgotyourpassword");
+            LoginOurPrivacy_link = MobileBy.AccessibilityId("id_login_textview_ourprivacy");
+            Login_Inline_Error = MobileBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.TextView");
 
         } else {
 
@@ -193,7 +196,7 @@ public class Login {
     }
 
     public Login login(String username, String password) {
-        //ElementActions.performTouchAction(driver).tap(Reg_Login_Button);
+        ElementActions.performTouchAction(driver).tap(Reg_Login_Button);
         ElementActions.type(driver, PhoneOrEmail_TxtField, username);
         ElementActions.type(driver, Password_TxtField, password);
         ElementActions.performTouchAction(driver).tap(Login_button);
@@ -251,7 +254,12 @@ public class Login {
         ElementActions.performTouchAction(driver).tap(GoToMyVodafone_button);
     }
 
-
+public void enterInvalidUserName(String Username){
+    ElementActions.performTouchAction(driver).tap(Reg_Login_Button);
+    ElementActions.type(driver, PhoneOrEmail_TxtField,Username);
+    ElementActions.performTouchAction(driver).tap(PhoneOrEmail_TxtField);
+    ElementActions.performTouchAction(driver).tap(LoginVf_Logo);
+}
     public void PressReg_LoginButton() {
         ElementActions.performTouchAction(driver).tap(Reg_Login_Button);
     }
