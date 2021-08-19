@@ -30,15 +30,18 @@ public class TC06_LoginWithInvalidUsername {
 
     @Test(dependsOnMethods = "Accept_And_Continue_In_Terms_And_Conditions")
     public void EnterInvalidUserNameAndCheckInlineErrorMsg() {
-        ElementActions.performTouchAction(driver).tap(LoginPage.getReg_Login_Button());
-        LoginPage.EnterUserName(jsonReader.getUserName("WrongUsername.username"));
-        ElementActions.performTouchAction(driver).tap(LoginPage.getLoginVf_Logo());
-        Assertions.assertElementExists(driver, LoginPage.getLogin_Inline_Error(), Assertions.AssertionType.POSITIVE);
+        LoginPage.enterInvalidUserName(jsonReader.getUserName("WrongUsername.username"));
+        Assertions.assertElementAttribute(driver,
+                LoginPage.getLogin_Inline_Error(),
+                "text",
+                "Email is not valid",
+                Assertions.AssertionComparisonType.CONTAINS,
+                Assertions.AssertionType.POSITIVE);
     }
 
-    @AfterClass
+  /*  @AfterClass
     public void CloseAllDrivers() {
         driver.quit();
-    }
+    }*/
 
 }

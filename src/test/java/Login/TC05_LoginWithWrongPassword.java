@@ -27,21 +27,21 @@ public class TC05_LoginWithWrongPassword {
         LoginPage.acceptTermsAndConditions();
     }
 
-    @Test()
+    @Test(dependsOnMethods = "Accept_And_Continue_In_Terms_And_Conditions")
     public void Login_With_Invalid_Password_FirstTime() {
         LoginPage.login(jsonReader.getUserName("WrongPassword.username"), jsonReader.getPassword("WrongPassword.password"));
         Assertions.assertElementExists(driver, LoginPage.getInvalid_UserName_PWD_title());
     }
 
-    @Test()
-    public void Step3() {
+    @Test(dependsOnMethods = "Login_With_Invalid_Password_FirstTime")
+    public void Check_Ok_Button() {
         ElementActions.performTouchAction(driver).tap(LoginPage.getInvalid_UserName_PWD_Ok_button());
-        LoginPage.EnterPasswordAndLogin(jsonReader.getPassword("Wrong Password"));
+        LoginPage.EnterPasswordAndLogin(jsonReader.getPassword("WrongPassword.password"));
         Assertions.assertElementExists(driver, LoginPage.getInvalid_UserName_PWD_title());
     }
 
-    @Test()
-    public void Step4() {
+    @Test(dependsOnMethods = "Check_Ok_Button")
+    public void Check_Update_Password_Button() {
         ElementActions.performTouchAction(driver).tap(LoginPage.getInvalid_UserName_PWD_UpdatePWD_button());
         Assertions.assertElementExists(driver, LoginPage.getRestPassword_Title(), Assertions.AssertionType.POSITIVE, "Im On Reset Password Page");
     }

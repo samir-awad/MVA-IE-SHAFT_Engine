@@ -49,8 +49,7 @@ public class TC03_CheckLoginRegisterAndResetPages {
     @Test()
     public void Step4_Check_Register_Page() {
         ElementActions.performTouchAction(driver).tap(LoginPage.getNeedToRegister_link());
-        Verifications.verifyElementExists(driver, LoginPage.getReg_Register_Txt());
-        Verifications.verifyElementExists(driver, LoginPage.getReg_Register_Txt());
+        Assertions.assertElementExists(driver, LoginPage.getReg_Register_Txt());
     }
 
     @Test()
